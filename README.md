@@ -2,7 +2,9 @@
 
 These dotfiles provide a consistent and optimized experience across different MacOS and Linux devices.
 
-![image](https://github.com/user-attachments/assets/93043804-5673-40ae-bc90-5bc9da727a18)
+![image](https://github.com/user-attachments/assets/e5766da5-1735-4038-b8f4-3acbc9e77908)
+![image](https://github.com/user-attachments/assets/25816167-3a73-4fa9-aa00-ce909df097a3)
+
 
 ## Main Features:
 
@@ -13,7 +15,8 @@ These dotfiles provide a consistent and optimized experience across different Ma
 - Reproducible
 
 ## Tooling:
-- [Nix](https://nixos.org/) and [home-manager](https://github.com/nix-community/home-manager)
+- [Nix](https://nixos.org/) and [home-manager](https://github.com/nix-community/home-manager).
+- [Hyprland](https://hyprland.org/): Tiling window manager.
 - [Kitty](https://sw.kovidgoyal.net/kitty/): Cross-platform, fast, feature-rich, GPU based terminal.
 - [TMUX](https://github.com/tmux/tmux): Terminal Multiplexer.
 - [LazyGit](https://github.com/jesseduffield/lazygit): A simple terminal UI for git commands.
