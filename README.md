@@ -2,10 +2,7 @@
 
 These dotfiles provide a consistent and optimized experience across different MacOS and Linux devices.
 
-https://github.com/user-attachments/assets/d0bfe629-405e-45f3-b25b-0b6af091a902
-
-
-
+![image](https://github.com/user-attachments/assets/93043804-5673-40ae-bc90-5bc9da727a18)
 
 ## Main Features:
 
