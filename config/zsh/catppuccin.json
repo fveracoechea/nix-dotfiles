@@ -39,25 +39,26 @@
         {
           "type": "os",
           "style": "diamond",
-          "foreground": "p:crust",
           "background": "p:blue",
+          "foreground": "p:crust",
           "powerline_symbol": "\ue0b4",
-          "template": " {{.Icon}} "
+          "leading_diamond": "\ue0b6",
+          "template": "<b>{{.Icon}}</b> "
         },
         {
           "type": "session",
-          "powerline_symbol": "\ue0b4",
           "style": "diamond",
-          "foreground": "p:crust",
           "background": "p:blue",
-          "template": "<b>{{ .UserName }}</b>"
+          "foreground": "p:crust",
+          "powerline_symbol": "\ue0b4",
+          "template": "<b>{{ .UserName }}@{{ .HostName }}</b>"
         },
         {
           "type": "path",
-          "foreground": "p:blue",
-          "background": "p:surface0",
-          "powerline_symbol": "\ue0b4",
           "style": "powerline",
+          "foreground": "p:crust",
+          "background": "p:rosewater",
+          "powerline_symbol": "\ue0b4",
           "properties": {
             "home_icon": "~",
             "style": "agnoster_full"
@@ -66,8 +67,10 @@
         },
         {
           "type": "git",
-          "foreground": "p:rosewater",
-          "style": "plain",
+          "style": "powerline",
+          "foreground": "p:crust",
+          "background": "p:muave",
+          "powerline_symbol": "\ue0b4",
           "properties": {
             "branch_icon": "\ue725 ",
             "cherry_pick_icon": "\ue29b ",
