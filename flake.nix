@@ -72,12 +72,16 @@
 
       modules = [
         stylix.nixosModules.stylix
+
         # NixOS System configurations
         ./hosts/nixos-desktop/configuration.nix
+
         # make home-manager as a module of nixos
         # so tat home-manager configuration will be deployed automatically
         # when executing `nixos-rebuild switch`
         home-manager.nixosModules.home-manager
+
+        # home-manager settings
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
