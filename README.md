@@ -21,7 +21,6 @@ These dotfiles provide a consistent and optimized experience across different Ma
 - [TMUX](https://github.com/tmux/tmux): Terminal Multiplexer.
 - [LazyGit](https://github.com/jesseduffield/lazygit): A simple terminal UI for git commands.
 - [ZSH](https://zsh.sourceforge.io/)
-  - [Zinit](https://github.com/zdharma-continuum/zinit): Flexible and fast ZSH plugin manager.
   - [Oh My Posh](https://ohmyposh.dev/): Customisable and low-latency cross platform/shell prompt renderer.
 - [Neovim](https://neovim.io/)
 - [Catppuccin](https://catppuccin.com/): Soothing pastel theme.
