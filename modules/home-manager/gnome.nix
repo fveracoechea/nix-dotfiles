@@ -22,28 +22,11 @@
   };
 
   home.packages = with pkgs; [
-    ripgrep
-    eza
-    yazi
-    btop
-    lazygit
-    oh-my-posh
-    fira-code-nerdfont
-    neofetch
-    python3
-    cmatrix
-    nurl
-    kooha
-    google-chrome
-    dconf2nix
-    watchman
-    vesktop
     dconf-editor
     gnome-tweaks
     gnomeExtensions.freon
     gnomeExtensions.gamemode-shell-extension
     gnomeExtensions.tiling-shell
-    gnomeExtensions.blur-my-shell
     gnomeExtensions.system-monitor
     gnomeExtensions.workspace-indicator
     gnomeExtensions.auto-move-windows

@@ -16,7 +16,6 @@ with lib.hm.gvariant; {
       always-show-log-out = true;
       disable-user-extensions = false;
       enabled-extensions = [
-        "blur-my-shell@aunetx"
         "tilingshell@ferrarodomenico.com"
         "freon@UshakovVasilii_Github.yahoo.com"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
@@ -39,43 +38,6 @@ with lib.hm.gvariant; {
         "apps-menu@gnome-shell-extensions.gcampax.github.com"
         "light-style@gnome-shell-extensions.gcampax.github.com"
       ];
-    };
-
-    "org/gnome/shell/extensions/blur-my-shell" = {
-      settings-version = 2;
-    };
-
-    "org/gnome/shell/extensions/blur-my-shell/appfolder" = {
-      blur = true;
-    };
-
-    "org/gnome/shell/extensions/blur-my-shell/hidetopbar" = {
-      compatibility = false;
-    };
-
-    "org/gnome/shell/extensions/blur-my-shell/lockscreen" = {
-      pipeline = "pipeline_default";
-    };
-
-    "org/gnome/shell/extensions/blur-my-shell/overview" = {
-      blur = true;
-      pipeline = "prpeline_default";
-      style-components = 2;
-    };
-
-    "org/gnome/shell/extensions/blur-my-shell/panel" = {
-      blur = true;
-      force-light-text = true;
-      pipeline = "pipeline_default";
-      override-background = true;
-      override-background-dynamically = false;
-      static-blur = true;
-      style-panel = 0;
-      unblur-in-overview = false;
-    };
-
-    "org/gnome/shell/extensions/blur-my-shell/screenshot" = {
-      pipeline = "pipeline_default";
     };
 
     "org/gnome/shell/extensions/freon" = {
