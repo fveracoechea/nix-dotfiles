@@ -15,6 +15,8 @@
     neofetch
     python3
     cmatrix
+    nurl
+    eza
 
     # fonts
     fira-code-nerdfont
