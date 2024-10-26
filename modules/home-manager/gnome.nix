@@ -43,7 +43,6 @@
     gnomeExtensions.freon
     gnomeExtensions.gamemode-shell-extension
     gnomeExtensions.tiling-shell
-    gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
     gnomeExtensions.system-monitor
     gnomeExtensions.workspace-indicator

@@ -17,7 +17,6 @@ with lib.hm.gvariant; {
       disable-user-extensions = false;
       enabled-extensions = [
         "blur-my-shell@aunetx"
-        "dash-to-dock@micxgx.gmail.com"
         "tilingshell@ferrarodomenico.com"
         "freon@UshakovVasilii_Github.yahoo.com"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
@@ -50,15 +49,6 @@ with lib.hm.gvariant; {
       blur = true;
     };
 
-    "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
-      blur = true;
-      pipeline = "pipeline_default_rounded";
-      override-background = true;
-      static-blur = true;
-      style-dash-to-dock = 0;
-      unblur-in-overview = false;
-    };
-
     "org/gnome/shell/extensions/blur-my-shell/hidetopbar" = {
       compatibility = false;
     };
@@ -86,36 +76,6 @@ with lib.hm.gvariant; {
 
     "org/gnome/shell/extensions/blur-my-shell/screenshot" = {
       pipeline = "pipeline_default";
-    };
-
-    "org/gnome/shell/extensions/dash-to-dock" = {
-      always-center-icons = false;
-      animation-time = 0.20000000000000001;
-      apply-custom-theme = true;
-      autohide = true;
-      autohide-in-fullscreen = false;
-      background-opacity = 0.80000000000000004;
-      custom-background-color = false;
-      custom-theme-shrink = true;
-      dash-max-icon-size = 46;
-      disable-overview-on-startup = false;
-      dock-fixed = false;
-      dock-position = "LEFT";
-      extend-height = false;
-      height-fraction = 1.0;
-      hide-delay = 0.20000000000000001;
-      intellihide = true;
-      intellihide-mode = "FOCUS_APPLICATION_WINDOWS";
-      preferred-monitor = -2;
-      preferred-monitor-by-connector = "Virtual-1";
-      pressure-threshold = 100.0;
-      preview-size-scale = 0.80000000000000004;
-      require-pressure-to-show = true;
-      running-indicator-style = "DOTS";
-      scroll-action = "do-nothing";
-      show-delay = 0.25;
-      show-dock-urgent-notify = true;
-      show-favorites = true;
     };
 
     "org/gnome/shell/extensions/freon" = {
