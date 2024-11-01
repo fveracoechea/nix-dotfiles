@@ -508,11 +508,11 @@
     "lazydev-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1721897868,
-        "narHash": "sha256-D5gP2rVPYoWc8hslTrH7Z90cE7XEu+tfkD6FZzY/iPk=",
+        "lastModified": 1730477088,
+        "narHash": "sha256-Xgeb2ABoCkWIr1Pfh41vp1hmbgQJY9vCAkztamdzrTk=",
         "owner": "folke",
         "repo": "lazydev.nvim",
-        "rev": "491452cf1ca6f029e90ad0d0368848fac717c6d2",
+        "rev": "d5800897d9180cea800023f2429bce0a94ed6064",
         "type": "github"
       },
       "original": {
@@ -548,11 +548,11 @@
         "tree-sitter-nginx": "tree-sitter-nginx"
       },
       "locked": {
-        "lastModified": 1730404897,
-        "narHash": "sha256-+9KqRccBwVcSHVtQx6BzUlTfMo/KzZw7/9/KrnkIqUE=",
+        "lastModified": 1730481143,
+        "narHash": "sha256-TQoI5uihdJgCH4gDJUF6qZAzZT8SPAv61lYe6muv15k=",
         "owner": "fveracoechea",
         "repo": "neovim-nix-config",
-        "rev": "99656951e5f76b8db09c6f8dac8ea1f69abe3f0d",
+        "rev": "1e75fb51ae9569bc72d561daacf09cf8c724c491",
         "type": "github"
       },
       "original": {
