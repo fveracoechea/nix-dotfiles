@@ -17,7 +17,7 @@
   services.mako = {
     enable = true;
     anchor = "bottom-right";
-    margin = "24 12";
+    margin = "24,12";
     padding = "24";
     defaultTimeout = 5000;
     borderRadius = 8;
@@ -33,6 +33,7 @@
       apps = "wofi --show drun --allow-images";
       terminal = "kitty";
       browser = "google-chrome-stable";
+      screenshot = "hyprshot -m output";
     in {
       env = [
         "BROWSER,${browser}"
@@ -59,6 +60,7 @@
         "${pkgs.waybar}/bin/waybar"
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
         "blueman-tray"
+        "mako"
       ];
 
       monitor = "DP-1,highrr,auto,auto";
@@ -127,6 +129,7 @@
           (bindExec "B" browser)
           (bindExec "T" terminal)
           (bindExec "A" apps)
+          (bindExec "S" screenshot)
 
           "SUPER, F, togglefloating"
           "SUPER ALT, F, fullscreen"

@@ -31,7 +31,8 @@
 
     shellAliases = {
       ls = "eza";
-      la = "eza -abghHl --no-user";
+      la = "eza -abghHl --no-user --icons";
+      cd = "z";
       e = "exit";
       c = "clear";
     };
@@ -73,7 +74,7 @@
         eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/zsh/catppuccin.json)"
 
         # Adds volta to the path
-        # PATH="$VOLTA_HOME/bin:$PATH"
+        PATH="$VOLTA_HOME/bin:$PATH"
 
         # Source secrets
         source ~/.config/zsh/secrets.zsh
