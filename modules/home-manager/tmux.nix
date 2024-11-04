@@ -10,8 +10,8 @@
 in {
   # scripts
   home.packages = with pkgs; [
-    (writeShellScriptBin "uptime-tmux" (lib.fileContents ../../config/scripts/uptime-tmux.zsh))
-    (writeShellScriptBin "git-tmux" (lib.fileContents ../../config/scripts/git-tmux.zsh))
+    (writeShellScriptBin "uptime-tmux" (lib.fileContents ../../config/tmux/uptime-tmux.sh))
+    (writeShellScriptBin "git-tmux" (lib.fileContents ../../config/tmux/git-tmux.sh))
   ];
 
   programs.tmux = {
