@@ -57,7 +57,7 @@
           "type": "path",
           "style": "powerline",
           "foreground": "p:crust",
-          "background": "p:pink",
+          "background": "p:flamingo",
           "powerline_symbol": "\ue0b4",
           "properties": {
             "home_icon": "~",
