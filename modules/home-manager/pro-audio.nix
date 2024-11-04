@@ -20,8 +20,9 @@ in {
   };
 
   home.packages = with pkgs; [
-    ardour
-    tenacity
+    audacity
+    tuxguitar
+
     klick
     qpwgraph
 
