@@ -89,25 +89,42 @@
 
       windowrule = let
         float = regex: "float, ^(${regex})$";
-        floatTitle = regex: "float, title:^(${regex})$";
       in [
         (float "org.gnome.Calculator")
         (float "org.gnome.Calendar")
         (float "nm-connection-editor")
         (float "org.gnome.Settings")
-
         (float "xdg-desktop-portal")
         (float "xdg-desktop-portal-gnome")
-
-        (floatTitle "Volume Control")
-        (floatTitle "Bluetooth Devices")
       ];
 
-      windowrulev2 = [
+      windowrulev2 = let
+        floatClass = class: "float,class:^(${class})$";
+        floatTitle = title: "float, title:^(${title})$";
+      in [
         "bordersize 0, fullscreen:1"
         "minsize 1000 650, floating:1"
         "opacity 0.88 0.88 1.0, title:(.*)$"
         "opacity 1.0, class:(google-chrome)"
+        "center, floating:1"
+
+        (floatClass "file_progres")
+        (floatClass "confirm")
+        (floatClass "dialog")
+        (floatClass "download")
+        (floatClass "notification")
+        (floatClass "error")
+        (floatClass "confirmreset")
+        (floatClass "imv")
+        (floatClass "mpv")
+        (floatClass "branchdialog")
+
+        (floatTitle "Volume Control")
+        (floatTitle "Bluetooth Devices")
+        (floatTitle "Open File")
+        (floatTitle "Save File")
+        (floatTitle "Confirm to replace file")
+        (floatTitle "File Operation Progress")
       ];
 
       bindm = [
