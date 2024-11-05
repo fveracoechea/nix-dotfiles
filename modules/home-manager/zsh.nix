@@ -13,6 +13,16 @@
     enableZshIntegration = true;
   };
 
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";

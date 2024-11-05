@@ -1,32 +1,29 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # guis
+    # gui
     slack
     vesktop
     google-chrome
     kooha
 
-    # terminal
-    ripgrep
-    eza
-    yazi
+    # tui
     btop
-    lazygit
-    oh-my-posh
-    neofetch
-    python3
-    cmatrix
-    nurl
-    eza
+    wego
 
     # fonts
     fira-code-nerdfont
 
-    # utils
-    dconf2nix
-    watchman
-
     # dev
     deno
+    python3
+
+    # utils
+    dconf2nix
+    nurl
+    watchman
+    oh-my-posh
+    neofetch
+    cmatrix
+    ripgrep
   ];
 }
