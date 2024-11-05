@@ -59,7 +59,7 @@
       exec-once = [
         "${pkgs.waybar}/bin/waybar"
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
-        "blueman-tray"
+        "blueman-applet"
         "mako"
       ];
 
