@@ -17,8 +17,17 @@
   ];
 
   # Bootloader.
+  boot.loader.timeout = 2;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  nix = {
+    optimise.automatic = true;
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 30d";
+    };
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
