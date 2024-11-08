@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }: {
   xdg.desktopEntries."org.gnome.Settings" = {
@@ -71,9 +72,8 @@
         gaps_out = "14 20 20 20";
       };
 
-      decoration = {
+      decoration = lib.mkForce {
         rounding = 8;
-        drop_shadow = false;
         blur.enabled = true;
       };
 
