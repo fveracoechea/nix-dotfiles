@@ -1,7 +1,7 @@
 {pkgs, ...}: {
-  # Oh-My-Posh theme and setup
-  home.packages = [pkgs.oh-my-posh];
-  xdg.configFile."zsh/catppuccin.json".source = ../../config/zsh/catppuccin.json;
+  programs.bat = {
+    enable = true;
+  };
 
   programs.fzf = {
     enable = true;
@@ -24,6 +24,10 @@
     enableZshIntegration = true;
   };
 
+  # Oh-My-Posh theme and setup
+  home.packages = [pkgs.oh-my-posh];
+  xdg.configFile."zsh/catppuccin.json".source = ../../config/zsh/catppuccin.json;
+
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
@@ -44,6 +48,7 @@
       ls = "eza";
       la = "eza -abghHl --no-user --icons";
       cd = "z";
+      cat = "bat";
       e = "exit";
       c = "clear";
     };
