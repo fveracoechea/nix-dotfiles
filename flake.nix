@@ -47,6 +47,12 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Nix Darwin
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -54,9 +60,37 @@
     nixpkgs-stable,
     stylix,
     home-manager,
+    nix-darwin,
     ...
   } @ inputs: {
-    # The host with the hostname `nixos-desktop` will use this configuration
+    # `macbook-pro` configuration
+    darwinConfigurations."macbook-pro" = nix-darwin.lib.darwinSystem rec {
+      system = "aarch64-darwin";
+
+      specialArgs = {
+        inherit inputs;
+        # Configure parameters to use nixpkgs-unstable
+        pkgs-stable = import nixpkgs-stable {
+          # Refer to the `system` parameter form the outer scope
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
+
+      modules = [
+        ./hosts/macbook-pro.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hm-backup";
+          home-manager.users.fveracoechea = import ./hosts/macbook-pro/home.nix;
+          home-manager.extraSpecialArgs = specialArgs;
+        }
+      ];
+    };
+
+    # `nixos-desktop` configuration
     nixosConfigurations.nixos-desktop = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
 
