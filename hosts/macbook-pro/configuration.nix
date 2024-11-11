@@ -6,7 +6,15 @@ in {
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-  nix.package = pkgs.nix;
+
+  nix = {
+    package = pkgs.nix;
+    optimise.automatic = true;
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 30d";
+    };
+  };
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
@@ -42,7 +50,7 @@ in {
     casks = [
       "postgres-unofficial"
       "postico"
-      "docker"
+      # "docker"
     ];
     brews = [
       "pipx"
