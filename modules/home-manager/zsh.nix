@@ -1,5 +1,6 @@
 {pkgs, ...}: {
-  # Link custom catppuccin theme for Oh-My-Posh
+  # Oh-My-Posh theme and setup
+  home.packages = [pkgs.oh-my-posh];
   xdg.configFile."zsh/catppuccin.json".source = ../../config/zsh/catppuccin.json;
 
   programs.fzf = {

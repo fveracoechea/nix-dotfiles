@@ -22,7 +22,6 @@
     dconf2nix
     nurl
     watchman
-    oh-my-posh
     neofetch
     cmatrix
     ripgrep

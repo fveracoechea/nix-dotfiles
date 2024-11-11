@@ -1,13 +1,23 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
     ../../modules/home-manager/kitty.nix
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/volta.nix
     inputs.neovim-config.homeManagerModules.default
+  ];
+
+  home.packages = with pkgs; [
+    watchman
+    ripgrep
+    wget
+    neofetch
+    cmatrix
   ];
 
   # home.username = "franciscoveracoechea";
