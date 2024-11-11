@@ -4,15 +4,14 @@
   ...
 }: {
   imports = [
-    # ../../modules/home-manager/kitty.nix
-    # ../../modules/home-manager/git.nix
-    # ../../modules/home-manager/tmux.nix
-    # ../../modules/home-manager/zsh.nix
-    # inputs.neovim-config.homeManagerModules.default
+    ../../modules/home-manager/kitty.nix
+    ../../modules/home-manager/tmux.nix
+    ../../modules/home-manager/zsh.nix
+    inputs.neovim-config.homeManagerModules.default
   ];
 
-  home.username = "franciscoveracoechea";
-  home.homeDirectory = "/home/franciscoveracoechea";
+  # home.username = "franciscoveracoechea";
+  # home.homeDirectory = /Users/franciscoveracoechea;
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

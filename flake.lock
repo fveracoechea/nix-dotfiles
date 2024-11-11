@@ -561,6 +561,26 @@
         "type": "github"
       }
     },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731153869,
+        "narHash": "sha256-3Ftf9oqOypcEyyrWJ0baVkRpvQqroK/SVBFLvU3nPuc=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "5c74ab862c8070cbf6400128a1b56abb213656da",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1730785428,
@@ -639,6 +659,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "neovim-config": "neovim-config",
+        "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "spicetify-nix": "spicetify-nix",

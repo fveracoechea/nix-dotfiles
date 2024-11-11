@@ -51,7 +51,7 @@
     # Nix Darwin
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
-      inputs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -78,13 +78,14 @@
       };
 
       modules = [
-        ./hosts/macbook-pro.nix
+        stylix.darwinModules.stylix
+        ./hosts/macbook-pro/configuration.nix
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "hm-backup";
-          home-manager.users.fveracoechea = import ./hosts/macbook-pro/home.nix;
+          home-manager.users.franciscoveracoechea = import ./hosts/macbook-pro/home.nix;
           home-manager.extraSpecialArgs = specialArgs;
         }
       ];
