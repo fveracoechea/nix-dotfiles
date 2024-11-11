@@ -13,6 +13,7 @@ in {
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.config.allowUnfree = true;
 
   users.users = {
     ${username} = {
@@ -33,6 +34,23 @@ in {
       mineffect = "genie";
       orientation = "left";
     };
+  };
+
+  # Homebrew - needs to be manually installed.
+  homebrew = {
+    enable = true;
+    casks = [
+      "postgres-unofficial"
+      "postico"
+      "docker"
+    ];
+    brews = [
+      "pipx"
+      "postgresql@14"
+      "pulumi/tap/pulumi"
+      "pyenv"
+      "python@3.12"
+    ];
   };
 
   stylix = let
