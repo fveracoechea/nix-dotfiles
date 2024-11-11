@@ -186,7 +186,7 @@
         };
 
         "clock#date" = {
-          format = iconLabel mauve "" "{:%A %b %m}";
+          format = iconLabel mauve "" "{:%A %b %d}";
           on-click = "gnome-calendar";
           tooltip = false;
         };

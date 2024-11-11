@@ -5,6 +5,7 @@
     vesktop
     google-chrome
     kooha
+    teams-for-linux
 
     # tui
     btop
