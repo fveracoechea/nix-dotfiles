@@ -10,6 +10,7 @@
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/volta.nix
+    ../../modules/home-manager/karabiner.nix
     inputs.neovim-config.homeManagerModules.default
   ];
 
