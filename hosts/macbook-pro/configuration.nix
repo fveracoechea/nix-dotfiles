@@ -35,22 +35,29 @@ in {
     finder.AppleShowAllExtensions = true;
     dock = {
       autohide = true;
+      autohide-delay = 0.0;
       mru-spaces = false;
-      largesize = 80;
-      tilesize = 48;
+      largesize = 65;
+      tilesize = 35;
       magnification = true;
       mineffect = "genie";
-      orientation = "left";
+      orientation = "bottom";
     };
   };
+
+  # Currently not working as a system service
+  services.karabiner-elements.enable = false;
+
+  # Enable ZSH has default shell
+  programs.zsh.enable = true;
 
   # Homebrew - needs to be manually installed.
   homebrew = {
     enable = true;
     casks = [
       "postgres-unofficial"
-      "postico"
-      # "docker"
+      "karabiner-elements"
+      "displaylink"
     ];
     brews = [
       "pipx"
@@ -76,6 +83,8 @@ in {
     image = ../../config/wallpapers/Cloudsday.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
+
+    opacity.terminal = 0.9;
 
     fonts = {
       serif = firaSans;
