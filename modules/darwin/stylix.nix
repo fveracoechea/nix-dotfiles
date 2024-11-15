@@ -1,14 +1,14 @@
-{pkgs, ...}: {
-  stylix = let
-    firaSans = {
-      package = pkgs.fira-sans;
-      name = "Fira Sans";
-    };
-    firaCode = {
-      package = pkgs.fira-code-nerdfont;
-      name = "FiraCode Nerd Font";
-    };
-  in {
+{pkgs, ...}: let
+  firaSans = {
+    package = pkgs.fira-sans;
+    name = "Fira Sans";
+  };
+  firaCode = {
+    package = pkgs.fira-code-nerdfont;
+    name = "FiraCode Nerd Font";
+  };
+in {
+  stylix = {
     enable = true;
     autoEnable = true;
     image = ../../config/wallpapers/Cloudsday.jpg;

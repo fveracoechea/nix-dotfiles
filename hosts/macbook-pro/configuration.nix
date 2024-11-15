@@ -4,7 +4,7 @@ in {
   imports = [
     ../../modules/darwin/system-defaults.nix
     ../../modules/darwin/homebrew.nix
-    .../../modules/darwin/stylix.nix
+    ../../modules/darwin/stylix.nix
   ];
 
   # Used for backwards compatibility.
