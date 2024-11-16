@@ -3,16 +3,30 @@
   lib,
   ...
 }: let
-  settings = {
-    tmux = lib.fileContents ../../config/tmux/tmux.conf;
-    catppuccin = lib.fileContents ../../config/tmux/tmux.catppuccin.conf;
-  };
+  mapScriptsToPackages = lib.attrsets.mapAttrsToList (pkgs.writeShellScriptBin);
 in {
-  # scripts
-  home.packages = with pkgs; [
-    (writeShellScriptBin "uptime-tmux" (lib.fileContents ../../config/tmux/uptime-tmux.sh))
-    (writeShellScriptBin "git-tmux" (lib.fileContents ../../config/tmux/git-tmux.sh))
-  ];
+  home.packages = mapScriptsToPackages {
+    uptime-tmux =
+      # sh
+      ''
+        uptime |
+        	awk -F, '{print $1,$2}' |
+        	sed 's/:/h /g;s/^.*up *//; s/ *[0-9]* user.*//;s/[0-9]$/&m/;s/ day. */d /g'
+      '';
+    git-tmux =
+      # sh
+      ''
+        if [ -d .git ]; then
+        	git fetch
+        	branch=$(git rev-parse --abbrev-ref HEAD)
+        	ahead=$(git rev-list --count origin/"$branch".."$branch")
+        	behind=$(git rev-list --count "$branch"..origin/"$branch")
+        	echo "$branch $ahead $behind"
+        else
+        	echo "N/A"
+        fi
+      '';
+  };
 
   programs.tmux = {
     enable = true;
@@ -20,19 +34,19 @@ in {
     mouse = true;
     terminal = "screen-256color";
     baseIndex = 1;
-    extraConfig = settings.tmux;
+    extraConfig = lib.fileContents ../../config/tmux/tmux.conf;
 
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.yank
       {
         plugin = tmuxPlugins.catppuccin;
-        extraConfig = settings.catppuccin;
+        extraConfig = lib.fileContents ../../config/tmux/tmux.catppuccin.conf;
       }
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig =
-          # tmux
+          # sh
           ''
             set -g @resurrect-strategy-nvim 'session'
           '';
@@ -40,7 +54,7 @@ in {
       {
         plugin = tmuxPlugins.continuum;
         extraConfig =
-          # tmux
+          # sh
           ''
             set -g @continuum-save-interval '5'
           '';
