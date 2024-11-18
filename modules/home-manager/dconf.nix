@@ -1,8 +1,5 @@
 {lib, ...}:
 with lib.hm.gvariant; {
-  # Enable dconf for gnome
-  programs.dconf.enable = true;
-
   # Generated with dconf2nix
   dconf.settings = {
     "org/gnome/mutter" = {

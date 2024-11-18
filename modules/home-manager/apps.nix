@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  # FPS hud for steam video-games
+  programs.mangohud.enable = true;
+
   home.packages = with pkgs; [
     # gui
     slack
