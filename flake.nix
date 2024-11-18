@@ -24,18 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # tmux weather plugin
-    tmux-clima = {
-      url = "github:vascomfnunes/tmux-clima";
-      flake = false;
-    };
-
-    # alejandra nix formatter
-    alejandra = {
-      url = "github:kamadorueda/alejandra/3.0.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Hyprland
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";

@@ -1,13 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/nixos/bootloader.nix
+    ../../modules/nixos/miscellaneous.nix
+    ../../modules/nixos/zsh-shell.nix
     ../../modules/nixos/nix-ld.nix
     ../../modules/nixos/timezone.nix
     ../../modules/nixos/pipewire.nix
@@ -16,13 +15,14 @@
     ../../modules/nixos/hyprland.nix
   ];
 
-  # Bootloader.
-  boot.loader.timeout = 2;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   nix = {
+    # Enable the Flakes feature and the accompanying new nix command-line tool
+    settings. experimental-features = ["nix-command" "flakes"];
+
+    # optimise store
     optimise.automatic = true;
+
+    # Enable automatic garbage collection
     gc = {
       automatic = true;
       options = "--delete-older-than 30d";
@@ -38,9 +38,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Enable flatpak
-  services.flatpak.enable = true;
 
   services.xserver = {
     # Enable the X11 windowing system.
@@ -69,20 +66,6 @@
     };
   };
 
-  programs.dconf.enable = true;
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  security.rtkit.enable = true;
-
-  # Enable the Flakes feature and the accompanying new nix command-line tool
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # sets ZSH has default shell
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fveracoechea = {
     isNormalUser = true;
@@ -98,9 +81,6 @@
   # systemd.services."getty@tty1".enable = false;
   # systemd.services."autovt@tty1".enable = false;
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -110,18 +90,12 @@
     wget
     git
     curl
-    nil
     zip
     unzip
     cmake
     gnumake
     cargo
-    inputs.alejandra.defaultPackage.${pkgs.system}
   ];
-
-  environment.pathsToLink = ["/share/zsh"];
-
-  environment.shells = with pkgs; [zsh];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

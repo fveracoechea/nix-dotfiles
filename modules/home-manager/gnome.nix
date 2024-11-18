@@ -3,13 +3,6 @@
   lib,
   ...
 }: {
-  xdg.enable = lib.mkDefault true;
-
-  programs.mangohud = {
-    enable = true;
-    enableSessionWide = true;
-  };
-
   gtk = {
     enable = true;
     iconTheme = lib.mkForce {

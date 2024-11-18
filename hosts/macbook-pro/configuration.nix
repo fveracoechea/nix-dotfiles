@@ -19,15 +19,18 @@ in {
 
   nix = {
     package = pkgs.nix;
+    # Enable the Flakes feature and the accompanying new nix command-line tool
+    settings. experimental-features = ["nix-command" "flakes"];
+
+    # optimise store
     optimise.automatic = true;
+
+    # Enable automatic garbage collection
     gc = {
       automatic = true;
       options = "--delete-older-than 30d";
     };
   };
-
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
 
   users.users = {
     ${username} = {
