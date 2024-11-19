@@ -8,6 +8,7 @@
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/oh-my-posh.nix
     ../../modules/home-manager/gnome.nix
     ../../modules/home-manager/dconf.nix
     ../../modules/home-manager/volta.nix

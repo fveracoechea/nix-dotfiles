@@ -5,7 +5,9 @@
   '';
   key_code = key: {key_code = key;};
 in {
+  # enable xdg config directory by default
   xdg.enable = lib.mkDefault true;
+
   xdg.configFile.karabiner = {
     target = "karabiner/assets/complex_modifications/nix.json";
     text = builtins.toJSON {

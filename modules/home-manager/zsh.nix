@@ -26,7 +26,6 @@
 
   # Oh-My-Posh theme and setup
   home.packages = [pkgs.oh-my-posh];
-  xdg.configFile."zsh/catppuccin.json".source = ../../config/zsh/catppuccin.json;
 
   programs.zsh = {
     enable = true;
@@ -87,7 +86,7 @@
         zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
         # Run oh-my-posh
-        eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/zsh/catppuccin.json)"
+        eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/zsh/oh-my-posh/catppuccin.json)"
 
         # Adds volta to the path
         PATH="$VOLTA_HOME/bin:$PATH"
