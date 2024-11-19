@@ -27,21 +27,24 @@
   };
 in {
   xdg.configFile."zsh/oh-my-posh/catppuccin.json".text = builtins.toJSON {
-    final_space = true;
     version = 3;
+    final_space = true;
+
     transient_prompt = {
       background = "transparent";
-      template = "\n❯ ";
+      template = "\n<${catppuccin.rosewater}>  {{ .PWD }}</> ❯ ";
       foreground_templates = [
         "{{if gt .Code 0}}${catppuccin.red}{{end}}"
         "{{if eq .Code 0}}${catppuccin.muave}{end}}"
       ];
     };
+
     secondary_prompt = {
-      foreground = catppuccin.blue;
+      foreground = catppuccin.muave;
       background = "transparent";
       template = "❯❯ ";
     };
+
     blocks = [
       {
         type = "prompt";
@@ -70,15 +73,15 @@ in {
           }
           {
             type = "path";
+            style = "powerline";
             foreground = catppuccin.blue;
             background = catppuccin.surface0;
             powerline_symbol = "";
-            style = "powerline";
             properties = {
               home_icon = "~";
               style = "agnoster_full";
             };
-            template = " {{ .Path }} ";
+            template = "  {{ .Path }} ";
           }
           {
             type = "git";
@@ -110,24 +113,23 @@ in {
         alignment = "right";
         overflow = "hide";
         segments = [
-          # {
-          #   type = "os";
-          #   style = "diamond";
-          #   powerline_symbol = "";
-          #   foreground = catppuccin.crust;
-          #   background = catppuccin.blue;
-          #   template = " {{.Icon}} ";
-          # }
           {
             type = "executiontime";
             style = "plain";
-            foreground = catppuccin.crust;
-            background = catppuccin.rosewater;
+            foreground = catppuccin.rosewater;
             template = " {{ .FormattedMs }}  ";
             properties = {
               style = "austin";
               always_enabled = true;
             };
+          }
+          {
+            type = "node";
+            style = "diamond";
+            leading_diamond = "";
+            foreground = catppuccin.green;
+            background = catppuccin.surface0;
+            template = " {{ .Full }}  ";
           }
         ];
       }
