@@ -6,6 +6,28 @@
   mapScriptsToPackages = lib.attrsets.mapAttrsToList (pkgs.writeShellScriptBin);
 in {
   home.packages = mapScriptsToPackages {
+    os-icon-tmux =
+      # sh
+      ''
+        case "$(uname -s)" in
+            Darwin) OS_ICON=" " ;;
+            Linux)
+                case "$(awk -F= '/^ID=/{print $2}' /etc/os-release | tr -d '\"')" in
+                    ubuntu) OS_ICON=" " ;;
+                    fedora) OS_ICON=" " ;;
+                    arch) OS_ICON=" " ;;
+                    pop) OS_ICON=" " ;;
+                    nixos) OS_ICON=" " ;;
+                    centos) OS_ICON=" " ;;
+                    alpine) OS_ICON=" " ;;
+                    *) OS_ICON=" " ;;
+                esac
+                ;;
+            CYGWIN*|MINGW*|MSYS*) OS_ICON=" " ;;
+            *) OS_ICON=" " ;;
+        esac
+        echo $OS_ICON
+      '';
     uptime-tmux =
       # sh
       ''

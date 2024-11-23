@@ -93,6 +93,9 @@
 
         # Source secrets
         source ~/.config/zsh/secrets.zsh
+
+        # startup script
+        clear && neofetch
       '';
   };
 }
