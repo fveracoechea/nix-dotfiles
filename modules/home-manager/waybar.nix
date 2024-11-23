@@ -49,7 +49,7 @@
         margin-right = 12;
 
         "custom/apps" = {
-          format = iconLabel flamingo "󰀻" "Apps";
+          format = iconLabel blue "󰀻" "Apps";
           on-click = "wofi --show drun --allow-images";
           tooltip-format = "App Launcher";
         };
@@ -192,7 +192,7 @@
         };
 
         "hyprland/window" = {
-          format = iconLabel flamingo "󱄅" "{title}";
+          format = iconLabel blue "󱄅" "{title}";
           rewrite = {
             "(.*) - Google Chrome" = "$1";
           };
@@ -223,7 +223,7 @@
         };
 
         "custom/powermenu" = {
-          format = iconButton flamingo "";
+          format = iconButton red "";
           tooltip-format = "Power menu";
           on-click =
             pkgs.writeShellScript "wofi-power-menu" (lib.fileContents ../../config/wofi/power-menu.sh);
