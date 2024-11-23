@@ -22,7 +22,7 @@
     padding = "24";
     defaultTimeout = 5000;
     borderRadius = 8;
-    borderSize = 2;
+    borderSize = 3;
   };
 
   wayland.windowManager.hyprland = {
