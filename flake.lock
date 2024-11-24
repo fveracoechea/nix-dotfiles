@@ -476,6 +476,26 @@
         "type": "github"
       }
     },
+    "musnix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1732139495,
+        "narHash": "sha256-bsL1CZWp5fMDXP6U0Ipwi/XA1YigK9ON+pC7Cxurgec=",
+        "owner": "musnix",
+        "repo": "musnix",
+        "rev": "996b38613a282299c852eca204a10914c6b0074d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "musnix",
+        "repo": "musnix",
+        "type": "github"
+      }
+    },
     "neovim-config": {
       "inputs": {
         "import_cost-nvim": "import_cost-nvim",
@@ -596,6 +616,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "musnix": "musnix",
         "neovim-config": "neovim-config",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",

@@ -18,6 +18,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Musnix - Real-time audio
+    musnix = {
+      url = "github:musnix/musnix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Neovim config flake
     neovim-config = {
       url = "github:fveracoechea/neovim-nix-config";
@@ -46,7 +52,6 @@
   outputs = {
     nixpkgs,
     nixpkgs-stable,
-    stylix,
     home-manager,
     nix-darwin,
     ...
@@ -94,8 +99,6 @@
       };
 
       modules = [
-        stylix.nixosModules.stylix
-
         # NixOS System configurations
         ./hosts/nixos-desktop/configuration.nix
 

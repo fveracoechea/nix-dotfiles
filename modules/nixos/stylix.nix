@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   firaSans = {
     package = pkgs.fira-sans;
     name = "Fira Sans";
@@ -8,6 +12,10 @@
     name = "FiraCode Nerd Font";
   };
 in {
+  imports = [
+    inputs.stylix.nixosModules.stylix
+  ];
+
   stylix = {
     enable = true;
     autoEnable = true;
