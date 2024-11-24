@@ -19,7 +19,7 @@ in {
   stylix = {
     enable = true;
     autoEnable = true;
-    image = ../../config/wallpapers/mountain-untrawide.png;
+    image = ../../config/wallpapers/lake-untrawide.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
 
