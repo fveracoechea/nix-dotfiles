@@ -71,7 +71,6 @@
       };
 
       modules = [
-        stylix.darwinModules.stylix
         ./hosts/macbook-pro/configuration.nix
         home-manager.darwinModules.home-manager
         {
