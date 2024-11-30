@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: {
   programs.waybar = {
@@ -50,7 +51,7 @@
 
         "custom/apps" = {
           format = iconLabel blue "󰀻" "Apps";
-          on-click = "wofi --show drun --allow-images";
+          on-click = "fuzzel --cache ${config.home.homeDirectory}/.config/fuzzel/cache";
           tooltip-format = "App Launcher";
         };
 
