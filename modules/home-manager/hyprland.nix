@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   lib,
+  config,
   ...
 }: {
   xdg.desktopEntries."org.gnome.Settings" = {
@@ -31,7 +32,7 @@
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
     settings = let
-      apps = "wofi --show drun --allow-images";
+      apps = "fuzzel --cache ${config.home.homeDirectory}/.config/fuzzel/cache";
       terminal = "kitty";
       browser = "google-chrome-stable";
       screenshot = "hyprshot -m output";
@@ -67,7 +68,7 @@
       monitor = "DP-1,highrr,auto,auto";
 
       general = {
-        border_size = 2;
+        border_size = 3;
         gaps_in = 8;
         gaps_out = "14 20 20 20";
       };
@@ -106,6 +107,7 @@
         "minsize 1000 650, floating:1"
         "opacity 0.88 0.88 1.0, title:(.*)$"
         "opacity 1.0, class:(google-chrome)"
+        "opacity 1.0, class:(fuzzel)"
         "center, floating:1"
 
         (floatClass "file_progres")

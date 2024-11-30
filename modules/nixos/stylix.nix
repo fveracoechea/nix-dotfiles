@@ -34,6 +34,13 @@ in {
       sansSerif = firaSans;
       monospace = firaCode;
       emoji = firaCode;
+
+      sizes = {
+        applications = 12;
+        desktop = 12;
+        popups = 12;
+        terminal = 12;
+      };
     };
 
     targets.grub.enable = true;

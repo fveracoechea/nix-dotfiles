@@ -225,8 +225,7 @@
         "custom/powermenu" = {
           format = iconButton red "";
           tooltip-format = "Power menu";
-          on-click =
-            pkgs.writeShellScript "wofi-power-menu" (lib.fileContents ../../config/wofi/power-menu.sh);
+          on-click = "fuzzel-powermenu";
         };
 
         modules-left = [
