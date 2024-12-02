@@ -12,6 +12,7 @@
         vertical-pad = 12;
         line-height = 22;
         prompt = ''"❯  "'';
+        placeholder = "Search apps";
       };
 
       border = {
@@ -32,9 +33,11 @@
       "fuzzel-powermenu"
       # sh
       ''
+        empty=""
+        title="Power Menu"
         entries=" \tLock \n  \t Logout \n  \t Suspend \n  \t Reboot \n  \t Shutdown "
         styling="-a top-right --y-margin 8 --x-margin 16 -w 15 -l 5"
-        selected=$(echo -e "$entries" | fuzzel --dmenu $styling --cache /dev/null | awk '{print tolower($2)}')
+        selected=$(echo -e "$entries" | fuzzel --dmenu $styling -p "$empty" --placeholder "$title" --cache /dev/null | awk '{print tolower($2)}')
 
         case $selected in
         logout)
