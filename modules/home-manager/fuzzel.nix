@@ -10,7 +10,8 @@
         icons-enabled = "yes";
         horizontal-pad = 20;
         vertical-pad = 12;
-        line-height = 18;
+        line-height = 22;
+        prompt = ''"❯  "'';
       };
 
       border = {
@@ -32,7 +33,8 @@
       # sh
       ''
         entries=" \tLock \n  \t Logout \n  \t Suspend \n  \t Reboot \n  \t Shutdown "
-        selected=$(echo -e "$entries" | fuzzel --dmenu -a top-right --y-margin 8 --x-margin 16 -w 15 -l 5 --cache /dev/null | awk '{print tolower($2)}')
+        styling="-a top-right --y-margin 8 --x-margin 16 -w 15 -l 5"
+        selected=$(echo -e "$entries" | fuzzel --dmenu $styling --cache /dev/null | awk '{print tolower($2)}')
 
         case $selected in
         logout)
