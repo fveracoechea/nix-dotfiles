@@ -12,7 +12,7 @@
         vertical-pad = 12;
         line-height = 22;
         prompt = ''"❯  "'';
-        placeholder = "Search apps";
+        placeholder = "Apps";
       };
 
       border = {

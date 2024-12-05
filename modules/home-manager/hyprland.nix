@@ -155,8 +155,6 @@
           "SUPER, Q, killactive"
           "SUPER CTRL, Q, exit"
 
-          # ", Print, exec, grimblast copy area"
-
           # move window focus
           (mvfocus "K" "u")
           (mvfocus "J" "d")
