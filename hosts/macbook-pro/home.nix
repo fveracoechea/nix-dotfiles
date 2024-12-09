@@ -1,8 +1,6 @@
 {
   inputs,
   pkgs,
-  config,
-  lib,
   ...
 }: {
   imports = [
@@ -20,10 +18,10 @@
     wget
     neofetch
     cmatrix
-    fira-code-nerdfont
     google-chrome
     postman
     slack
+    nerd-fonts.fira-code
   ];
 
   # home.username = "franciscoveracoechea";

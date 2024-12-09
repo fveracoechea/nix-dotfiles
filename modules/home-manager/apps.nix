@@ -15,7 +15,7 @@
     wego
 
     # fonts
-    fira-code-nerdfont
+    nerd-fonts.fira-code
 
     # dev
     deno
