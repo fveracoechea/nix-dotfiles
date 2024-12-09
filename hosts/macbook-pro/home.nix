@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  pkgs-stable,
   ...
 }: {
   imports = [
@@ -21,7 +22,7 @@
     google-chrome
     postman
     slack
-    nerd-fonts.fira-code
+    pkgs-stable.fira-code-nerdfont
   ];
 
   # home.username = "franciscoveracoechea";
