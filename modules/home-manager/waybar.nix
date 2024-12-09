@@ -214,7 +214,7 @@
 
           tray = {
             icon-size = 24;
-            spacing = 8;
+            # spacing = 12;
             show-passive-items = true;
           };
 
