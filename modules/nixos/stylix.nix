@@ -1,7 +1,7 @@
 {
   pkgs,
   inputs,
-  pkgs-stable
+  pkgs-stable,
   ...
 }: let
   firaSans = {
