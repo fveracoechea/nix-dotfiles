@@ -71,8 +71,11 @@
   users.users.fveracoechea = {
     isNormalUser = true;
     description = "fveracoechea";
-    extraGroups = ["networkmanager" "wheel" "audio"];
+    extraGroups = ["networkmanager" "wheel" "audio" "docker"];
   };
+
+  # enable docker
+  virtualisation.docker.enable = true;
 
   # Enable automatic login for the user.
   # services.displayManager.autoLogin.enable = true;
@@ -97,6 +100,7 @@
     gnumake
     cargo
     openssl
+    lazydocker
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

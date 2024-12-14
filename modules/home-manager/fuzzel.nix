@@ -29,33 +29,81 @@
   };
 
   home.packages = [
-    (pkgs.writeShellScriptBin
-      "fuzzel-powermenu"
-      # sh
+    (pkgs.writers.writeJSBin "fuzzel-powermenu" {}
+      /*
+      javascript
+      */
       ''
-        empty=""
-        title="Power Menu"
-        entries=" \tLock \n  \t Logout \n  \t Suspend \n  \t Reboot \n  \t Shutdown "
-        styling="-a top-right --y-margin 8 --x-margin 16 -w 15 -l 5"
-        selected=$(echo -e "$entries" | fuzzel --dmenu $styling -p "$empty" --placeholder "$title" --cache /dev/null | awk '{print tolower($2)}')
+        const { exec } = require("node:child_process");
 
-        case $selected in
-        logout)
-          exec hyprctl dispatch exit
-          ;;
-        suspend)
-          exec systemctl suspend
-          ;;
-        reboot)
-          exec systemctl reboot
-          ;;
-        shutdown)
-          exec systemctl poweroff -i
-          ;;
-        lock)
-          exec hyprlock
-          ;;
-        esac
+        const menu = [
+          { icon: "", label: "Lock", exec: "hyprlock" },
+          { icon: "", label: "Logout", exec: "hyprctl dispatch exit" },
+          { icon: "", label: "Suspend", exec: "systemctl suspend" },
+          { icon: "", label: "Reboot", exec: "systemctl reboot" },
+          { icon: "", label: "Shutdown", exec: "systemctl poweroff -i"}
+        ];
+
+        const menuItems = menu.map(m => `''${m.icon} \t''${m.label}`).join('\n');
+
+        const args = `-a top-right --y-margin 8 --x-margin 16 -w 15 -l 5 -p "" --placeholder \"Power Menu\"`;
+
+        exec(`echo -en "''${menuItems}" | fuzzel ''${args} --dmenu `, (error, stdout) => {
+
+          if (!stdout) return;
+
+          const item = menu.find(m => stdout.toLowerCase().includes(m.label.toLowerCase()))
+
+          if (!item) {
+            exec(`notify-send "No menu item was found."`);
+            return;
+          }
+
+          exec(item.exec);
+        });
+      '')
+
+    (pkgs.writers.writeJSBin "fuzzel-notifications" {}
+      /*
+      javascript
+      */
+      ''
+        const { exec } = require("node:child_process");
+
+        const excludedApps = ['notify-send'];
+
+        exec('makoctl history', (error, stdout, stderr)=> {
+          if (stderr) {
+            exec(`notify-send "Error loading notifications" "''${stderr}"`);
+            return;
+          }
+
+          const data = JSON.parse(stdout).data[0];
+
+          if (!data || data.length < 1) {
+            exec(`notify-send "No notifications found."`);
+            return;
+          }
+
+          const notifications = data
+            .map(item => {
+              const app = item['app-name'].data.trim();
+              const icon = item['app-icon'].data.trim();
+              const title = item.summary.data.trim();
+              const body = item.body.data.trim();
+
+              let notification = title;
+              if (body) notification += `\t\t''${body}`;
+              if (icon) notification += `\\0icon\\x1f''${icon}`;
+              else if (app && !excludedApps.includes(app))  notification += `\\0icon\\x1f''${app}`;
+              else notification += `\\0icon\\x1finbox`;
+
+              return notification
+            })
+            .join('\n')
+
+          exec(`echo -en "''${notifications}" | fuzzel -w 40 -p "" --placeholder "Notifications" --dmenu`);
+        })
       '')
   ];
 }
