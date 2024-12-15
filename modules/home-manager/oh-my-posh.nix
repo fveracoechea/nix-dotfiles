@@ -1,4 +1,4 @@
-{...}: let
+{pkgs, ...}: let
   # https://catppuccin.com/palette
   catppuccin = {
     NAME = "oh-my-posh-catppuccin";
@@ -26,6 +26,9 @@
     surface0 = "#313244";
   };
 in {
+  # Oh-My-Posh theme and setup
+  home.packages = [pkgs.oh-my-posh];
+
   xdg.configFile."zsh/oh-my-posh/catppuccin.json".text = builtins.toJSON {
     version = 3;
     final_space = true;

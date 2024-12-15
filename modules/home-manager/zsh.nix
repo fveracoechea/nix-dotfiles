@@ -24,9 +24,6 @@
     enableZshIntegration = true;
   };
 
-  # Oh-My-Posh theme and setup
-  home.packages = [pkgs.oh-my-posh];
-
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
