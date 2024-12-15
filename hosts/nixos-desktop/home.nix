@@ -16,6 +16,7 @@
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/fuzzel.nix
+    ../../modules/home-manager/mako.nix
     ../../modules/home-manager/apps.nix
     inputs.neovim-config.homeManagerModules.default
     inputs.spicetify-nix.homeManagerModules.default
@@ -23,6 +24,7 @@
 
   programs.spicetify.enable = true;
   stylix.targets.neovim.enable = lib.mkForce false;
+  stylix.targets.mako.enable = lib.mkForce false;
 
   home.username = "fveracoechea";
   home.homeDirectory = "/home/fveracoechea";

@@ -30,9 +30,7 @@
 
   home.packages = [
     (pkgs.writers.writeJSBin "fuzzel-powermenu" {}
-      /*
-      javascript
-      */
+      # javascript
       ''
         const { exec } = require("node:child_process");
 
@@ -64,9 +62,7 @@
       '')
 
     (pkgs.writers.writeJSBin "fuzzel-notifications" {}
-      /*
-      javascript
-      */
+      # javascript
       ''
         const { exec } = require("node:child_process");
 

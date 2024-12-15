@@ -16,16 +16,6 @@
 
   programs.mpv.enable = true;
 
-  services.mako = {
-    enable = true;
-    anchor = "bottom-center";
-    margin = "24,12";
-    padding = "24";
-    defaultTimeout = 6000;
-    borderRadius = 8;
-    borderSize = 3;
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
