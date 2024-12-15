@@ -8,7 +8,7 @@
     borderRadius = 8;
     borderSize = 3;
     extraConfig = ''
-      max-history=10
+      max-history=15
 
       # Colors https://github.com/catppuccin/mako
       background-color=#1e1e2e
