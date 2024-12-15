@@ -90,7 +90,7 @@
               const body = item.body.data.trim();
 
               let notification = title;
-              if (body) notification += `\t\t''${body}`;
+              if (body) notification += `   ---   ''${body}`;
               if (icon) notification += `\\0icon\\x1f''${icon}`;
               else if (app && !excludedApps.includes(app))  notification += `\\0icon\\x1f''${app}`;
               else notification += inboxIcon;
@@ -99,7 +99,9 @@
             })
             .join('\n')
 
-          exec(`echo -en "''${notifications}" | fuzzel -w 40 -p "" --placeholder "Notifications" --dmenu`);
+          const args = `-w 40 -p "" --placeholder "Notifications"`
+
+          exec(`echo -en "''${notifications}" | fuzzel ''${args} --dmenu`);
         })
       '')
   ];
