@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
@@ -17,17 +18,37 @@
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/fuzzel.nix
     ../../modules/home-manager/mako.nix
-    ../../modules/home-manager/apps.nix
     inputs.neovim-config.homeManagerModules.default
     inputs.spicetify-nix.homeManagerModules.default
   ];
+
+  home.username = "fveracoechea";
+  home.homeDirectory = "/home/fveracoechea";
 
   programs.spicetify.enable = true;
   stylix.targets.neovim.enable = lib.mkForce false;
   stylix.targets.mako.enable = lib.mkForce false;
 
-  home.username = "fveracoechea";
-  home.homeDirectory = "/home/fveracoechea";
+  # FPS hud for steam video-games
+  programs.mangohud.enable = true;
+
+  home.packages = with pkgs; [
+    slack
+    vesktop
+    google-chrome
+    kooha
+    teams-for-linux
+    btop
+    nerd-fonts.fira-code
+    deno
+    python3
+    dconf2nix
+    nurl
+    watchman
+    neofetch
+    cmatrix
+    ripgrep
+  ];
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
