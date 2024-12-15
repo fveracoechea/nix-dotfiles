@@ -4,7 +4,7 @@
   inputs = {
     # NixOS official package sources
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11";
 
     # home-manager, used for managing user configuration
     home-manager = {

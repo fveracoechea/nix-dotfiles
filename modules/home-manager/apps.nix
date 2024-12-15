@@ -1,8 +1,4 @@
-{
-  pkgs,
-  pkgs-stable,
-  ...
-}: {
+{pkgs, ...}: {
   # FPS hud for steam video-games
   programs.mangohud.enable = true;
 
@@ -19,7 +15,6 @@
     wego
 
     # fonts
-    pkgs-stable.fira-code-nerdfont
     nerd-fonts.fira-code
 
     # dev

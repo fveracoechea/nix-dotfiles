@@ -79,9 +79,10 @@
           }
 
           const data = JSON.parse(stdout).data[0];
+          const inboxIcon = `\\0icon\\x1finbox`;
 
           if (!data || data.length < 1) {
-            exec(`notify-send "No notifications found."`);
+            exec(`echo -en "No notifications found.''${inboxIcon}" | fuzzel -w 40 -p "" --placeholder "Notifications" --dmenu`);
             return;
           }
 
@@ -96,7 +97,7 @@
               if (body) notification += `\t\t''${body}`;
               if (icon) notification += `\\0icon\\x1f''${icon}`;
               else if (app && !excludedApps.includes(app))  notification += `\\0icon\\x1f''${app}`;
-              else notification += `\\0icon\\x1finbox`;
+              else notification += inboxIcon;
 
               return notification
             })

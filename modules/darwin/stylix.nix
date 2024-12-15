@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  pkgs-stable,
   ...
 }: let
   firaSans = {
@@ -9,7 +8,7 @@
     name = "Fira Sans";
   };
   firaCode = {
-    package = pkgs-stable.fira-code-nerdfont;
+    package = pkgs.nerd-fonts.fira-code;
     name = "FiraCode Nerd Font";
   };
 in {

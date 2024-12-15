@@ -24,9 +24,6 @@
     defaultTimeout = 6000;
     borderRadius = 8;
     borderSize = 3;
-    extraConfig = ''
-      max-history=20
-    '';
   };
 
   wayland.windowManager.hyprland = {
