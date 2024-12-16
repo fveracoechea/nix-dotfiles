@@ -92,7 +92,7 @@
               let notification = title;
               if (body) notification += `   ---   ''${body}`;
               if (icon) notification += `\\0icon\\x1f''${icon}`;
-              else if (app && !excludedApps.includes(app))  notification += `\\0icon\\x1f''${app}`;
+              else if (app && !excludedApps.includes(app))  notification += `\\0icon\\x1f''${app.toLowerCase()}`;
               else notification += inboxIcon;
 
               return notification
