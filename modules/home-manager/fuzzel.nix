@@ -44,7 +44,7 @@
 
         const menuItems = menu.map(m => `''${m.icon} \t''${m.label}`).join('\n');
 
-        const args = `-a top-right --y-margin 8 --x-margin 16 -w 15 -l 5 -p "" --placeholder \"Power Menu\"`;
+        const args = `-a top-left --y-margin 8 --x-margin 16 -w 15 -l 5 -p "" --placeholder \"Power Menu\"`;
 
         exec(`echo -en "''${menuItems}" | fuzzel ''${args} --dmenu `, (error, stdout) => {
 

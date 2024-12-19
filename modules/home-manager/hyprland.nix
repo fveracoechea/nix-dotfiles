@@ -157,10 +157,10 @@
           (mvwindow "L" "r")
           (mvwindow "H" "l")
           # resize active window
-          (resizeactive "K" "0 -50")
-          (resizeactive "J" "0 50")
-          (resizeactive "L" "50 0")
-          (resizeactive "H" "-50 0")
+          (resizeactive "K" "0 -100")
+          (resizeactive "J" "0 100")
+          (resizeactive "L" "100 0")
+          (resizeactive "H" "-100 0")
         ]
         ++ (map (i: ws (toString i) (toString i)) workspaces)
         ++ (map (i: mvtows (toString i) (toString i)) workspaces);

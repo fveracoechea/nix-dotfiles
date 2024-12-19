@@ -26,8 +26,9 @@
   home.homeDirectory = "/home/fveracoechea";
 
   programs.spicetify.enable = true;
-  stylix.targets.neovim.enable = lib.mkForce false;
-  stylix.targets.mako.enable = lib.mkForce false;
+  stylix.targets.neovim.enable = false;
+  stylix.targets.mako.enable = false;
+  stylix.targets.waybar.enable = false;
 
   # FPS hud for steam video-games
   programs.mangohud.enable = true;
