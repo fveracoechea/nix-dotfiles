@@ -152,8 +152,11 @@
 
         "hyprland/window" = {
           format = "{title}";
+          separate-outputs = true;
+          icon = true;
           rewrite = {
             "(.*) - Google Chrome" = "$1";
+            "(.*) - nvim" = "$1 - Neovim";
           };
         };
 
@@ -284,6 +287,10 @@
           color: ${c.text};
         }
 
+        #window {
+          color: ${c.blue};
+        }
+
         #custom-powermenu,
         #custom-settings,
         #custom-nautilus,
@@ -315,18 +322,6 @@
           color: ${c.rosewater};
         }
 
-        #custom-nautilus:hover,
-        #custom-settings:hover,
-        #custom-spotify:hover,
-        #custom-discord:hover,
-        #custom-powermenu:hover,
-        #custom-ssmonitor:hover,
-        #custom-sswindow:hover,
-        #custom-ssregion:hover {
-          background-color: ${c.blue};
-          color: ${c.crust};
-        }
-
         #workspaces button {
           border-radius: 1.2em;
           transition: all 300ms ease;
@@ -335,6 +330,14 @@
           color: ${c.blue};
         }
 
+        #custom-nautilus:hover,
+        #custom-settings:hover,
+        #custom-spotify:hover,
+        #custom-discord:hover,
+        #custom-powermenu:hover,
+        #custom-ssmonitor:hover,
+        #custom-sswindow:hover,
+        #custom-ssregion:hover,
         #workspaces button:hover {
           background-color: ${c.surface1};
         }
@@ -368,19 +371,6 @@
           /* padding-right: 4px; */
           /* padding-left: 12px; */
         }
-
-
-        #workspaces:hover,
-        #clock:hover,
-        #network:hover,
-        #pulseaudio:hover,
-        #screenshot:hover,
-        #tray:hover,
-        #quick-links:hover {
-          /* background-color: ${c.base}; */
-          /* border: 2px solid @crust; */
-        }
-
 
         #tray menu {
           border-radius: 8px;

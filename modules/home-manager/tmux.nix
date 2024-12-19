@@ -26,7 +26,7 @@ in {
             CYGWIN*|MINGW*|MSYS*) OS_ICON=" " ;;
             *) OS_ICON=" " ;;
         esac
-        echo $OS_ICON
+        echo "$OS_ICON"
       '';
     uptime-tmux =
       # sh
