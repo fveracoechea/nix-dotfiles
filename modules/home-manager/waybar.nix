@@ -298,37 +298,21 @@
           border-radius: 1em;
         }
 
-
         #custom-powermenu {
           color: ${c.red};
         }
 
-        #custom-settings {
-          color: ${c.maroon};
-        }
-
-        #custom-nautilus {
-          color: ${c.peach};
-        }
-
-        #custom-discord {
-          color: ${c.yellow};
-        }
-
+        #custom-settings,
+        #custom-nautilus,
+        #custom-discord,
         #custom-spotify {
-          color: ${c.green};
+          color: ${c.flamingo};
         }
 
-        #custom-ssmonitor {
-          color: ${c.teal};
-        }
-
-        #custom-sswindow {
-          color: ${c.sky};
-        }
-
+        #custom-ssmonitor,
+        #custom-sswindow,
         #custom-ssregion {
-          color: ${c.sapphire};
+          color: ${c.rosewater};
         }
 
         #custom-nautilus:hover,
