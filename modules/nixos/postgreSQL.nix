@@ -1,7 +1,12 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  environment.systemPackages = [pkgs.beekeeper-studio];
+
   services.postgresql = {
     enable = true;
-    ensureDatabases = ["frontdoor"];
     enableTCPIP = true;
     authentication = lib.mkOverride 10 ''
       local all all              trust
