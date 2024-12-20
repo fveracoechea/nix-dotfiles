@@ -1,5 +1,4 @@
 {pkgs, ...}: let
-  # https://catppuccin.com/palette
   catppuccin = import ../../utils/catppuccin.nix;
 in {
   # Oh-My-Posh theme and setup
