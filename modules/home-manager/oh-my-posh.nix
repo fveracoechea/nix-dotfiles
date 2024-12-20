@@ -1,30 +1,6 @@
 {pkgs, ...}: let
   # https://catppuccin.com/palette
-  catppuccin = {
-    NAME = "oh-my-posh-catppuccin";
-    pink = "#F5C2E7";
-    muave = "#CBA6F7";
-    blue = "#89B4FA";
-    weight = "#FFFFFF";
-    text = "#CDD6F4";
-    peach = "#FAB387";
-    yellow = "#F9E2AF";
-    flamingo = "#F2CDCD";
-    rosewater = "#F5E0DC";
-    sky = "#89DCEB";
-    sapphire = "#74C7EC";
-    teal = "#94E2D5";
-    maroon = "#EBA0AC";
-    lavender = "#B4BEFE";
-    crust = "#11111B";
-    overlay = "#9399B2";
-    subtext = "#CDD6F4";
-    base = "#1E1E2E";
-    mantle = "#181825";
-    green = "#A6E3A1";
-    red = "#F38BA8";
-    surface0 = "#313244";
-  };
+  catppuccin = import ../../utils/catppuccin.nix;
 in {
   # Oh-My-Posh theme and setup
   home.packages = [pkgs.oh-my-posh];

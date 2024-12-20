@@ -1,11 +1,12 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  c = import ../../utils/catppuccin.nix;
+  icon = icon: ''<span size="large">${icon}</span>'';
+  button = icon: text: ''<span size="large">${icon} </span> ${text}'';
+in {
   programs.waybar = {
     enable = true;
 
-    settings = let
-      icon = icon: ''<span size="large">${icon}</span>'';
-      button = icon: text: ''<span size="large">${icon} </span> ${text}'';
-    in {
+    settings = {
       mainBar = {
         layer = "top";
         position = "top";
@@ -174,7 +175,7 @@
           };
 
           tray = {
-            icon-size = 24;
+            icon-size = 32;
             spacing = 12;
             show-passive-items = true;
           };
@@ -205,41 +206,8 @@
       };
     };
 
-    style = let
-      # catppuccin mocha
-      c = {
-        rosewater = "#f5e0dc";
-        flamingo = "#f2cdcd";
-        pink = "#f5c2e7";
-        mauve = "#cba6f7";
-        red = "#f38ba8";
-        maroon = "#eba0ac";
-        peach = "#fab387";
-        yellow = "#f9e2af";
-        green = "#a6e3a1";
-        teal = "#94e2d5";
-        sky = "#89dceb";
-        sapphire = "#74c7ec";
-        blue = "#89b4fa";
-        lavender = "#b4befe";
-        text = "#cdd6f4";
-        subtext1 = "#bac2de";
-        subtext0 = "#a6adc8";
-        overlay2 = "#9399b2";
-        overlay1 = "#7f849c";
-        overlay0 = "#6c7086";
-        surface2 = "#585b70";
-        surface1 = "#45475a";
-        surface0 = "#313244";
-        base = "#1e1e2e";
-        mantle = "#181825";
-        crust = "#11111b";
-      };
-      rgba = {
-        base = a: "rgba(30, 30, 46, ${a})";
-      };
-    in
-      # css
+    style =
+      #css
       ''
         * {
           font-family: "Fira Sans", sans-serif;
@@ -282,13 +250,13 @@
         #workspaces {
           border-radius: 1em;
           transition: background-color 300ms ease, color 300ms ease;
-          background-color: ${rgba.base "9"};
-          padding: 4px 0.8em;
+          background-color: ${c.base};
+          padding: 4px 10px;
           color: ${c.text};
         }
 
-        #window {
-          color: ${c.blue};
+        #workspaces, #quick-links, #screenshot, #stats {
+          padding: 4px;
         }
 
         #custom-powermenu,
@@ -303,6 +271,10 @@
           color: ${c.text};
           padding: 1px 15px 1px 9px;
           border-radius: 1em;
+        }
+
+        #window {
+          color: ${c.blue};
         }
 
         #custom-powermenu {
@@ -338,6 +310,11 @@
         #custom-ssmonitor:hover,
         #custom-sswindow:hover,
         #custom-ssregion:hover,
+        #pulseaudio:hover,
+        #clock:hover,
+        #cpu:hover,
+        #temperature:hover,
+        #memory:hover,
         #workspaces button:hover {
           background-color: ${c.surface1};
         }
@@ -348,28 +325,10 @@
         }
 
         #cpu,
-        #temperature {
-          margin-right: 12px;
-          /* border-top-right-radius: 0px; */
-          /* border-bottom-right-radius: 0px; */
-          /* padding-right: 10px; */
-        }
-
-        #custom-ssmonitor {
-          /* padding-right: 16px; */
-          /* padding-left: 2px; */
-        }
-
-        #custom-sswindow {
-          /* padding-right: 14px; */
-          /* padding-left: 10px; */
-          /* border-left: 2px solid @surface1; */
-          /* border-right: 2px solid @surface1; */
-        }
-
-        #custom-ssregion {
-          /* padding-right: 4px; */
-          /* padding-left: 12px; */
+        #temperature,
+        #memory {
+          border-radius: 1em;
+          padding: 1px 8px 1px 5px;
         }
 
         #tray menu {
