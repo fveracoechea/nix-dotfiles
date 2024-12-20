@@ -14,12 +14,12 @@ in {
       template = "\n<${catppuccin.rosewater}>  {{ .PWD }}</> ❯ ";
       foreground_templates = [
         "{{if gt .Code 0}}${catppuccin.red}{{end}}"
-        "{{if eq .Code 0}}${catppuccin.muave}{end}}"
+        "{{if eq .Code 0}}${catppuccin.mauve}{end}}"
       ];
     };
 
     secondary_prompt = {
-      foreground = catppuccin.muave;
+      foreground = catppuccin.mauve;
       background = "transparent";
       template = "❯❯ ";
     };
