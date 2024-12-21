@@ -81,12 +81,8 @@
       windowrule = let
         float = regex: "float, ^(${regex})$";
       in [
-        (float "org.gnome.Calculator")
-        (float "org.gnome.Calendar")
         (float "nm-connection-editor")
         (float "org.gnome.Settings")
-        (float "xdg-desktop-portal")
-        (float "xdg-desktop-portal-gnome")
       ];
 
       windowrulev2 = let

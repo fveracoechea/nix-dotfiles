@@ -172,6 +172,7 @@ in {
           separate-outputs = true;
           icon = true;
           rewrite = {
+            "" = "Nixos - Hyprland";
             "(.*) - Google Chrome" = "$1";
             "(.*) - nvim" = "$1 - Neovim";
           };
@@ -189,23 +190,22 @@ in {
             "active" = "";
             "default" = "";
           };
-
-          tray = {
-            icon-size = 32;
-            spacing = 12;
-            show-passive-items = true;
-          };
-
           persistent-workspaces = {
             "*" = 5;
           };
         };
 
+        tray = {
+          icon-size = 22;
+          spacing = 8;
+          show-passive-items = true;
+        };
+
         modules-left = [
           "group/quick-links"
           "group/screenshot"
-          "hyprland/workspaces"
           "tray"
+          "hyprland/workspaces"
         ];
 
         modules-center = [
@@ -219,6 +219,35 @@ in {
           "network"
           "group/stats"
         ];
+
+        # "custom/notification": {
+        #     "tooltip": false,
+        #     "format": "{icon}",
+        #     "format-icons": {
+        #       "notification": "󰅸",
+        #       "none": "󰂜",
+        #       "dnd-notification": "󰅸",
+        #       "dnd-none": "󱏨",
+        #       "inhibited-notification": "󰅸",
+        #       "inhibited-none": "󰂜",
+        #       "dnd-inhibited-notification": "󰅸",
+        #       "dnd-inhibited-none": "󱏨"
+        #     },
+        #     "return-type": "json",
+        #     "exec-if": "which swaync-client",
+        #     "exec": "swaync-client -swb",
+        #     "on-click-right": "swaync-client -d -sw",
+        #     "on-click": "swaync-client -t -sw",
+        #     "escape": true
+        #   },
+        #
+        #   "hyprland/window": {
+        # //"format": "{}"   // <--- these is the default value
+        # "format": "<span  weight='bold' >{class}</span>",
+        #  "max-length": 120,
+        #  "icon": false,
+        #  "icon-size": 13,
+        # },
       };
     };
 
@@ -238,10 +267,10 @@ in {
         }
 
         tooltip {
-          padding: 5px;
-          border-radius: 5px;
+          padding: 8px;
+          border-radius: 8px;
           background-color: ${theme.base};
-          border: 6px solid ${theme.base};
+          border: 3px solid ${theme.overlay1};
           color: ${theme.text};
         }
 
@@ -261,11 +290,12 @@ in {
         #quick-links,
         #screenshot,
         #workspaces {
-          border-radius: 1em;
+          border-radius: 1.2em;
           transition: background-color 300ms ease, color 300ms ease;
           background-color: ${theme.base};
           padding: 4px 10px;
           color: ${theme.text};
+          border: 3px solid ${theme.surface2};
         }
 
         #workspaces, #quick-links, #screenshot, #stats {
@@ -287,7 +317,7 @@ in {
         }
 
         #window {
-          color: ${theme.blue};
+          color: ${theme.text};
         }
 
         #custom-powermenu {
