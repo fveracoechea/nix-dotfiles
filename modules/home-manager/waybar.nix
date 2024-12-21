@@ -1,7 +1,7 @@
 {pkgs, ...}: let
-  c = import ../../utils/catppuccin.nix;
+  theme = import ../../utils/catppuccin.nix;
   icon = icon: ''<span size="large">${icon}</span>'';
-  button = icon: text: ''<span size="large">${icon} </span> ${text}'';
+  button = color: icon: text: ''<span color="${color}" size="large">${icon} </span> ${text}'';
 in {
   programs.waybar = {
     enable = true;
@@ -15,11 +15,9 @@ in {
         margin-left = 12;
         margin-right = 12;
 
-        "custom/settings" = let
-          settings = pkgs.gnome-control-center;
-        in {
+        "custom/settings" = {
           format = icon "";
-          on-click = "env XDG_CURRENT_DESKTOP=gnome ${settings}/bin/gnome-control-center";
+          on-click = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome-control-center}/bin/gnome-control-center";
           tooltip-format = "System Settings";
         };
 
@@ -59,15 +57,15 @@ in {
         };
 
         cpu = {
-          format = button "" "{usage}%";
+          format = button theme.rosewater "" "{usage}%";
         };
 
         temperature = {
-          format = button "" "{temperatureC}󰔄";
+          format = button theme.rosewater "" "{temperatureC}󰔄";
         };
 
         memory = {
-          format = button "" "{used:0.1f}G/{total:0.1f}G";
+          format = button theme.rosewater "" "{used:0.1f}G/{total:0.1f}G";
         };
 
         "group/stats" = {
@@ -109,9 +107,9 @@ in {
         pulseaudio = {
           scroll-step = 2;
           on-click = "pavucontrol";
-          format = button "{icon}" "{volume}%";
-          format-bluetooth = button "{icon}" "{volume}";
-          format-muted = button "" "muted";
+          format = button theme.pink "{icon}" "{volume}%";
+          format-bluetooth = button theme.pink "{icon}" "{volume}";
+          format-muted = button theme.pink "" "muted";
           format-icons = {
             "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
             "alsa_output.pci-0000_00_1f.3.analog-stereo-muted" = "";
@@ -131,24 +129,42 @@ in {
 
         network = {
           interval = 30;
-          format-disconnected = button "󰖪" "0%";
-          format-ethernet = button "" "{bandwidthTotalBits}";
+          format-disconnected = button theme.flamingo "󰖪" "0%";
+          format-ethernet = button theme.flamingo "" "{bandwidthTotalBits}";
           format-linked = "{ifname} (No IP)";
-          format-wifi = button "" "{signalStrength}%";
+          format-wifi = button theme.flamingo "" "{signalStrength}%";
           tooltip-format = "Connected to {essid} {ifname} via {gwaddr}";
           on-click = "nm-connection-editor";
         };
 
         "clock#time" = {
-          format = button "󰥔" "{:%I:%M %p}";
+          format = button theme.blue "󰥔" "{:%I:%M %p}";
           on-click = "gnome-calendar";
           tooltip = false;
         };
 
         "clock#date" = {
-          format = button "" "{:%A %b %d}";
+          format = button theme.mauve "" "{:%A %b %d}";
           on-click = "gnome-calendar";
-          tooltip = false;
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+            format = {
+              months = ''<span color="${theme.mauve}"><b>{}</b></span>'';
+              days = ''<span color="${theme.text}">{}</span>'';
+              weeks = ''<span color="${theme.rosewater}">W{}</span>'';
+              weekdays = ''<span color="${theme.flamingo}"><b>{}</b></span>'';
+              today = ''<span color="${theme.red}"><b>{}</b></span>'';
+            };
+          };
+          actions = {
+            on-click-right = "mode";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
+          };
         };
 
         "hyprland/window" = {
@@ -215,8 +231,6 @@ in {
           font-size: 16px;
           border: none;
           border-radius: 0px;
-          margin: 0px;
-          padding: 0px;
         }
 
         window#waybar {
@@ -224,12 +238,11 @@ in {
         }
 
         tooltip {
+          padding: 5px;
           border-radius: 5px;
-          background-color: ${c.mantle};
-          padding: 4px 18px;
-          border: 2px solid ${c.overlay1};
-          margin: 0px;
-          color: ${c.text};
+          background-color: ${theme.base};
+          border: 6px solid ${theme.base};
+          color: ${theme.text};
         }
 
         #custom-music,
@@ -250,9 +263,9 @@ in {
         #workspaces {
           border-radius: 1em;
           transition: background-color 300ms ease, color 300ms ease;
-          background-color: ${c.base};
+          background-color: ${theme.base};
           padding: 4px 10px;
-          color: ${c.text};
+          color: ${theme.text};
         }
 
         #workspaces, #quick-links, #screenshot, #stats {
@@ -268,30 +281,30 @@ in {
         #custom-sswindow,
         #custom-ssregion {
           transition: all 300ms ease;
-          color: ${c.text};
+          color: ${theme.text};
           padding: 1px 15px 1px 9px;
           border-radius: 1em;
         }
 
         #window {
-          color: ${c.blue};
+          color: ${theme.blue};
         }
 
         #custom-powermenu {
-          color: ${c.red};
+          color: ${theme.red};
         }
 
         #custom-settings,
         #custom-nautilus,
         #custom-discord,
         #custom-spotify {
-          color: ${c.flamingo};
+          color: ${theme.rosewater};
         }
 
         #custom-ssmonitor,
         #custom-sswindow,
         #custom-ssregion {
-          color: ${c.rosewater};
+          color: ${theme.flamingo};
         }
 
         #workspaces button {
@@ -299,7 +312,7 @@ in {
           transition: all 300ms ease;
           padding: 0 10px;
           margin: 0;
-          color: ${c.blue};
+          color: ${theme.blue};
         }
 
         #custom-nautilus:hover,
@@ -316,12 +329,12 @@ in {
         #temperature:hover,
         #memory:hover,
         #workspaces button:hover {
-          background-color: ${c.surface1};
+          background-color: ${theme.surface1};
         }
 
         #workspaces button.active {
-          color: ${c.mantle};
-          background-color: ${c.blue};
+          color: ${theme.mantle};
+          background-color: ${theme.blue};
         }
 
         #cpu,
@@ -334,7 +347,7 @@ in {
         #tray menu {
           border-radius: 8px;
           padding: 6px;
-          border: 2px solid ${c.surface2};
+          border: 2px solid ${theme.surface2};
         }
       '';
   };
