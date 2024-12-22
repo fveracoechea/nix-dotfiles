@@ -7,6 +7,7 @@
     ../../modules/home-manager/kitty.nix
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/oh-my-posh.nix
     ../../modules/home-manager/volta.nix
     ../../modules/home-manager/karabiner.nix
     inputs.neovim-config.homeManagerModules.default

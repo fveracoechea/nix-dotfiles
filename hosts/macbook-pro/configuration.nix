@@ -5,6 +5,7 @@ in {
     ../../modules/darwin/system-defaults.nix
     ../../modules/darwin/homebrew.nix
     ../../modules/darwin/stylix.nix
+    ../../modules/nixos/postgreSQL.nix
   ];
 
   # Used for backwards compatibility.
