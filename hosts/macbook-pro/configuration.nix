@@ -5,7 +5,6 @@ in {
     ../../modules/darwin/system-defaults.nix
     ../../modules/darwin/homebrew.nix
     ../../modules/darwin/stylix.nix
-    ../../modules/darwin/postgreSQL.nix
   ];
 
   # Used for backwards compatibility.
@@ -42,6 +41,8 @@ in {
 
   # Currently not working as a system service - using homebrew instead
   services.karabiner-elements.enable = false;
+
+  security.pam.enableSudoTouchIdAuth = true;
 
   # Enable ZSH has default shell
   programs.zsh.enable = true;

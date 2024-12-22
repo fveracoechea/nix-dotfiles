@@ -2,6 +2,11 @@
   # Homebrew - needs to be manually installed.
   homebrew = {
     enable = true;
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "uninstall";
+      upgrade = true;
+    };
     casks = [
       "postgres-unofficial"
       "karabiner-elements"
@@ -10,7 +15,6 @@
     ];
     brews = [
       "pipx"
-      "postgresql@14"
       "pulumi/tap/pulumi"
       "pyenv"
       "python@3.12"
