@@ -240,14 +240,6 @@ in {
         #     "on-click": "swaync-client -t -sw",
         #     "escape": true
         #   },
-        #
-        #   "hyprland/window": {
-        # //"format": "{}"   // <--- these is the default value
-        # "format": "<span  weight='bold' >{class}</span>",
-        #  "max-length": 120,
-        #  "icon": false,
-        #  "icon-size": 13,
-        # },
       };
     };
 
@@ -266,10 +258,10 @@ in {
           background-color: transparent;
         }
 
-        tooltip {
-          padding: 8px;
-          border-radius: 8px;
-          background-color: ${theme.base};
+        tooltip, #tray menu {
+          padding: 6px 12px;
+          border-radius: 1em;
+          background-color: ${theme.mantle};
           border: 3px solid ${theme.overlay1};
           color: ${theme.text};
         }
@@ -368,16 +360,14 @@ in {
         }
 
         #cpu,
-        #temperature,
-        #memory {
+        #temperature {
           border-radius: 1em;
-          padding: 1px 8px 1px 5px;
+          padding: 1px 10px 1px 5px;
         }
 
-        #tray menu {
-          border-radius: 8px;
-          padding: 6px;
-          border: 2px solid ${theme.surface2};
+        #memory {
+          border-radius: 1em;
+          padding: 1px 6px;
         }
       '';
   };

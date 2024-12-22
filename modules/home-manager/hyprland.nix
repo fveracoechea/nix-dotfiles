@@ -61,6 +61,7 @@
         border_size = 3;
         gaps_in = 8;
         gaps_out = "14 20 20 20";
+        layout = "dwindle";
       };
 
       decoration = lib.mkForce {
@@ -136,8 +137,10 @@
           (bindExec "A" apps)
           (bindExec "N" "fuzzel-notifications")
           (bindExec "S" screenshot)
+          (bindExec "L" "hyprctl dispatch workspaceopt allfloat")
 
           "SUPER, F, togglefloating"
+          "SUPER, P, pseudo"
           "SUPER ALT, F, fullscreen"
           "SUPER, Q, killactive"
           "SUPER CTRL, Q, exit"
