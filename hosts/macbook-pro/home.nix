@@ -24,6 +24,7 @@
     slack
     nerd-fonts.fira-code
     docker
+    lazydocker
   ];
 
   # home.username = "franciscoveracoechea";
