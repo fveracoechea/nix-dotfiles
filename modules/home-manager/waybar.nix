@@ -12,6 +12,7 @@ in {
     (pkgs.writers.writeJSBin "waybar-notifications" {} (lib.fileContents
         ../../scripts/waybar-notifications.js))
   ];
+
   programs.waybar = {
     enable = true;
 
