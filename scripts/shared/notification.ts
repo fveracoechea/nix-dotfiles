@@ -2,6 +2,7 @@ export type AttributeData = {
   type: string;
   data: string;
 };
+
 export type Notification = {
   'app-name': AttributeData;
   'app-icon': AttributeData;

@@ -6,12 +6,21 @@
     "semiColons": true,
     "singleQuote": true,
     "proseWrap": "preserve",
-    "include": ["scripts/"]
+    "include": [
+      "scripts/"
+    ]
   },
   "lint": {
-    "include": ["scripts/"],
+    "include": [
+      "scripts/"
+    ],
     "rules": {
-      "tags": ["recommended"]
+      "tags": [
+        "recommended"
+      ]
     }
+  },
+  "imports": {
+    "shared/": "https://raw.githubusercontent.com/fveracoechea/nix-dotfiles/refs/heads/main/scripts/shared/"
   }
 }

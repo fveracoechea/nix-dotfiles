@@ -1,19 +1,20 @@
 // @ts-check
-const util = require("node:util");
-const exec = util.promisify(require("node:child_process").exec);
+const util = require('node:util');
+const exec = util.promisify(require('node:child_process').exec);
 
-const args = `-a top-left --y-margin 8 --x-margin 16 -w 15 -l 5 -p "" --placeholder \"Power Menu\" --dmenu`;
+const args =
+  `-a top-left --y-margin 8 --x-margin 16 -w 15 -l 5 -p "" --placeholder \"Power Menu\" --dmenu`;
 
 (async function () {
   const menu = [
-    { icon: "", label: "Lock", exec: "hyprlock" },
-    { icon: "", label: "Logout", exec: "hyprctl dispatch exit" },
-    { icon: "", label: "Suspend", exec: "systemctl suspend" },
-    { icon: "", label: "Reboot", exec: "systemctl reboot" },
-    { icon: "", label: "Shutdown", exec: "systemctl poweroff -i" },
+    { icon: '', label: 'Lock', exec: 'hyprlock' },
+    { icon: '', label: 'Logout', exec: 'hyprctl dispatch exit' },
+    { icon: '', label: 'Suspend', exec: 'systemctl suspend' },
+    { icon: '', label: 'Reboot', exec: 'systemctl reboot' },
+    { icon: '', label: 'Shutdown', exec: 'systemctl poweroff -i' },
   ];
 
-  const menuItems = menu.map((m) => `${m.icon} \t${m.label}`).join("\n");
+  const menuItems = menu.map((m) => `${m.icon} \t${m.label}`).join('\n');
 
   const { stdout } = await exec(`echo -en "${menuItems}" | fuzzel ${args}`);
   if (!stdout) return;
