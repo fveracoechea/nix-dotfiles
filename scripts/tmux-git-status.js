@@ -3,7 +3,7 @@ const util = require("node:util");
 const fs = require("node:fs");
 const exec = util.promisify(require("node:child_process").exec);
 
-(async function getGitStatus() {
+(async function () {
   try {
     if (!fs.existsSync(".git")) {
       console.log("N/A");

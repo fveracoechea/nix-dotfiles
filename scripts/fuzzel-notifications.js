@@ -1,11 +1,14 @@
 // @ts-check
-const { exec } = require("node:child_process");
+const util = require("node:util");
+const exec = util.promisify(require("node:child_process").exec);
 
-const excludedApps = ["notify-send"];
+const shared = require("./shared/notification");
 
-exec("makoctl history", (error, stdout, stderr) => {
+(async function () {
+  const { stdout, stderr } = await exec("makoctl history");
+
   if (stderr) {
-    exec(`notify-send "Error loading notifications" "${stderr}"`);
+    await exec(`notify-send "Error loading notifications" "${stderr}"`);
     return;
   }
 
@@ -13,31 +16,13 @@ exec("makoctl history", (error, stdout, stderr) => {
   const inboxIcon = `\\0icon\\x1finbox`;
 
   if (!data || data.length < 1) {
-    exec(
-      `echo -en "No notifications found.${inboxIcon}" | fuzzel -w 40 -p "" --placeholder "Notifications" --dmenu`,
-    );
+    const fuzzel = `fuzzel -w 50 -p "" --placeholder "Notifications" --dmenu`;
+    await exec(`echo -en "No notifications found.${inboxIcon}" | ${fuzzel}`);
     return;
   }
 
-  const notifications = data
-    .map((item) => {
-      const app = item["app-name"].data.trim();
-      const icon = item["app-icon"].data.trim();
-      const title = item.summary.data.trim();
-      const body = item.body.data.trim();
+  const notifications = data.map(shared.toMenuItem).join("\n");
 
-      let notification = title;
-      if (body) notification += `   ---   ${body}`;
-      if (icon) notification += `\\0icon\\x1f${icon}`;
-      else if (app && !excludedApps.includes(app))
-        notification += `\\0icon\\x1f${app.toLowerCase()}`;
-      else notification += inboxIcon;
-
-      return notification;
-    })
-    .join("\n");
-
-  const args = `-w 40 -p "" --placeholder "Notifications"`;
-
-  exec(`echo -en "${notifications}" | fuzzel ${args} --dmenu`);
-});
+  const fuzzel = `fuzzel -w 50 -p "" --placeholder "Notifications" --dmenu`;
+  await exec(`echo -en "${notifications}" | ${fuzzel}`);
+})();

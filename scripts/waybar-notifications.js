@@ -35,9 +35,11 @@ function toTooltip(item) {
   return notification;
 }
 
-(async function main() {
-  const list = await exec("makoctl list");
-  const history = await exec("makoctl history");
+(async function () {
+  const [list, history] = await Promise.all([
+    exec("makoctl list"),
+    exec("makoctl history"),
+  ]);
 
   if (list.stderr || history.stderr) {
     exec(`notify-send "Error loading notifications" "${list.stderr || history.stderr}"`);
