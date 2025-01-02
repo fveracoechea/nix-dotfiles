@@ -1,5 +1,5 @@
 {...}: {
   nixpkgs.overlays = [
-    (import ./writeDeno.nix)
+    (import ./deno-scripts.nix)
   ];
 }
