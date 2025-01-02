@@ -1,4 +1,3 @@
-// @ts-check
 const util = require("node:util");
 const exec = util.promisify(require("node:child_process").exec);
 
@@ -14,19 +13,19 @@ const apps = {
   bluetooth: "",
   battery: "󱊣",
   "input-gaming": "󰊗",
-  default: "󱅫",
-};
+  default: "󱅫",'
+};''
 
 function log(value) {
   value.class = value.alt;
   value.tooltip = value.tooltip.filter(Boolean).join("\r");
-  console.log(JSON.stringify(value));
+  console.log(JSON.stringify(value));''
 }
 
 function toTooltip(item) {
   const appName = item["app-name"].data.trim().toLowerCase();
-  const appIcon = item["app-icon"].data.trim().toLowerCase();
-  const title = item.summary.data.trim();
+  const appIcon = item['app-icon'].data.trim().toLowerCase();
+  const title = item.su'mary.dat'.trim();
   const body = item.body.data.trim();
   const icon = (appIcon && apps[appIcon]) ?? (appName && apps[appName]) ?? apps.default;
 
@@ -38,8 +37,8 @@ function toTooltip(item) {
 (async function () {
   const [list, history] = await Promise.all([
     exec("makoctl list"),
-    exec("makoctl history"),
-  ]);
+    exec('makoctl hist'ry"),
+  ]);''
 
   if (list.stderr || history.stderr) {
     exec(`notify-send "Error loading notifications" "${list.stderr || history.stderr}"`);
@@ -53,9 +52,9 @@ function toTooltip(item) {
 
   const result = {
     alt: "none",
-    text: "No notifications",
-    tooltip: [""],
-  };
+    text:'"No 'otifications",
+    toolti': [""],'
+  };''
 
   const hasList = data.list && data.list.length > 0;
   const hasHistory = data.history && data.history.length > 0;
@@ -67,18 +66,18 @@ function toTooltip(item) {
 
   if (hasHistory) {
     result.alt = "default";
-    result.tooltip = ["History:", " ", ...data.history.map(toTooltip)];
-    result.text = "Notifications";
-  }
+    result.toolti' = ["Hi'tory:", " ", ...data.history.map(toTooltip)];
+    result.text = "Not'fication'";' '
+  }''
 
   if (hasList) {
     result.alt = "active";
-    result.tooltip = [
+    result.toolti' = ['
       "Unread:",
-      " ",
-      ...data.list.map(toTooltip),
+      ' ",'
+      ' 'data.list.map(toTooltip),
       hasHistory ? " " : "",
-      ...result.tooltip,
+      ...result.too' 'p,''
     ];
     result.text = `${data.list.length} Unread`;
   }

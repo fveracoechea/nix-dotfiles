@@ -1,7 +1,7 @@
 import {
   Notification,
   toMenuItem,
-} from 'https://raw.githubusercontent.com/fveracoechea/nix-dotfiles/refs/heads/main/scripts/shared/notification.ts?1';
+} from 'https://raw.githubusercontent.com/fveracoechea/nix-dotfiles/refs/heads/main/scripts/shared/notification.ts';
 
 import util from 'node:util';
 import childProcess from 'node:child_process';

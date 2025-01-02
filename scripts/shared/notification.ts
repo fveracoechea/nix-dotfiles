@@ -29,12 +29,9 @@ export function toMenuItem(item: Notification) {
   const appName = item['app-name'].data.trim().toLowerCase();
   const appIcon = item['app-icon'].data.trim().toLowerCase();
   const title = item.summary.data.trim();
-  const body = item.body.data.trim();
+  const body = item.body.data.replace(/(\n\s*)+/g, ' ').trim();
 
-  const icon = (appIcon && icons[appIcon]) ?? (appName && icons[appName]) ??
-    icons.default;
-
-  console.log('icon', icon);
+  const icon = icons[appIcon] || icons[appName] || icons.default;
 
   let notification = `${icon}  ${title}`;
   if (body) notification += `  -  ${body}`;
