@@ -1,6 +1,5 @@
 {
   inputs,
-  lib,
   pkgs,
   ...
 }: {
@@ -49,6 +48,7 @@
     neofetch
     cmatrix
     ripgrep
+    jq
   ];
 
   # This value determines the home Manager release that your
