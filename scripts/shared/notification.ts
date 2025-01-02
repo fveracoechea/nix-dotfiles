@@ -34,6 +34,8 @@ export function toMenuItem(item: Notification) {
   const icon = (appIcon && icons[appIcon]) ?? (appName && icons[appName]) ??
     icons.default;
 
+  console.log('icon', icon);
+
   let notification = `${icon}  ${title}`;
   if (body) notification += `  -  ${body}`;
   return notification;

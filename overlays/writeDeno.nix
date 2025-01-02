@@ -7,7 +7,7 @@ final: prev: {
         prev.writers.writeDash name
         # bash
         ''
-          exec ${prev.lib.getExe prev.deno} ${prev.writeText "ts" content} "$@"
+          exec ${prev.lib.getExe prev.deno} -A ${prev.writeText "ts" content} "$@"
         '';
 
       # Takes the same arguments as writeDeno but outputs a directory (like writeScriptBin)
