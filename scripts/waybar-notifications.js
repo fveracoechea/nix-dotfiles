@@ -10,6 +10,10 @@ const apps = {
   discord: "",
   vesktop: "",
   steam: "",
+  blueman: "",
+  bluetooth: "",
+  battery: "󱊣",
+  "input-gaming": "󰊗",
   default: "󱅫",
 };
 
@@ -20,10 +24,11 @@ function log(value) {
 }
 
 function toTooltip(item) {
-  const app = item["app-name"].data.trim().toLowerCase();
+  const appName = item["app-name"].data.trim().toLowerCase();
+  const appIcon = item["app-icon"].data.trim().toLowerCase();
   const title = item.summary.data.trim();
   const body = item.body.data.trim();
-  const icon = (app && apps[app]) ?? apps.default;
+  const icon = (appIcon && apps[appIcon]) ?? (appName && apps[appName]) ?? apps.default;
 
   let notification = `${icon}  ${title}`;
   if (body) notification += `  -  ${body}`;

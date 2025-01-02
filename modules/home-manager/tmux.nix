@@ -8,28 +8,6 @@
 in {
   home.packages =
     (mapScriptsToPackages {
-      os-icon-tmux =
-        # sh
-        ''
-          case "$(uname -s)" in
-              Darwin) OS_ICON=" " ;;
-              Linux)
-                  case "$(awk -F= '/^ID=/{print $2}' /etc/os-release | tr -d '\"')" in
-                      ubuntu) OS_ICON=" " ;;
-                      fedora) OS_ICON=" " ;;
-                      arch) OS_ICON=" " ;;
-                      pop) OS_ICON=" " ;;
-                      nixos) OS_ICON=" " ;;
-                      centos) OS_ICON=" " ;;
-                      alpine) OS_ICON=" " ;;
-                      *) OS_ICON=" " ;;
-                  esac
-                  ;;
-              CYGWIN*|MINGW*|MSYS*) OS_ICON=" " ;;
-              *) OS_ICON=" " ;;
-          esac
-          echo "$OS_ICON"
-        '';
       uptime-tmux =
         # sh
         ''
@@ -53,6 +31,7 @@ in {
     })
     ++ [
       (pkgs.writers.writeJSBin "tmux-os-icon" {} (lib.fileContents ../../scripts/tmux-os-icon.js))
+      (pkgs.writers.writeJSBin "tmux-git-status" {} (lib.fileContents ../../scripts/tmux-git-status.js))
     ];
 
   programs.tmux = {
@@ -68,7 +47,7 @@ in {
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig =
-          # sh
+          # bash
           ''
             set -g @resurrect-strategy-nvim 'session'
           '';
@@ -76,7 +55,7 @@ in {
       {
         plugin = tmuxPlugins.continuum;
         extraConfig =
-          # sh
+          # bash
           ''
             set -g @continuum-save-interval '5'
           '';
@@ -84,7 +63,7 @@ in {
       {
         plugin = tmuxPlugins.catppuccin;
         extraConfig =
-          # tmux
+          # bash
           ''
             set -g @catppuccin_flavour 'mocha'
 
@@ -116,19 +95,19 @@ in {
             ### Git
             set -g @catppuccin_gitmux_icon ""
             set -g @catppuccin_gitmux_color "${theme.pink}"
-            set -g @catppuccin_gitmux_text "#(git-tmux)"
+            set -g @catppuccin_gitmux_text "#(tmux-git-status)"
             ### Updatime
             set -g @catppuccin_uptime_color "${theme.flamingo}"
             set -g @catppuccin_uptime_text "#(uptime-tmux)"
             ### Hostname
             set -g @catppuccin_host_color "${theme.rosewater}"
-            set -g @catppuccin_host_icon "#(os-icon-tmux)"
+            set -g @catppuccin_host_icon "#(tmux-os-icon)"
           '';
       }
     ];
 
     extraConfig =
-      # tmux
+      # bash
       ''
          # Terminal color
          set-option -ga terminal-overrides ",xterm-256color:Tc"

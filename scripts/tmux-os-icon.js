@@ -1,3 +1,10 @@
+// @ts-check
 const os = require("os");
 
-console.log(os.platform());
+const icons = {
+  linux: "",
+  darwin: "",
+  default: "",
+};
+
+console.log(icons[os.platform()] ?? icons.default);
