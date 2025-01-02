@@ -9,8 +9,6 @@ const menu = [
   { icon: "", label: "Shutdown", exec: "systemctl poweroff -i" },
 ];
 
-// test
-
 const menuItems = menu.map((m) => `${m.icon} \t${m.label}`).join("\n");
 
 const args = `-a top-left --y-margin 8 --x-margin 16 -w 15 -l 5 -p "" --placeholder \"Power Menu\"`;

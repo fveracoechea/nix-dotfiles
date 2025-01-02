@@ -1,6 +1,6 @@
 // @ts-check
 const util = require("node:util");
-const fs = require("fs");
+const fs = require("node:fs");
 const exec = util.promisify(require("node:child_process").exec);
 
 (async function getGitStatus() {
@@ -21,7 +21,7 @@ const exec = util.promisify(require("node:child_process").exec);
       ]);
 
     const currentBranch = branch.trim();
-    const [ahead, behind] = upstream.trim().split("\t").map(Number);
+    const [behind, ahead] = upstream.trim().split("\t").map(Number);
 
     // Parse the file status counts
     const lines = status.split("\n").filter((l) => l.trim());
