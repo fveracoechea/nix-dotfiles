@@ -1,5 +1,5 @@
-{} @ args: {
+{...}: {
   nixpkgs.overlays = [
-    (import ./writeDeno.nix args)
+    (import ./writeDeno.nix)
   ];
 }

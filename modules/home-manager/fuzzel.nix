@@ -34,6 +34,6 @@
 
   home.packages = [
     (pkgs.writers.writeJSBin "fuzzel-powermenu" {} (lib.fileContents ../../scripts/fuzzel-powermenu.js))
-    (pkgs.writers.writeJSBin "fuzzel-notifications" {} (lib.fileContents ../../scripts/fuzzel-notifications.js))
+    (pkgs.writers.writeDenoBin "fuzzel-notifications" (lib.fileContents ../../scripts/fuzzel-notifications.ts))
   ];
 }
