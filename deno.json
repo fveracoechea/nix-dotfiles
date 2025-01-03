@@ -20,7 +20,4 @@
       ]
     }
   },
-  "imports": {
-    "shared/": "https://raw.githubusercontent.com/fveracoechea/nix-dotfiles/refs/heads/main/scripts/shared/"
-  }
 }

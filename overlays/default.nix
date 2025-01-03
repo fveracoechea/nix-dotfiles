@@ -1,5 +1,8 @@
 {...}: {
   nixpkgs.overlays = [
-    (import ./deno-scripts.nix)
+    (import ./helpers.nix)
+
+    # Brings custom packages from the 'packages' directory
+    (final: prev: import ../packages final)
   ];
 }

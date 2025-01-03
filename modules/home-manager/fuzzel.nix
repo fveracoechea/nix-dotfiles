@@ -1,4 +1,4 @@
-{lib, ...}: {
+{pkgs, ...}: {
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -29,7 +29,7 @@
   };
 
   home.packages = [
-    (lib.denoScript "fuzzel-powermenu")
-    (lib.denoScript "fuzzel-notifications")
+    (pkgs.helpers.denoScript "fuzzel-powermenu")
+    # (pkgs.helpers.denoScript "fuzzel-notifications")
   ];
 }
