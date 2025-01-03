@@ -16,28 +16,8 @@ final: prev: {
     denoScript = name:
       writeDenoBin name (prev.lib.fileContents ../scripts/${name}.ts);
 
-    # Creates deno packages
-    mkDenoDerivation = {
-      src,
-      name,
-      lockfile,
-      main ? "mod.ts",
-      denoFlags ? [],
-    }:
-      prev.stdenv.mkDerivation {
-        inherit src;
-        inherit name;
-        buildPhase = ''
-          DENO_DIR=$(mktemp -d)
-          export DENO_DIR
-
-          ${prev.deno}/bin/deno compile -A --lock ${lockfile} --cached-only -o ${name} ${main}
-        '';
-
-        installPhase = ''
-          mkdir -p "$out/bin"
-          mv ${name} "$out/bin/"
-        '';
-      };
+    # deno scripts from `scripts` directory
+    nodeJsScript = name:
+      final.writers.writeJsBin name (prev.lib.fileContents ../scripts/${name}.js);
   };
 }

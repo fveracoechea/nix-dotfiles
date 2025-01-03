@@ -1,16 +1,11 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   theme = import ../../utils/catppuccin.nix;
   icon = icon: ''<span size="large">${icon}</span>'';
   themeIcon = color: icon: ''<span color="${color}" size="large">${icon}</span>'';
   button = color: icon: text: ''<span color="${color}" size="large">${icon} </span> ${text}'';
 in {
   home.packages = [
-    (pkgs.writers.writeJSBin "waybar-notifications" {} (lib.fileContents
-        ../../scripts/waybar-notifications.js))
+    (pkgs.helpers.nodeJsScript "waybar-notifications")
   ];
 
   programs.waybar = {

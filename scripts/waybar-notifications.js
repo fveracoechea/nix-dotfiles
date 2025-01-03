@@ -1,7 +1,8 @@
+// @ts-check
 const util = require('node:util');
 const exec = util.promisify(require('node:child_process').exec);
 
-const apps = {
+const icons = {
   slack: '',
   teams: '󰊻',
   outlook: '󰴢',
@@ -26,8 +27,9 @@ function toTooltip(item) {
   const appName = item['app-name'].data.trim().toLowerCase();
   const appIcon = item['app-icon'].data.trim().toLowerCase();
   const title = item.summary.data.trim();
-  const body = item.body.data.trim();
-  const icon = apps[appIcon] || apps[appName] || apps.default;
+  const body = item.body.data.replace(/(\n\s*)+/g, ' ').trim();
+
+  const icon = icons[appIcon] || icons[appName] || icons.default;
 
   let notification = `${icon}  ${title}`;
   if (body) notification += `  -  ${body}`;

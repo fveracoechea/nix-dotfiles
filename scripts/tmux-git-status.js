@@ -1,33 +1,33 @@
 // @ts-check
-const util = require("node:util");
-const fs = require("node:fs");
-const exec = util.promisify(require("node:child_process").exec);
+const util = require('node:util');
+const fs = require('node:fs');
+const exec = util.promisify(require('node:child_process').exec);
 
 (async function () {
   try {
-    if (!fs.existsSync(".git")) {
-      console.log("N/A");
+    if (!fs.existsSync('.git')) {
+      console.log('N/A');
       return;
     }
 
-    const [{ stdout: branch }, { stdout: upstream }, { stdout: status }] =
-      await Promise.all([
+    const [{ stdout: branch }, { stdout: upstream }, { stdout: status }] = await Promise
+      .all([
         // Get the current branch name
-        exec("git rev-parse --abbrev-ref HEAD"),
+        exec('git rev-parse --abbrev-ref HEAD'),
         // Get upstream status (ahead/behind counts)
-        exec("git rev-list --left-right --count @{upstream}...HEAD"),
+        exec('git rev-list --left-right --count @{upstream}...HEAD'),
         // Get the status details
-        exec("git status --porcelain"),
+        exec('git status --porcelain'),
       ]);
 
     const currentBranch = branch.trim();
-    const [behind, ahead] = upstream.trim().split("\t").map(Number);
+    const [behind, ahead] = upstream.trim().split('\t').map(Number);
 
     // Parse the file status counts
-    const lines = status.split("\n").filter((l) => l.trim());
-    const deleted = lines.filter((l) => l.startsWith(" D")).length;
-    const modified = lines.filter((l) => l.startsWith(" M")).length;
-    const added = lines.filter((l) => l.startsWith("A ") || l.startsWith("?? ")).length;
+    const lines = status.split('\n').filter((l) => l.trim());
+    const deleted = lines.filter((l) => l.startsWith(' D')).length;
+    const modified = lines.filter((l) => l.startsWith(' M')).length;
+    const added = lines.filter((l) => l.startsWith('A ') || l.startsWith('?? ')).length;
 
     let out = currentBranch;
     if (ahead) out += ` ↑${ahead}`;

@@ -15,23 +15,10 @@ in {
           	awk -F, '{print $1,$2}' |
           	sed 's/:/h /g;s/^.*up *//; s/ *[0-9]* user.*//;s/[0-9]$/&m/;s/ day. */d /g'
         '';
-      git-tmux =
-        # sh
-        ''
-          if [ -d .git ]; then
-          	git fetch
-          	branch=$(git rev-parse --abbrev-ref HEAD)
-          	ahead=$(git rev-list --count origin/"$branch".."$branch")
-          	behind=$(git rev-list --count "$branch"..origin/"$branch")
-          	echo "$branch $ahead $behind"
-          else
-          	echo "N/A"
-          fi
-        '';
     })
     ++ [
-      (pkgs.writers.writeJSBin "tmux-os-icon" {} (lib.fileContents ../../scripts/tmux-os-icon.js))
-      (pkgs.writers.writeJSBin "tmux-git-status" {} (lib.fileContents ../../scripts/tmux-git-status.js))
+      (pkgs.helpers.nodeJsScript "tmux-os-icon")
+      (pkgs.helpers.nodeJScript "tmux-git-status")
     ];
 
   programs.tmux = {

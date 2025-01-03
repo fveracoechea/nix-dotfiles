@@ -29,8 +29,7 @@
   };
 
   home.packages = [
-    (pkgs.helpers.denoScript "fuzzel-powermenu")
-    pkgs.fuzzel-notifications
-    # (pkgs.helpers.denoScript "fuzzel-notifications")
+    (pkgs.helpers.nodeJsScript "fuzzel-powermenu")
+    (pkgs.helpers.nodeJsScript "fuzzel-notifications")
   ];
 }
