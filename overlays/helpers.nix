@@ -18,6 +18,6 @@ final: prev: {
 
     # deno scripts from `scripts` directory
     nodeJsScript = name:
-      final.writers.writeJsBin name (prev.lib.fileContents ../scripts/${name}.js);
+      final.writers.writeJSBin name {} (prev.lib.fileContents ../scripts/${name}.js);
   };
 }

@@ -4,22 +4,12 @@
   ...
 }: let
   theme = import ../../utils/catppuccin.nix;
-  mapScriptsToPackages = lib.attrsets.mapAttrsToList (pkgs.writeShellScriptBin);
 in {
-  home.packages =
-    (mapScriptsToPackages {
-      uptime-tmux =
-        # sh
-        ''
-          uptime |
-          	awk -F, '{print $1,$2}' |
-          	sed 's/:/h /g;s/^.*up *//; s/ *[0-9]* user.*//;s/[0-9]$/&m/;s/ day. */d /g'
-        '';
-    })
-    ++ [
-      (pkgs.helpers.nodeJsScript "tmux-os-icon")
-      (pkgs.helpers.nodeJScript "tmux-git-status")
-    ];
+  home.packages = [
+    (pkgs.helpers.nodeJsScript "tmux-uptime")
+    (pkgs.helpers.nodeJsScript "tmux-os-icon")
+    (pkgs.helpers.nodeJScript "tmux-git-status")
+  ];
 
   programs.tmux = {
     enable = true;
@@ -85,7 +75,7 @@ in {
             set -g @catppuccin_gitmux_text "#(tmux-git-status)"
             ### Updatime
             set -g @catppuccin_uptime_color "${theme.flamingo}"
-            set -g @catppuccin_uptime_text "#(uptime-tmux)"
+            set -g @catppuccin_uptime_text "#(tmux-uptime)"
             ### Hostname
             set -g @catppuccin_host_color "${theme.rosewater}"
             set -g @catppuccin_host_icon "#(tmux-os-icon)"
