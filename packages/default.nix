@@ -5,6 +5,7 @@ pkgs: {
   fuzzel-notifications = pkgs.helpers.mkDenoDerivation {
     name = "fuzzel-notifications";
     src = ../scripts;
-    entryPoint = "fuzzel-notifications.ts";
+    lockfile = ../deno.lock;
+    main = "fuzzel-notifications.ts";
   };
 }

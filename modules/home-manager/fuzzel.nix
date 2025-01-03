@@ -30,6 +30,7 @@
 
   home.packages = [
     (pkgs.helpers.denoScript "fuzzel-powermenu")
+    pkgs.fuzzel-notifications
     # (pkgs.helpers.denoScript "fuzzel-notifications")
   ];
 }

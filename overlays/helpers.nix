@@ -1,5 +1,4 @@
-# Custom globally available helper functions
-# accessed via `pkgs.helpers`
+# Custom helper functions that can be accessed globally via `pkgs.helpers`
 final: prev: {
   helpers = rec {
     # Takes a name and some TS sourcecode and returns an executable
@@ -15,13 +14,14 @@ final: prev: {
 
     # deno scripts from `scripts` directory
     denoScript = name:
-      final.writers.writeDenoBin name (prev.lib.fileContents ../scripts/${name}.ts);
+      writeDenoBin name (prev.lib.fileContents ../scripts/${name}.ts);
 
     # Creates deno packages
     mkDenoDerivation = {
       src,
       name,
-      entryPoint ? "mod.ts",
+      lockfile,
+      main ? "mod.ts",
       denoFlags ? [],
     }:
       prev.stdenv.mkDerivation {
@@ -31,7 +31,7 @@ final: prev: {
           DENO_DIR=$(mktemp -d)
           export DENO_DIR
 
-          ${prev.deno}/bin/deno compile -A -o ${name} ${entryPoint}
+          ${prev.deno}/bin/deno compile -A --lock ${lockfile} --cached-only -o ${name} ${main}
         '';
 
         installPhase = ''
