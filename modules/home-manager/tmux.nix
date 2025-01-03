@@ -8,7 +8,7 @@ in {
   home.packages = [
     (pkgs.helpers.nodeJsScript "tmux-uptime")
     (pkgs.helpers.nodeJsScript "tmux-os-icon")
-    (pkgs.helpers.nodeJScript "tmux-git-status")
+    (pkgs.helpers.nodeJsScript "tmux-git-status")
   ];
 
   programs.tmux = {
