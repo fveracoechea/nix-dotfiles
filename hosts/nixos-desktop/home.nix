@@ -49,6 +49,7 @@
     cmatrix
     ripgrep
     jq
+    postman
   ];
 
   # This value determines the home Manager release that your
