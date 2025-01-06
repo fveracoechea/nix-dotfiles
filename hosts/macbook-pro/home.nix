@@ -23,7 +23,6 @@
     postman
     slack
     nerd-fonts.fira-code
-    docker
     lazydocker
   ];
 

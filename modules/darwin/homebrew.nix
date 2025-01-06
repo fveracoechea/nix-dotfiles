@@ -8,6 +8,7 @@
       upgrade = true;
     };
     casks = [
+      "docker"
       "postgres-unofficial"
       "karabiner-elements"
       "displaylink"
