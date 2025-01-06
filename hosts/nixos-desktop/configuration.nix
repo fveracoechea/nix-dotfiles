@@ -4,6 +4,7 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
+    ../../overlays
     ../../modules/nixos/bootloader.nix
     ../../modules/nixos/miscellaneous.nix
     ../../modules/nixos/zsh-shell.nix

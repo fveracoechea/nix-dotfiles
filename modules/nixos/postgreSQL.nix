@@ -8,6 +8,7 @@
   services.postgresql = {
     enable = true;
     enableTCPIP = true;
+    port = 5433;
     authentication = lib.mkOverride 10 ''
       local all all              trust
       host  all all 127.0.0.1/32 trust

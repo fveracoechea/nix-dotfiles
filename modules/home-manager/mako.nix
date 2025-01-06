@@ -18,6 +18,10 @@
 
       [urgency=high]
       border-color=#fab387
+
+      [mode=away]
+      default-timeout=0
+      ignore-timeout=1
     '';
   };
 }

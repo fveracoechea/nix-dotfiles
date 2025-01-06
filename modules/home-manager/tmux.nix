@@ -4,52 +4,12 @@
   ...
 }: let
   theme = import ../../utils/catppuccin.nix;
-  mapScriptsToPackages = lib.attrsets.mapAttrsToList (pkgs.writeShellScriptBin);
 in {
-  home.packages = mapScriptsToPackages {
-    os-icon-tmux =
-      # sh
-      ''
-        case "$(uname -s)" in
-            Darwin) OS_ICON=" " ;;
-            Linux)
-                case "$(awk -F= '/^ID=/{print $2}' /etc/os-release | tr -d '\"')" in
-                    ubuntu) OS_ICON=" " ;;
-                    fedora) OS_ICON=" " ;;
-                    arch) OS_ICON=" " ;;
-                    pop) OS_ICON=" " ;;
-                    nixos) OS_ICON=" " ;;
-                    centos) OS_ICON=" " ;;
-                    alpine) OS_ICON=" " ;;
-                    *) OS_ICON=" " ;;
-                esac
-                ;;
-            CYGWIN*|MINGW*|MSYS*) OS_ICON=" " ;;
-            *) OS_ICON=" " ;;
-        esac
-        echo "$OS_ICON"
-      '';
-    uptime-tmux =
-      # sh
-      ''
-        uptime |
-        	awk -F, '{print $1,$2}' |
-        	sed 's/:/h /g;s/^.*up *//; s/ *[0-9]* user.*//;s/[0-9]$/&m/;s/ day. */d /g'
-      '';
-    git-tmux =
-      # sh
-      ''
-        if [ -d .git ]; then
-        	git fetch
-        	branch=$(git rev-parse --abbrev-ref HEAD)
-        	ahead=$(git rev-list --count origin/"$branch".."$branch")
-        	behind=$(git rev-list --count "$branch"..origin/"$branch")
-        	echo "$branch $ahead $behind"
-        else
-        	echo "N/A"
-        fi
-      '';
-  };
+  home.packages = [
+    (pkgs.helpers.nodeJsScript "tmux-uptime")
+    (pkgs.helpers.nodeJsScript "tmux-os-icon")
+    (pkgs.helpers.nodeJsScript "tmux-git-status")
+  ];
 
   programs.tmux = {
     enable = true;
@@ -64,7 +24,7 @@ in {
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig =
-          # sh
+          # bash
           ''
             set -g @resurrect-strategy-nvim 'session'
           '';
@@ -72,7 +32,7 @@ in {
       {
         plugin = tmuxPlugins.continuum;
         extraConfig =
-          # sh
+          # bash
           ''
             set -g @continuum-save-interval '5'
           '';
@@ -80,7 +40,7 @@ in {
       {
         plugin = tmuxPlugins.catppuccin;
         extraConfig =
-          # tmux
+          # bash
           ''
             set -g @catppuccin_flavour 'mocha'
 
@@ -112,19 +72,19 @@ in {
             ### Git
             set -g @catppuccin_gitmux_icon ""
             set -g @catppuccin_gitmux_color "${theme.pink}"
-            set -g @catppuccin_gitmux_text "#(git-tmux)"
+            set -g @catppuccin_gitmux_text "#(tmux-git-status)"
             ### Updatime
             set -g @catppuccin_uptime_color "${theme.flamingo}"
-            set -g @catppuccin_uptime_text "#(uptime-tmux)"
+            set -g @catppuccin_uptime_text "#(tmux-uptime)"
             ### Hostname
             set -g @catppuccin_host_color "${theme.rosewater}"
-            set -g @catppuccin_host_icon "#(os-icon-tmux)"
+            set -g @catppuccin_host_icon "#(tmux-os-icon)"
           '';
       }
     ];
 
     extraConfig =
-      # tmux
+      # bash
       ''
          # Terminal color
          set-option -ga terminal-overrides ",xterm-256color:Tc"

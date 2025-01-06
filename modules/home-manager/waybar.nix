@@ -1,8 +1,13 @@
 {pkgs, ...}: let
   theme = import ../../utils/catppuccin.nix;
   icon = icon: ''<span size="large">${icon}</span>'';
+  themeIcon = color: icon: ''<span color="${color}" size="large">${icon}</span>'';
   button = color: icon: text: ''<span color="${color}" size="large">${icon} </span> ${text}'';
 in {
+  home.packages = [
+    (pkgs.helpers.nodeJsScript "waybar-notifications")
+  ];
+
   programs.waybar = {
     enable = true;
 
@@ -51,8 +56,9 @@ in {
             "custom/powermenu"
             "custom/settings"
             "custom/nautilus"
-            "custom/discord"
-            "custom/spotify"
+            "custom/ssmonitor"
+            "custom/sswindow"
+            "custom/ssregion"
           ];
         };
 
@@ -201,10 +207,24 @@ in {
           show-passive-items = true;
         };
 
+        "custom/notifications" = {
+          format = "{icon}   {}";
+          return-type = "json";
+          interval = 5;
+          exec = "waybar-notifications";
+          on-click = "makoctl dismiss -a";
+          format-icons = {
+            active = themeIcon theme.peach "󰂞";
+            default = themeIcon theme.mauve "󰂚";
+            none = themeIcon theme.overlay2 "󰂛";
+          };
+        };
+
         modules-left = [
           "group/quick-links"
-          "group/screenshot"
+          # "group/screenshot"
           "tray"
+          "custom/notifications"
           "hyprland/workspaces"
         ];
 
@@ -219,27 +239,6 @@ in {
           "network"
           "group/stats"
         ];
-
-        # "custom/notification": {
-        #     "tooltip": false,
-        #     "format": "{icon}",
-        #     "format-icons": {
-        #       "notification": "󰅸",
-        #       "none": "󰂜",
-        #       "dnd-notification": "󰅸",
-        #       "dnd-none": "󱏨",
-        #       "inhibited-notification": "󰅸",
-        #       "inhibited-none": "󰂜",
-        #       "dnd-inhibited-notification": "󰅸",
-        #       "dnd-inhibited-none": "󱏨"
-        #     },
-        #     "return-type": "json",
-        #     "exec-if": "which swaync-client",
-        #     "exec": "swaync-client -swb",
-        #     "on-click-right": "swaync-client -d -sw",
-        #     "on-click": "swaync-client -t -sw",
-        #     "escape": true
-        #   },
       };
     };
 
@@ -281,6 +280,7 @@ in {
         #window,
         #quick-links,
         #screenshot,
+        #custom-notifications,
         #workspaces {
           border-radius: 1.2em;
           transition: background-color 300ms ease, color 300ms ease;
@@ -319,14 +319,11 @@ in {
         #custom-settings,
         #custom-nautilus,
         #custom-discord,
-        #custom-spotify {
-          color: ${theme.rosewater};
-        }
-
         #custom-ssmonitor,
         #custom-sswindow,
-        #custom-ssregion {
-          color: ${theme.flamingo};
+        #custom-ssregion,
+        #custom-spotify {
+          color: ${theme.subtext0};
         }
 
         #workspaces button {
@@ -337,6 +334,7 @@ in {
           color: ${theme.blue};
         }
 
+        #custom-notifications:hover,
         #custom-nautilus:hover,
         #custom-settings:hover,
         #custom-spotify:hover,
@@ -351,6 +349,7 @@ in {
         #temperature:hover,
         #memory:hover,
         #workspaces button:hover {
+          color: ${theme.text};
           background-color: ${theme.surface1};
         }
 
