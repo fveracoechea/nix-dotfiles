@@ -2,6 +2,7 @@
   username = "franciscoveracoechea";
 in {
   imports = [
+    ../../overlays
     ../../modules/darwin/system-defaults.nix
     ../../modules/darwin/homebrew.nix
     ../../modules/darwin/stylix.nix
