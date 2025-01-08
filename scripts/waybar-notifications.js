@@ -5,6 +5,7 @@ const exec = util.promisify(require('node:child_process').exec);
 const icons = {
   slack: '',
   teams: '󰊻',
+  'teams-for-linux': '󰊻',
   outlook: '󰴢',
   chrome: '',
   discord: '',

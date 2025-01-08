@@ -3,18 +3,19 @@ const util = require("node:util");
 const exec = util.promisify(require("node:child_process").exec);
 
 const icons = {
-  slack: "",
-  teams: "󰊻",
-  outlook: "󰴢",
-  chrome: "",
-  discord: "",
-  vesktop: "",
-  steam: "",
-  blueman: "",
-  bluetooth: "",
-  battery: "󱊣",
-  "input-gaming": "󰊗",
-  default: "󱅫",
+  slack: '',
+  teams: '󰊻',
+  'teams-for-linux': '󰊻',
+  outlook: '󰴢',
+  chrome: '',
+  discord: '',
+  vesktop: '',
+  steam: '',
+  blueman: '',
+  bluetooth: '',
+  battery: '󱊣',
+  'input-gaming': '󰊗',
+  default: '󱅫',
 };
 
 function toMenuItem(item) {
