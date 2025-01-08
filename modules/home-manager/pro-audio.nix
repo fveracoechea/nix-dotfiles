@@ -7,9 +7,9 @@
 in {
   home.packages = with pkgs; [
     # Apps
-    zrythm
+    # zrythm
     ardour
-    audacity
+    # audacity
     reaper
 
     # Music editor

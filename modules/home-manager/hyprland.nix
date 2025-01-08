@@ -137,7 +137,7 @@
           (bindExec "A" apps)
           (bindExec "N" "fuzzel-notifications")
           (bindExec "S" screenshot)
-          (bindExec "L" "hyprctl dispatch workspaceopt allfloat")
+          (bindExec "W" "hyprctl dispatch workspaceopt allfloat")
 
           "SUPER, F, togglefloating"
           "SUPER, P, pseudo"

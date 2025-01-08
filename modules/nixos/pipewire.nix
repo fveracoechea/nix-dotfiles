@@ -18,7 +18,7 @@
   };
 
   # PipeWire requires this to be false
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # Enable musnix, a module for real-time audio.
   musnix.enable = true;
