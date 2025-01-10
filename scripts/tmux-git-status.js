@@ -15,7 +15,7 @@ const exec = util.promisify(require('node:child_process').exec);
         // Get the current branch name
         exec('git rev-parse --abbrev-ref HEAD'),
         // Get upstream status (ahead/behind counts)
-        exec('git rev-list --left-right --count @{upstream}...HEAD').catch(() => ''),
+        exec('git rev-list --left-right --count @{upstream}...HEAD').catch(() => ({ stdout: '' })),
         // Get the status details
         exec('git status --porcelain'),
       ]);
