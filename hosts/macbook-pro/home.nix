@@ -18,7 +18,7 @@
     watchman
     ripgrep
     wget
-    neofetch
+    fastfetch
     cmatrix
     google-chrome
     postman

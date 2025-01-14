@@ -45,7 +45,7 @@
     dconf2nix
     nurl
     watchman
-    neofetch
+    fastfetch
     cmatrix
     ripgrep
     jq

@@ -6,7 +6,7 @@
     extraConfig = {
       core = {
         editor = "nvim";
-        sshCommand = "ssh -i ~/.ssh/id_github";
+        sshCommand = "ssh -i ~/.ssh/id_github_hypr";
       };
       pull = {
         rebase = true;

@@ -99,7 +99,7 @@
         fi
 
         # startup script
-        clear && neofetch
+        clear && fastfetch
       '';
   };
 }
