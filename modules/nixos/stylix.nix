@@ -29,6 +29,8 @@ in {
       size = 38;
     };
 
+    opacity.terminal = 0.9;
+
     fonts = {
       serif = firaSans;
       sansSerif = firaSans;
