@@ -11,8 +11,8 @@ in {
     theme = "catppuccin_mocha";
 
     override = {
-      theme.bar.opacity = 25;
-      theme.bar.background = cpt.overlay2;
+      theme.bar.opacity = 35;
+      theme.bar.background = cpt.surface2;
       theme.bar.border_radius = "1.4em";
 
       theme.bar.buttons.windowtitle.text = cpt.text;

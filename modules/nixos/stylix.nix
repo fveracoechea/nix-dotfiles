@@ -19,7 +19,7 @@ in {
   stylix = {
     enable = true;
     autoEnable = true;
-    image = ../../wallpapers/snowy-planet.jpg;
+    image = ../../wallpapers/islands-ultrawide.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
 
@@ -29,7 +29,7 @@ in {
       size = 38;
     };
 
-    opacity.terminal = 0.88;
+    opacity.terminal = 0.9;
 
     fonts = {
       serif = firaSans;

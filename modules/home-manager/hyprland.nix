@@ -90,7 +90,7 @@
       in [
         "bordersize 0, fullscreen:1"
         "minsize 1000 650, floating:1"
-        "opacity 0.88 0.88 1.0, title:(.*)$"
+        "opacity 0.9 0.9 1.0, title:(.*)$"
         "opacity 1.0, class:(google-chrome)"
         "opacity 1.0, class:(fuzzel)"
         "opacity 1.0, class:(kitty)"
@@ -172,6 +172,7 @@
 
     settings = {
       general = {
+        before_sleep_cmd = "hyprctl dispatch dpms off";
         after_sleep_cmd = "hyprctl dispatch dpms on";
         ignore_dbus_inhibit = false;
         lock_cmd = "hyprlock";
@@ -179,18 +180,20 @@
 
       listener = [
         {
+          # turn off monitor after 5mins
           timeout = 300;
-          on-timeout = "makoctl set-mode away";
-          on-resume = "makoctl set-mode default";
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
         }
         {
+          # lock screen after 10mins
           timeout = 600;
           on-timeout = "hyprlock";
         }
         {
-          timeout = 900;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
+          # suspend after 30mins
+          timeout = 1800;
+          on-timeout = "systemctl suspend";
         }
       ];
     };
