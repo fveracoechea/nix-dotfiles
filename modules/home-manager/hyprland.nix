@@ -23,7 +23,7 @@
 
     settings = let
       apps = "fuzzel --cache ${config.home.homeDirectory}/.config/fuzzel/cache";
-      terminal = "ghostty";
+      terminal = "kitty";
       browser = "google-chrome-stable";
       screenshot = "hyprshot -m output";
     in {
@@ -49,10 +49,8 @@
       };
 
       exec-once = [
-        "${pkgs.waybar}/bin/waybar"
+        "hyprpanel"
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
-        "blueman-applet"
-        "mako"
       ];
 
       monitor = "DP-1,highrr,auto,auto";
@@ -95,6 +93,9 @@
         "opacity 0.88 0.88 1.0, title:(.*)$"
         "opacity 1.0, class:(google-chrome)"
         "opacity 1.0, class:(fuzzel)"
+        "opacity 1.0, class:(kitty)"
+        "opacity 1.0, class:(kitty)"
+        "opacity 1.0, class:(com.mitchellh.ghostty)"
         "center, floating:1"
 
         (floatClass "file_progres")

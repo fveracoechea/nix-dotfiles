@@ -19,7 +19,7 @@ in {
   stylix = {
     enable = true;
     autoEnable = true;
-    image = ../../wallpapers/city-ultrawide.jpg;
+    image = ../../wallpapers/snowy-planet.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
 
@@ -29,7 +29,7 @@ in {
       size = 38;
     };
 
-    opacity.terminal = 0.9;
+    opacity.terminal = 0.88;
 
     fonts = {
       serif = firaSans;
