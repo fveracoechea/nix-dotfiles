@@ -23,7 +23,7 @@ in {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
 
-    opacity.terminal = 0.9;
+    opacity.terminal = 0.88;
 
     fonts = {
       serif = firaSans;

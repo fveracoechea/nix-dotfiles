@@ -1,0 +1,86 @@
+{inputs, ...}: let
+  cpt = import ../../utils/catppuccin.nix;
+in {
+  imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
+
+  programs.hyprpanel = {
+    enable = true;
+    systemd.enable = true;
+    overwrite.enable = true;
+
+    theme = "catppuccin_mocha";
+
+    override = {
+      theme.bar.opacity = 35;
+      theme.bar.background = cpt.surface2;
+      theme.bar.border_radius = "1.4em";
+
+      theme.bar.buttons.windowtitle.text = cpt.text;
+      theme.bar.buttons.windowtitle.icon = cpt.blue;
+      theme.bar.buttons.clock.text = cpt.text;
+      theme.bar.buttons.media.text = cpt.text;
+      theme.bar.buttons.network.text = cpt.text;
+      theme.bar.buttons.volume.text = cpt.text;
+      theme.bar.buttons.bluetooth.text = cpt.text;
+      theme.bar.buttons.notifications.text = cpt.text;
+      theme.bar.buttons.dashboard.icon = cpt.blue;
+
+      theme.bar.buttons.workspaces.active = cpt.blue;
+      theme.bar.buttons.workspaces.available = cpt.overlay2;
+      theme.bar.buttons.workspaces.occupied = cpt.overlay2;
+      theme.bar.buttons.workspaces.hover = cpt.lavender;
+
+      theme.bar.buttons.background_hover_opacity = 80;
+
+      theme.bar.margin_top = "1em";
+      theme.bar.margin_sides = "1em";
+      theme.bar.buttons.spacing = "0.4em";
+      theme.bar.outer_spacing = "0.4em";
+
+      theme.bar.buttons.enableBorders = false;
+      theme.bar.buttons.radius = "1.4em";
+      theme.bar.buttons.padding_x = "0.8em";
+      theme.bar.buttons.padding_y = "0.15em";
+      theme.font.name = "Fira Code Nerd Font";
+      theme.font.size = "16px";
+
+      theme.tooltip.scaling = 75;
+      theme.bar.menus.popover.scaling = 80;
+    };
+
+    layout = {
+      "bar.layouts" = {
+        "*" = {
+          left = ["dashboard" "media" "systray" "workspaces"];
+          middle = ["windowtitle"];
+          right = ["clock" "volume" "network" "bluetooth" "notifications" "power"];
+        };
+      };
+    };
+
+    settings = {
+      scalingPriority = "hyprland";
+      bar.launcher.autoDetectIcon = true;
+
+      notifications.position = "bottom";
+      bar.notifications.show_total = true;
+      bar.notifications.hideCountWhenZero = true;
+
+      bar.workspaces.workspaces = 5;
+      bar.workspaces.showAllActive = true;
+
+      menus.clock = {
+        time = {
+          military = false;
+          hideSeconds = true;
+        };
+        weather.unit = "metric";
+      };
+
+      menus.dashboard.directories.enabled = false;
+      menus.dashboard.stats.enable_gpu = true;
+
+      bar.clock.format = "%I:%M%p %A %b %d";
+    };
+  };
+}

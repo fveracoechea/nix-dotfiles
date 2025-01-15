@@ -18,6 +18,7 @@
     ../../modules/home-manager/fuzzel.nix
     ../../modules/home-manager/mako.nix
     ../../modules/home-manager/ghostty.nix
+    ../../modules/home-manager/hyprpanel.nix
     inputs.neovim-config.homeManagerModules.default
     inputs.spicetify-nix.homeManagerModules.default
   ];
