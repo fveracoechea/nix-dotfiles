@@ -53,6 +53,8 @@
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 
   outputs = {

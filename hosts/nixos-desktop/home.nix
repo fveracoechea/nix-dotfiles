@@ -16,7 +16,7 @@
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/fuzzel.nix
-    ../../modules/home-manager/mako.nix
+    # ../../modules/home-manager/mako.nix
     ../../modules/home-manager/ghostty.nix
     ../../modules/home-manager/hyprpanel.nix
     inputs.neovim-config.homeManagerModules.default

@@ -78,7 +78,7 @@ in {
       };
 
       menus.dashboard.directories.enabled = false;
-      menus.dashboard.stats.enable_gpu = true;
+      menus.dashboard.stats.enable_gpu = false;
 
       bar.clock.format = "%I:%M%p %A %b %d";
     };
