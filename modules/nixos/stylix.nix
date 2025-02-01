@@ -41,7 +41,7 @@ in {
         applications = 12;
         desktop = 12;
         popups = 12;
-        terminal = 12;
+        terminal = 12.5;
       };
     };
 

@@ -49,7 +49,7 @@
       };
 
       exec-once = [
-        "hyprpanel > ~/hyprpanel_logs.txt 2>&1"
+        "sleep 2 && hyprpanel"
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
       ];
 
