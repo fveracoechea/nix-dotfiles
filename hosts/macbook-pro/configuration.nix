@@ -6,6 +6,7 @@ in {
     ../../modules/darwin/system-defaults.nix
     ../../modules/darwin/homebrew.nix
     ../../modules/darwin/stylix.nix
+    ../../modules/darwin/zsh-shell.nix
   ];
 
   # Used for backwards compatibility.
@@ -22,10 +23,8 @@ in {
     package = pkgs.nix;
     # Enable the Flakes feature and the accompanying new nix command-line tool
     settings. experimental-features = ["nix-command" "flakes"];
-
     # optimise store
     optimise.automatic = true;
-
     # Enable automatic garbage collection
     gc = {
       automatic = true;
@@ -44,10 +43,4 @@ in {
   services.karabiner-elements.enable = false;
 
   security.pam.enableSudoTouchIdAuth = true;
-
-  # Enable ZSH has default shell
-  programs.zsh.enable = true;
-  environment.pathsToLink = ["/share/zsh"];
-  environment.shells = with pkgs; [zsh];
-  programs.bash.enable = false;
 }

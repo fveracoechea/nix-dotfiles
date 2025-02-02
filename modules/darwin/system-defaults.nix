@@ -1,4 +1,9 @@
 {...}: {
+  # Currently not working as a system service - using homebrew instead
+  services.karabiner-elements.enable = false;
+
+  security.pam.enableSudoTouchIdAuth = true;
+
   # Darwin System settings
   system.defaults = {
     finder.AppleShowAllExtensions = true;
