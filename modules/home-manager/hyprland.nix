@@ -173,7 +173,7 @@
     settings = {
       general = {
         before_sleep_cmd = "hyprctl dispatch dpms off";
-        after_sleep_cmd = "hyprctl dispatch dpms on";
+        after_sleep_cmd = "hyprctl dispatch dpms on && hyprpanel";
         ignore_dbus_inhibit = false;
         lock_cmd = "hyprlock";
       };
