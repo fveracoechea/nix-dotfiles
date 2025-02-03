@@ -48,7 +48,7 @@
       };
 
       exec-once = [
-        "sleep 2 && hyprpanel"
+        "sleep 1 && hyprpanel"
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
       ];
 
@@ -172,7 +172,7 @@
     settings = {
       general = {
         before_sleep_cmd = "hyprctl dispatch dpms off";
-        after_sleep_cmd = "hyprctl dispatch dpms on && hyprpanel";
+        after_sleep_cmd = "hyprctl dispatch dpms on && sleep 1 && hyprpanel";
         ignore_dbus_inhibit = false;
         lock_cmd = "hyprlock";
       };
