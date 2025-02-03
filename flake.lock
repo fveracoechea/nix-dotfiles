@@ -720,11 +720,11 @@
         "tree-sitter-nginx": "tree-sitter-nginx"
       },
       "locked": {
-        "lastModified": 1738539667,
-        "narHash": "sha256-Nr2kzDZO/J1L2XXchKNhqpsNP1YNREshU/8Nzd5E+WE=",
+        "lastModified": 1738542049,
+        "narHash": "sha256-DJCY5i1Ocz7YcmjdRQlStwAtnaGeiWM3DPsC3qARQbI=",
         "owner": "fveracoechea",
         "repo": "neovim-nix-config",
-        "rev": "cfe844f9143a2fad9a56517207f9fa16564dfed9",
+        "rev": "3c0f950226482f53d6977ae26c9f2696a38e9654",
         "type": "github"
       },
       "original": {
