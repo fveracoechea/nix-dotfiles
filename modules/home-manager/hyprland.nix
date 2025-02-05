@@ -48,7 +48,7 @@
       };
 
       exec-once = [
-        "sleep 1 && hyprpanel"
+        "sleep 2 && hyprpanel"
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
       ];
 
@@ -171,28 +171,19 @@
 
     settings = {
       general = {
-        before_sleep_cmd = "hyprctl dispatch dpms off";
-        after_sleep_cmd = "hyprctl dispatch dpms on && sleep 1 && hyprpanel";
         ignore_dbus_inhibit = false;
         lock_cmd = "hyprlock";
       };
 
       listener = [
         {
-          # turn off monitor after 5mins
-          timeout = 300;
+          timeout = 900;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
         {
-          # lock screen after 10mins
-          timeout = 600;
+          timeout = 1200;
           on-timeout = "hyprlock";
-        }
-        {
-          # suspend after 30mins
-          timeout = 1800;
-          on-timeout = "systemctl suspend";
         }
       ];
     };
@@ -200,7 +191,6 @@
 
   programs.hyprlock = {
     enable = true;
-
     settings = {
       disable_loading_bar = true;
       grace = 300;
