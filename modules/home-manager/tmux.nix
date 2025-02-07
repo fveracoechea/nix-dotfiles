@@ -22,22 +22,6 @@ in {
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.yank
       {
-        plugin = tmuxPlugins.resurrect;
-        extraConfig =
-          # bash
-          ''
-            set -g @resurrect-strategy-nvim 'session'
-          '';
-      }
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig =
-          # bash
-          ''
-            set -g @continuum-save-interval '5'
-          '';
-      }
-      {
         plugin = tmuxPlugins.catppuccin;
         extraConfig =
           # bash

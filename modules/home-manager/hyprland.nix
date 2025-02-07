@@ -22,7 +22,7 @@
 
     settings = let
       apps = "fuzzel --cache ${config.home.homeDirectory}/.config/fuzzel/cache";
-      terminal = "kitty";
+      terminal = "ghostty";
       browser = "google-chrome-stable";
       screenshot = "hyprshot -m output";
     in {
