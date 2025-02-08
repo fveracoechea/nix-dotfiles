@@ -45,6 +45,11 @@ in {
 
       theme.tooltip.scaling = 75;
       theme.bar.menus.popover.scaling = 80;
+
+      theme.osd.location = "bottom";
+      theme.osd.orientation = "horizontal";
+      theme.osd.margins = "0px 0px 25px 0px";
+      theme.osd.radius = "2em";
     };
 
     layout = {
@@ -65,8 +70,10 @@ in {
       bar.notifications.show_total = true;
       bar.notifications.hideCountWhenZero = true;
 
-      bar.workspaces.workspaces = 5;
+      bar.workspaces.show_icons = false;
+      bar.workspaces.show_numbered = true;
       bar.workspaces.showAllActive = true;
+      bar.workspaces.numbered_active_indicator = "underline";
 
       menus.clock = {
         time = {
@@ -78,7 +85,6 @@ in {
 
       menus.dashboard.directories.enabled = false;
       menus.dashboard.stats.enable_gpu = false;
-
       bar.clock.format = "%I:%M %p - %A %b %d";
     };
   };
