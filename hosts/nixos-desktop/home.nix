@@ -26,9 +26,11 @@
   home.homeDirectory = "/home/fveracoechea";
 
   programs.spicetify.enable = true;
+
   stylix.targets.neovim.enable = false;
   stylix.targets.mako.enable = false;
   stylix.targets.waybar.enable = false;
+  stylix.targets.cava.rainbow.enable = true;
 
   # FPS hud for steam video-games
   programs.mangohud.enable = true;
@@ -51,6 +53,7 @@
     ripgrep
     jq
     postman
+    cava
   ];
 
   # This value determines the home Manager release that your

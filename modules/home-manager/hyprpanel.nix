@@ -10,41 +10,36 @@ in {
     theme = "catppuccin_mocha";
 
     override = {
-      theme.bar.opacity = 35;
-      theme.bar.background = cpt.surface2;
-      theme.bar.border_radius = "1.4em";
+      theme.font.size = "14px";
+      theme.font.name = "Fira Code Nerd Font";
+      theme.font.weight = 500;
 
-      theme.bar.buttons.windowtitle.text = cpt.text;
-      theme.bar.buttons.windowtitle.icon = cpt.blue;
-      theme.bar.buttons.clock.text = cpt.text;
-      theme.bar.buttons.media.text = cpt.text;
-      theme.bar.buttons.network.text = cpt.text;
-      theme.bar.buttons.volume.text = cpt.text;
-      theme.bar.buttons.bluetooth.text = cpt.text;
-      theme.bar.buttons.notifications.text = cpt.text;
-      theme.bar.buttons.dashboard.icon = cpt.blue;
+      theme.bar.opacity = 40;
+      theme.bar.layer = "top";
+      theme.bar.floating = true;
+      # theme.bar.transparent = false;
 
-      theme.bar.buttons.workspaces.active = cpt.blue;
-      theme.bar.buttons.workspaces.available = cpt.overlay2;
-      theme.bar.buttons.workspaces.occupied = cpt.overlay2;
-      theme.bar.buttons.workspaces.hover = cpt.lavender;
+      theme.bar.margin_top = "0.8em";
+      theme.bar.margin_sides = "1em";
+      theme.bar.outer_spacing = "0.4em";
 
       theme.bar.buttons.background_hover_opacity = 80;
 
-      theme.bar.margin_top = "1em";
-      theme.bar.margin_sides = "1em";
-      theme.bar.buttons.spacing = "0.4em";
-      theme.bar.outer_spacing = "0.4em";
+      theme.bar.buttons.style = "default";
+      theme.bar.buttons.borderSize = "1px";
 
-      theme.bar.buttons.enableBorders = false;
-      theme.bar.buttons.radius = "1.4em";
-      theme.bar.buttons.padding_x = "0.8em";
-      theme.bar.buttons.padding_y = "0.15em";
-      theme.font.name = "Fira Code Nerd Font";
-      theme.font.size = "16px";
+      theme.bar.buttons.systray.spacing = "0.6em";
+
+      theme.bar.border_radius = "1.4rem";
+      theme.bar.buttons.radius = "1.4rem";
+      theme.bar.buttons.padding_y = "0.2rem";
+      theme.bar.buttons.padding_x = "0.8rem";
+      theme.bar.buttons.spacing = "0.3em";
+      theme.bar.buttons.y_margins = "0.5em";
 
       theme.tooltip.scaling = 75;
       theme.bar.menus.popover.scaling = 80;
+      theme.bar.dashboard.scaling = 80;
 
       theme.osd.location = "bottom";
       theme.osd.orientation = "horizontal";
@@ -55,15 +50,14 @@ in {
     layout = {
       "bar.layouts" = {
         "*" = {
-          left = ["dashboard" "systray" "media" "clock" "workspaces"];
+          left = ["dashboard" "systray" "media" "cava" "clock" "workspaces"];
           middle = ["windowtitle"];
-          right = ["volume" "network" "bluetooth" "cpu" "netstat" "notifications"];
+          right = ["volume" "bluetooth" "network" "netstat" "cpu" "ram" "storage" "notifications"];
         };
       };
     };
 
     settings = {
-      theme.bar.layer = "top";
       scalingPriority = "hyprland";
       bar.launcher.autoDetectIcon = true;
 
@@ -90,7 +84,7 @@ in {
 
       menus.dashboard.directories.enabled = false;
       menus.dashboard.stats.enable_gpu = false;
-      bar.clock.format = "%I:%M %p - %A %b %d";
+      bar.clock.format = "%a %b %d %I:%M %p";
     };
   };
 }
