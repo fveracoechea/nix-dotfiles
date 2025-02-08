@@ -13,11 +13,11 @@ in {
       theme.font.size = "14px";
       theme.font.name = "Fira Code Nerd Font";
       theme.font.weight = 500;
+      theme.bar.background = cpt.surface1;
 
-      theme.bar.opacity = 40;
+      theme.bar.opacity = 80;
       theme.bar.layer = "top";
       theme.bar.floating = true;
-      # theme.bar.transparent = false;
 
       theme.bar.margin_top = "0.8em";
       theme.bar.margin_sides = "1em";
