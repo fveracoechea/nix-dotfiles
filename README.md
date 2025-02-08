@@ -4,6 +4,9 @@ These dotfiles provide a consistent and optimized experience across different Ma
 
 ![image](https://github.com/user-attachments/assets/0bda1c39-f4b4-4793-98a6-0feab74aff18)
 
+![image](https://github.com/user-attachments/assets/f42234d5-0883-4fe2-b6f5-44e57c55dbc0)
+
+
 ## Main Features:
 
 - Keyboard Focused
