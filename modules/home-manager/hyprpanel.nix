@@ -55,14 +55,15 @@ in {
     layout = {
       "bar.layouts" = {
         "*" = {
-          left = ["dashboard" "media" "systray" "workspaces"];
+          left = ["dashboard" "systray" "media" "clock" "workspaces"];
           middle = ["windowtitle"];
-          right = ["clock" "volume" "network" "bluetooth" "notifications" "power"];
+          right = ["volume" "network" "bluetooth" "cpu" "netstat" "notifications"];
         };
       };
     };
 
     settings = {
+      theme.bar.layer = "top";
       scalingPriority = "hyprland";
       bar.launcher.autoDetectIcon = true;
 
@@ -74,6 +75,11 @@ in {
       bar.workspaces.show_numbered = true;
       bar.workspaces.showAllActive = true;
       bar.workspaces.numbered_active_indicator = "underline";
+      bar.customModules.netstat.networkInterface = "wlan0";
+      bar.customModules.netstat.dynamicIcon = false;
+      bar.customModules.netstat.labelType = "in";
+      bar.customModules.netstat.icon = "";
+      bar.customModules.netstat.rateUnit = "auto";
 
       menus.clock = {
         time = {
