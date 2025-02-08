@@ -19,7 +19,7 @@ in {
   stylix = {
     enable = true;
     autoEnable = true;
-    image = ../../wallpapers/snowy-planet-ultrawide.jpg;
+    image = ../../wallpapers/warrior-ultrawide.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
 

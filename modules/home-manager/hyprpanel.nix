@@ -50,7 +50,7 @@ in {
     layout = {
       "bar.layouts" = {
         "*" = {
-          left = ["dashboard" "systray" "media" "cava" "clock" "workspaces"];
+          left = ["dashboard" "media" "cava" "systray" "clock" "workspaces"];
           middle = ["windowtitle"];
           right = ["volume" "bluetooth" "network" "netstat" "cpu" "ram" "storage" "notifications"];
         };
