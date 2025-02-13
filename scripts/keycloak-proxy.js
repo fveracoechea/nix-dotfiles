@@ -5,7 +5,6 @@ const os = require('os');
 
 const TARGET_HOST = '10.1.80.166';
 const TARGET_PORT = 8543;
-const TARGET_PATH = '/auth';
 
 /**
  * Get the local IP address of the machine.
@@ -24,12 +23,12 @@ function getLocalIp() {
 }
 
 const server = http.createServer((req, res) => {
-  console.log("PROXY ", req.url);
+  console.log("KEYCLOAK PROXY ", req.url);
 
   const options = {
     hostname: TARGET_HOST,
     port: TARGET_PORT,
-    path: TARGET_PATH + req.url,
+    path: req.url,
     method: req.method,
     headers: req.headers,
     rejectUnauthorized: false, // Ignore SSL certificate issues
