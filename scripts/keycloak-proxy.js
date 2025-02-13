@@ -1,13 +1,30 @@
+
 const http = require('http');
 const https = require('https');
+const os = require('os');
 
 const TARGET_HOST = '10.1.80.166';
 const TARGET_PORT = 8543;
 const TARGET_PATH = '/auth';
 
-const server = http.createServer((req, res) => {
+/**
+ * Get the local IP address of the machine.
+ * Prioritizes IPv4 addresses that are not internal loopback (127.0.0.1).
+ */
+function getLocalIp() {
+  const interfaces = os.networkInterfaces();
+  for (const iface of Object.values(interfaces)) {
+    for (const info of iface) {
+      if (info.family === 'IPv4' && !info.internal) {
+        return info.address;
+      }
+    }
+  }
+  return 'Unknown';
+}
 
-  console.log('KEYCLOAK PROXY', req.url);
+const server = http.createServer((req, res) => {
+  console.log("PROXY ", req.url);
 
   const options = {
     hostname: TARGET_HOST,
@@ -31,6 +48,8 @@ const server = http.createServer((req, res) => {
   req.pipe(proxyReq);
 });
 
+const localIp = getLocalIp();
 server.listen(TARGET_PORT, () => {
-  console.log(`Proxy server running on http://localhost:${TARGET_PORT}`);
+  console.log(`Proxy server running on http://${localIp}:${TARGET_PORT}`);
 });
+
