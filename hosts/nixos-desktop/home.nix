@@ -54,6 +54,7 @@
     jq
     postman
     cava
+    wireguard-tools
   ];
 
   # This value determines the home Manager release that your

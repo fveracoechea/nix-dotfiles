@@ -10,7 +10,6 @@
     ../../modules/home-manager/oh-my-posh.nix
     ../../modules/home-manager/volta.nix
     ../../modules/home-manager/karabiner.nix
-    # ../../modules/home-manager/ghostty.nix
     inputs.neovim-config.homeManagerModules.default
   ];
 
@@ -25,6 +24,7 @@
     slack
     nerd-fonts.fira-code
     lazydocker
+    (pkgs.helpers.nodeJsScript "keycloak-proxy")
   ];
 
   # NOTE: teporal fix ghostty package is broken on Darwin
