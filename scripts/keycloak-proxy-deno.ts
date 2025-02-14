@@ -8,6 +8,8 @@ function getIp() {
   }
 }
 
+// --unsafely-treat-insecure-origin-as-secure
+
 const { target = "https://10.1.80.166:8543", name = "Proxy", port = 8543 } =
   parse(
     Deno.args,
@@ -17,8 +19,14 @@ Deno.serve({ port }, async (request) => {
   const { pathname, search } = new URL(request.url);
   const url = new URL(pathname + search, target);
 
-  const response = await fetch(url, request);
-  console.log(name, url, response.status);
+  const response = await fetch(url, {
+    body: request.body,
+    headers: request.headers,
+    method: request.method,
+    mode: request.mode,
+    cache: request.cache,
+  });
+
   return response;
 });
 
