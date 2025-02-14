@@ -5,6 +5,7 @@ const os = require('os');
 
 const TARGET_HOST = '10.1.80.166';
 const TARGET_PORT = 8543;
+const TARGET_PATH = '/auth';
 
 /**
  * Get the local IP address of the machine.
@@ -28,7 +29,7 @@ const server = http.createServer((req, res) => {
   const options = {
     hostname: TARGET_HOST,
     port: TARGET_PORT,
-    path: req.url,
+    path: TARGET_PATH + req.url,
     method: req.method,
     headers: req.headers,
     rejectUnauthorized: false, // Ignore SSL certificate issues
