@@ -25,7 +25,6 @@
     nerd-fonts.fira-code
     lazydocker
     (pkgs.helpers.nodeJsScript "keycloak-proxy")
-    (pkgs.helpers.denoScript "keycloak-proxy-deno")
   ];
 
   # NOTE: teporal fix ghostty package is broken on Darwin
