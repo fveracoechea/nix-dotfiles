@@ -1,4 +1,10 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    fastfetch
+    microfetch
+    cmatrix
+  ];
+
   programs.bat = {
     enable = true;
   };
@@ -41,6 +47,7 @@
     };
 
     shellAliases = {
+      t = ''tmux new-session -A -s "$(basename "$PWD")"'';
       ls = "eza";
       la = "eza -abghHl --no-user --icons";
       cd = "z";
@@ -99,7 +106,7 @@
         fi
 
         # startup script
-        clear && fastfetch
+        clear && microfetch
       '';
   };
 }

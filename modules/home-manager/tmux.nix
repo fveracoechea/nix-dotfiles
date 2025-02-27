@@ -15,7 +15,7 @@ in {
     enable = true;
     keyMode = "vi";
     mouse = true;
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
     baseIndex = 1;
 
     plugins = with pkgs; [
@@ -70,9 +70,6 @@ in {
     extraConfig =
       # bash
       ''
-         # Terminal color
-         set-option -ga terminal-overrides ",xterm-256color:Tc"
-
          # Set status bar on the top
          set-option -g status-position top
 

@@ -17,8 +17,6 @@
     watchman
     ripgrep
     wget
-    fastfetch
-    cmatrix
     google-chrome
     postman
     slack

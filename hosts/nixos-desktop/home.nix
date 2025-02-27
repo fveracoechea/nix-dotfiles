@@ -48,8 +48,6 @@
     dconf2nix
     nurl
     watchman
-    fastfetch
-    cmatrix
     ripgrep
     jq
     postman
