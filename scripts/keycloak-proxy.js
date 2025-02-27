@@ -1,3 +1,4 @@
+// @ts-check
 const http = require("http");
 const https = require("https");
 const os = require("os");
@@ -13,7 +14,7 @@ const TARGET_PATH = "/auth";
 function getLocalIp() {
   const interfaces = os.networkInterfaces();
   for (const iface of Object.values(interfaces)) {
-    for (const info of iface) {
+    for (const info of iface ?? []) {
       if (info.family === "IPv4" && !info.internal) {
         return info.address;
       }
@@ -35,7 +36,7 @@ const server = http.createServer((req, res) => {
   };
 
   const proxyReq = https.request(options, (proxyRes) => {
-    res.writeHead(proxyRes.statusCode, proxyRes.headers);
+    res.writeHead(proxyRes.statusCode ?? 500, proxyRes.headers);
     proxyRes.pipe(res);
   });
 
@@ -48,6 +49,7 @@ const server = http.createServer((req, res) => {
 });
 
 const localIp = getLocalIp();
+
 server.listen(TARGET_PORT, () => {
   console.log(`Proxy server running on http://${localIp}:${TARGET_PORT}`);
 });
