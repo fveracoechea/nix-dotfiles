@@ -29,13 +29,7 @@
     wl-clipboard
     libnotify
     pavucontrol
-    networkmanagerapplet
     nautilus
-    gnome-system-monitor
-    gnome-calculator
-    gnome-control-center
-    gnome-weather
-    gnome-clocks
   ];
 
   # Optional, hint Electron apps to use Wayland:

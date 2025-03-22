@@ -4,7 +4,6 @@
   inputs = {
     # NixOS official package sources
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11";
 
     # home-manager, used for managing user configuration
     home-manager = {
@@ -59,7 +58,6 @@
 
   outputs = {
     nixpkgs,
-    nixpkgs-stable,
     home-manager,
     nix-darwin,
     ...
@@ -70,12 +68,6 @@
 
       specialArgs = {
         inherit inputs;
-        # Configure parameters to use nixpkgs-unstable
-        pkgs-stable = import nixpkgs-stable {
-          # Refer to the `system` parameter form the outer scope
-          inherit system;
-          config.allowUnfree = true;
-        };
       };
 
       modules = [
@@ -97,12 +89,6 @@
 
       specialArgs = {
         inherit inputs;
-        # Configure parameters to use nixpkgs-unstable
-        pkgs-stable = import nixpkgs-stable {
-          # Refer to the `system` parameter form the outer scope
-          inherit system;
-          config.allowUnfree = true;
-        };
       };
 
       modules = [

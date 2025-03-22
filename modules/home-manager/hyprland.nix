@@ -76,13 +76,6 @@
         allow_workspace_cycles = true;
       };
 
-      windowrule = let
-        float = regex: "float, ^(${regex})$";
-      in [
-        (float "nm-connection-editor")
-        (float "org.gnome.Settings")
-      ];
-
       windowrulev2 = let
         floatClass = class: "float,class:^(${class})$";
         floatTitle = title: "float, title:^(${title})$";
@@ -108,6 +101,7 @@
         (floatClass "mpv")
         (floatClass "branchdialog")
 
+        (floatTitle "org.gnome.Settings")
         (floatTitle "Volume Control")
         (floatTitle "Bluetooth Devices")
         (floatTitle "Open File")
