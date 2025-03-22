@@ -13,17 +13,21 @@
     ../../modules/home-manager/dconf.nix
     ../../modules/home-manager/volta.nix
     ../../modules/home-manager/pro-audio.nix
-    ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/fuzzel.nix
     ../../modules/home-manager/ghostty.nix
+    ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/hyprpanel.nix
+    ../../modules/home-manager/hyprlock.nix
+    ../../modules/home-manager/hypridle.nix
     inputs.neovim-config.homeManagerModules.default
     inputs.spicetify-nix.homeManagerModules.default
   ];
 
   home.username = "fveracoechea";
   home.homeDirectory = "/home/fveracoechea";
+
+  home.file.".face".source = ../../wallpapers/face.jpg;
 
   programs.spicetify.enable = true;
 
