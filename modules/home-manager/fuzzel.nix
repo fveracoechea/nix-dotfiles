@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -27,9 +27,4 @@
       };
     };
   };
-
-  home.packages = [
-    (pkgs.helpers.nodeJsScript "fuzzel-powermenu")
-    (pkgs.helpers.nodeJsScript "fuzzel-notifications")
-  ];
 }

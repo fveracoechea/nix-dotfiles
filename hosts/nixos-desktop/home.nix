@@ -13,7 +13,6 @@
     ../../modules/home-manager/dconf.nix
     ../../modules/home-manager/volta.nix
     ../../modules/home-manager/pro-audio.nix
-    ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/fuzzel.nix
     ../../modules/home-manager/ghostty.nix
     ../../modules/home-manager/hyprland.nix
@@ -33,8 +32,8 @@
   programs.spicetify.enable = true;
 
   stylix.targets.neovim.enable = false;
-  stylix.targets.mako.enable = false;
-  stylix.targets.waybar.enable = false;
+
+  programs.cava.enable = true;
   stylix.targets.cava.rainbow.enable = true;
 
   # FPS hud for steam video-games
@@ -56,7 +55,6 @@
     ripgrep
     jq
     postman
-    cava
     wireguard-tools
   ];
 
