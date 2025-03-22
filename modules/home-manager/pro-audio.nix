@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  homePath = config.home.homeDirectory;
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # Apps
     # zrythm
@@ -38,12 +32,4 @@ in {
     yabridgectl
     # wineWowPackages.stable
   ];
-
-  # Setup Yabridge
-  home.file.".config/yabridgectl/config.toml".text = ''
-    plugin_dirs = ['${homePath}/.win-vst']
-    vst2_location = 'centralized'
-    no_verify = false
-    blacklist = []
-  '';
 }

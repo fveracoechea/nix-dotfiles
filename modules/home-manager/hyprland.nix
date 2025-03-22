@@ -179,30 +179,22 @@
 
       listener = [
         {
-          # turn off monitor after 10mins
-          timeout = 600;
+          # turn off monitor after 5mins
+          timeout = 300;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
         {
-          # lock screen after 15mins
-          timeout = 900;
+          # lock screen after 10mins
+          timeout = 600;
           on-timeout = "hyprlock";
         }
         {
-          # suspend after 30mins
-          timeout = 1800;
-          on-timeout = "systemctl suspend";
+          # hibernate after 15mins
+          timeout = 900;
+          on-timeout = "systemctl hibernate";
         }
       ];
-    };
-  };
-
-  programs.hyprlock = {
-    enable = true;
-    settings = {
-      disable_loading_bar = true;
-      grace = 300;
     };
   };
 }
