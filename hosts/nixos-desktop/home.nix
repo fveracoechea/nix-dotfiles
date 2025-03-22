@@ -28,6 +28,7 @@
   home.homeDirectory = "/home/fveracoechea";
 
   home.file.".face".source = ../../wallpapers/face.jpg;
+  home.file.".face.icon".source = ../../wallpapers/face.jpg;
 
   programs.spicetify.enable = true;
 
