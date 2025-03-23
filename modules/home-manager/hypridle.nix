@@ -15,9 +15,9 @@
           on-timeout = "hyprlock";
         }
         {
-          # hibernate after 15mins
-          timeout = 900;
-          on-timeout = "systemctl hibernate";
+          # suspend after 30mins
+          timeout = 1800;
+          on-timeout = "systemctl suspend";
         }
       ];
     };

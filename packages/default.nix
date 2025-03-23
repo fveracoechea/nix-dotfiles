@@ -8,4 +8,5 @@ pkgs: let
   };
 in {
   myNodePackages = pkgs.callPackage ./node-packages.nix {inherit nodeEnv;};
+  myTmuxPackages = pkgs.callPackage ./tmux.nix {};
 }

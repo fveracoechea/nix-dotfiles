@@ -22,48 +22,49 @@ in {
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.yank
       {
-        plugin = tmuxPlugins.catppuccin;
+        plugin = myTmuxPackages.catppuccin;
         extraConfig =
           # bash
           ''
             set -g @catppuccin_flavour 'mocha'
-
-            ## Window configuration (default)
-            set -g @catppuccin_window_left_separator ""
-            set -g @catppuccin_window_right_separator " "
-            set -g @catppuccin_window_middle_separator " "
-
-            set -g @catppuccin_window_default_fill "all"
-            set -g @catppuccin_window_default_color "${theme.overlay1}"
-            set -g @catppuccin_window_default_text "#[bold]#W"
-
-            ## Right statusline modules
-            set -g @catppuccin_status_modules_right "session gitmux uptime host"
-            set -g @catppuccin_status_left_separator  " "
-            set -g @catppuccin_status_right_separator ""
-            set -g @catppuccin_status_fill "icon"
-            set -g @catppuccin_status_connect_separator "no"
-
-            ## Window configuration (current)
-            set -g @catppuccin_window_current_fill "all"
-            set -g @catppuccin_window_current_color "${theme.blue}"
-            set -g @catppuccin_window_current_text "#[bold]#W"
-
-            ## Modules
-            ### Session
-            set -g @catppuccin_session_icon ""
-            set -g @catppuccin_session_color "#{?client_prefix,${lib.toLower theme.peach},${lib.toLower theme.mauve}}"
-            ### Git
-            set -g @catppuccin_gitmux_icon ""
-            set -g @catppuccin_gitmux_color "${theme.pink}"
-            set -g @catppuccin_gitmux_text "#(tmux-git-status)"
-            ### Updatime
-            set -g @catppuccin_uptime_color "${theme.flamingo}"
-            set -g @catppuccin_uptime_text "#(tmux-uptime)"
-            ### Hostname
-            set -g @catppuccin_host_color "${theme.rosewater}"
-            set -g @catppuccin_host_icon "#(tmux-os-icon)"
           '';
+        #
+        #     ## Window configuration (default)
+        #     set -g @catppuccin_window_left_separator ""
+        #     set -g @catppuccin_window_right_separator " "
+        #     set -g @catppuccin_window_middle_separator " "
+        #
+        #     set -g @catppuccin_window_default_fill "all"
+        #     set -g @catppuccin_window_default_color "${theme.overlay1}"
+        #     set -g @catppuccin_window_default_text "#[bold]#W"
+        #
+        #     ## Right statusline modules
+        #     set -g @catppuccin_status_modules_right "session gitmux uptime host"
+        #     set -g @catppuccin_status_left_separator  " "
+        #     set -g @catppuccin_status_right_separator ""
+        #     set -g @catppuccin_status_fill "icon"
+        #     set -g @catppuccin_status_connect_separator "no"
+        #
+        #     ## Window configuration (current)
+        #     set -g @catppuccin_window_current_fill "all"
+        #     set -g @catppuccin_window_current_color "${theme.blue}"
+        #     set -g @catppuccin_window_current_text "#[bold]#W"
+        #
+        #     ## Modules
+        #     ### Session
+        #     set -g @catppuccin_session_icon ""
+        #     set -g @catppuccin_session_color "#{?client_prefix,${lib.toLower theme.peach},${lib.toLower theme.mauve}}"
+        #     ### Git
+        #     set -g @catppuccin_gitmux_icon ""
+        #     set -g @catppuccin_gitmux_color "${theme.pink}"
+        #     set -g @catppuccin_gitmux_text "#(tmux-git-status)"
+        #     ### Updatime
+        #     set -g @catppuccin_uptime_color "${theme.flamingo}"
+        #     set -g @catppuccin_uptime_text "#(tmux-uptime)"
+        #     ### Hostname
+        #     set -g @catppuccin_host_color "${theme.rosewater}"
+        #     set -g @catppuccin_host_icon "#(tmux-os-icon)"
+        #   '';
       }
     ];
 
@@ -74,7 +75,7 @@ in {
          set-option -g status-position top
 
          # Reset default command
-         set-option -g default-command ""
+        kset-option -g default-command ""
 
          # Renumber all windows when any window is closed
          set -g renumber-windows on
