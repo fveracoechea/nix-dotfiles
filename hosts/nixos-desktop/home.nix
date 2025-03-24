@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ../../modules/home-manager/kitty.nix
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/zsh.nix

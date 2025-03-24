@@ -27,7 +27,7 @@ with lib.hm.gvariant; {
         "org.gnome.Nautilus.desktop"
         "google-chrome.desktop"
         "org.gnome.Settings.desktop"
-        "kitty.desktop"
+        "ghostty.desktop"
         "slack.desktop"
         "io.github.seadve.Kooha.desktop"
       ];
