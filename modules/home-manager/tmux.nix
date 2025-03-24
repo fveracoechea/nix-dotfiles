@@ -25,6 +25,7 @@
             set -g @catppuccin_window_status_style "rounded"
 
             set -g @catppuccin_session_icon " "
+            set -g @catppuccin_session_color "#{?client_prefix,#{E:@thm_peach},#{E:@thm_blue}}"
           '';
       }
     ];
@@ -36,7 +37,6 @@
         set-option -g status-style bg=default
         # set -gF @catppuccin_status_background "none"
 
-        set -g @catppuccin_session_color "#{?client_prefix,#{E:@thm_peach},#{E:@thm_blue}}"
         set -g @catppuccin_gitmux_text " #(tmux-git-status)"
         set -g @catppuccin_gitmux_icon " "
         set -g @catppuccin_host_icon  "#(tmux-os-icon) "

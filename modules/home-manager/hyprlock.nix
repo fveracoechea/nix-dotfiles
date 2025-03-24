@@ -19,9 +19,9 @@
 
       background = lib.mkForce [
         {
-          path = "$HOME/dotfiles/wallpapers/dark-forrest-ultrawide.png";
-          blur_passes = 1;
-          blur_size = 4;
+          path = "$HOME/dotfiles/wallpapers/islands-ultrawide.png";
+          blur_passes = 2;
+          blur_size = 5;
         }
       ];
 
