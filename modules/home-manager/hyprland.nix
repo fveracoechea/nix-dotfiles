@@ -82,12 +82,11 @@
       in [
         "bordersize 0, fullscreen:1"
         "minsize 1000 650, floating:1"
-        "opacity 0.9 0.9 1.0, title:(.*)$"
-        "opacity 1.0, class:(google-chrome)"
-        "opacity 1.0, class:(fuzzel)"
-        "opacity 1.0, class:(kitty)"
-        "opacity 1.0, class:(kitty)"
-        "opacity 1.0, class:(com.mitchellh.ghostty)"
+        # "opacity 0.9 0.9 1.0, title:(.*)$"
+        # "opacity 1.0, class:(google-chrome)"
+        # "opacity 1.0, class:(fuzzel)"
+        # "opacity 1.0, class:(kitty)"
+        # "opacity 1.0, class:(com.mitchellh.ghostty)"
         "center, floating:1"
 
         (floatClass "file_progres")

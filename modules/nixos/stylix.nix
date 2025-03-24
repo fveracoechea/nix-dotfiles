@@ -29,8 +29,6 @@ in {
       size = 38;
     };
 
-    opacity.terminal = 0.9;
-
     fonts = {
       serif = firaSans;
       sansSerif = firaSans;
@@ -41,7 +39,7 @@ in {
         applications = 12;
         desktop = 12;
         popups = 12;
-        terminal = 12.5;
+        terminal = 13;
       };
     };
 

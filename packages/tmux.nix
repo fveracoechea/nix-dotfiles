@@ -1,8 +1,9 @@
 {
+  lib,
   fetchFromGitHub,
-  mkTmuxPlugin,
+  tmuxPlugins,
 }: {
-  catppuccin = mkTmuxPlugin {
+  catppuccin = tmuxPlugins.mkTmuxPlugin {
     pluginName = "catppuccin";
     version = "2.1.3";
     src = fetchFromGitHub {
