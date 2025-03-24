@@ -10,7 +10,7 @@ in {
     theme = "catppuccin_mocha";
 
     override = {
-      theme.font.size = "14px";
+      theme.font.size = "15px";
       theme.font.name = "Fira Code Nerd Font";
       theme.font.weight = 500;
       theme.bar.background = cpt.surface1;

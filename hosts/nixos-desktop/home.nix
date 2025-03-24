@@ -56,6 +56,7 @@
     jq
     postman
     wireguard-tools
+    lutgen
   ];
 
   # This value determines the home Manager release that your

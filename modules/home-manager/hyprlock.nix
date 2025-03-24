@@ -19,9 +19,9 @@
 
       background = lib.mkForce [
         {
-          path = "$HOME/dotfiles/wallpapers/islands-ultrawide.png";
-          blur_passes = 2;
-          blur_size = 5;
+          path = "$HOME/dotfiles/wallpapers/catppuccin-mocha/snow-mountains-ultrawide.png";
+          blur_passes = 1;
+          blur_size = 4;
         }
       ];
 
