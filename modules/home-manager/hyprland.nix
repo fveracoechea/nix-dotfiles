@@ -41,6 +41,10 @@
         enable_hyprcursor = false;
       };
 
+      experimental = {
+        color_management = true;
+      };
+
       misc = {
         vrr = 1;
         animate_manual_resizes = true;
@@ -52,7 +56,7 @@
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
       ];
 
-      monitor = "DP-1,highrr,auto,auto";
+      monitor = "DP-3,highrr,auto,auto,cm,hdr,vrr,1";
 
       general = {
         border_size = 3;
