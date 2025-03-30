@@ -15,6 +15,7 @@
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/postgreSQL.nix
+    ../../modules/nixos/sunshine.nix
   ];
 
   nix = {
