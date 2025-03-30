@@ -42,7 +42,7 @@
       };
 
       experimental = {
-        color_management = true;
+        xx_color_management_v4 = true;
       };
 
       misc = {
@@ -56,7 +56,7 @@
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
       ];
 
-      monitor = "DP-3,highrr,auto,auto,cm,hdr,vrr,1";
+      monitor = "DP-2,highrr,auto,auto,cm,hdr,vrr,1";
 
       general = {
         border_size = 3;
