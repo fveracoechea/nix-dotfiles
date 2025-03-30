@@ -56,6 +56,8 @@
     postman
     wireguard-tools
     lutgen
+    # overlays
+    dev-manager-desktop
   ];
 
   # This value determines the home Manager release that your
