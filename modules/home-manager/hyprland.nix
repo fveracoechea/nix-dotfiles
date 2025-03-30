@@ -5,6 +5,10 @@
   config,
   ...
 }: {
+  home.packages = [
+    (pkgs.helpers.nodeJsScript "toggle-resolution")
+  ];
+
   xdg.desktopEntries."org.gnome.Settings" = {
     name = "Settings";
     comment = "Gnome Control Center";
@@ -25,6 +29,7 @@
       terminal = "ghostty";
       browser = "google-chrome-stable";
       screenshot = "hyprshot -m output";
+      monitor = "DP-2, highrr, auto, auto, cm, hdr, vrr, 1";
     in {
       env = [
         "BROWSER,${browser}"
@@ -36,6 +41,8 @@
         "QT_CURSOR_THEME,capitaine-cursors"
         "QT_CURSOR_SIZE,38"
       ];
+
+      inherit monitor;
 
       cursor = {
         enable_hyprcursor = false;
@@ -55,8 +62,6 @@
         "sleep 2 && hyprpanel"
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
       ];
-
-      monitor = "DP-2,highrr,auto,auto,cm,hdr,vrr,1";
 
       general = {
         border_size = 3;
