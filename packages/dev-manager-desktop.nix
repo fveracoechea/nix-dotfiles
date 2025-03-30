@@ -1,14 +1,62 @@
 {
-  appimageTools,
+  lib,
+  stdenv,
   fetchFromGitHub,
+  fetchNpmDeps,
+  rustPlatform,
+  openssl,
+  pkg-config,
+  webkitgtk_4_1,
+  cargo-tauri,
+  gtk3,
+  gtk4,
+  nodejs,
+  perl,
+  glib-networking,
+  npmHooks,
+  wrapGAppsHook4,
   ...
 }:
-appimageTools.wrapType2 rec {
-  name = "dev-manager-desktop";
+rustPlatform.buildRustPackage rec {
+  pname = "dev-manager-desktop";
+  version = "1.99.10";
+  useFetchCargoVendor = true;
+  cargoHash = "sha256-AhQ3bQ4wCP3qFy1Yk8hqSrBCU4QXEWED7BPAzDZpsGA=";
+
   src = fetchFromGitHub {
-    repo = name;
+    repo = pname;
+    rev = "v${version}";
     owner = "webosbrew";
-    rev = "3a79bd0b2da8934b7546d5ba35a2ed2c55ea7ca7";
-    hash = "sha256-Kaz/Tx0qDT1ir88BsWv6JqstlF4ck9G+6k0cpV5m5QE=";
+    hash = "sha256-IrwWfEJzQxfp8BKZuqOk7aY28Ozuuo4TCp/p0b1saS4=";
   };
+
+  npmDeps = fetchNpmDeps {
+    name = "${pname}-npm-deps-${version}";
+    inherit src;
+    hash = "sha256-VnIyUr6gWQXV6/gRUWfui2EXUBI9Gk3CVJgJ9jfRI5M=";
+  };
+
+  nativeBuildInputs = [
+    perl
+    # Pull in our main hook
+    cargo-tauri.hook
+    # Setup npm
+    nodejs
+    npmHooks.npmConfigHook
+    # Make sure we can find our libraries
+    pkg-config
+    wrapGAppsHook4
+  ];
+
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      glib-networking
+      webkitgtk_4_1
+      gtk4
+      gtk3
+      webkitgtk_4_1
+    ];
 }

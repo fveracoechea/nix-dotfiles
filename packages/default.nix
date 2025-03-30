@@ -9,5 +9,5 @@ pkgs: let
 in {
   myNodePackages = pkgs.callPackage ./node-packages.nix {inherit nodeEnv;};
   myTmuxPackages = pkgs.callPackage ./tmux.nix {};
-  dev-manaber-desktop = pkgs.callPackage ./dev-manager-desktop.nix {};
+  dev-manager-desktop = pkgs.callPackage ./dev-manager-desktop.nix {};
 }
