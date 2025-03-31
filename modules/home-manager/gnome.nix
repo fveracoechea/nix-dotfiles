@@ -22,6 +22,7 @@
     gnome-control-center
     gnome-notes
     gnome-firmware
+    gnome-monitor-config
     gnomeExtensions.freon
     gnomeExtensions.gamemode-shell-extension
     gnomeExtensions.tiling-shell

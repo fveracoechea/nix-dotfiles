@@ -1,3 +1,4 @@
+const { execSync } = require("node:child_process");
 // Run `hyprctl monitors` and get the output
 const monitorsOutput = execSync("hyprctl monitors").toString();
 
