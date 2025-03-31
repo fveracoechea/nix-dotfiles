@@ -12,6 +12,7 @@
   programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
+    ethtool
     protonup
     amdgpu_top
     lact
@@ -21,7 +22,6 @@
         winetricks
         gamemode
       ];
-      extraLibraries = pkgs: [gamemode];
     })
   ];
 
@@ -34,6 +34,15 @@
       ExecStart = "${pkgs.lact}/bin/lact daemon";
     };
   };
+
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
+  networking.interfaces."eno1".wakeOnLan.enable = true;
 
   # Enable openrgb
   services.hardware.openrgb.enable = true;
