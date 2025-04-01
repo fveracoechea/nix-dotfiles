@@ -28,10 +28,10 @@
       "--hdr-enabled" # HDR
       "--rt" # Real time scheduling
       "-e"
-      "-f" # fullscreen
+      # "-f" # fullscreen
       "-W 3840"
       "-H 2160"
-      "-r 120"
+      "-r 60"
     ];
     gamemode.enable = true;
   };
@@ -77,6 +77,7 @@
   services = {
     sunshine = {
       enable = true;
+      autoStart = false;
       capSysAdmin = true;
       openFirewall = true;
       applications = {
@@ -85,7 +86,7 @@
         };
         apps = [
           {
-            name = "Steam 4k";
+            name = "Steam 4K";
             image-path = "steam.png";
           }
         ];
