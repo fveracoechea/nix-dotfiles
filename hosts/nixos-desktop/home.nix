@@ -18,6 +18,7 @@
     ../../modules/home-manager/hyprpanel.nix
     ../../modules/home-manager/hyprlock.nix
     ../../modules/home-manager/hypridle.nix
+    ../../modules/home-manager/sunshine.nix
     inputs.neovim-config.homeManagerModules.default
     inputs.spicetify-nix.homeManagerModules.default
   ];
