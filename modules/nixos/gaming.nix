@@ -33,6 +33,7 @@
       "--adaptive-sync" # VRR support
       "--hdr-enabled"
       "--rt"
+      "--steam"
     ];
     gamemode.enable = true;
   };
@@ -56,6 +57,12 @@
           gamemode
         ];
       })
+      (writers.writeBashBin "sunshine-gamescope-session"
+        # bash
+        ''
+          sunshine &> ~/sunshine-output.txt &
+          gamescope -e -- steam -steamos3 -gamepadui -pipewire-dmabuf -tenfoot
+        '')
     ];
   };
 
@@ -72,7 +79,7 @@
   services = {
     sunshine = {
       enable = true;
-      autoStart = true;
+      # autoStart = true;
       capSysAdmin = true;
       openFirewall = true;
     };
@@ -87,7 +94,7 @@
           [Desktop Entry]
           Name=Gamescope Steam
           Comment=Launch Gamescope with Steam Big Picture Mode
-          Exec=gamescope -e -- steam -pipewire-dmabuf -tenfoot
+          Exec=sunshine-gamescope-session
           Type=Application
         '';
       })
