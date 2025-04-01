@@ -24,16 +24,14 @@
     gamescope.enable = true;
     gamescope.capSysNice = true;
     gamescope.args = [
-      "-w"
-      "3840"
-      "-h"
-      "2160"
-      "-r"
-      "120"
       "--adaptive-sync" # VRR support
-      "--hdr-enabled"
-      "--rt"
-      "--steam"
+      "--hdr-enabled" # HDR
+      "--rt" # Real time scheduling
+      "-e"
+      "-f" # fullscreen
+      "-W 3840"
+      "-H 2160"
+      "-r 120"
     ];
     gamemode.enable = true;
   };
@@ -61,7 +59,7 @@
         # bash
         ''
           sunshine &> ~/sunshine-output.txt &
-          gamescope -e -- steam -steamos3 -gamepadui -pipewire-dmabuf -tenfoot
+          gamescope -- steam -gamepadui -pipewire-dmabuf -tenfoot -steamos
         '')
     ];
   };
@@ -79,9 +77,19 @@
   services = {
     sunshine = {
       enable = true;
-      # autoStart = true;
       capSysAdmin = true;
       openFirewall = true;
+      applications = {
+        env = {
+          "PATH" = "$(PATH):$(HOME)/.local/bin";
+        };
+        apps = [
+          {
+            name = "Steam 4k";
+            image-path = "steam.png";
+          }
+        ];
+      };
     };
 
     displayManager.sessionPackages = [
