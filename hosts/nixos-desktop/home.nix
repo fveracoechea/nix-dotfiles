@@ -2,7 +2,9 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  customPkgs = import ../../packages pkgs;
+in {
   imports = [
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux.nix
@@ -57,8 +59,7 @@
     postman
     wireguard-tools
     lutgen
-    # overlays
-    dev-manager-desktop
+    customPkgs.dev-manager-desktop
   ];
 
   # This value determines the home Manager release that your

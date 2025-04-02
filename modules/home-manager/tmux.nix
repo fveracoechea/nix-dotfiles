@@ -1,8 +1,10 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  customPkgs = import ../../packages pkgs;
+in {
   home.packages = [
-    (pkgs.helpers.nodeJsScript "tmux-uptime")
-    (pkgs.helpers.nodeJsScript "tmux-os-icon")
-    (pkgs.helpers.nodeJsScript "tmux-git-status")
+    customPkgs.scripts.tmux-uptime
+    customPkgs.scripts.tmux-os-icon
+    customPkgs.scripts.tmux-git-status
   ];
 
   programs.tmux = {
@@ -16,7 +18,7 @@
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.yank
       {
-        plugin = myTmuxPlugins.catppuccin;
+        plugin = customPkgs.tmuxPlugins.catppuccin;
         # config before loading this plugin
         extraConfig =
           #bash

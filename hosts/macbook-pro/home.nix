@@ -2,7 +2,9 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  customPkgs = import ../../packages pkgs;
+in {
   imports = [
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/zsh.nix
@@ -21,7 +23,7 @@
     slack
     nerd-fonts.fira-code
     lazydocker
-    (pkgs.helpers.nodeJsScript "keycloak-proxy")
+    customPkgs.scripts.keycloak-proxy
   ];
 
   # NOTE: teporal fix ghostty package is broken on Darwin

@@ -7,7 +7,8 @@ pkgs: let
       else null;
   };
 in {
-  myNodePackages = pkgs.callPackage ./node-packages.nix {inherit nodeEnv;};
-  myTmuxPlugins = pkgs.callPackage ./tmux-plugins.nix {};
+  scripts = pkgs.callPackage ./scripts.nix {};
+  nodePackages = pkgs.callPackage ./node-packages.nix {inherit nodeEnv;};
+  tmuxPlugins = pkgs.callPackage ./tmux-plugins.nix {};
   dev-manager-desktop = pkgs.callPackage ./dev-manager-desktop.nix {};
 }
