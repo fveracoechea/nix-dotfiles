@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     fastfetch
-    microfetch
+    # microfetch does work in nix-darwin
     cmatrix
   ];
 
@@ -106,7 +106,7 @@
         fi
 
         # startup script
-        clear && microfetch
+        clear && fastfetch
       '';
   };
 }
