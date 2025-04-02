@@ -16,7 +16,7 @@
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.yank
       {
-        plugin = myTmuxPackages.catppuccin;
+        plugin = myTmuxPlugins.catppuccin;
         # config before loading this plugin
         extraConfig =
           #bash

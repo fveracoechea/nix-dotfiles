@@ -16,9 +16,6 @@ in {
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   nix = {
     package = pkgs.nix;
     # Enable the Flakes feature and the accompanying new nix command-line tool
@@ -42,5 +39,7 @@ in {
   # Currently not working as a system service - using homebrew instead
   services.karabiner-elements.enable = false;
 
-  security.pam.enableSudoTouchIdAuth = true;
+  # Enable touch id
+  security.pam.services.sudo_local.touchIdAuth = true;
+  security.pam.services.sudo_local.reattach = true;
 }

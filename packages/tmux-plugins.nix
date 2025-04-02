@@ -1,15 +1,15 @@
 {
-  lib,
   fetchFromGitHub,
   tmuxPlugins,
+  ...
 }: {
-  catppuccin = tmuxPlugins.mkTmuxPlugin {
+  catppuccin = tmuxPlugins.mkTmuxPlugin rec {
     pluginName = "catppuccin";
-    version = "03/23/2025";
+    version = "2.1.3";
     src = fetchFromGitHub {
       owner = "catppuccin";
       repo = "tmux";
-      rev = "v2.1.3";
+      rev = "v${version}";
       hash = "sha256-Is0CQ1ZJMXIwpDjrI5MDNHJtq+R3jlNcd9NXQESUe2w=";
     };
     postInstall = ''

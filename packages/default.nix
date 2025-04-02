@@ -8,6 +8,7 @@ pkgs: let
   };
 in {
   myNodePackages = pkgs.callPackage ./node-packages.nix {inherit nodeEnv;};
-  myTmuxPackages = pkgs.callPackage ./tmux.nix {};
+  myTmuxPlugins = pkgs.callPackage ./tmux-plugins.nix {};
   dev-manager-desktop = pkgs.callPackage ./dev-manager-desktop.nix {};
+  microfetch = pkgs.callPackage ./microfetch.nix {};
 }
