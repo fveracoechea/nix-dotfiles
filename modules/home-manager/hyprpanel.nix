@@ -1,13 +1,19 @@
-{inputs, ...}: let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   cpt = import ../../utils/catppuccin.nix;
 in {
   imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
 
+  home.packages = [pkgs.hyprpanel];
+
   programs.hyprpanel = {
     enable = true;
+    overlay.enable = true;
+    hyprland.enable = true;
     overwrite.enable = true;
-
-    theme = "catppuccin_mocha";
 
     override = {
       theme.font.size = "15px";
@@ -47,21 +53,14 @@ in {
       theme.osd.radius = "2em";
     };
 
-    layout = {
-      "bar.layouts" = {
-        "*" = {
-          left = ["dashboard" "media" "cava" "systray" "clock" "workspaces"];
-          middle = ["windowtitle"];
-          right = ["volume" "bluetooth" "network" "netstat" "cpu" "ram" "storage" "notifications"];
-        };
-      };
-    };
-
     settings = {
       scalingPriority = "hyprland";
-      bar.launcher.autoDetectIcon = true;
+      theme.name = "catppuccin_mocha";
 
       notifications.position = "bottom";
+
+      bar.launcher.autoDetectIcon = true;
+
       bar.notifications.show_total = true;
       bar.notifications.hideCountWhenZero = true;
 
@@ -85,6 +84,16 @@ in {
       menus.dashboard.directories.enabled = false;
       menus.dashboard.stats.enable_gpu = false;
       bar.clock.format = "%a %b %d %I:%M %p";
+
+      layout = {
+        "bar.layouts" = {
+          "*" = {
+            left = ["dashboard" "media" "cava" "systray" "clock" "workspaces"];
+            middle = ["windowtitle"];
+            right = ["volume" "bluetooth" "network" "netstat" "cpu" "ram" "storage" "notifications"];
+          };
+        };
+      };
     };
   };
 }

@@ -60,6 +60,7 @@
     nixpkgs,
     home-manager,
     nix-darwin,
+    hyprpanel,
     ...
   } @ inputs: {
     # `macbook-pro` configuration
@@ -67,6 +68,7 @@
       system = "aarch64-darwin";
 
       specialArgs = {
+        inherit system;
         inherit inputs;
       };
 
@@ -88,22 +90,18 @@
       system = "x86_64-linux";
 
       specialArgs = {
+        inherit system;
         inherit inputs;
       };
 
       modules = [
-        # NixOS System configurations
+        {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
         ./hosts/nixos-desktop/configuration.nix
-
-        # make home-manager as a module of nixos
-        # so tat home-manager configuration will be deployed automatically
-        # when executing `nixos-rebuild switch`
         home-manager.nixosModules.home-manager
-
-        # home-manager settings
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          nixpkgs.config.allowUnfree = true;
           home-manager.backupFileExtension = "hm-backup";
           home-manager.users.fveracoechea = import ./hosts/nixos-desktop/home.nix;
           home-manager.extraSpecialArgs = specialArgs;
