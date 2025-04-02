@@ -1,0 +1,16 @@
+{
+  "name": "deno-scripts",
+  "compilerOptions": {
+    "checkJs": false
+  },
+  "fmt": {
+    "exclude": [
+      "**/*.js"
+    ]
+  },
+  "lint": {
+    "exclude": [
+      "**/*.js"
+    ]
+  },
+}

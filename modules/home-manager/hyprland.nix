@@ -5,10 +5,6 @@
   config,
   ...
 }: {
-  home.packages = [
-    (pkgs.helpers.nodeJsScript "toggle-resolution")
-  ];
-
   xdg.desktopEntries."org.gnome.Settings" = {
     name = "Settings";
     comment = "Gnome Control Center";

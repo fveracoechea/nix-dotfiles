@@ -1,7 +1,6 @@
-// @ts-check
-const http = require("http");
-const https = require("https");
-const os = require("os");
+const http = require("node:http");
+const https = require("node:https");
+const os = require("node:os");
 
 const TARGET_HOST = "10.1.80.166";
 const TARGET_PORT = 8543;
@@ -29,7 +28,7 @@ const server = http.createServer((req, res) => {
   const options = {
     hostname: TARGET_HOST,
     port: TARGET_PORT,
-    path: req.url || '/',
+    path: req.url || "/",
     method: req.method,
     headers: req.headers,
     rejectUnauthorized: false, // Ignore SSL certificate issues
