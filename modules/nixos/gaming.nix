@@ -31,7 +31,7 @@
       # "-f" # fullscreen
       "-W 3840"
       "-H 2160"
-      "-r 60"
+      "-r 60" # refresh rate
     ];
     gamemode.enable = true;
   };
