@@ -24,6 +24,7 @@
 in {
   # Node Scripts
   keycloak-proxy = nodeJsScript "keycloak-proxy";
+  vms-proxy = nodeJsScript "vms-proxy";
   # Deno Scripts
   tmux-git-status = denoScript "tmux-git-status";
   tmux-uptime = denoScript "tmux-uptime";
