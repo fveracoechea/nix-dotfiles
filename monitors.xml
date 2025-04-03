@@ -128,6 +128,36 @@
         <mode>
           <width>5120</width>
           <height>1440</height>
+          <rate>119.979</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <disabled>
+      <monitorspec>
+        <connector>HDMI-1</connector>
+        <vendor>LLV</vendor>
+        <product>F0501-4K</product>
+        <serial>0x03f92f10</serial>
+      </monitorspec>
+    </disabled>
+  </configuration>
+  <configuration>
+    <layoutmode>physical</layoutmode>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-1</connector>
+          <vendor>SAM</vendor>
+          <product>Odyssey G95SC</product>
+          <serial>H1AK500000</serial>
+        </monitorspec>
+        <mode>
+          <width>5120</width>
+          <height>1440</height>
           <rate>239.999</rate>
           <ratemode>variable</ratemode>
         </mode>

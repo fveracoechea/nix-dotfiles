@@ -36,7 +36,7 @@
       # "-f" # fullscreen
       "-W 3840"
       "-H 2160"
-      "-r 60" # refresh rate
+      "-r 120" # refresh rate
       "-O HDMI-A-1" # Monitor
     ];
     gamemode.enable = true;
