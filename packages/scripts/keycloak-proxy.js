@@ -2,9 +2,8 @@ const http = require("node:http");
 const https = require("node:https");
 const os = require("node:os");
 
-const TARGET_HOST = "10.1.80.166";
-const TARGET_PORT = 8543;
-const TARGET_PATH = "/auth";
+const TARGET_HOST = "https://pmwand4-iam.prounlimited.com";
+const TARGET_PORT = 3330;
 
 /**
  * Get the local IP address of the machine.
@@ -27,7 +26,6 @@ const server = http.createServer((req, res) => {
 
   const options = {
     hostname: TARGET_HOST,
-    port: TARGET_PORT,
     path: req.url || "/",
     method: req.method,
     headers: req.headers,
