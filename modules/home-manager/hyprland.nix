@@ -25,7 +25,6 @@
       terminal = "ghostty";
       browser = "google-chrome-stable";
       screenshot = "hyprshot -m output";
-      monitor = "DP-2, highrr, auto, auto, cm, hdr, vrr, 1";
     in {
       env = [
         "BROWSER,${browser}"
@@ -38,7 +37,10 @@
         "QT_CURSOR_SIZE,38"
       ];
 
-      inherit monitor;
+      monitor = [
+        "DP-2, highrr, auto, auto, cm, hdr, vrr, 1"
+        "HDMI-A-1, disable"
+      ];
 
       cursor = {
         enable_hyprcursor = false;

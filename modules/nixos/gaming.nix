@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   hardware = {
     graphics.enable = true;
     graphics.enable32Bit = true;
@@ -32,6 +37,7 @@
       "-W 3840"
       "-H 2160"
       "-r 60" # refresh rate
+      "-O HDMI-A-1" # Monitor
     ];
     gamemode.enable = true;
   };
@@ -73,6 +79,13 @@
       ExecStart = "${pkgs.lact}/bin/lact daemon";
     };
   };
+
+  # GDM monitor configuration
+  systemd.tmpfiles.rules = let
+    monitorsXML = lib.fileContents ../../monitors.xml;
+  in [
+    "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "gdm-monitors.xml" monitorsXML}"
+  ];
 
   services = {
     sunshine = {
