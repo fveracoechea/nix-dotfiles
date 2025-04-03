@@ -1,5 +1,28 @@
 <monitors version="2">
   <configuration>
+    <layoutmode>physical</layoutmode>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>2</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-3</connector>
+          <vendor>SAM</vendor>
+          <product>Odyssey G95SC</product>
+          <serial>H1AK500000</serial>
+        </monitorspec>
+        <mode>
+          <width>3840</width>
+          <height>2160</height>
+          <rate>60.000</rate>
+        </mode>
+        <underscanning>yes</underscanning>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
     <layoutmode>logical</layoutmode>
     <logicalmonitor>
       <x>0</x>
@@ -18,6 +41,28 @@
           <height>1440</height>
           <rate>239.999</rate>
           <ratemode>variable</ratemode>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <layoutmode>logical</layoutmode>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-3</connector>
+          <vendor>SAM</vendor>
+          <product>Odyssey G95SC</product>
+          <serial>H1AK500000</serial>
+        </monitorspec>
+        <mode>
+          <width>5120</width>
+          <height>1440</height>
+          <rate>239.999</rate>
         </mode>
       </monitor>
     </logicalmonitor>
@@ -63,51 +108,6 @@
           <height>1440</height>
           <rate>75.000</rate>
         </mode>
-      </monitor>
-    </logicalmonitor>
-  </configuration>
-  <configuration>
-    <layoutmode>logical</layoutmode>
-    <logicalmonitor>
-      <x>0</x>
-      <y>0</y>
-      <scale>1</scale>
-      <primary>yes</primary>
-      <monitor>
-        <monitorspec>
-          <connector>DP-3</connector>
-          <vendor>SAM</vendor>
-          <product>Odyssey G95SC</product>
-          <serial>H1AK500000</serial>
-        </monitorspec>
-        <mode>
-          <width>5120</width>
-          <height>1440</height>
-          <rate>239.999</rate>
-        </mode>
-      </monitor>
-    </logicalmonitor>
-  </configuration>
-  <configuration>
-    <layoutmode>physical</layoutmode>
-    <logicalmonitor>
-      <x>0</x>
-      <y>0</y>
-      <scale>2</scale>
-      <primary>yes</primary>
-      <monitor>
-        <monitorspec>
-          <connector>DP-3</connector>
-          <vendor>SAM</vendor>
-          <product>Odyssey G95SC</product>
-          <serial>H1AK500000</serial>
-        </monitorspec>
-        <mode>
-          <width>3840</width>
-          <height>2160</height>
-          <rate>60.000</rate>
-        </mode>
-        <underscanning>yes</underscanning>
       </monitor>
     </logicalmonitor>
   </configuration>
@@ -145,29 +145,6 @@
     <layoutmode>physical</layoutmode>
     <logicalmonitor>
       <x>0</x>
-      <y>0</y>
-      <scale>1</scale>
-      <primary>yes</primary>
-      <monitor>
-        <monitorspec>
-          <connector>DP-1</connector>
-          <vendor>SAM</vendor>
-          <product>Odyssey G95SC</product>
-          <serial>H1AK500000</serial>
-        </monitorspec>
-        <mode>
-          <width>5120</width>
-          <height>1440</height>
-          <rate>239.999</rate>
-          <ratemode>variable</ratemode>
-        </mode>
-      </monitor>
-    </logicalmonitor>
-  </configuration>
-  <configuration>
-    <layoutmode>physical</layoutmode>
-    <logicalmonitor>
-      <x>0</x>
       <y>518</y>
       <scale>1</scale>
       <primary>yes</primary>
@@ -204,6 +181,29 @@
           <width>2560</width>
           <height>1440</height>
           <rate>75.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <layoutmode>physical</layoutmode>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-1</connector>
+          <vendor>SAM</vendor>
+          <product>Odyssey G95SC</product>
+          <serial>H1AK500000</serial>
+        </monitorspec>
+        <mode>
+          <width>5120</width>
+          <height>1440</height>
+          <rate>239.999</rate>
+          <ratemode>variable</ratemode>
         </mode>
       </monitor>
     </logicalmonitor>

@@ -81,9 +81,9 @@
   };
 
   # GDM monitor configuration
-  systemd.tmpfiles.rules = [
-    "L+ /run/gdm/.config/monitors.xml - - - - ${lib.fileContents ../../monitors.xml}"
-  ];
+  # systemd.tmpfiles.rules = [
+  #   "L+ /run/gdm/.config/monitors.xml - - - - ${lib.fileContents ../../monitors.xml}"
+  # ];
 
   services = {
     sunshine = {
