@@ -81,10 +81,8 @@
   };
 
   # GDM monitor configuration
-  systemd.tmpfiles.rules = let
-    monitorsXML = lib.fileContents ../../monitors.xml;
-  in [
-    "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "gdm-monitors.xml" monitorsXML}"
+  systemd.tmpfiles.rules = [
+    "L+ /run/gdm/.config/monitors.xml - - - - ${lib.fileContents ../../monitors.xml}"
   ];
 
   services = {
