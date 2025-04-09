@@ -1,57 +1,19 @@
-const http = require("node:http");
-const https = require("node:https");
-const { URL } = require('node:url');
-const os = require("node:os");
+const http = require('http');
+const httpProxy = require('http-proxy');
 
-const PORT = 3330;
+// Create a proxy server
+const proxy = httpProxy.createProxyServer({
+  target: 'https://pmwand4-iam.prounlimited.com',
+  changeOrigin: true,
+  secure: false // if you want to verify SSL certificates
+});
 
-/**
- * Get the local IP address of the machine.
- * Prioritizes IPv4 addresses that are not internal loopback (127.0.0.1).
- */
-function getLocalIp() {
-  const interfaces = os.networkInterfaces();
-  for (const iface of Object.values(interfaces)) {
-    for (const info of iface ?? []) {
-      if (info.family === "IPv4" && !info.internal) {
-        return info.address;
-      }
-    }
-  }
-  return "Unknown";
-}
-
-
-const TARGET_URL = 'https://pmwand4-iam.prounlimited.com';
-
+// Create a server which uses the proxy
 const server = http.createServer((req, res) => {
-    const targetUrl = new URL(TARGET_URL + req.url);
-    
-    
-    const options = {
-        hostname: targetUrl.hostname,
-        path: targetUrl.pathname + targetUrl.search,
-        method: req.method,
-        headers: req.headers,
-        rejectUnauthorized: false,  // Bypass SSL verification (use cautiously)
-        ciphers: 'DEFAULT:@SECLEVEL=0', // Allow weaker SSL ciphers if needed
-    };    
-
-    const proxyReq = https.request(options, (proxyRes) => {
-        res.writeHead(proxyRes.statusCode, proxyRes.headers);
-        proxyRes.pipe(res);
-    });
-    
-    proxyReq.on('error', (err) => {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Proxy error: ' + err.message);
-    });
-    
-    req.pipe(proxyReq);
+  console.log(req.url)
+  proxy.web(req, res);
 });
 
-const localIp = getLocalIp();
-
-server.listen(PORT, () => {
-  console.log(`Keycloak Proxy server running on http://${localIp}:${PORT}`);
-});
+// Listen to port 8080
+console.log("Proxy server listening on port 8080");
+server.listen(8080);
