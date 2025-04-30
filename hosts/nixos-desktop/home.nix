@@ -59,6 +59,7 @@ in {
     wireguard-tools
     lutgen
     customPkgs.dev-manager-desktop
+    customPkgs.zeitfetch
   ];
 
   # This value determines the home Manager release that your

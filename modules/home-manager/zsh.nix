@@ -79,7 +79,7 @@
       }
     ];
 
-    initExtra =
+    initContent =
       # sh
       ''
         export SHELL=$(which zsh)

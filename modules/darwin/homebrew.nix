@@ -13,7 +13,6 @@
       "postgres-unofficial"
       "karabiner-elements"
       "displaylink"
-      "beekeeper-studio"
     ];
     brews = [
       "pipx"

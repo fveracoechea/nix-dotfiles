@@ -11,4 +11,5 @@ in {
   nodePackages = pkgs.callPackage ./node-packages.nix {inherit nodeEnv;};
   tmuxPlugins = pkgs.callPackage ./tmux-plugins.nix {};
   dev-manager-desktop = pkgs.callPackage ./dev-manager-desktop.nix {};
+  zeitfetch = pkgs.callPackage ./zeitfetch.nix {};
 }

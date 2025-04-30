@@ -1,10 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
-  environment.systemPackages = [pkgs.beekeeper-studio];
-
+{lib, ...}: {
   services.postgresql = {
     enable = true;
     enableTCPIP = true;
