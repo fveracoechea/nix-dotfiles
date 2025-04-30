@@ -49,7 +49,6 @@ in {
     teams-for-linux
     btop
     nerd-fonts.fira-code
-    deno
     python3
     dconf2nix
     nurl
