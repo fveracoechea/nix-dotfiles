@@ -1,5 +1,4 @@
 {
-  "name": "deno-scripts",
   "compilerOptions": {
     "checkJs": false
   },
@@ -12,5 +11,5 @@
     "exclude": [
       "**/*.js"
     ]
-  },
+  }
 }

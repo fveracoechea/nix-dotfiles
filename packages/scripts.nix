@@ -12,8 +12,10 @@
     ''
       exec ${lib.getExe deno} -A ${writeText "${name}-ts" content} "$@"
     '';
+
   # Takes the same arguments as writeDeno but outputs a directory (like writeScriptBin)
   writeDenoBin = name: writeDeno "/bin/${name}";
+
   # deno scripts from `scripts` directory
   denoScript = name:
     writeDenoBin name (lib.fileContents ./scripts/${name}.ts);

@@ -1,5 +1,8 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  customPkgs = import ../../packages pkgs;
+in {
   home.packages = with pkgs; [
+    customPkgs.zeitfetch
     fastfetch
     # microfetch does work in nix-darwin
     cmatrix
@@ -106,7 +109,7 @@
         fi
 
         # startup script
-        clear && fastfetch
+        clear && zeitfetch --no-logo
       '';
   };
 }
