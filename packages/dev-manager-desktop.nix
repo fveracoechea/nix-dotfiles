@@ -21,19 +21,19 @@ rustPlatform.buildRustPackage rec {
   pname = "dev-manager-desktop";
   version = "1.99.13";
   useFetchCargoVendor = true;
-  cargoHash = "sha256-AhQ3bQ4wCP3qFy1Yk8hqSrBCU4QXEWED7BPAzDZpsGA=";
+  cargoHash = "sha256-zd2+sGU+ytS4VRu80FfK7BpjjeM5qSm95Udou2WuUfE=";
 
   src = fetchFromGitHub {
     repo = pname;
     rev = "v${version}";
     owner = "webosbrew";
-    hash = "sha256-IrwWfEJzQxfp8BKZuqOk7aY28Ozuuo4TCp/p0b1saS4=";
+    hash = "sha256-0omtip+jhJvINFy1B5YtrLhcuEXVpUQmL5Hv48G3qtA=";
   };
 
   npmDeps = fetchNpmDeps {
     name = "${pname}-npm-deps-${version}";
     inherit src;
-    hash = "sha256-VnIyUr6gWQXV6/gRUWfui2EXUBI9Gk3CVJgJ9jfRI5M=";
+    hash = "sha256-3dngwzQY8pabMCCqAQodNjQnPOb0FnoOd+W5GAbbd2Y=";
   };
 
   nativeBuildInputs = [
