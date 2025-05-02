@@ -20,6 +20,16 @@
     };
     apps = [
       {
+        name = "Desktop";
+        image-path = "desktop.png";
+        prep-cmd = [
+          {
+            do = "steam-sunshine-do";
+            undo = "steam-sunshine-undo";
+          }
+        ];
+      }
+      {
         name = "Steam Big Picture";
         cmd = "";
         image-path = "steam.png";

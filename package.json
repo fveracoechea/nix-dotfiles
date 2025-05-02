@@ -1,6 +1,0 @@
-{
-  "name": "nix-dotfiles",
-  "dependencies": {
-    "http-proxy": "^1.18.1"
-  }
-}

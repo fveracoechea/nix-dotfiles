@@ -1,7 +1,4 @@
 {
-  "compilerOptions": {
-    "checkJs": false
-  },
   "fmt": {
     "exclude": [
       "**/*.js"
