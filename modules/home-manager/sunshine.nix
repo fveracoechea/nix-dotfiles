@@ -20,8 +20,10 @@
     };
     apps = [
       {
-        name = "Steam 4K";
+        name = "Steam Big Picture";
+        cmd = "";
         image-path = "steam.png";
+        auto-detach = "true";
         detached = ["setsid steam -gamepadui -pipewire-dmabuf -tenfoot"];
         prep-cmd = [
           {
