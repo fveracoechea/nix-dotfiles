@@ -24,6 +24,7 @@ in {
     nerd-fonts.fira-code
     lazydocker
     customPkgs.scripts.keycloak-proxy
+    customPkgs.scripts.deno-keycloak-proxy
     customPkgs.scripts.vms-proxy
   ];
 
