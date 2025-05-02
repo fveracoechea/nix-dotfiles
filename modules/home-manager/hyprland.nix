@@ -38,7 +38,7 @@
       ];
 
       monitor = [
-        "DP-2, highrr, auto, auto, cm, hdr, vrr, 1"
+        "DP-1, 5120x1440@119.98Hz, auto, auto, vrr, 3, cm, auto"
         "HDMI-A-1, disable"
       ];
 

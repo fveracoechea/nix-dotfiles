@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }: {
   hardware = {
@@ -26,19 +25,6 @@
     steam.gamescopeSession.enable = true;
     steam.extraCompatPackages = [pkgs.proton-ge-bin];
 
-    gamescope.enable = true;
-    gamescope.capSysNice = true;
-    gamescope.args = [
-      "--adaptive-sync" # VRR support
-      "--hdr-enabled" # HDR
-      "--rt" # Real time scheduling
-      "-e"
-      # "-f" # fullscreen
-      "-W 3840"
-      "-H 2160"
-      "-r 120" # refresh rate
-      "-O HDMI-A-1" # Monitor
-    ];
     gamemode.enable = true;
   };
 
@@ -61,12 +47,6 @@
           gamemode
         ];
       })
-      (writers.writeBashBin "sunshine-gamescope-session"
-        # bash
-        ''
-          sunshine &> ~/sunshine-output.txt &
-          gamescope -- steam -gamepadui -pipewire-dmabuf -tenfoot -steamos
-        '')
     ];
   };
 
@@ -81,9 +61,9 @@
   };
 
   # GDM monitor configuration
-  # systemd.tmpfiles.rules = [
-  #   "L+ /run/gdm/.config/monitors.xml - - - - ${lib.fileContents ../../monitors.xml}"
-  # ];
+  systemd.tmpfiles.rules = [
+    "L+ /run/gdm/.config/monitors.xml - - - - ${lib.fileContents ../../monitors.xml}"
+  ];
 
   services = {
     sunshine = {
@@ -92,22 +72,6 @@
       capSysAdmin = true;
       openFirewall = true;
     };
-
-    displayManager.sessionPackages = [
-      (pkgs.writeTextFile {
-        name = "gamescope-steam.desktop";
-        destination = "/share/wayland-sessions/gamescope-steam.desktop";
-        checkPhase = ''${pkgs.buildPackages.desktop-file-utils}/bin/desktop-file-validate "$target"'';
-        derivationArgs = {passthru.providedSessions = ["gamescope-steam"];};
-        text = ''
-          [Desktop Entry]
-          Name=Gamescope Steam
-          Comment=Launch Gamescope with Steam Big Picture Mode
-          Exec=sunshine-gamescope-session
-          Type=Application
-        '';
-      })
-    ];
   };
 
   networking.interfaces."eno1".wakeOnLan.enable = true;
