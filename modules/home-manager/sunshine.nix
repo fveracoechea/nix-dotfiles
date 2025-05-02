@@ -22,7 +22,7 @@
       {
         name = "Steam 4K";
         image-path = "steam.png";
-        detached = ["steam -gamepadui -pipewire-dmabuf -tenfoot"];
+        detached = ["setsid steam -gamepadui -pipewire-dmabuf -tenfoot"];
         prep-cmd = [
           {
             do = "steam-sunshine-do";
