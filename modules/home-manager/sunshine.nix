@@ -34,7 +34,7 @@
         cmd = "";
         image-path = "steam.png";
         auto-detach = "true";
-        detached = ["setsid steam -gamepadui -pipewire-dmabuf -tenfoot"];
+        detached = ["steam -gamepadui -pipewire-dmabuf -tenfoot"];
         prep-cmd = [
           {
             do = "steam-sunshine-do";
