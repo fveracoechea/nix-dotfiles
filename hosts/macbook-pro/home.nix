@@ -25,7 +25,6 @@ in {
     lazydocker
     customPkgs.scripts.keycloak-proxy
     customPkgs.scripts.deno-keycloak-proxy
-    customPkgs.scripts.vms-proxy
   ];
 
   # NOTE: teporal fix ghostty package is broken on Darwin
