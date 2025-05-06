@@ -24,11 +24,8 @@
   nodeJsScript = name:
     writers.writeJSBin name {} (lib.fileContents ./scripts/${name}.js);
 in {
-  # Node Scripts
-  keycloak-proxy = nodeJsScript "keycloak-proxy";
-  # Deno Scripts
+  keycloak-proxy = denoScript "keycloak-proxy";
   tmux-git-status = denoScript "tmux-git-status";
   tmux-uptime = denoScript "tmux-uptime";
   tmux-os-icon = denoScript "tmux-os-icon";
-  deno-keycloak-proxy = denoScript "deno-keycloak-proxy";
 }

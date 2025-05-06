@@ -1,16 +1,16 @@
-const http = require('http');
-const httpProxy = require('http-proxy');
+import http from "node:http";
+import httpProxy from "npm:http-proxy";
 
 // Create a proxy server
 const proxy = httpProxy.createProxyServer({
-  target: 'https://pmwand4-iam.prounlimited.com',
+  target: "https://pmwand4-iam.prounlimited.com",
   changeOrigin: true,
-  secure: false // if you want to verify SSL certificates
+  secure: false, // if you want to verify SSL certificates
 });
 
 // Create a server which uses the proxy
 const server = http.createServer((req, res) => {
-  console.log(req.url)
+  console.log(req.url);
   proxy.web(req, res);
 });
 
