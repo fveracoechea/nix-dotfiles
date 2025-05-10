@@ -3,19 +3,20 @@
     (writers.writeBashBin "steam-sunshine-do"
       # bash
       ''
-        hyprctl keyword monitor "DP-1, disable"
         hyprctl keyword monitor "HDMI-A-1, 3840x2160@120.00Hz, auto, auto, vrr, 1, cm, hdr"
+        hyprctl keyword monitor "DP-1, disable"
       '')
     (writers.writeBashBin "steam-sunshine-undo"
       # bash
       ''
-        hyprctl keyword monitor "HDMI-A-1, disable"
         hyprctl keyword monitor "DP-1, 5120x1440@119.98Hz, auto, auto, vrr, 3, cm, auto"
+        hyprctl keyword monitor "HDMI-A-1, disable"
       '')
     (writers.writeBashBin "steam-big-picture"
       # bash
       ''
-        capsh --delamb=cap_sys_admin -- -c "setsid steam -gamepadui -tenfoot &> ~/dotfiles/steam-logs.txt"
+        sleep 2
+        gamescope -- setsid steam -gamepadui -tenfoot &> ~/dotfiles/steam-logs.txt
       '')
   ];
 

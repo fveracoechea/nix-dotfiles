@@ -57,7 +57,7 @@
       };
 
       exec-once = [
-        "sleep 2 && hyprpanel"
+        "hyprpanel"
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
       ];
 
