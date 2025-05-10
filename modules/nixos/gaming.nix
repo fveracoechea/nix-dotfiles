@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   hardware = {
     graphics.enable = true;
     graphics.enable32Bit = true;
@@ -22,9 +18,7 @@
 
   programs = {
     steam.enable = true;
-    steam.gamescopeSession.enable = true;
     steam.extraCompatPackages = [pkgs.proton-ge-bin];
-
     gamemode.enable = true;
   };
 
@@ -59,11 +53,6 @@
       ExecStart = "${pkgs.lact}/bin/lact daemon";
     };
   };
-
-  # GDM monitor configuration
-  systemd.tmpfiles.rules = [
-    "L+ /run/gdm/.config/monitors.xml - - - - ${lib.fileContents ../../monitors.xml}"
-  ];
 
   services = {
     sunshine = {
