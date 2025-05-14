@@ -57,7 +57,7 @@
       };
 
       exec-once = [
-        "sleep 2 && hyprpanel"
+        "hyprpanel"
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
       ];
 
@@ -83,17 +83,18 @@
         allow_workspace_cycles = true;
       };
 
-      windowrulev2 = let
+      windowrule = let
         floatClass = class: "float,class:^(${class})$";
         floatTitle = title: "float, title:^(${title})$";
       in [
         "bordersize 0, fullscreen:1"
         "minsize 1000 650, floating:1"
-        "opacity 0.9 0.9 1.0, title:(.*)$"
+        "opacity 0.9 0.9 1.0, class:^(.*)$"
         "opacity 1.0, class:(google-chrome)"
         "opacity 1.0, class:(fuzzel)"
         "opacity 1.0, class:(com.mitchellh.ghostty)"
         "center, floating:1"
+        "idleinhibit fullscreen, class:^(.*)$"
 
         (floatClass "file_progres")
         (floatClass "confirm")

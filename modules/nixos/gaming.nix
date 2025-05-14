@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   hardware = {
     graphics.enable = true;
     graphics.enable32Bit = true;
@@ -22,10 +18,25 @@
 
   programs = {
     steam.enable = true;
-    steam.gamescopeSession.enable = true;
     steam.extraCompatPackages = [pkgs.proton-ge-bin];
+    steam.gamescopeSession.enable = true;
 
     gamemode.enable = true;
+
+    gamescope.enable = true;
+    gamescope.capSysNice = true;
+    gamescope.args = [
+      "--adaptive-sync" # VRR support
+      "--hdr-enabled" # HDR
+      "--rt" # Real time scheduling
+      "--force-grab-cursor"
+      "-e"
+      "-f" # fullscreen
+      "-W 3840"
+      "-H 2160"
+      "-r 120" # refresh rate
+      # "-O HDMI-A-1" # Monitor
+    ];
   };
 
   environment = {
@@ -59,11 +70,6 @@
       ExecStart = "${pkgs.lact}/bin/lact daemon";
     };
   };
-
-  # GDM monitor configuration
-  systemd.tmpfiles.rules = [
-    "L+ /run/gdm/.config/monitors.xml - - - - ${lib.fileContents ../../monitors.xml}"
-  ];
 
   services = {
     sunshine = {
