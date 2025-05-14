@@ -13,6 +13,7 @@
       "postgres-unofficial"
       "karabiner-elements"
       "displaylink"
+      "moonlight"
     ];
     brews = [
       "pipx"
