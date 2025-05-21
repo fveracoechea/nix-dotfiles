@@ -10,8 +10,8 @@
 
       listener = [
         {
-          # lock screen after 5mins
-          timeout = 300;
+          # lock screen after 15mins
+          timeout = 900;
           on-timeout = "hyprlock";
         }
         {

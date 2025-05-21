@@ -1,6 +1,6 @@
 {lib, ...}: {
   services.postgresql = {
-    enable = true;
+    enable = false;
     enableTCPIP = true;
     settings.port = 5433;
     authentication = lib.mkOverride 10 ''
