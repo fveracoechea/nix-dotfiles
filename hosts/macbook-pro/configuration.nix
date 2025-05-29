@@ -8,9 +8,10 @@ in {
     ../../modules/darwin/zsh-shell.nix
   ];
 
+  system.primaryUser = username;
+
   # Used for backwards compatibility.
   system.stateVersion = 5;
-
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
