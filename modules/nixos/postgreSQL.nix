@@ -1,4 +1,16 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  environment.systemPackages = with pkgs; [
+    beekeeper-studio
+  ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "beekeeper-studio-5.2.9"
+  ];
+
   services.postgresql = {
     enable = false;
     enableTCPIP = true;

@@ -16,7 +16,7 @@
       # bash
       ''
         sleep 2
-        gamescope -- setsid steam -gamepadui -tenfoot &> ~/dotfiles/steam-logs.txt
+        DXVK_HDR=1 gamescope -- setsid steam -gamepadui -tenfoot &> ~/dotfiles/steam-logs.txt
       '')
   ];
 

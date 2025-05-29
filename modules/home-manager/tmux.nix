@@ -90,6 +90,9 @@ in {
         # Adds spacing to the tmux status bar
         set -g status 2
         set -g status-format[1] ""
+
+        # Enable focus-events
+        set-option -g focus-events on
       '';
   };
 }
