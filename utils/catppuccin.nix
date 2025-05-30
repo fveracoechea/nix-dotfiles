@@ -26,5 +26,4 @@
   base = "#1E1E2E";
   mantle = "#181825";
   crust = "#11111B";
-  test = "";
 }

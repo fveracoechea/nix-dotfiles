@@ -25,6 +25,7 @@
       terminal = "ghostty";
       browser = "google-chrome-stable";
       screenshot = "hyprshot -m output";
+      monitors = import ../../utils/monitors.nix;
     in {
       env = [
         "BROWSER,${browser}"
@@ -38,9 +39,15 @@
       ];
 
       monitor = [
-        "DP-1, 5120x1440@119.98Hz, auto, auto, vrr, 3, cm, auto"
-        "HDMI-A-1, disable"
+        monitors.samsung-odyssey
+        monitors.dummy-4k-disabled
       ];
+
+      debug = {
+        # Claims support for all cm proto features
+        # workaround for steam gamescope
+        full_cm_proto = true;
+      };
 
       cursor = {
         enable_hyprcursor = false;
