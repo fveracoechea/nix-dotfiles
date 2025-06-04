@@ -4,7 +4,9 @@
       pkgs.catppuccin-sddm.override {
         flavor = "mocha";
         font = "Fira Sans";
-        fontSize = "12";
+        fontSize = "14";
+        background = "${../../wallpapers/catppuccin-mocha/dark-forrest-ultrawide.png}";
+        loginBackground = false;
       }
     )
   ];
@@ -13,5 +15,6 @@
     enable = true;
     enableHidpi = true;
     theme = "catppuccin-mocha";
+    package = pkgs.kdePackages.sddm;
   };
 }
