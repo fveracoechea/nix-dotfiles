@@ -142,15 +142,18 @@
           (bindExec "B" browser)
           (bindExec "T" terminal)
           (bindExec "A" apps)
-          (bindExec "N" "fuzzel-notifications")
           (bindExec "S" screenshot)
           (bindExec "W" "hyprctl dispatch workspaceopt allfloat")
+          (bindExec "P" "hyprctl dispatch workspaceopt allpseudo")
 
           "SUPER, F, togglefloating"
-          "SUPER, P, pseudo"
+          "SUPER CTRL, P, pseudo"
           "SUPER ALT, F, fullscreen"
           "SUPER, Q, killactive"
           "SUPER CTRL, Q, exit"
+
+          "SUPER CTRL, G, exec, steam-sunshine-do"
+          "SUPER ALT, G, exec, steam-sunshine-undo"
 
           # move window focus
           (mvfocus "K" "u")
