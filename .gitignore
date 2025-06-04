@@ -3,3 +3,4 @@
 .config/tmux/plugins
 !.config/tmux/plugins/tpm
 node_modules
+steam-logs.txt

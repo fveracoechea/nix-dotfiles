@@ -5,6 +5,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/bootloader.nix
+    ../../modules/nixos/sddm.nix
     ../../modules/nixos/miscellaneous.nix
     ../../modules/nixos/zsh-shell.nix
     ../../modules/nixos/nix-ld.nix
@@ -54,7 +55,6 @@
     videoDrivers = ["modesetting"];
 
     # Enable the GNOME Desktop Environment.
-    displayManager.gdm.enable = true;
     desktopManager = {
       gnome = {
         enable = true;
@@ -76,14 +76,6 @@
 
   # enable docker
   virtualisation.docker.enable = true;
-
-  # Enable automatic login for the user.
-  # services.displayManager.autoLogin.enable = true;
-  # services.displayManager.autoLogin.user = "fveracoechea";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  # systemd.services."getty@tty1".enable = false;
-  # systemd.services."autovt@tty1".enable = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
