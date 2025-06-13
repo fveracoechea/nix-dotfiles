@@ -4,7 +4,25 @@
   lib,
   config,
   ...
-}: {
+}: let
+  apps = "fuzzel --cache ${config.home.homeDirectory}/.config/fuzzel/cache";
+  terminal = "ghostty";
+  browser = "google-chrome-stable";
+  screenshot = "hyprshot -m output";
+  monitors = import ../../utils/monitors.nix;
+in {
+  home.packages = with pkgs; [
+    (writers.writeBashBin "set-screen-share-resolution" ''
+      hyprctl keyword monitor "${monitors.samsung-odyssey-qhd}"
+      hyprctl keyword monitor "${monitors.dummy-4k-disabled}"
+    '')
+
+    (writers.writeBashBin "unset-screen-share-resolution" ''
+      hyprctl keyword monitor "${monitors.samsung-odyssey}"
+      hyprctl keyword monitor "${monitors.dummy-4k-disabled}"
+    '')
+  ];
+
   xdg.desktopEntries."org.gnome.Settings" = {
     name = "Settings";
     comment = "Gnome Control Center";
@@ -20,13 +38,7 @@
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
-    settings = let
-      apps = "fuzzel --cache ${config.home.homeDirectory}/.config/fuzzel/cache";
-      terminal = "ghostty";
-      browser = "google-chrome-stable";
-      screenshot = "hyprshot -m output";
-      monitors = import ../../utils/monitors.nix;
-    in {
+    settings = {
       env = [
         "BROWSER,${browser}"
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -98,11 +110,6 @@
         floatTitle = title: "float, title:^(${title})$";
       in [
         "bordersize 0, fullscreen:1"
-        "minsize 1000 650, floating:1"
-        "opacity 0.9 0.9 1.0, class:^(.*)$"
-        "opacity 1.0, class:(google-chrome)"
-        "opacity 1.0, class:(fuzzel)"
-        "opacity 1.0, class:(com.mitchellh.ghostty)"
         "center, floating:1"
         "idleinhibit fullscreen, class:^(.*)$"
 
