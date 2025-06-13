@@ -19,7 +19,7 @@ in {
   stylix = {
     enable = true;
     autoEnable = true;
-    image = ../../wallpapers/catppuccin-mocha/city-island.jpg;
+    image = ../../wallpapers/catppuccin-mocha/snowy-planet-ultrawide.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
 

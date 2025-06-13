@@ -30,11 +30,14 @@
       env = [
         "BROWSER,${browser}"
         "XDG_CURRENT_DESKTOP,Hyprland"
-        "HYPRCURSOR_THEME,capitaine-cursors"
-        "HYPRCURSOR_SIZE,38"
-        "XCURSOR_THEME,capitaine-cursors"
-        "XCURSOR_SIZE,38"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+
+        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+        "QT_QPA_PLATFORM,wayland;xcb"
+        "QT_QPA_PLATFORMTHEME,qt6ct"
         "QT_CURSOR_THEME,capitaine-cursors"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         "QT_CURSOR_SIZE,38"
       ];
 
