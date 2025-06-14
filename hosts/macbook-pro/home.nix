@@ -8,6 +8,8 @@ in {
   imports = [
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/bat.nix
+    ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/oh-my-posh.nix
     ../../modules/home-manager/volta.nix
     ../../modules/home-manager/karabiner.nix

@@ -9,6 +9,7 @@ in {
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/bat.nix
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/oh-my-posh.nix
     ../../modules/home-manager/gnome.nix

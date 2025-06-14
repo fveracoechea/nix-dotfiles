@@ -19,10 +19,6 @@
   # deno scripts from `scripts` directory
   denoScript = name:
     writeDenoBin name (lib.fileContents ./scripts/${name}.ts);
-
-  # deno scripts from `scripts` directory
-  nodeJsScript = name:
-    writers.writeJSBin name {} (lib.fileContents ./scripts/${name}.js);
 in {
   keycloak-proxy = denoScript "keycloak-proxy";
   teams-proxy = denoScript "teams-proxy";
