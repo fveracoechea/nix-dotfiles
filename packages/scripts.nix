@@ -2,7 +2,6 @@
   lib,
   writers,
   writeText,
-  deno,
   ...
 }: let
   # Takes a name and some TS sourcecode and returns an executable
@@ -10,7 +9,7 @@
     writers.writeDash name
     # bash
     ''
-      exec ${lib.getExe deno} -A ${writeText "${name}-ts" content} "$@"
+      exec deno -A ${writeText "${name}-ts" content} "$@"
     '';
 
   # Takes the same arguments as writeDeno but outputs a directory (like writeScriptBin)
