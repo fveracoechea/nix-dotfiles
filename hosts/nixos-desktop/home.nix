@@ -9,6 +9,7 @@ in {
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/oh-my-posh.nix
     ../../modules/home-manager/gnome.nix
     ../../modules/home-manager/dconf.nix
@@ -59,6 +60,7 @@ in {
     wireguard-tools
     lutgen
     customPkgs.dev-manager-desktop
+    masterpdfeditor
   ];
 
   # This value determines the home Manager release that your

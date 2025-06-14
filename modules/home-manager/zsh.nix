@@ -8,9 +8,7 @@ in {
     cmatrix
   ];
 
-  programs.bat = {
-    enable = true;
-  };
+  programs.bat.enable = true;
 
   programs.fzf = {
     enable = true;
@@ -24,11 +22,6 @@ in {
   };
 
   programs.eza = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.yazi = {
     enable = true;
     enableZshIntegration = true;
   };
