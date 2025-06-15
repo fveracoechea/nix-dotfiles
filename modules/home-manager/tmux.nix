@@ -40,6 +40,10 @@ in {
         set-option -g status-style bg=default
         # set -gF @catppuccin_status_background "none"
 
+        set -g allow-passthrough on
+        set -ga update-environment TERM
+        set -ga update-environment TERM_PROGRAM
+
         set -g @catppuccin_gitmux_text " #(tmux-git-status)"
         set -g @catppuccin_uptime_text " #(tmux-uptime)"
         set -g @catppuccin_host_icon "#(tmux-os-icon) "
