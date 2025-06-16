@@ -9,7 +9,7 @@
     theme + "/themes/mocha/catppuccin-mocha-blue.toml";
 in {
   stylix.targets.yazi.enable = false;
-  home.packages = [pkgs.mediainfo];
+  home.packages = with pkgs; [mediainfo nvimpager];
 
   programs.yazi = {
     enable = true;
@@ -19,35 +19,56 @@ in {
     theme =
       builtins.fromTOML (builtins.readFile themePath);
 
+    plugins = with pkgs.yaziPlugins; {
+      inherit git yatline yatline-catppuccin smart-filter mediainfo;
+    };
+
+    initLua =
+      # lua
+      ''
+        require("git"):setup();
+        local mocha = require("yatline-catppuccin"):setup("mocha");
+        require("yatline"):setup({
+          theme = mocha,
+        });
+      '';
+
     settings = {
       mgr = {
         show_hidden = true;
         sort_dir_first = true;
-        ratio = [1 2 2];
+        ratio = [1 1 2];
+
+        prepend_keymap = [
+          {
+            on = "F";
+            run = "plugin smart-filter";
+            desc = "Smart Filter";
+          }
+        ];
       };
 
       plugin = {
-        # TODO: Not Working at the moment, check if this is a bug in yazi
-        # prepend_preloaders = [
-        #   {
-        #     mime = "{audio,video,image}/*";
-        #     run = "mediainfo";
-        #   }
-        #   {
-        #     mime = "application/subrip";
-        #     run = "mediainfo";
-        #   }
-        # ];
-        # prepend_previewers = [
-        #   {
-        #     mime = "{audio,video,image}/*";
-        #     run = "mediainfo";
-        #   }
-        #   {
-        #     mime = "application/subrip";
-        #     run = "mediainfo";
-        #   }
-        # ];
+        prepend_preloaders = [
+          {
+            mime = "{audio,video,image}/*";
+            run = "mediainfo";
+          }
+          {
+            mime = "application/subrip";
+            run = "mediainfo";
+          }
+        ];
+        prepend_previewers = [
+          {
+            mime = "{audio,video,image}/*";
+            run = "mediainfo";
+          }
+          {
+            mime = "application/subrip";
+            run = "mediainfo";
+          }
+        ];
         prepend_fetchers = [
           {
             id = "git";
@@ -62,21 +83,5 @@ in {
         ];
       };
     };
-
-    plugins = {
-      git = pkgs.yaziPlugins.git;
-      yatline = pkgs.yaziPlugins.yatline;
-      yatline-catppuccin = pkgs.yaziPlugins.yatline-catppuccin;
-    };
-
-    initLua =
-      # lua
-      ''
-        require("git"):setup();
-        local mocha = require("yatline-catppuccin"):setup("mocha");
-        require("yatline"):setup({
-          theme = mocha,
-        });
-      '';
   };
 }
