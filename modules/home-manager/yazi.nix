@@ -9,7 +9,7 @@
     theme + "/themes/mocha/catppuccin-mocha-blue.toml";
 in {
   stylix.targets.yazi.enable = false;
-  home.packages = with pkgs; [mediainfo nvimpager];
+  home.packages = with pkgs; [mediainfo];
 
   programs.yazi = {
     enable = true;
@@ -20,7 +20,7 @@ in {
       builtins.fromTOML (builtins.readFile themePath);
 
     plugins = with pkgs.yaziPlugins; {
-      inherit git yatline yatline-catppuccin smart-filter mediainfo;
+      inherit git yatline yatline-catppuccin smart-filter mediainfo piper;
     };
 
     initLua =
@@ -67,6 +67,10 @@ in {
           {
             mime = "application/subrip";
             run = "mediainfo";
+          }
+          {
+            name = "*/";
+            run = ''piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"'';
           }
         ];
         prepend_fetchers = [
