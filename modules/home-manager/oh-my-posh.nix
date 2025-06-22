@@ -15,53 +15,58 @@ in {
       template = "❯❯ ";
     };
 
-    blocks = let
-      divider = {
-        type = "text";
-        style = "plain";
-        foreground = catppuccin.text;
-        background = "transparent";
-        template = "  ";
-      };
-    in [
+    blocks = [
       {
         type = "prompt";
         alignment = "left";
         newline = true;
         segments = [
           {
-            type = "os";
+            type = "text";
             style = "plain";
-            foreground = catppuccin.text;
             background = "transparent";
-            template = "\n{{ .Icon }} ";
+            template = "\n";
+          }
+          {
+            type = "os";
+            style = "diamond";
+            powerline_symbol = "";
+            leading_diamond = "";
+            foreground = catppuccin.text;
+            background = catppuccin.mantle;
+            template = "{{ .Icon }} ";
+            foreground_templates = [
+              "{{if gt .Code 0}}${catppuccin.red}{{end}}"
+              "{{if eq .Code 0}}${catppuccin.text}{{end}}"
+            ];
           }
           {
             type = "session";
-            style = "plain";
+            style = "powerline";
+            powerline_symbol = "";
             foreground = catppuccin.blue;
-            background = "transparent";
-            template = " {{ .UserName }}{{ if .SSHSession }}    {{ .HostName }}{{ end }}";
+            background = catppuccin.mantle;
+            template = "{{ .UserName }}{{ if .SSHSession }}    {{ .HostName }}{{ end }}";
           }
-          divider
           {
             type = "path";
-            style = "plain";
+            style = "powerline";
+            powerline_symbol = "";
             foreground = catppuccin.pink;
-            background = "transparent";
-            template = "{{ .Path }}";
+            background = catppuccin.mantle;
+            template = " {{ .Path }}";
             properties = {
               home_icon = "~";
               style = "agnoster_full";
             };
           }
-          divider
           {
             type = "executiontime";
-            style = "plain";
+            style = "powerline";
+            powerline_symbol = "";
             foreground = catppuccin.lavender;
-            background = "transparent";
-            template = " {{ .FormattedMs }}";
+            background = catppuccin.mantle;
+            template = "   {{ .FormattedMs }} ";
             properties = {
               style = "austin";
               always_enabled = true;
@@ -77,12 +82,9 @@ in {
           {
             type = "text";
             style = "plain";
-            template = "❯ ";
+            template = "❯";
             background = "transparent";
-            foreground_templates = [
-              "{{if gt .Code 0}}${catppuccin.red}{{end}}"
-              "{{if eq .Code 0}}${catppuccin.text}{{end}}"
-            ];
+            foreground = catppuccin.text;
           }
         ];
       }
