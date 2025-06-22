@@ -1,24 +1,16 @@
 {pkgs, ...}: let
   catppuccin = import ../../utils/catppuccin.nix;
 in {
-  # Oh-My-Posh theme and setup
+  # oh-my-posh theme and setup
   home.packages = [pkgs.oh-my-posh];
 
   xdg.configFile."zsh/oh-my-posh/catppuccin.json".text = builtins.toJSON {
     version = 3;
     final_space = true;
-
-    transient_prompt = {
-      background = "transparent";
-      template = "\n<${catppuccin.rosewater}>  {{ .PWD }}</> ❯ ";
-      foreground_templates = [
-        "{{if gt .Code 0}}${catppuccin.red}{{end}}"
-        "{{if eq .Code 0}}${catppuccin.mauve}{end}}"
-      ];
-    };
+    enable_cursor_positioning = true;
 
     secondary_prompt = {
-      foreground = catppuccin.mauve;
+      foreground = catppuccin.text;
       background = "transparent";
       template = "❯❯ ";
     };
@@ -27,91 +19,61 @@ in {
       {
         type = "prompt";
         alignment = "left";
+        newline = true;
         segments = [
           {
             type = "text";
             style = "plain";
+            background = "transparent";
             template = "\n";
           }
           {
             type = "os";
             style = "diamond";
             powerline_symbol = "";
-            foreground = catppuccin.crust;
-            background = catppuccin.blue;
-            template = " {{.Icon}} ";
+            leading_diamond = "";
+            foreground = catppuccin.text;
+            background = catppuccin.mantle;
+            template = "{{ .Icon }} ";
+            foreground_templates = [
+              "{{if gt .Code 0}}${catppuccin.red}{{end}}"
+              "{{if eq .Code 0}}${catppuccin.text}{{end}}"
+            ];
           }
           {
             type = "session";
-            style = "diamond";
+            style = "powerline";
             powerline_symbol = "";
-            foreground = catppuccin.crust;
-            background = catppuccin.blue;
-            template = "<b>{{ .UserName }}</b>";
+            foreground = catppuccin.blue;
+            background = catppuccin.mantle;
+            template = "{{ .UserName }}{{ if .SSHSession }}    {{ .HostName }}{{ end }}";
           }
           {
             type = "path";
             style = "powerline";
-            foreground = catppuccin.blue;
-            background = catppuccin.surface0;
             powerline_symbol = "";
+            foreground = catppuccin.pink;
+            background = catppuccin.mantle;
+            template = " {{ .Path }} ";
             properties = {
               home_icon = "~";
               style = "agnoster_full";
             };
-            template = "  {{ .Path }} ";
           }
-          {
-            type = "git";
-            foreground = catppuccin.rosewater;
-            style = "plain";
-            properties = {
-              branch_icon = " ";
-              cherry_pick_icon = " ";
-              commit_icon = " ";
-              fetch_status = true;
-              fetch_upstream_icon = false;
-              merge_icon = " ";
-              no_commits_icon = " ";
-              rebase_icon = " ";
-              revert_icon = " ";
-              tag_icon = " ";
-            };
-            templates = [
-              " {{ .HEAD }}"
-              "{{if .BranchStatus}}  {{ .BranchStatus }}{{ end }}"
-              "{{if .Working.Changed}}  {{ .Working.String }}{{ end }}"
-            ];
-          }
-        ];
-      }
-
-      {
-        type = "prompt";
-        alignment = "right";
-        overflow = "hide";
-        segments = [
           {
             type = "executiontime";
-            style = "plain";
-            foreground = catppuccin.rosewater;
-            template = " {{ .FormattedMs }}  ";
+            style = "powerline";
+            powerline_symbol = "";
+            foreground = catppuccin.lavender;
+            background = catppuccin.mantle;
+            template = " {{ .FormattedMs }} ";
             properties = {
               style = "austin";
               always_enabled = true;
             };
           }
-          {
-            type = "node";
-            style = "diamond";
-            leading_diamond = "";
-            foreground = catppuccin.green;
-            background = catppuccin.surface0;
-            template = " {{ .Full }}  ";
-          }
         ];
       }
-
       {
         type = "prompt";
         alignment = "left";
@@ -122,10 +84,7 @@ in {
             style = "plain";
             template = "❯";
             background = "transparent";
-            foreground_templates = [
-              "{{if gt .Code 0}}${catppuccin.red}{{end}}"
-              "{{if eq .Code 0}}${catppuccin.blue}{{end}}"
-            ];
+            foreground = catppuccin.text;
           }
         ];
       }
