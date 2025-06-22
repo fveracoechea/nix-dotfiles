@@ -54,7 +54,7 @@ in {
             powerline_symbol = "";
             foreground = catppuccin.pink;
             background = catppuccin.mantle;
-            template = " {{ .Path }}";
+            template = " {{ .Path }} ";
             properties = {
               home_icon = "~";
               style = "agnoster_full";
@@ -66,7 +66,7 @@ in {
             powerline_symbol = "";
             foreground = catppuccin.lavender;
             background = catppuccin.mantle;
-            template = "   {{ .FormattedMs }} ";
+            template = " {{ .FormattedMs }} ";
             properties = {
               style = "austin";
               always_enabled = true;
