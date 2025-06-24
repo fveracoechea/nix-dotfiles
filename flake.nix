@@ -54,6 +54,7 @@
     };
 
     ghostty.url = "github:ghostty-org/ghostty";
+    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
   };
 
   outputs = {

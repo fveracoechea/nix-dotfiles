@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    # ../../modules/nixos/bootloader.nix
+    ../../modules/nixos/bootloader.nix
     ../../modules/nixos/sddm.nix
     ../../modules/nixos/miscellaneous.nix
     ../../modules/nixos/zsh-shell.nix
@@ -14,23 +14,11 @@
     ../../modules/nixos/postgreSQL.nix
   ];
 
-  boot.loader = {
-    timeout = 3;
-    grub = {
-      enable = true;
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-      devices = ["/dev/nvme0n1"];
-    };
-  };
-
   nix = {
-    settings. experimental-features = ["nix-command" "flakes"];
     optimise.automatic = true;
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 30d";
-    };
+    settings. experimental-features = ["nix-command" "flakes"];
+    gc.automatic = true;
+    gc.options = "--delete-older-than 30d";
   };
 
   networking.hostName = "nixos";

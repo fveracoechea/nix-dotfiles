@@ -43,7 +43,7 @@ in {
       };
     };
 
-    targets.grub.enable = true;
-    targets.grub.useImage = true;
+    targets.grub.enable = false;
+    targets.grub.useImage = false;
   };
 }
