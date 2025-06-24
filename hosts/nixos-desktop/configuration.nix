@@ -15,11 +15,12 @@
   ];
 
   boot.loader = {
-    timeout = 2;
+    timeout = 3;
     grub = {
       enable = true;
       efiSupport = true;
       efiInstallAsRemovable = true;
+      devices = ["/dev/nvme0n1"];
     };
   };
 
