@@ -10,6 +10,7 @@
   browser = "google-chrome-stable";
   screenshot = "hyprshot -m output";
   monitors = import ../../utils/monitors.nix;
+  workspaces = [1 2 3 4 5];
 in {
   home.packages = with pkgs; [
     (writers.writeBashBin "set-screen-share-resolution" ''
@@ -85,8 +86,8 @@ in {
 
       general = {
         border_size = 3;
-        gaps_in = 8;
-        gaps_out = "14 20 20 20";
+        gaps_in = 10;
+        gaps_out = "10,20,20,20";
         layout = "dwindle";
       };
 
@@ -110,7 +111,6 @@ in {
         floatTitle = title: "float, title:^(${title})$";
       in [
         "bordersize 0, fullscreen:1"
-        "center, floating:1"
         "idleinhibit fullscreen, class:^(.*)$"
 
         (floatClass "file_progres")
@@ -123,8 +123,8 @@ in {
         (floatClass "imv")
         (floatClass "mpv")
         (floatClass "branchdialog")
+        (floatClass "org.gnome.Settings")
 
-        (floatTitle "org.gnome.Settings")
         (floatTitle "Volume Control")
         (floatTitle "Bluetooth Devices")
         (floatTitle "Open File")
@@ -138,15 +138,17 @@ in {
         "SHIFT_ALT, mouse:273, resizewindow"
       ];
 
+      workspace =
+        map (i: "${toString i}, persistent:1") workspaces;
+
       bind = let
         binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
         bindExec = key: arg: "SUPER, ${key}, exec, ${arg}";
         mvfocus = binding "SUPER" "movefocus";
         resizeactive = binding "SUPER CTRL" "resizeactive";
         mvwindow = binding "SUPER ALT" "movewindow";
-        ws = binding "SUPER" "workspace";
-        mvtows = binding "SUPER ALT" "movetoworkspace";
-        workspaces = [1 2 3 4 5];
+        workspaceBinding = binding "SUPER" "workspace";
+        moveToWorkspaceBinding = binding "SUPER ALT" "movetoworkspace";
       in
         [
           (bindExec "B" browser)
@@ -181,8 +183,8 @@ in {
           (resizeactive "L" "100 0")
           (resizeactive "H" "-100 0")
         ]
-        ++ (map (i: ws (toString i) (toString i)) workspaces)
-        ++ (map (i: mvtows (toString i) (toString i)) workspaces);
+        ++ (map (i: workspaceBinding (toString i) (toString i)) workspaces)
+        ++ (map (i: moveToWorkspaceBinding (toString i) (toString i)) workspaces);
     };
   };
 }
