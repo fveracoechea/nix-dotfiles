@@ -26,8 +26,8 @@ in {
             set -g @catppuccin_flavor "mocha"
             set -g @catppuccin_window_status_style "rounded"
 
-            set -g @catppuccin_window_text "#W"
-            set -g @catppuccin_window_current_text "#W"
+            set -g @catppuccin_window_text " #W"
+            set -g @catppuccin_window_current_text " #W"
 
             set -g @catppuccin_gitmux_icon " "
             set -g @catppuccin_session_icon " "
@@ -41,7 +41,7 @@ in {
       ''
         # Catppuccin config after loading the plugin
         set-option -g status-style bg=default
-        # set -gF @catppuccin_status_background "none"
+        set -gF @catppuccin_status_background "none"
 
         set -g allow-passthrough on
         set -ga update-environment TERM
@@ -72,6 +72,8 @@ in {
         # Enable dynamic titles
         set-option -g set-titles on
         set-option -g set-titles-string "#(echo #{pane_current_path} | sed 's#$HOME#~#g') - #W"
+
+        set-option -g history-limit 100000
 
         # Split horizontally with |
         unbind %
