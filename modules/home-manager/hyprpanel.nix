@@ -7,48 +7,17 @@
   programs.hyprpanel = let
     left = ["dashboard" "media" "systray" "clock" "notifications" "workspaces"];
     middle = ["windowtitle"];
-    right = ["volume" "bluetooth" "network" "netstat" "cpu" "ram" "storage"];
+    right = ["volume" "bluetooth" "network" "cpu" "cputemp" "ram" "storage" "hypridle"];
   in {
     enable = true;
     systemd.enable = true;
-    # overwrite.enable = true;
     package = inputs.hyprpanel.packages.${system}.default;
-
-    # override = {
-    #   theme.font.size = "16px";
-    #   theme.font.name = "Fira Sans";
-    #   theme.font.weight = 400;
-    #
-    #   theme.bar.opacity = 0;
-    #   theme.bar.layer = "top";
-    #   theme.bar.floating = true;
-    #
-    #   theme.bar.margin_top = "0.4em";
-    #   theme.bar.margin_bottom = "0em";
-    #   theme.bar.margin_sides = "0.8em";
-    #   theme.bar.outer_spacing = "0em";
-    #
-    #   theme.bar.buttons.background_hover_opacity = 80;
-    #   theme.bar.buttons.systray.spacing = "0.6em";
-    #   theme.bar.buttons.radius = "1.4rem";
-    #   theme.bar.buttons.padding_x = "0.8rem";
-    #   theme.bar.buttons.spacing = "0.2em";
-    #
-    #   theme.tooltip.scaling = 80;
-    #   theme.bar.menus.popover.scaling = 80;
-    #   theme.bar.dashboard.scaling = 80;
-    #
-    #   theme.osd.location = "bottom";
-    #   theme.osd.orientation = "horizontal";
-    #   theme.osd.margins = "0px 0px 25px 0px";
-    #   theme.osd.radius = "2em";
-    # };
 
     settings = {
       scalingPriority = "hyprland";
-      theme.name = "catppuccin_mocha";
 
       notifications.position = "bottom";
+
       bar.launcher.autoDetectIcon = true;
       bar.notifications.show_total = true;
       bar.notifications.hideCountWhenZero = true;
@@ -62,6 +31,13 @@
       # bar.customModules.netstat.icon = "";
       bar.customModules.netstat.rateUnit = "auto";
 
+      bar.clock.format = "%a %b %d %I:%M %p";
+      bar.layouts = {
+        "*" = {
+          inherit left middle right;
+        };
+      };
+
       menus.clock = {
         time = {
           military = false;
@@ -72,14 +48,36 @@
 
       menus.dashboard.directories.enabled = false;
       menus.dashboard.stats.enable_gpu = false;
-      bar.clock.format = "%a %b %d %I:%M %p";
 
-      layout = {
-        "bar.layouts" = {
-          "*" = {
-            inherit left middle right;
-          };
-        };
+      theme = {
+        name = "monochrome";
+        bar.opacity = 0;
+        bar.floating = true;
+        bar.layer = "top";
+
+        font.size = "17px";
+        font.name = "Fira Sans";
+        font.weight = 400;
+
+        bar.margin_top = "0.4em";
+        bar.margin_sides = "0px";
+        bar.margin_bottom = "0px";
+        bar.outer_spacing = "0.85em";
+
+        bar.buttons.background_hover_opacity = 80;
+        bar.buttons.systray.spacing = "0.6em";
+        bar.buttons.radius = "1em";
+        bar.buttons.padding_x = "0.8rem";
+        bar.buttons.spacing = "0.2em";
+
+        tooltip.scaling = 80;
+        bar.menus.popover.scaling = 80;
+        bar.dashboard.scaling = 80;
+
+        osd.location = "bottom";
+        osd.orientation = "horizontal";
+        osd.margins = "0px 0px 25px 0px";
+        osd.radius = "2em";
       };
     };
   };
