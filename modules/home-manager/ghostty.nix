@@ -1,13 +1,8 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{...}: {
   stylix.targets.ghostty.enable = false;
 
   programs.ghostty = {
     enable = true;
-    package = inputs.ghostty.packages."${pkgs.system}".default;
     enableZshIntegration = true;
     settings = {
       theme = "catppuccin-mocha";

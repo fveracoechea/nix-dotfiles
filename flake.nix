@@ -53,7 +53,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty.url = "github:ghostty-org/ghostty";
     distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
   };
 
