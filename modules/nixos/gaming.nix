@@ -51,14 +51,6 @@
       amdgpu_top
       mangohud
       lact
-      (lutris.override {
-        extraPkgs = pkgs: [
-          wineWowPackages.waylandFull
-          winetricks
-          gamemode
-          mangohud
-        ];
-      })
     ];
   };
 

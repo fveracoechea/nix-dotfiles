@@ -21,5 +21,6 @@
     gnome-notes
     gnome-firmware
     gnome-monitor-config
+    loupe
   ];
 }

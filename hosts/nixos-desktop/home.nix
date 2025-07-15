@@ -12,8 +12,7 @@ in {
     ../../modules/home-manager/bat.nix
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/oh-my-posh.nix
-    ../../modules/home-manager/gnome.nix
-    ../../modules/home-manager/dconf.nix
+    ../../modules/home-manager/gtk.nix
     ../../modules/home-manager/volta.nix
     ../../modules/home-manager/pro-audio.nix
     ../../modules/home-manager/fuzzel.nix
@@ -34,14 +33,9 @@ in {
   home.file.".face.icon".source = ../../wallpapers/face.jpg;
 
   programs.spicetify.enable = true;
-
   stylix.targets.neovim.enable = false;
-
   programs.cava.enable = true;
   stylix.targets.cava.rainbow.enable = true;
-
-  # FPS hud for steam video-games
-  programs.mangohud.enable = true;
 
   home.packages = with pkgs; [
     slack
