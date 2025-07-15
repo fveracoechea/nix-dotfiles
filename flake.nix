@@ -96,7 +96,6 @@
       };
 
       modules = [
-        {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
         ./hosts/nixos-desktop/configuration.nix
         home-manager.nixosModules.home-manager
         {

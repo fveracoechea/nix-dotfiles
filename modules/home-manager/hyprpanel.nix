@@ -1,52 +1,48 @@
 {
   inputs,
   pkgs,
+  system,
   ...
 }: {
-  imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
-
-  home.packages = [pkgs.hyprpanel];
-
   programs.hyprpanel = let
     left = ["dashboard" "media" "systray" "clock" "notifications" "workspaces"];
     middle = ["windowtitle"];
     right = ["volume" "bluetooth" "network" "netstat" "cpu" "ram" "storage"];
   in {
     enable = true;
-    overlay.enable = true;
     systemd.enable = true;
-    hyprland.enable = true;
-    overwrite.enable = true;
+    # overwrite.enable = true;
+    package = inputs.hyprpanel.packages.${system}.default;
 
-    override = {
-      theme.font.size = "16px";
-      theme.font.name = "Fira Sans";
-      theme.font.weight = 400;
-
-      theme.bar.opacity = 0;
-      theme.bar.layer = "top";
-      theme.bar.floating = true;
-
-      theme.bar.margin_top = "0.4em";
-      theme.bar.margin_bottom = "0em";
-      theme.bar.margin_sides = "0.8em";
-      theme.bar.outer_spacing = "0em";
-
-      theme.bar.buttons.background_hover_opacity = 80;
-      theme.bar.buttons.systray.spacing = "0.6em";
-      theme.bar.buttons.radius = "1.4rem";
-      theme.bar.buttons.padding_x = "0.8rem";
-      theme.bar.buttons.spacing = "0.2em";
-
-      theme.tooltip.scaling = 80;
-      theme.bar.menus.popover.scaling = 80;
-      theme.bar.dashboard.scaling = 80;
-
-      theme.osd.location = "bottom";
-      theme.osd.orientation = "horizontal";
-      theme.osd.margins = "0px 0px 25px 0px";
-      theme.osd.radius = "2em";
-    };
+    # override = {
+    #   theme.font.size = "16px";
+    #   theme.font.name = "Fira Sans";
+    #   theme.font.weight = 400;
+    #
+    #   theme.bar.opacity = 0;
+    #   theme.bar.layer = "top";
+    #   theme.bar.floating = true;
+    #
+    #   theme.bar.margin_top = "0.4em";
+    #   theme.bar.margin_bottom = "0em";
+    #   theme.bar.margin_sides = "0.8em";
+    #   theme.bar.outer_spacing = "0em";
+    #
+    #   theme.bar.buttons.background_hover_opacity = 80;
+    #   theme.bar.buttons.systray.spacing = "0.6em";
+    #   theme.bar.buttons.radius = "1.4rem";
+    #   theme.bar.buttons.padding_x = "0.8rem";
+    #   theme.bar.buttons.spacing = "0.2em";
+    #
+    #   theme.tooltip.scaling = 80;
+    #   theme.bar.menus.popover.scaling = 80;
+    #   theme.bar.dashboard.scaling = 80;
+    #
+    #   theme.osd.location = "bottom";
+    #   theme.osd.orientation = "horizontal";
+    #   theme.osd.margins = "0px 0px 25px 0px";
+    #   theme.osd.radius = "2em";
+    # };
 
     settings = {
       scalingPriority = "hyprland";

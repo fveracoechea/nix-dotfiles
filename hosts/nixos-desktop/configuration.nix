@@ -16,7 +16,7 @@
 
   nix = {
     optimise.automatic = true;
-    settings. experimental-features = ["nix-command" "flakes"];
+    settings.experimental-features = ["nix-command" "flakes" "impure-derivations" "ca-derivations"];
     gc.automatic = true;
     gc.options = "--delete-older-than 30d";
   };

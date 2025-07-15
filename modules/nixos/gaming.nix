@@ -56,6 +56,7 @@
           wineWowPackages.waylandFull
           winetricks
           gamemode
+          mangohud
         ];
       })
     ];
