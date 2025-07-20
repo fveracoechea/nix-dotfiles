@@ -26,16 +26,17 @@
     gamescope.enable = true;
     gamescope.capSysNice = true;
     gamescope.args = [
+      "-f" # Fullscreen
+      "-e" # Steam integration with Gamescope
       "--adaptive-sync" # VRR support
       "--hdr-enabled" # HDR
+      "--hdr-debug-force-output"
       "--rt" # Real time scheduling
       "--force-grab-cursor"
-      "-e"
-      "-f" # fullscreen
-      "-W 3840"
-      "-H 2160"
-      "-r 120" # refresh rate
-      # "-O HDMI-A-1" # Monitor
+      "--xwayland-count 2"
+      "-w 3840"
+      "-h 2160"
+      "-r 120" # Refresh rate
     ];
   };
 

@@ -14,7 +14,15 @@ in {
 
     (writers.writeBashBin "steam-big-picture" ''
       sleep 2
-      DXVK_HDR=1 PROTON_ENABLE_HDR=1 gamescope -- setsid steam -gamepadui -tenfoot &> ~/dotfiles/steam-logs.txt
+
+      # Allows Steam to handle multiple XWayland instances, important for Gamescope integration
+      export STEAM_MULTIPLE_XWAYLANDS=1
+      # Enables HDR support within DXVK (Direct3D to Vulkan translation layer).
+      export DXVK_HDR=1
+      # Activates the Vulkan Wayland HDR WSI layer.
+      export ENABLE_HDR_WSI=1
+
+      setsid gamescope -- steam -gamepadui -steamos3 &> ~/dotfiles/steam-logs.txt
     '')
   ];
 
