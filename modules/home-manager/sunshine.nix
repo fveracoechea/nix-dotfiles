@@ -8,6 +8,8 @@ in {
     '')
 
     (writers.writeBashBin "steam-sunshine-undo" ''
+      steam -shutdown
+      sleep 2
       hyprctl keyword monitor "${monitors.samsung-odyssey}"
       hyprctl keyword monitor "${monitors.dummy-4k-disabled}"
     '')
