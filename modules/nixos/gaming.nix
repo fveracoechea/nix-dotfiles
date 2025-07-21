@@ -34,8 +34,8 @@
       "--rt" # Real time scheduling
       "--force-grab-cursor"
       "--xwayland-count 2"
-      "-w 3840"
-      "-h 2160"
+      "-W 3840"
+      "-H 2160"
       "-r 120" # Refresh rate
     ];
   };
