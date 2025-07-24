@@ -1,15 +1,15 @@
-{pkgs, utils, ...}: {
+{pkgs, customUtils, ...}: {
   home.packages = with pkgs; [
     (writers.writeBashBin "steam-sunshine-do" ''
-      hyprctl keyword monitor "${utils.monitors.dummy-4k}"
-      hyprctl keyword monitor "${utils.monitors.samsung-odyssey-disabled}"
+      hyprctl keyword monitor "${customUtils.monitors.dummy-4k}"
+      hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey-disabled}"
     '')
 
     (writers.writeBashBin "steam-sunshine-undo" ''
       steam -shutdown
       sleep 2
-      hyprctl keyword monitor "${utils.monitors.samsung-odyssey}"
-      hyprctl keyword monitor "${utils.monitors.dummy-4k-disabled}"
+      hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey}"
+      hyprctl keyword monitor "${customUtils.monitors.dummy-4k-disabled}"
     '')
 
     (writers.writeBashBin "steam-big-picture" ''

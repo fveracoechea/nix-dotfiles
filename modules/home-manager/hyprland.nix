@@ -3,7 +3,7 @@
   pkgs,
   lib,
   config,
-  utils,
+  customUtils,
   ...
 }: let
   apps = "fuzzel --cache ${config.home.homeDirectory}/.config/fuzzel/cache";
@@ -14,13 +14,13 @@
 in {
   home.packages = with pkgs; [
     (writers.writeBashBin "set-screen-share-resolution" ''
-      hyprctl keyword monitor "${utils.monitors.samsung-odyssey-qhd}"
-      hyprctl keyword monitor "${utils.monitors.dummy-4k-disabled}"
+      hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey-qhd}"
+      hyprctl keyword monitor "${customUtils.monitors.dummy-4k-disabled}"
     '')
 
     (writers.writeBashBin "unset-screen-share-resolution" ''
-      hyprctl keyword monitor "${utils.monitors.samsung-odyssey}"
-      hyprctl keyword monitor "${utils.monitors.dummy-4k-disabled}"
+      hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey}"
+      hyprctl keyword monitor "${customUtils.monitors.dummy-4k-disabled}"
     '')
   ];
 
@@ -46,8 +46,8 @@ in {
       ];
 
       monitor = [
-        utils.monitors.samsung-odyssey
-        utils.monitors.dummy-4k-disabled
+        customUtils.monitors.samsung-odyssey
+        customUtils.monitors.dummy-4k-disabled
       ];
 
       debug = {

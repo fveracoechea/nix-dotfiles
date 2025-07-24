@@ -63,7 +63,7 @@
     hyprpanel,
     ...
   } @ inputs: let
-    utils = {
+    customUtils = {
       catppuccin = import ./utils/catppuccin.nix;
       monitors = import ./utils/monitors.nix;
     };
@@ -75,7 +75,7 @@
       specialArgs = {
         inherit system;
         inherit inputs;
-        inherit utils;
+        inherit customUtils;
       };
 
       modules = [
@@ -98,7 +98,7 @@
       specialArgs = {
         inherit system;
         inherit inputs;
-        inherit utils;
+        inherit customUtils;
       };
 
       modules = [

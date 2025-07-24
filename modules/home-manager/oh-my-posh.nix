@@ -1,4 +1,4 @@
-{pkgs, utils, ...}: {
+{pkgs, customUtils, ...}: {
   # oh-my-posh theme and setup
   home.packages = [pkgs.oh-my-posh];
 
@@ -8,7 +8,7 @@
     enable_cursor_positioning = true;
 
     secondary_prompt = {
-      foreground = utils.catppuccin.text;
+      foreground = customUtils.catppuccin.text;
       background = "transparent";
       template = "❯❯ ";
     };
@@ -30,28 +30,28 @@
             style = "diamond";
             powerline_symbol = "";
             leading_diamond = "";
-            foreground = utils.catppuccin.text;
-            background = utils.catppuccin.mantle;
+            foreground = customUtils.catppuccin.text;
+            background = customUtils.catppuccin.mantle;
             template = "{{ .Icon }} ";
             foreground_templates = [
-              "{{if gt .Code 0}}${utils.catppuccin.red}{{end}}"
-              "{{if eq .Code 0}}${utils.catppuccin.text}{{end}}"
+              "{{if gt .Code 0}}${customUtils.catppuccin.red}{{end}}"
+              "{{if eq .Code 0}}${customUtils.catppuccin.text}{{end}}"
             ];
           }
           {
             type = "session";
             style = "powerline";
             powerline_symbol = "";
-            foreground = utils.catppuccin.blue;
-            background = utils.catppuccin.mantle;
+            foreground = customUtils.catppuccin.blue;
+            background = customUtils.catppuccin.mantle;
             template = "{{ .UserName }}{{ if .SSHSession }}    {{ .HostName }}{{ end }}";
           }
           {
             type = "path";
             style = "powerline";
             powerline_symbol = "";
-            foreground = utils.catppuccin.pink;
-            background = utils.catppuccin.mantle;
+            foreground = customUtils.catppuccin.pink;
+            background = customUtils.catppuccin.mantle;
             template = " {{ .Path }} ";
             properties = {
               home_icon = "~";
@@ -62,8 +62,8 @@
             type = "executiontime";
             style = "powerline";
             powerline_symbol = "";
-            foreground = utils.catppuccin.lavender;
-            background = utils.catppuccin.mantle;
+            foreground = customUtils.catppuccin.lavender;
+            background = customUtils.catppuccin.mantle;
             template = " {{ .FormattedMs }} ";
             properties = {
               style = "austin";
@@ -82,7 +82,7 @@
             style = "plain";
             template = "❯";
             background = "transparent";
-            foreground = utils.catppuccin.text;
+            foreground = customUtils.catppuccin.text;
           }
         ];
       }
