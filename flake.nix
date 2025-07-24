@@ -62,7 +62,12 @@
     nix-darwin,
     hyprpanel,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    utils = {
+      catppuccin = import ./utils/catppuccin.nix;
+      monitors = import ./utils/monitors.nix;
+    };
+  in {
     # `macbook-pro` configuration
     darwinConfigurations."macbook-pro" = nix-darwin.lib.darwinSystem rec {
       system = "aarch64-darwin";
@@ -70,6 +75,7 @@
       specialArgs = {
         inherit system;
         inherit inputs;
+        inherit utils;
       };
 
       modules = [
@@ -92,6 +98,7 @@
       specialArgs = {
         inherit system;
         inherit inputs;
+        inherit utils;
       };
 
       modules = [

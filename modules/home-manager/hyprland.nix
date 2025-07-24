@@ -3,24 +3,24 @@
   pkgs,
   lib,
   config,
+  utils,
   ...
 }: let
   apps = "fuzzel --cache ${config.home.homeDirectory}/.config/fuzzel/cache";
   terminal = "ghostty";
   browser = "google-chrome-stable";
   screenshot = "hyprshot -m output";
-  monitors = import ../../utils/monitors.nix;
   workspaces = [1 2 3 4 5];
 in {
   home.packages = with pkgs; [
     (writers.writeBashBin "set-screen-share-resolution" ''
-      hyprctl keyword monitor "${monitors.samsung-odyssey-qhd}"
-      hyprctl keyword monitor "${monitors.dummy-4k-disabled}"
+      hyprctl keyword monitor "${utils.monitors.samsung-odyssey-qhd}"
+      hyprctl keyword monitor "${utils.monitors.dummy-4k-disabled}"
     '')
 
     (writers.writeBashBin "unset-screen-share-resolution" ''
-      hyprctl keyword monitor "${monitors.samsung-odyssey}"
-      hyprctl keyword monitor "${monitors.dummy-4k-disabled}"
+      hyprctl keyword monitor "${utils.monitors.samsung-odyssey}"
+      hyprctl keyword monitor "${utils.monitors.dummy-4k-disabled}"
     '')
   ];
 
@@ -46,8 +46,8 @@ in {
       ];
 
       monitor = [
-        monitors.samsung-odyssey
-        monitors.dummy-4k-disabled
+        utils.monitors.samsung-odyssey
+        utils.monitors.dummy-4k-disabled
       ];
 
       debug = {

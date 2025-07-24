@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  catppuccin = import ../../utils/catppuccin.nix;
-in {
+{pkgs, utils, ...}: {
   # oh-my-posh theme and setup
   home.packages = [pkgs.oh-my-posh];
 
@@ -10,7 +8,7 @@ in {
     enable_cursor_positioning = true;
 
     secondary_prompt = {
-      foreground = catppuccin.text;
+      foreground = utils.catppuccin.text;
       background = "transparent";
       template = "❯❯ ";
     };
@@ -32,28 +30,28 @@ in {
             style = "diamond";
             powerline_symbol = "";
             leading_diamond = "";
-            foreground = catppuccin.text;
-            background = catppuccin.mantle;
+            foreground = utils.catppuccin.text;
+            background = utils.catppuccin.mantle;
             template = "{{ .Icon }} ";
             foreground_templates = [
-              "{{if gt .Code 0}}${catppuccin.red}{{end}}"
-              "{{if eq .Code 0}}${catppuccin.text}{{end}}"
+              "{{if gt .Code 0}}${utils.catppuccin.red}{{end}}"
+              "{{if eq .Code 0}}${utils.catppuccin.text}{{end}}"
             ];
           }
           {
             type = "session";
             style = "powerline";
             powerline_symbol = "";
-            foreground = catppuccin.blue;
-            background = catppuccin.mantle;
+            foreground = utils.catppuccin.blue;
+            background = utils.catppuccin.mantle;
             template = "{{ .UserName }}{{ if .SSHSession }}    {{ .HostName }}{{ end }}";
           }
           {
             type = "path";
             style = "powerline";
             powerline_symbol = "";
-            foreground = catppuccin.pink;
-            background = catppuccin.mantle;
+            foreground = utils.catppuccin.pink;
+            background = utils.catppuccin.mantle;
             template = " {{ .Path }} ";
             properties = {
               home_icon = "~";
@@ -64,8 +62,8 @@ in {
             type = "executiontime";
             style = "powerline";
             powerline_symbol = "";
-            foreground = catppuccin.lavender;
-            background = catppuccin.mantle;
+            foreground = utils.catppuccin.lavender;
+            background = utils.catppuccin.mantle;
             template = " {{ .FormattedMs }} ";
             properties = {
               style = "austin";
@@ -84,7 +82,7 @@ in {
             style = "plain";
             template = "❯";
             background = "transparent";
-            foreground = catppuccin.text;
+            foreground = utils.catppuccin.text;
           }
         ];
       }
