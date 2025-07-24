@@ -49,7 +49,7 @@
       menus.dashboard.stats.enable_gpu = false;
 
       theme = {
-        name = "monochrome";
+        name = "catppuccin_mocha";
         bar.opacity = 0;
         bar.floating = true;
         bar.layer = "top";
