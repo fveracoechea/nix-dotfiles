@@ -56,6 +56,8 @@ in {
     lutgen
     customPkgs.dev-manager-desktop
     masterpdfeditor
+    openlinkhub
+    opencode
   ];
 
   # This value determines the home Manager release that your
