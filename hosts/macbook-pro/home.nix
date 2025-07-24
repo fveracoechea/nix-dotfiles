@@ -23,8 +23,10 @@ in {
     google-chrome
     postman
     slack
-    nerd-fonts.fira-code
     lazydocker
+    opencode
+    zoom-us
+    nerd-fonts.fira-code
     customPkgs.scripts.keycloak-proxy
     customPkgs.scripts.teams-proxy
   ];

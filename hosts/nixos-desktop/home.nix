@@ -58,6 +58,7 @@ in {
     masterpdfeditor
     openlinkhub
     opencode
+    zoom-us
   ];
 
   # This value determines the home Manager release that your
