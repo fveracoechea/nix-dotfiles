@@ -22,6 +22,7 @@ in {
     ../../modules/home-manager/hyprlock.nix
     ../../modules/home-manager/hypridle.nix
     ../../modules/home-manager/sunshine.nix
+    ../../modules/home-manager/opencode.nix
     inputs.neovim-config.homeManagerModules.default
     inputs.spicetify-nix.homeManagerModules.default
   ];
@@ -57,7 +58,6 @@ in {
     customPkgs.dev-manager-desktop
     masterpdfeditor
     openlinkhub
-    opencode
     zoom-us
   ];
 
