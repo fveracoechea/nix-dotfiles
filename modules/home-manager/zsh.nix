@@ -85,9 +85,6 @@ in {
         zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
         zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-        # Run oh-my-posh
-        eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/zsh/oh-my-posh/catppuccin.json)"
-
         # Adds volta to the path
         PATH="$VOLTA_HOME/bin:$PATH"
 
