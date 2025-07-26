@@ -31,5 +31,6 @@
     gnome-firmware
     gnome-monitor-config
     loupe
+    snapshot
   ];
 }
