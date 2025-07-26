@@ -4,7 +4,6 @@
   # Add any missing dynamic libraries for unpackaged programs
   # here, NOT in environment.systemPackages
   programs.nix-ld.libraries = with pkgs; [
-    volta
     alsa-lib
     at-spi2-atk
     at-spi2-core
