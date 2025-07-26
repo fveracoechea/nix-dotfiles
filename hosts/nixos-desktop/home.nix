@@ -59,6 +59,7 @@ in {
     masterpdfeditor
     openlinkhub
     zoom-us
+    nodejs
   ];
 
   # This value determines the home Manager release that your
