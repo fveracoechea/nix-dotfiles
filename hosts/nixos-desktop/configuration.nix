@@ -11,6 +11,7 @@
     ../../modules/nixos/stylix.nix
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/hyprland.nix
+    ../../modules/nixos/ollama.nix
     ../../modules/nixos/postgreSQL.nix
   ];
 
