@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.opencode;
     settings = {
-      theme = "catppuccin";
+      theme = "system";
       autoupdate = false;
     };
   };
