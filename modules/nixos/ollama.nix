@@ -3,7 +3,7 @@
     ollama = {
       enable = true;
       acceleration = "rocm";
-      loadModels = ["mistral:7b" "deepseek-r1:14b" "llama3.2-vision:11b"];
+      loadModels = ["mistral:7b" "deepseek-r1:14b" "llama3.2-vision:11b" "llama3.1:8b"];
       host = "0.0.0.0";
       port = 11434;
       environmentVariables = {
