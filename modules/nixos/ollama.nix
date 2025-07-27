@@ -21,7 +21,6 @@
       host = "0.0.0.0";
       environment = {
         OLLAMA_BASE_URL = "http://localhost:11434";
-        WEBUI_AUTH = "False";
       };
     };
   };
