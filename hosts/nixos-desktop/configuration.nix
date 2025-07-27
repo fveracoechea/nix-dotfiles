@@ -13,6 +13,7 @@
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/ollama.nix
     ../../modules/nixos/postgreSQL.nix
+    ../../modules/nixos/networking.nix
   ];
 
   nix = {
@@ -21,9 +22,6 @@
     gc.automatic = true;
     gc.options = "--delete-older-than 30d";
   };
-
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
 
   services.xserver = {
     enable = true;
