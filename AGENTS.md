@@ -7,6 +7,7 @@
 - **Check flake**: `nix flake check`
 - **Lint TypeScript**: `deno lint packages/scripts/`
 - **Format TypeScript**: `deno fmt packages/scripts/`
+- **Run single script**: `deno run --allow-read --allow-run packages/scripts/<script-name>.ts`
 
 ## Code Style Guidelines
 - **Nix files**: Use 2-space indentation, kebab-case for attributes, follow nixpkgs conventions
