@@ -1,9 +1,9 @@
-{customPkgs}: {
+{customPkgs, ...}: {
   home.packages = [
     customPkgs.mcpo
   ];
 
-  xdg.configs."mcpo/config.json".text = builtins.toJSON {
+  xdg.configFile."mcpo/config.json".text = builtins.toJSON {
     mcpServers = {
       context7 = {
         command = "npx";
@@ -16,6 +16,10 @@
       playwright = {
         command = "npx";
         args = ["-y" "@playwright/mcp@latest"];
+      };
+      fetch = {
+        command = "docker";
+        args = ["run" "-i" "--rm" "mcp/fetch"];
       };
     };
   };

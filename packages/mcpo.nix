@@ -12,7 +12,7 @@ python3.pkgs.buildPythonApplication rec {
     owner = "open-webui";
     repo = "mcpo";
     rev = "v${version}";
-    hash = "";
+    hash = "sha256-T4eAhPgm1ysf/+ZmqZxAoc0SwQbkl8x8lBGwamMYcpU=";
   };
 
   build-system = with python3Packages; [
