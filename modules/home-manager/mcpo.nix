@@ -14,8 +14,8 @@
         args = ["-y" "@modelcontextprotocol/server-sequential-thinking"];
       };
       playwright = {
-        command = "npx";
-        args = ["-y" "@playwright/mcp@latest"];
+        command = "nix";
+        args = ["run" "github:akirak/nix-playwright-mcp"];
       };
       fetch = {
         command = "docker";

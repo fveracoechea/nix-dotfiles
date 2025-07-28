@@ -44,7 +44,7 @@
         playwright = {
           type = "local";
           enabled = true;
-          command = ["npx" "-y" "@playwright/mcp@latest"];
+          command = ["nix" "run" "github:akirak/nix-playwright-mcp"];
         };
       };
     };
