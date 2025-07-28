@@ -12,36 +12,38 @@
             baseURL = "http://127.0.0.1:11434/v1";
           };
           models = {
-            "mistral:7b" = {
+            "mistral-nemo:latest" = {
               tools = true;
-              reasoning = true;
-            };
-            "llama3.1:8b" = {
-              tools = true;
-              reasoning = true;
+              reasoning = false;
             };
             "deepseek-r1:14b" = {
+              tools = true;
+              reasoning = true;
+            };
+            "qwen3:14b" = {
               tools = true;
               reasoning = true;
             };
           };
         };
       };
-      mcp = {
+      mcp = let
+        localhost = "http://localhost:8000";
+      in {
         context7 = {
-          type = "local";
+          type = "remote";
           enabled = true;
-          command = ["npx" "-y" "@upstash/context7-mcp"];
+          url = "${localhost}/context7/openapi.json";
         };
         sequential-thinking = {
-          type = "local";
+          type = "remote";
           enabled = true;
-          command = ["npx" "-y" "@modelcontextprotocol/server-sequential-thinking"];
+          url = "${localhost}/sequential-thinking/openapi.json";
         };
         playwright = {
-          type = "local";
+          type = "remote";
           enabled = true;
-          command = ["npx" "-y" "@playwright/mcp@latest"];
+          url = "${localhost}/playwright/openapi.json";
         };
       };
     };
