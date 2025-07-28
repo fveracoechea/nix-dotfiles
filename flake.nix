@@ -67,6 +67,12 @@
       catppuccin = import ./utils/catppuccin.nix;
       monitors = import ./utils/monitors.nix;
     };
+
+    # Create custom packages overlay for each system
+    customPkgsFor = system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      import ./packages pkgs;
   in {
     # `macbook-pro` configuration
     darwinConfigurations."macbook-pro" = nix-darwin.lib.darwinSystem rec {
@@ -76,6 +82,7 @@
         inherit system;
         inherit inputs;
         inherit customUtils;
+        customPkgs = customPkgsFor system;
       };
 
       modules = [
@@ -99,6 +106,7 @@
         inherit system;
         inherit inputs;
         inherit customUtils;
+        customPkgs = customPkgsFor system;
       };
 
       modules = [

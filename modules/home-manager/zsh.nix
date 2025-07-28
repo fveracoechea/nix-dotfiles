@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  customPkgs = import ../../packages pkgs;
-in {
+{pkgs, customPkgs, ...}: {
   home.packages = with pkgs; [
     customPkgs.zeitfetch
     fastfetch

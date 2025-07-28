@@ -21,6 +21,13 @@
       host = "0.0.0.0";
       environment = {
         OLLAMA_BASE_URL = "http://localhost:11434";
+        # Enable RAG and document processing
+        ENABLE_RAG_HYBRID_SEARCH = "true";
+        RAG_RELEVANCE_THRESHOLD = "0.0";
+        # Enable web search for RAG
+        ENABLE_RAG_WEB_SEARCH = "true";
+        # Enable function calling and tools
+        ENABLE_FUNCTION_CALLING = "true";
       };
     };
   };

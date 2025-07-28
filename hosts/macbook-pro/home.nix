@@ -1,10 +1,9 @@
 {
   inputs,
   pkgs,
+  customPkgs,
   ...
-}: let
-  customPkgs = import ../../packages pkgs;
-in {
+}: {
   imports = [
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/zsh.nix
@@ -14,6 +13,7 @@ in {
     ../../modules/home-manager/volta.nix
     ../../modules/home-manager/karabiner.nix
     ../../modules/home-manager/opencode.nix
+    ../../modules/home-manager/mcpo.nix
     ../../modules/home-manager/ghostty.nix
     inputs.neovim-config.homeManagerModules.default
   ];
@@ -26,7 +26,6 @@ in {
     postman
     slack
     lazydocker
-    zoom-us
     nerd-fonts.fira-code
     customPkgs.scripts.keycloak-proxy
     customPkgs.scripts.teams-proxy

@@ -1,10 +1,9 @@
 {
   inputs,
   pkgs,
+  customPkgs,
   ...
-}: let
-  customPkgs = import ../../packages pkgs;
-in {
+}: {
   imports = [
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux.nix
@@ -23,6 +22,7 @@ in {
     ../../modules/home-manager/hypridle.nix
     ../../modules/home-manager/sunshine.nix
     ../../modules/home-manager/opencode.nix
+    ../../modules/home-manager/mcpo.nix
     inputs.neovim-config.homeManagerModules.default
     inputs.spicetify-nix.homeManagerModules.default
   ];
@@ -58,7 +58,6 @@ in {
     customPkgs.dev-manager-desktop
     masterpdfeditor
     openlinkhub
-    zoom-us
     nodejs
   ];
 

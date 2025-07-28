@@ -4,4 +4,5 @@ pkgs: {
   tmuxPlugins = pkgs.callPackage ./tmux-plugins.nix {};
   dev-manager-desktop = pkgs.callPackage ./dev-manager-desktop.nix {};
   zeitfetch = pkgs.callPackage ./zeitfetch.nix {};
+  mcpo = pkgs.callPackage ./mcpo.nix {};
 }

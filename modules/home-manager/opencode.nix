@@ -27,6 +27,23 @@
           };
         };
       };
+      mcp = {
+        context7 = {
+          type = "local";
+          enabled = true;
+          command = ["npx" "-y" "@upstash/context7-mcp"];
+        };
+        sequential-thinking = {
+          type = "local";
+          enabled = true;
+          command = ["npx" "-y" "@modelcontextprotocol/server-sequential-thinking"];
+        };
+        playwright = {
+          type = "local";
+          enabled = true;
+          command = ["npx" "-y" "@playwright/mcp@latest"];
+        };
+      };
     };
   };
 }

@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  customPkgs = import ../../packages pkgs;
-in {
+{pkgs, customPkgs, ...}: {
   home.packages = [
     customPkgs.scripts.tmux-uptime
     customPkgs.scripts.tmux-os-icon
