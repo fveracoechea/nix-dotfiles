@@ -12,38 +12,28 @@
             baseURL = "http://127.0.0.1:11434/v1";
           };
           models = {
-            "mistral-nemo:latest" = {
-              tools = true;
-              reasoning = false;
-            };
-            "deepseek-r1:14b" = {
-              tools = true;
-              reasoning = true;
-            };
-            "qwen3:14b" = {
-              tools = true;
-              reasoning = true;
-            };
+            "qwen3:14b" = {tools = true;};
+            "deepseek-r1:14b" = {tools = true;};
+            "qwen2.5-coder:14b" = {tools = true;};
+            "mistral-nemo:latest" = {tools = true;};
           };
         };
       };
-      mcp = let
-        localhost = "http://localhost:8000";
-      in {
+      mcp = {
         context7 = {
-          type = "remote";
+          type = "local";
           enabled = true;
-          url = "${localhost}/context7/openapi.json";
+          command = ["npx" "-y" "@upstash/context7-mcp"];
         };
-        sequential-thinking = {
-          type = "remote";
-          enabled = true;
-          url = "${localhost}/sequential-thinking/openapi.json";
-        };
+        # sequential-thinking = {
+        #   type = "local";
+        #   enabled = true;
+        #   command = ["npx" "-y" "@modelcontextprotocol/server-sequential-thinking"];
+        # };
         playwright = {
-          type = "remote";
+          type = "local";
           enabled = true;
-          url = "${localhost}/playwright/openapi.json";
+          command = ["npx" "-y" "@playwright/mcp@latest"];
         };
       };
     };
