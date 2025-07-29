@@ -1,23 +1,10 @@
 {
+  system,
   pkgs,
   inputs,
-  config,
-  utils,
   ...
 }: let
-  mcpConfig = utils.mcpServers {
-    inherit pkgs inputs config;
-  };
-  # Convert mcp-servers-nix config to opencode format
-  mcpConfigData = builtins.fromJSON (builtins.readFile mcpConfig);
-  # Filter out filesystem and git servers for opencode
-  filteredMcpData = builtins.removeAttrs mcpConfigData.mcpServers ["filesystem" "git"];
-  # Transform for opencode mcp section
-  toOpencodeMcpServers = builtins.mapAttrs (name: server: {
-    type = "local";
-    enabled = true;
-    command = [server.command] ++ server.args or [];
-  });
+  mcpPackages = inputs.mcp-servers-nix.packages.${system};
 in {
   programs.opencode = {
     enable = true;
@@ -25,7 +12,7 @@ in {
     settings = {
       theme = "system";
       autoupdate = false;
-      mcp = toOpencodeMcpServers filteredMcpData;
+
       provider = {
         ollama = {
           npm = "@ai-sdk/openai-compatible";
@@ -49,6 +36,38 @@ in {
               description = "Advanced reasoning model with chain-of-thought capabilities";
             };
           };
+        };
+      };
+
+      mcp = {
+        fetch = {
+          type = "local";
+          enabled = true;
+          command = ["docker" "run" "-i" "--rm" "mcp/fetch"];
+        };
+        memory = {
+          type = "local";
+          enabled = true;
+          command = ["${mcpPackages.mcp-server-memory}/bin/mcp-server-memory"];
+        };
+        playwright = {
+          type = "local";
+          enabled = true;
+          command = [
+            "${mcpPackages.playwright-mcp}/bin/mcp-server-playwright"
+            "--executable-path"
+            "${pkgs.chromium}/bin/chromium"
+          ];
+        };
+        sequential-thinking = {
+          type = "local";
+          enabled = true;
+          command = ["${mcpPackages.mcp-server-sequential-thinking}/bin/mcp-server-sequential-thinking"];
+        };
+        time = {
+          type = "local";
+          enabled = true;
+          command = ["${mcpPackages.mcp-server-time}/bin/mcp-server-time"];
         };
       };
     };
