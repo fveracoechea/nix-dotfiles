@@ -1,10 +1,31 @@
-{pkgs, sharedMcpConfig, ...}: {
+{
+  pkgs,
+  inputs,
+  config,
+  utils,
+  ...
+}: let
+  mcpConfig = utils.mcpServers {
+    inherit pkgs inputs config;
+  };
+  # Convert mcp-servers-nix config to opencode format
+  mcpConfigData = builtins.fromJSON (builtins.readFile mcpConfig);
+  # Filter out filesystem and git servers for opencode
+  filteredMcpData = builtins.removeAttrs mcpConfigData.mcpServers ["filesystem" "git"];
+  # Transform for opencode mcp section
+  toOpencodeMcpServers = builtins.mapAttrs (name: server: {
+    type = "local";
+    enabled = true;
+    command = [server.command] ++ server.args or [];
+  });
+in {
   programs.opencode = {
     enable = true;
     package = pkgs.opencode;
     settings = {
       theme = "system";
       autoupdate = false;
+      mcp = toOpencodeMcpServers filteredMcpData;
       provider = {
         ollama = {
           npm = "@ai-sdk/openai-compatible";
@@ -30,7 +51,6 @@
           };
         };
       };
-      mcp = sharedMcpConfig.opencodeServers;
     };
   };
 }
