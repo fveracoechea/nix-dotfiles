@@ -53,7 +53,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    mcp-servers-nix.url = "github:natsukium/mcp-servers-nix";
+    mcp-servers-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
+    distro-grub-themes.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -61,19 +65,22 @@
     home-manager,
     nix-darwin,
     hyprpanel,
+    mcp-servers-nix,
     ...
   } @ inputs: let
-    customUtils = {
-      catppuccin = import ./utils/catppuccin.nix;
-      monitors = import ./utils/monitors.nix;
-    };
-
-    # Create custom packages overlay for each system
-    customPkgsFor = system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-      import ./packages pkgs;
+    customUtils = import ./utils;
+    customPkgsFor = system: (import ./packages nixpkgs.legacyPackages.${system});
   in {
+    packages."x86_64-linux".mpcConfig = let
+      pkgs = import nixpkgs {system = "x86_64-linux";};
+    in
+      mcp-servers-nix.lib.mkConfig pkgs {
+        programs = {
+          filesystem.enable = true;
+          fetch.enable = true;
+        };
+      };
+
     # `macbook-pro` configuration
     darwinConfigurations."macbook-pro" = nix-darwin.lib.darwinSystem rec {
       system = "aarch64-darwin";
