@@ -65,22 +65,11 @@
     home-manager,
     nix-darwin,
     hyprpanel,
-    mcp-servers-nix,
     ...
   } @ inputs: let
     customUtils = import ./utils;
     customPkgsFor = system: (import ./packages nixpkgs.legacyPackages.${system});
   in {
-    packages."x86_64-linux".mpcConfig = let
-      pkgs = import nixpkgs {system = "x86_64-linux";};
-    in
-      mcp-servers-nix.lib.mkConfig pkgs {
-        programs = {
-          filesystem.enable = true;
-          fetch.enable = true;
-        };
-      };
-
     # `macbook-pro` configuration
     darwinConfigurations."macbook-pro" = nix-darwin.lib.darwinSystem rec {
       system = "aarch64-darwin";

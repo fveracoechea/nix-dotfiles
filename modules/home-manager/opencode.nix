@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, sharedMcpConfig, ...}: {
   programs.opencode = {
     enable = true;
     package = pkgs.opencode;
@@ -30,23 +30,7 @@
           };
         };
       };
-      mcp = {
-        context7 = {
-          type = "local";
-          enabled = true;
-          command = ["npx" "-y" "@upstash/context7-mcp"];
-        };
-        sequential-thinking = {
-          type = "local";
-          enabled = true;
-          command = ["npx" "-y" "@modelcontextprotocol/server-sequential-thinking"];
-        };
-        playwright = {
-          type = "local";
-          enabled = true;
-          command = ["nix" "run" "github:akirak/nix-playwright-mcp"];
-        };
-      };
+      mcp = sharedMcpConfig.opencodeServers;
     };
   };
 }
