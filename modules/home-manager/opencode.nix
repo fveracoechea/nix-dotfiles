@@ -25,6 +25,11 @@ in {
               reasoning = true;
               description = "General purpose model with strong reasoning and multilingual capabilities";
             };
+            "qwen3-coder:latest" = {
+              tools = true;
+              # reasoning = true;
+              description = "Performant long context models for agentic and coding tasks";
+            };
             "mistral-small3.2:latest" = {
               tools = true;
               reasoning = true;

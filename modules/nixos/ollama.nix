@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   services = {
     ollama = {
       enable = true;
@@ -8,6 +8,7 @@
         "mistral-nemo:latest"
         "deepseek-r1:14b"
         "qwen3:14b"
+        "qwen3-coder:latest"
         "devstral:latest"
       ];
       host = "0.0.0.0";
@@ -16,7 +17,8 @@
         OLLAMA_CONTEXT_LENGTH = "16384";
         OLLAMA_NUM_PARALLEL = "2";
         OLLAMA_MAX_LOADED_MODELS = "2";
-        OLLAMA_KEEP_ALIVE = "5m";
+        OLLAMA_KEEP_ALIVE = "15m";
+        CUDA_VISIBLE_DEVICES = "0";
       };
     };
 
@@ -24,6 +26,7 @@
       enable = true;
       port = 8888;
       host = "0.0.0.0";
+      stateDir = "/var/lib/open-webui";
       environment = {
         OLLAMA_BASE_URL = "http://localhost:11434";
       };
