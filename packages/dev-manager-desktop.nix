@@ -20,7 +20,6 @@
 rustPlatform.buildRustPackage rec {
   pname = "dev-manager-desktop";
   version = "1.99.16";
-  useFetchCargoVendor = true;
   cargoHash = "sha256-a6H7MEHNkOOfw1VdvYQ/ZN8myVcBIk8fdm6LUHUYOAg=";
 
   src = fetchFromGitHub {

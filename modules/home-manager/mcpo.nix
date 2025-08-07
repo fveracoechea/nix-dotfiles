@@ -19,6 +19,10 @@
       context7.enable = true;
     };
     settings.servers = {
+      grep = {
+        type = "streamable-http";
+        url = "https://mcp.grep.app";
+      };
       fetch = {
         command = "docker";
         args = ["run" "-i" "--rm" "mcp/fetch"];

@@ -25,15 +25,15 @@ in {
               reasoning = true;
               description = "General purpose model with strong reasoning and multilingual capabilities";
             };
+            "mistral-small3.2:latest" = {
+              tools = true;
+              reasoning = true;
+              description = "Highly capable model for general tasks";
+            };
             "devstral:latest" = {
               tools = true;
               reasoning = true;
               description = "An agentic LLM for software engineering tasks";
-            };
-            "deepseek-r1:14b" = {
-              tools = true;
-              reasoning = true;
-              description = "Advanced reasoning model with chain-of-thought capabilities";
             };
           };
         };
@@ -41,18 +41,18 @@ in {
 
       mcp = {
         fetch = {
-          type = "local";
           enabled = true;
+          type = "local";
           command = ["docker" "run" "-i" "--rm" "mcp/fetch"];
         };
         memory = {
-          type = "local";
           enabled = true;
+          type = "local";
           command = ["${mcpPackages.mcp-server-memory}/bin/mcp-server-memory"];
         };
         playwright = {
-          type = "local";
           enabled = true;
+          type = "local";
           command = [
             "${mcpPackages.playwright-mcp}/bin/mcp-server-playwright"
             "--executable-path"
@@ -60,14 +60,19 @@ in {
           ];
         };
         sequential-thinking = {
-          type = "local";
           enabled = true;
+          type = "local";
           command = ["${mcpPackages.mcp-server-sequential-thinking}/bin/mcp-server-sequential-thinking"];
         };
         time = {
-          type = "local";
           enabled = true;
+          type = "local";
           command = ["${mcpPackages.mcp-server-time}/bin/mcp-server-time"];
+        };
+        grep = {
+          enabled = true;
+          type = "remote";
+          url = "https://mcp.grep.app";
         };
       };
     };

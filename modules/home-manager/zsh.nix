@@ -1,4 +1,9 @@
-{pkgs, customPkgs, ...}: {
+{
+  pkgs,
+  config,
+  customPkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     customPkgs.zeitfetch
     fastfetch
@@ -24,7 +29,7 @@
 
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
