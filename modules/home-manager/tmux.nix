@@ -1,4 +1,8 @@
-{pkgs, customPkgs, ...}: {
+{
+  pkgs,
+  customPkgs,
+  ...
+}: {
   home.packages = [
     customPkgs.scripts.tmux-uptime
     customPkgs.scripts.tmux-os-icon
@@ -11,6 +15,9 @@
     terminal = "tmux-256color";
     mouse = true;
     baseIndex = 1;
+    focusEvents = true;
+    historyLimit = 10000;
+    shell = "${pkgs.zsh}/bin/zsh";
 
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
@@ -37,28 +44,12 @@
     extraConfig =
       #bash
       ''
-        # Catppuccin config after loading the plugin
-        set-option -g status-style bg=default
-        set -gF @catppuccin_status_background "none"
-
         set -g allow-passthrough on
         set -ga update-environment TERM
         set -ga update-environment TERM_PROGRAM
+        set -ag terminal-overrides ",xterm-256color:RGB"
 
-        set -g @catppuccin_gitmux_text " #(tmux-git-status)"
-        set -g @catppuccin_uptime_text " #(tmux-uptime)"
-        set -g @catppuccin_host_icon "#(tmux-os-icon) "
-
-        set -g status-right "#{E:@catppuccin_status_session}"
-        set -ag status-right "#{E:@catppuccin_status_gitmux}"
-        set -ag status-right "#{E:@catppuccin_status_uptime}"
-        set -ag status-right "#{E:@catppuccin_status_host}"
-
-        set -g status-right-length 100
-        set -g status-left-length 100
-        set -g status-left ""
-
-        set-environment -g COLORTERM "truecolor"
+        # set-environment -g COLORTERM "truecolor"
         set-option -g status-position top
 
         # Reset default command
@@ -70,8 +61,6 @@
         # Enable dynamic titles
         set-option -g set-titles on
         set-option -g set-titles-string "#(echo #{pane_current_path} | sed 's#$HOME#~#g') - #W"
-
-        set-option -g history-limit 100000
 
         # Split horizontally with |
         unbind %
@@ -98,8 +87,23 @@
         set -g status 2
         set -g status-format[1] ""
 
-        # Enable focus-events
-        set-option -g focus-events on
+        # Catppuccin config after loading the plugin
+        set-option -g status-style bg=default
+        set -gF @catppuccin_status_background "none"
+
+        set -g @catppuccin_gitmux_text " #(tmux-git-status)"
+        set -g @catppuccin_uptime_text " #(tmux-uptime)"
+        set -g @catppuccin_host_icon "#(tmux-os-icon) "
+
+        set -g status-right "#{E:@catppuccin_status_session}"
+        set -ag status-right "#{E:@catppuccin_status_gitmux}"
+        set -ag status-right "#{E:@catppuccin_status_uptime}"
+        set -ag status-right "#{E:@catppuccin_status_host}"
+
+        set -g status-right-length 100
+        set -g status-left-length 100
+        set -g status-left ""
+
       '';
   };
 }
