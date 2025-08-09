@@ -590,22 +590,6 @@
         "type": "github"
       }
     },
-    "import_cost-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1714772241,
-        "narHash": "sha256-/P3Eoqb/udYKIR+hgmKM+8wxbhWDv4ecTghZ//Y4Q+Y=",
-        "owner": "barrett-ruth",
-        "repo": "import-cost.nvim",
-        "rev": "332b9870c7b22dcfb297a0be7d7a87c148181694",
-        "type": "github"
-      },
-      "original": {
-        "owner": "barrett-ruth",
-        "repo": "import-cost.nvim",
-        "type": "github"
-      }
-    },
     "mcp-servers-nix": {
       "inputs": {
         "nixpkgs": [
@@ -648,22 +632,22 @@
     },
     "neovim-config": {
       "inputs": {
-        "import_cost-nvim": "import_cost-nvim",
         "nixpkgs": [
           "nixpkgs"
         ],
         "tree-sitter-nginx": "tree-sitter-nginx"
       },
       "locked": {
-        "lastModified": 1754665637,
-        "narHash": "sha256-f85GDk4toeEFXalF8wu+eBnZwpM9nBneZGe50E7956w=",
+        "lastModified": 1754764070,
+        "narHash": "sha256-8sLyHIOi/oj+c9GLNQPdToVYYse/Y9TVjp6PZSzEjng=",
         "owner": "fveracoechea",
         "repo": "neovim-nix-config",
-        "rev": "368b5bbb5896bea48a1ee1c285b590a4c1a3e18b",
+        "rev": "9292375abbbd0a5a95812d6b6b650a15609fa13b",
         "type": "github"
       },
       "original": {
         "owner": "fveracoechea",
+        "ref": "snacks-mini-architecture",
         "repo": "neovim-nix-config",
         "type": "github"
       }

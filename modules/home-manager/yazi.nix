@@ -53,6 +53,16 @@ in {
         ];
       };
 
+      preview = {
+        max_width = 1200;
+        max_height = 1800;
+      };
+
+      tasks = {
+        image_alloc = 0; # unlimited
+        image_bound = [0 0]; # unlimited
+      };
+
       plugin = {
         prepend_preloaders = [
           {
