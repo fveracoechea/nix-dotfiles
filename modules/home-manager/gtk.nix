@@ -24,6 +24,8 @@
   };
 
   home.packages = with pkgs; [
+    papers
+    gnome-text-editor
     gnome-system-monitor
     gnome-calculator
     gnome-control-center

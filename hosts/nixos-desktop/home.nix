@@ -60,7 +60,6 @@
     openlinkhub
     nodejs
     docker-compose
-    shopify-cli
   ];
 
   # This value determines the home Manager release that your
