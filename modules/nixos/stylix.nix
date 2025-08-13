@@ -23,6 +23,8 @@ in {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
 
+    targets.grub.enable = true;
+
     cursor = {
       name = "capitaine-cursors";
       package = pkgs.capitaine-cursors;
@@ -42,8 +44,5 @@ in {
         terminal = 13;
       };
     };
-
-    targets.grub.enable = false;
-    targets.grub.useImage = false;
   };
 }
