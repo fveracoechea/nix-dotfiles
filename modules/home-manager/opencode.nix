@@ -61,7 +61,7 @@ in {
           command = [
             "${mcpPackages.playwright-mcp}/bin/mcp-server-playwright"
             "--executable-path"
-            "${pkgs.chromium}/bin/chromium"
+            "${pkgs.google-chrome}/bin/google-chrome-stable"
           ];
         };
         sequential-thinking = {
