@@ -12,13 +12,13 @@
       "docker"
       "postgres-unofficial"
       "karabiner-elements"
-      "displaylink"
+      # "displaylink"
       "moonlight"
     ];
     brews = [
-      "pipx"
+      # "pipx"
       "pulumi/tap/pulumi"
-      "pyenv"
+      # "pyenv"
       "python@3.12"
     ];
   };
