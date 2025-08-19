@@ -1,4 +1,5 @@
 {
+  lib,
   system,
   pkgs,
   inputs,
@@ -58,11 +59,17 @@ in {
         playwright = {
           enabled = true;
           type = "local";
-          command = [
-            "${mcpPackages.playwright-mcp}/bin/mcp-server-playwright"
-            "--executable-path"
-            "${pkgs.google-chrome}/bin/google-chrome-stable"
-          ];
+          command =
+            [
+              "${mcpPackages.playwright-mcp}/bin/mcp-server-playwright"
+              "--executable-path"
+            ]
+            ++ lib.optionals pkgs.stdenv.isLinux [
+              "${pkgs.chromium}/bin/chromium"
+            ]
+            ++ lib.optionals pkgs.stdenv.isDarwin [
+              "${pkgs.google-chrome}/bin/google-chrome-stable"
+            ];
         };
         sequential-thinking = {
           enabled = true;
