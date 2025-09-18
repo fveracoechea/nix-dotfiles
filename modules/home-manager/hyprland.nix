@@ -98,29 +98,30 @@ in {
       };
 
       windowrule = let
-        floatClass = class: "float,class:^(${class})$";
-        floatTitle = title: "float, title:^(${title})$";
+        floatingClasses = builtins.concatStringsSep "|" [
+          "blueberry.py"
+          "Impala"
+          "Wiremix"
+          "org.gnome.NautilusPreviewer"
+          "com.gabm.satty"
+          "TUI.float"
+        ];
+        floatingTitles = builtins.concatStringsSep "|" ["Open.*Files?" "Open Folder" "Save.*Files?" "Save.*As" "Save" "All Files"];
+        floatingClassesWithTitle = builtins.concatStringsSep "|" [
+          "xdg-desktop-portal-gtk"
+          "DesktopEditors"
+          "org.gnome.Nautilus"
+        ];
       in [
+        "float, tag:floating-window"
+        "center, tag:floating-window"
+        "size 1000 650, tag:floating-window"
+
+        "tag +floating-window, class:(${floatingClasses})"
+        "tag +floating-window, class:(${floatingClassesWithTitle}), title:^(${floatingTitles})"
+
         "bordersize 0, fullscreen:1"
         "idleinhibit fullscreen, class:^(.*)$"
-
-        (floatClass "file_progres")
-        (floatClass "confirm")
-        (floatClass "dialog")
-        (floatClass "download")
-        (floatClass "notification")
-        (floatClass "error")
-        (floatClass "confirmreset")
-        (floatClass "imv")
-        (floatClass "mpv")
-        (floatClass "branchdialog")
-
-        (floatTitle "Volume Control")
-        (floatTitle "Bluetooth Devices")
-        (floatTitle "Open File")
-        (floatTitle "Save File")
-        (floatTitle "Confirm to replace file")
-        (floatTitle "File Operation Progress")
       ];
 
       bindm = [
