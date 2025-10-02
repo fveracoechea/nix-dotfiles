@@ -4,6 +4,7 @@
   lib,
   config,
   customUtils,
+  system,
   ...
 }: let
   apps = "fuzzel --cache ${config.home.homeDirectory}/.config/fuzzel/cache";
@@ -13,6 +14,7 @@
   workspaces = [1 2 3 4 5];
 in {
   home.packages = with pkgs; [
+    inputs.hyprshell.packages.${system}.default
     (writers.writeBashBin "set-screen-share-resolution" ''
       hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey-qhd}"
       hyprctl keyword monitor "${customUtils.monitors.dummy-4k-disabled}"
@@ -28,7 +30,7 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    package = inputs.hyprland.packages.${system}.hyprland;
 
     settings = {
       env = [
@@ -71,7 +73,8 @@ in {
       };
 
       exec-once = [
-        "hyprpanel"
+        "hyprshell"
+        # "hyprpanel"
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
       ];
 

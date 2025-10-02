@@ -48,8 +48,14 @@
     };
 
     # Hyprpanel - bar
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
+    # hyprpanel = {
+    #   url = "github:Jas-SinghFSU/HyprPanel";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # Hyprshell
+    hyprshell = {
+      url = "github:fveracoechea/hyprshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

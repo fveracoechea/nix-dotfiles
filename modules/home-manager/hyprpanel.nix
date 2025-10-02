@@ -1,16 +1,11 @@
-{
-  inputs,
-  system,
-  ...
-}: {
+{...}: {
   programs.hyprpanel = let
     left = ["dashboard" "media" "systray" "clock" "notifications" "workspaces"];
     middle = ["windowtitle"];
     right = ["volume" "bluetooth" "network" "cpu" "cputemp" "ram" "storage" "hypridle"];
   in {
-    enable = true;
+    enable = false;
     systemd.enable = true;
-    package = inputs.hyprpanel.packages.${system}.default;
 
     settings = {
       scalingPriority = "hyprland";
