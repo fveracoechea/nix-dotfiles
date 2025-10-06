@@ -118,7 +118,7 @@ in {
       in [
         "float, tag:floating-window"
         "center, tag:floating-window"
-        "size 1000 650, tag:floating-window"
+        "size 1024 768, tag:floating-window"
 
         "tag +floating-window, class:(${floatingClasses})"
         "tag +floating-window, class:(${floatingClassesWithTitle}), title:^(${floatingTitles})"

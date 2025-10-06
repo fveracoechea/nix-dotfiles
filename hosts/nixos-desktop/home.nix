@@ -45,7 +45,6 @@
     google-chrome
     kooha
     teams-for-linux
-    btop
     nerd-fonts.fira-code
     python3
     dconf2nix
