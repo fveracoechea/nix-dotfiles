@@ -25,7 +25,7 @@
 
     # Neovim config flake
     neovim-config = {
-      url = "github:fveracoechea/neovim-nix-config/snacks-mini-architecture";
+      url = "github:fveracoechea/neovim-nix-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

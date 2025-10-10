@@ -16,7 +16,7 @@
     gxplugins-lv2
     lsp-plugins
     tap-plugins
-    infamousPlugins
+    # infamousPlugins
     # general
     helm
     cardinal

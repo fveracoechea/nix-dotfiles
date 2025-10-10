@@ -7,12 +7,6 @@
 
     # Support for the xbox accessories
     xone.enable = true;
-
-    # Open-source Vulkan driver from AMD
-    amdgpu.amdvlk = {
-      enable = true;
-      support32Bit.enable = true;
-    };
   };
 
   programs = {
