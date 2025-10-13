@@ -23,6 +23,13 @@
     gc.options = "--delete-older-than 30d";
   };
 
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16 * 1024; # 16GB
+    }
+  ];
+
   services.xserver = {
     enable = true;
     xkb = {

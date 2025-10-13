@@ -19,7 +19,7 @@
 
       background = lib.mkForce [
         {
-          path = "$HOME/dotfiles/wallpapers/catppuccin-mocha/snow-mountains-ultrawide.png";
+          path = "$HOME/dotfiles/wallpapers/catppuccin-mocha/dark-forrest-ultrawide.png";
           blur_passes = 1;
           blur_size = 4;
         }
