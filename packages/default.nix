@@ -5,4 +5,5 @@ pkgs: {
   dev-manager-desktop = pkgs.callPackage ./dev-manager-desktop.nix {};
   zeitfetch = pkgs.callPackage ./zeitfetch.nix {};
   mcpo = pkgs.callPackage ./mcpo.nix {};
+  opencode = pkgs.callPackage ./opencode.nix {};
 }
