@@ -31,7 +31,7 @@
 
     # Hyprland
     hyprland = {
-      url = "github:hyprwm/Hyprland?ref=refs/tags/v0.49.0";
+      url = "github:hyprwm/Hyprland?ref=refs/tags/v0.51.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -53,9 +53,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hyprshell
-    hyprshell = {
-      url = "github:fveracoechea/hyprshell";
+    ultrashell = {
+      url = "github:fveracoechea/ultrashell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

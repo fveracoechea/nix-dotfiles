@@ -14,7 +14,8 @@
   workspaces = [1 2 3 4 5];
 in {
   home.packages = with pkgs; [
-    inputs.hyprshell.packages.${system}.default
+    inputs.ultrashell.packages.${system}.default
+
     (writers.writeBashBin "set-screen-share-resolution" ''
       hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey-qhd}"
       hyprctl keyword monitor "${customUtils.monitors.dummy-4k-disabled}"
@@ -73,7 +74,7 @@ in {
       };
 
       exec-once = [
-        "hyprshell"
+        "ultrashell"
         # "hyprpanel"
         "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
       ];
