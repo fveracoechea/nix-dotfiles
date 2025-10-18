@@ -2,34 +2,30 @@
   home.packages = with pkgs; [
     # Apps
     # zrythm
+    # reaper
     ardour
-    # audacity
-    reaper
+    bitwig-studio
 
     # Music editor
     tuxguitar
 
     # Audio plugins (LV2, VST2, VST3, LADSPA)
-    guitarix
-
-    # packs
-    gxplugins-lv2
+    # distrho-ports
+    calf
+    eq10q
     lsp-plugins
     tap-plugins
-    # infamousPlugins
-    # general
-    helm
-    cardinal
+    x42-plugins
+    x42-gmsynth
+    gxplugins-lv2
     dragonfly-reverb
-    # Drums
+    guitarix
+    FIL-plugins
     geonkick
-    # distortion
-    fire
-    wolf-shaper
 
     # Support for Windows VST2/VST3 plugins
-    # yabridge
-    # yabridgectl
-    # wineWowPackages.stable
+    yabridge
+    yabridgectl
+    wineWowPackages.stable
   ];
 }
