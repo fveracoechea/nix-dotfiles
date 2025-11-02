@@ -5,7 +5,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      theme = "catppuccin-mocha";
+      theme = "Catppuccin Mocha";
       shell-integration = "zsh";
 
       background-opacity = 0.88;

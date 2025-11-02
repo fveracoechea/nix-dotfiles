@@ -41,7 +41,7 @@
     systemPackages = with pkgs; [
       mesa-demos
       ethtool
-      protonup
+      protonup-ng
       amdgpu_top
       mangohud
       lact

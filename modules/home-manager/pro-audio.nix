@@ -20,7 +20,7 @@
     gxplugins-lv2
     dragonfly-reverb
     guitarix
-    FIL-plugins
+    fil-plugins
     geonkick
 
     # Support for Windows VST2/VST3 plugins
