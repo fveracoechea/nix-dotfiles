@@ -22,8 +22,8 @@
 
       key-bindings = {
         delete-line-forward = "none";
-        next = "Control+j";
-        prev = "Control+k";
+        next = "Control+n";
+        prev = "Control+p";
       };
     };
   };

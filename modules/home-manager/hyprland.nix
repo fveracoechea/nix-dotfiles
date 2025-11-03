@@ -10,7 +10,6 @@
   apps = "fuzzel --cache ${config.home.homeDirectory}/.config/fuzzel/cache";
   terminal = "ghostty";
   browser = "google-chrome-stable";
-  screenshot = "hyprshot -m output";
   workspaces = [1 2 3 4 5];
 in {
   home.packages = with pkgs; [
@@ -83,7 +82,11 @@ in {
         border_size = 3;
         gaps_in = 10;
         gaps_out = "10,20,20,20";
-        layout = "dwindle";
+      };
+
+      dwindle = {
+        # Avoid overly wide single-window layouts on wide screens
+        single_window_aspect_ratio = "1 1";
       };
 
       decoration = lib.mkForce {
@@ -134,7 +137,30 @@ in {
       ];
 
       workspace =
-        map (i: "${toString i}, persistent:1") workspaces;
+        map (i: "${toString i}, persistent:true") workspaces;
+
+      bindd = [
+        # Control tiling
+        "SUPER, J, Toggle window split, togglesplit,"
+        "SUPER, T, Toggle window floating/tiling, togglefloating,"
+        "SUPER, F, Full screen, fullscreen, 0"
+        "SUPER CTRL, F, Tiled full screen, fullscreenstate, 0 2"
+        "SUPER ALT, F, Full width, fullscreen, 1"
+        "SUPER, W, Close window, killactive"
+
+        # dwindle specific
+        "SUPER, P, Pseudo window, pseudo,"
+        "SUPER CTRL, P, Toggle All Pseudo window, exec, hyprctl dispatch workspaceopt allpseudo"
+
+        # TAB between workspaces
+        "SUPER, TAB, Next workspace, workspace, e+1"
+        "SUPER SHIFT, TAB, Previous workspace, workspace, e-1"
+        "SUPER CTRL, TAB, Former workspace, workspace, previous"
+
+        # Toggle groups
+        "SUPER, G, Toggle window grouping, togglegroup"
+        "SUPER ALT, G, Move active window out of group, moveoutofgroup"
+      ];
 
       bind = let
         binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
@@ -149,18 +175,9 @@ in {
           (bindExec "B" browser)
           (bindExec "T" terminal)
           (bindExec "A" apps)
-          (bindExec "S" screenshot)
-          (bindExec "W" "hyprctl dispatch workspaceopt allfloat")
-          (bindExec "P" "hyprctl dispatch workspaceopt allpseudo")
 
-          "SUPER, F, togglefloating"
-          "SUPER CTRL, P, pseudo"
-          "SUPER ALT, F, fullscreen"
-          "SUPER, Q, killactive"
-          "SUPER CTRL, Q, exit"
-
-          "SUPER CTRL, G, exec, steam-sunshine-do"
-          "SUPER ALT, G, exec, steam-sunshine-undo"
+          "SUPER CTRL, S, exec, steam-sunshine-do"
+          "SUPER ALT, S, exec, steam-sunshine-undo"
 
           # move window focus
           (mvfocus "K" "u")
