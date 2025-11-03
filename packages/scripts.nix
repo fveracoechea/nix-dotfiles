@@ -24,4 +24,5 @@ in {
   tmux-git-status = denoScript "tmux-git-status";
   tmux-uptime = denoScript "tmux-uptime";
   tmux-os-icon = denoScript "tmux-os-icon";
+  hyprland-shortcuts = denoScript "hyprland-shortcuts";
 }
