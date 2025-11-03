@@ -22,7 +22,7 @@
     ../../modules/home-manager/hyprlock.nix
     ../../modules/home-manager/hypridle.nix
     ../../modules/home-manager/sunshine.nix
-    ../../modules/home-manager/opencode.nix
+    ../../modules/home-manager/opencode
     ../../modules/home-manager/mcpo.nix
     inputs.neovim-config.homeManagerModules.default
     inputs.spicetify-nix.homeManagerModules.default

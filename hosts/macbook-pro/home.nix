@@ -13,9 +13,8 @@
     ../../modules/home-manager/oh-my-posh.nix
     ../../modules/home-manager/volta.nix
     ../../modules/home-manager/karabiner.nix
-    ../../modules/home-manager/opencode.nix
+    ../../modules/home-manager/opencode
     ../../modules/home-manager/mcpo.nix
-    # ../../modules/home-manager/ghostty.nix
     inputs.neovim-config.homeManagerModules.default
   ];
 
