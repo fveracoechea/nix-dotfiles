@@ -1,9 +1,11 @@
 {
   programs.git = {
     enable = true;
-    userEmail = "veracoecheafrancisco@gmail.com";
-    userName = "Francisco Veracoechea";
-    extraConfig = {
+    settings = {
+      user = {
+        email = "veracoecheafrancisco@gmail.com";
+        name = "Francisco Veracoechea";
+      };
       core = {
         editor = "nvim";
         sshCommand = "ssh -i ~/.ssh/id_github_hypr";

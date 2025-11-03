@@ -3,7 +3,6 @@
   system,
   pkgs,
   inputs,
-  customPkgs,
   ...
 }: let
   mcpPackages = inputs.mcp-servers-nix.packages.${system};
@@ -14,7 +13,6 @@ in {
 
   programs.opencode = {
     enable = true;
-    package = customPkgs.opencode;
     settings = {
       theme = "system";
       autoupdate = false;
