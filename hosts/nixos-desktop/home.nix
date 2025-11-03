@@ -24,6 +24,7 @@
     ../../modules/home-manager/sunshine.nix
     ../../modules/home-manager/opencode
     ../../modules/home-manager/mcpo.nix
+    ../../modules/home-manager/desktop-entries
     inputs.neovim-config.homeManagerModules.default
     inputs.spicetify-nix.homeManagerModules.default
   ];
