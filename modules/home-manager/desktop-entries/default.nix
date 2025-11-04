@@ -1,11 +1,25 @@
 {...}: {
   xdg.desktopEntries = {
-    "chrome-youtube" = {
+    "youtube-webapp" = {
       name = "YouTube (Web App)";
       exec = " google-chrome-stable --app=https://www.youtube.com";
       categories = ["Network" "WebBrowser"];
-      mimeType = ["application/x-extension-youtube" "text/html" "text/xml"];
+      mimeType = ["x-scheme-handler/youtube" "text/html" "text/xml"];
       icon = ./icons/youtube.svg;
+    };
+    "github-webapp" = {
+      name = "GitHub (Web App)";
+      exec = "google-chrome-stable --app=https://github.com";
+      categories = ["Network" "WebBrowser"];
+      mimeType = ["text/html" "text/xml"];
+      icon = ./icons/github.svg;
+    };
+    "zoom-webapp" = {
+      name = "Zoom (Web App)";
+      exec = "google-chrome-stable --app=https://app.zoom.us/wc/home?from=pwa";
+      categories = ["Network" "WebBrowser"];
+      mimeType = ["text/html" "text/xml" "x-scheme-handler/zoommtg" "x-scheme-handler/zoomus"];
+      icon = ./icons/zoom.svg;
     };
   };
 }
