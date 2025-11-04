@@ -10,6 +10,11 @@
   home.packages = with pkgs; [
     inputs.ultrashell.packages.${system}.default
 
+    hyprdim
+    hyprshot
+    hyprpicker
+    hyprcursor
+
     (writers.writeBashBin "set-screen-share-resolution" ''
       hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey-qhd}"
       hyprctl keyword monitor "${customUtils.monitors.dummy-4k-disabled}"

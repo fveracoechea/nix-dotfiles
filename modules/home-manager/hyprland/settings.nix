@@ -33,8 +33,7 @@ in {
 
       exec-once = [
         "ultrashell"
-        # "hyprpanel"
-        "hyprdim --no-dim-when-only --persist --ignore-leaving-special --dialog-dim"
+        "hyprdim --fade 25"
       ];
 
       general = {

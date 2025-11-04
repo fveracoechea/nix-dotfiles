@@ -36,7 +36,7 @@ flakes.
 ### Window Management & Desktop
 
 - **[Hyprland](https://hyprland.org/)**: Dynamic tiling Wayland compositor
-- **[HyprPanel](https://github.com/Jas-SinghFSU/HyprPanel)**: Feature-rich
+- **[Ultrashell](https://github.com/fveracoechea/ultrashell)**: Feature-rich
   status bar
 - **[SDDM](https://github.com/sddm/sddm)**: Display manager (NixOS)
 - **[Ghostty](https://mitchellh.com/ghostty)**: Fast, GPU-accelerated terminal

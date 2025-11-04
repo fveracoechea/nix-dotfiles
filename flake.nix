@@ -47,12 +47,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hyprpanel - bar
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ultrashell = {
       url = "github:fveracoechea/ultrashell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -69,7 +63,6 @@
     nixpkgs,
     home-manager,
     nix-darwin,
-    hyprpanel,
     ...
   } @ inputs: let
     customUtils = import ./utils;

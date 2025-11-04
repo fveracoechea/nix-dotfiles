@@ -18,9 +18,6 @@
     ../../modules/home-manager/fuzzel.nix
     ../../modules/home-manager/ghostty.nix
     ../../modules/home-manager/hyprland
-    ../../modules/home-manager/hyprpanel.nix
-    ../../modules/home-manager/hyprlock.nix
-    ../../modules/home-manager/hypridle.nix
     ../../modules/home-manager/sunshine.nix
     ../../modules/home-manager/opencode
     ../../modules/home-manager/mcpo.nix
