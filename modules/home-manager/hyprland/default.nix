@@ -6,6 +6,6 @@
     ./packages.nix
     ./windowrules.nix
     ./hypridle.nix
-    ./hyprlocks.nix
+    ./hyprlock.nix
   ];
 }
