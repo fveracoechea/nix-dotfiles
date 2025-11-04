@@ -16,7 +16,7 @@
     };
     "zoom-webapp" = {
       name = "Zoom (Web App)";
-      exec = "google-chrome-stable --app=https://app.zoom.us/wc/home?from=pwa";
+      exec = "google-chrome-stable --app=https://app.zoom.us/wc/home";
       categories = ["Network" "WebBrowser"];
       mimeType = ["text/html" "text/xml" "x-scheme-handler/zoommtg" "x-scheme-handler/zoomus"];
       icon = ./icons/zoom.svg;
