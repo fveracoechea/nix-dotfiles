@@ -17,7 +17,7 @@
     ../../modules/home-manager/pro-audio.nix
     ../../modules/home-manager/fuzzel.nix
     ../../modules/home-manager/ghostty.nix
-    ../../modules/home-manager/hyprland.nix
+    ../../modules/home-manager/hyprland
     ../../modules/home-manager/hyprpanel.nix
     ../../modules/home-manager/hyprlock.nix
     ../../modules/home-manager/hypridle.nix
