@@ -14,7 +14,7 @@
 
   services.displayManager.sddm = {
     enable = true;
-    wayland = true;
+    wayland.enable = true;
     enableHidpi = true;
     theme = "catppuccin-mocha-blue";
     package = pkgs.kdePackages.sddm;
