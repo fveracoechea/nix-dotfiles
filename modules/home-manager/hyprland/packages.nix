@@ -1,6 +1,8 @@
 {
   pkgs,
   system,
+  inputs,
+  customUtils,
   ...
 }: {
   programs.mpv.enable = true;
