@@ -21,5 +21,12 @@
       mimeType = ["text/html" "text/xml" "x-scheme-handler/zoommtg" "x-scheme-handler/zoomus"];
       icon = ./icons/zoom.svg;
     };
+    "drizzle-webapp" = {
+      name = "Drizzle Studio (Web App)";
+      exec = "google-chrome-stable --app=https://local.drizzle.studio";
+      categories = ["Network" "WebBrowser"];
+      mimeType = ["text/html" "text/xml"];
+      icon = ./icons/drizzle.svg;
+    };
   };
 }

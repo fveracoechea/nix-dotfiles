@@ -44,7 +44,7 @@ in {
 
       dwindle = {
         # Avoid overly wide single-window layouts on wide screens
-        single_window_aspect_ratio = "4 3";
+        single_window_aspect_ratio = "16 9";
       };
 
       decoration = lib.mkForce {
