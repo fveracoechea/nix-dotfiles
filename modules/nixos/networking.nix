@@ -1,6 +1,7 @@
 {
   networking = {
     hostName = "nixos";
+    interfaces."eno1".wakeOnLan.enable = true;
     networkmanager.enable = true;
     wireless.iwd.enable = true;
     firewall = {
