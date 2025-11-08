@@ -13,8 +13,6 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  wayland.windowManager.hyprland.systemd.enable = false;
-
   programs.hyprland = {
     enable = true;
     withUWSM = true;
