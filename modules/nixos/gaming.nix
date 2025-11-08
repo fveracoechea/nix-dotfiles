@@ -2,6 +2,7 @@
   hardware = {
     graphics.enable = true;
     graphics.enable32Bit = true;
+    graphics.extraPackages = [pkgs.gamescope-wsi];
     cpu.amd.updateMicrocode = true;
     amdgpu.initrd.enable = true;
     xone.enable = true;
@@ -16,7 +17,6 @@
     gamemode.enable = true;
 
     gamescope.enable = true;
-    gamescope.package = pkgs.gamescope-wsi;
     gamescope.capSysNice = true;
   };
 

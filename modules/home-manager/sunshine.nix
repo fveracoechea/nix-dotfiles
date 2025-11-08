@@ -12,7 +12,7 @@
     "-W 3840"
     "-H 2160"
     "-r 120" # Refresh rate
-    "-O HDMI-A-1" # Output display
+    "-O HDMI-A-2" # Output display
 
     # "--xwayland-count 2"
     # "--force-grab-cursor"
@@ -44,7 +44,11 @@
       notify-send "Session" "Launching SteamOS (gamescope)" -t 2000
     fi
 
-    exec gamescope ${argsString} steam -tenfoot
+    echo "Starting Gamescope + Steam (${argsString})" > ~/dotfiles/steam-logs.txt
+    # Detach gamescope session; keep logging
+    setsid gamescope ${argsString} -- steam -tenfoot >> ~/dotfiles/steam-logs.txt 2>&1 &
+    disown
+    echo "Launch command issued; check ~/dotfiles/steam-logs.txt for runtime output" >> ~/dotfiles/steam-logs.txt
   '';
 
   toHyprCmd = pkgs.writers.writeBashBin "sunshine-to-hyprland" ''
@@ -78,12 +82,12 @@ in {
     toHyprCmd
     toSteamCmd
 
-    (writers.writeBashBin "steam-sunshine-do" ''
+    (writers.writeBashBin "desktop-sunshine-do" ''
       hyprctl keyword monitor "${customUtils.monitors.dummy-4k}"
       hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey-disabled}"
     '')
 
-    (writers.writeBashBin "steam-sunshine-undo" ''
+    (writers.writeBashBin "desktop-sunshine-undo" ''
       steam -shutdown
       sleep 2
       hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey}"
@@ -111,27 +115,25 @@ in {
     apps = [
       {
         name = "Desktop";
-        auto-detach = "true";
         image-path = "desktop.png";
-        detached = ["sunshine-to-hyprland"];
-        # prep-cmd = [
-        #   {
-        #     do = "steam-sunshine-do";
-        #     undo = "steam-sunshine-undo";
-        #   }
-        # ];
+        prep-cmd = [
+          {
+            do = "desktop-sunshine-do";
+            undo = "desktop-sunshine-undo";
+          }
+        ];
       }
       {
         name = "Steam Big Picture";
         image-path = "steam.png";
-        auto-detach = "true";
-        detached = ["sunshine-to-steamos"];
-        # prep-cmd = [
-        #   {
-        #     do = "steam-sunshine-do";
-        #     undo = "steam-sunshine-undo";
-        #   }
-        # ];
+        # auto-detach = "true";
+        # detached = ["sunshine-to-steamos"];
+        prep-cmd = [
+          {
+            do = "sunshine-to-steamos";
+            undo = "sunshine-to-hyprland";
+          }
+        ];
       }
     ];
   };
