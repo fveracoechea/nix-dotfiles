@@ -31,11 +31,13 @@
 
     # Nix Darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwininputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Shell utilities
     ultrashell.url = "github:fveracoechea/ultrashell";
     ultrashell.inputs.nixpkgs.follows = "nixpkgs";
 
+    # MCP Servers
     mcp-servers-nix.url = "github:natsukium/mcp-servers-nix";
     mcp-servers-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
