@@ -6,57 +6,38 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # home-manager, used for managing user configuration
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Sylix - system wide styles
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    stylix.url = "github:danth/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Musnix - Real-time audio
-    musnix = {
-      url = "github:musnix/musnix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    musnix.url = "github:musnix/musnix";
+    musnix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Neovim config flake
-    neovim-config = {
-      url = "github:fveracoechea/neovim-nix-config";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    neovim-config.url = "github:fveracoechea/neovim-nix-config";
+    neovim-config.inputs.nixpkgs.follows = "nixpkgs";
 
     # Hyprland
-    hyprland = {
-      url = "github:hyprwm/Hyprland?ref=refs/tags/v0.51.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hyprland.url = "github:hyprwm/Hyprland?ref=refs/tags/v0.51.1";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     # Spotify theme
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Darwin
-    nix-darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwininputs.nixpkgs.follows = "nixpkgs";
 
-    ultrashell = {
-      url = "github:fveracoechea/ultrashell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ultrashell.url = "github:fveracoechea/ultrashell";
+    ultrashell.inputs.nixpkgs.follows = "nixpkgs";
 
     mcp-servers-nix.url = "github:natsukium/mcp-servers-nix";
     mcp-servers-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
-    distro-grub-themes.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
