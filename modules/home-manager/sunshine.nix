@@ -12,7 +12,7 @@
     "-W 3840"
     "-H 2160"
     "-r 120" # Refresh rate
-    "-O HDMI-A-2" # Output display
+    "-O HDMI-A-1" # Output display
 
     # "--xwayland-count 2"
     # "--force-grab-cursor"
@@ -21,12 +21,22 @@
 
   argsString = builtins.concatStringsSep " " gamescopeArgs;
 
+  testCmd = pkgs.writers.writeBashBin "test-sunshine-steam" ''
+    sunshine-to-steamos
+    sleep 5
+    sunshine-to-hyprland
+  '';
+
   toSteamCmd = pkgs.writers.writeBashBin "sunshine-to-steamos" ''
     set -e
     if pgrep -x gamescope >/dev/null; then
       echo "Gamescope already running"
       exit 0
     fi
+
+    hyprctl keyword monitor "${customUtils.monitors.dummy-4k}"
+    hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey-disabled}"
+    sleep 1
 
     if pgrep -x Hyprland >/dev/null; then
       if command -v hyprctl >/dev/null; then
@@ -40,15 +50,10 @@
       done
     fi
 
-    if command -v notify-send >/dev/null; then
-      notify-send "Session" "Launching SteamOS (gamescope)" -t 2000
-    fi
-
-    echo "Starting Gamescope + Steam (${argsString})" > ~/dotfiles/steam-logs.txt
-    # Detach gamescope session; keep logging
+    export DXVK_HDR=1
+    export ENABLE_HDR_WSI=1
     setsid gamescope ${argsString} -- steam -tenfoot >> ~/dotfiles/steam-logs.txt 2>&1 &
     disown
-    echo "Launch command issued; check ~/dotfiles/steam-logs.txt for runtime output" >> ~/dotfiles/steam-logs.txt
   '';
 
   toHyprCmd = pkgs.writers.writeBashBin "sunshine-to-hyprland" ''
@@ -67,44 +72,30 @@
       pkill -KILL gamescope || true
     fi
 
-    if command -v notify-send >/dev/null; then
-      notify-send "Session" "Launching Hyprland" -t 1500
+    if command -v uwsm >/dev/null; then
+      exec uwsm start hyprland-uwsm.desktop &> ~/dotfiles/steam-logs.txt
+    else
+      exec Hyprland &> ~/dotfiles/steam-logs.txt
     fi
 
-    if command -v uwsm >/dev/null; then
-      exec uwsm start hyprland-uwsm.desktop
-    else
-      exec Hyprland
-    fi
+    sleep 2
+    hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey}"
+    hyprctl keyword monitor "${customUtils.monitors.dummy-4k-disabled}"
   '';
 in {
-  home.packages = with pkgs; [
+  home.packages = [
+    testCmd
     toHyprCmd
     toSteamCmd
 
-    (writers.writeBashBin "desktop-sunshine-do" ''
+    (pkgs.writers.writeBashBin "desktop-sunshine-do" ''
       hyprctl keyword monitor "${customUtils.monitors.dummy-4k}"
       hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey-disabled}"
     '')
 
-    (writers.writeBashBin "desktop-sunshine-undo" ''
-      steam -shutdown
-      sleep 2
+    (pkgs.writers.writeBashBin "desktop-sunshine-undo" ''
       hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey}"
       hyprctl keyword monitor "${customUtils.monitors.dummy-4k-disabled}"
-    '')
-
-    (writers.writeBashBin "steam-big-picture" ''
-      sleep 2
-
-      # # Allows Steam to handle multiple XWayland instances, important for Gamescope integration
-      # export STEAM_MULTIPLE_XWAYLANDS=1
-      # Enables HDR support within DXVK (Direct3D to Vulkan translation layer).
-      export DXVK_HDR=1
-      # Activates the Vulkan Wayland HDR WSI layer.
-      export ENABLE_HDR_WSI=1
-
-      setsid steam -gamepadui -steamos3 &> ~/dotfiles/steam-logs.txt
     '')
   ];
 
