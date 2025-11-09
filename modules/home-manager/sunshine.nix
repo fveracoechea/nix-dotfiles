@@ -57,12 +57,13 @@
   '';
 
   toHyprCmd = pkgs.writers.writeBashBin "sunshine-to-hyprland" ''
-    set -e
+    # Restore Hyprland session from Gamescope/Steam
     if pgrep -x Hyprland >/dev/null; then
       echo "Hyprland already running"
       exit 0
     fi
 
+    # Stop Gamescope cleanly if running
     if pgrep -x gamescope >/dev/null; then
       pkill -TERM gamescope || true
       for i in $(seq 1 50); do
@@ -72,13 +73,29 @@
       pkill -KILL gamescope || true
     fi
 
-    if command -v uwsm >/dev/null; then
-      exec uwsm start hyprland-uwsm.desktop &> ~/dotfiles/steam-logs.txt
-    else
-      exec Hyprland &> ~/dotfiles/steam-logs.txt
+    # Clean up any lingering UWSM/session units to avoid "already active"
+    if command -v systemctl >/dev/null; then
+      systemctl --user stop wayland-wm@Hyprland.service wayland-session@Hyprland.target wayland-session-pre@Hyprland.target graphical-session.target 2>/dev/null || true
     fi
 
-    sleep 2
+    logFile=~/dotfiles/hyprland-logs.txt
+
+    if command -v uwsm >/dev/null; then
+      uwsm reset >/dev/null 2>&1 || true
+      uwsm start hyprland-uwsm.desktop >> "$logFile" 2>&1 &
+    else
+      Hyprland >> "$logFile" 2>&1 &
+    fi
+
+    # Wait for Hyprland to start
+    for i in $(seq 1 60); do
+      if pgrep -x Hyprland >/dev/null; then
+        break
+      fi
+      sleep 0.25
+    done
+
+    # Restore monitor setup
     hyprctl keyword monitor "${customUtils.monitors.samsung-odyssey}"
     hyprctl keyword monitor "${customUtils.monitors.dummy-4k-disabled}"
   '';
