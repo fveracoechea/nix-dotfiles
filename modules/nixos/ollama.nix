@@ -1,7 +1,7 @@
-{
-  services = let
-    ollamaPort = 11434;
-  in {
+{...}: let
+  ollamaPort = 11434;
+in {
+  services = {
     ollama = {
       enable = true;
       port = ollamaPort;
@@ -14,7 +14,6 @@
         "qwen3-coder:latest"
         "devstral:latest"
       ];
-      host = "0.0.0.0";
       environmentVariables = {
         OLLAMA_KEEP_ALIVE = "15m";
         OLLAMA_NUM_PARALLEL = "2";
@@ -27,7 +26,7 @@
     open-webui = {
       enable = true;
       port = 8888;
-      host = "0.0.0.0";
+      host = "127.0.0.1";
       stateDir = "/var/lib/open-webui";
       environment = {
         DO_NOT_TRACK = "True";

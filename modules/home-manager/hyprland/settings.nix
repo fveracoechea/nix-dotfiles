@@ -16,6 +16,7 @@ in {
       monitor = [
         customUtils.monitors.samsung-odyssey
         customUtils.monitors.dummy-4k-disabled
+        customUtils.monitors.virtual-disabled
       ];
 
       cursor = {
