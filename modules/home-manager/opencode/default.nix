@@ -11,15 +11,16 @@ in {
 
   home.packages = [pkgs.lsof];
 
-  xdg.configFile."opencode/command" = {
-    recursive = true;
-    source = ./command;
-  };
-
   programs.opencode = {
     enable = true;
+
+    commands = {
+      create-commit = ./command/create-commit.md;
+      create-pr = ./command/create-pr.md;
+    };
+
     settings = {
-      theme = "none";
+      theme = "system";
       autoupdate = false;
 
       provider =
