@@ -20,7 +20,7 @@ in {
     };
 
     settings = {
-      theme = "system";
+      theme = "catppuccin";
       autoupdate = false;
       provider =
         if pkgs.stdenv.isLinux
