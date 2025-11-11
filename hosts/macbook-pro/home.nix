@@ -14,6 +14,7 @@
     ../../modules/home-manager/volta.nix
     ../../modules/home-manager/karabiner.nix
     ../../modules/home-manager/opencode
+    ../../modules/home-manager/ghostty.nix
     ../../modules/home-manager/mcpo.nix
     inputs.neovim-config.homeManagerModules.default
   ];
@@ -31,22 +32,22 @@
     customPkgs.scripts.teams-proxy
   ];
 
-  xdg.configFile."ghostty/config".text = ''
-    theme = catppuccin-mocha
-    shell-integration = zsh
-
-    background-opacity = 0.88
-    background-blur = true
-
-    window-padding-color = background
-    window-padding-x = 6
-    window-padding-y  = 6
-
-    font-family = FiraCode Nerd Font
-    font-family-bold = FiraCode Nerd Font Bold
-    font-family-italic = FiraCode Nerd Font Italic
-    font-family-bold-italic = FiraCode Nerd Font Italic Bold
-  '';
+  # xdg.configFile."ghostty/config".text = ''
+  #   theme = catppuccin-mocha
+  #   shell-integration = zsh
+  #
+  #   background-opacity = 0.88
+  #   background-blur = true
+  #
+  #   window-padding-color = background
+  #   window-padding-x = 6
+  #   window-padding-y  = 6
+  #
+  #   font-family = FiraCode Nerd Font
+  #   font-family-bold = FiraCode Nerd Font Bold
+  #   font-family-italic = FiraCode Nerd Font Italic
+  #   font-family-bold-italic = FiraCode Nerd Font Italic Bold
+  # '';
 
   # home.username = "franciscoveracoechea";
   # home.homeDirectory = /Users/franciscoveracoechea;

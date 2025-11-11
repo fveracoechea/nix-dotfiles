@@ -8,7 +8,7 @@
       upgrade = true;
     };
     casks = [
-      "ghostty"
+      # "ghostty"
       "docker"
       "postgres-unofficial"
       "karabiner-elements"

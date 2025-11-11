@@ -22,47 +22,36 @@ in {
       theme = "system";
       autoupdate = false;
 
-      provider = {
-        ollama = {
-          npm = "@ai-sdk/openai-compatible";
-          options = {
-            baseURL = "http://127.0.0.1:11434/v1";
-          };
-          models = {
-            "qwen3:14b" = {
-              tools = true;
-              reasoning = true;
-              description = "General purpose model with strong reasoning and multilingual capabilities";
+      provider =
+        if pkgs.stdenv.isLinux
+        then {
+          ollama = {
+            npm = "@ai-sdk/openai-compatible";
+            options = {
+              baseURL = "http://127.0.0.1:11434/v1";
             };
-            "qwen3-coder:latest" = {
-              tools = true;
-              # reasoning = true;
-              description = "Performant long context models for agentic and coding tasks";
-            };
-            "mistral-small3.2:latest" = {
-              tools = true;
-              reasoning = true;
-              description = "Highly capable model for general tasks";
-            };
-            "devstral:latest" = {
-              tools = true;
-              reasoning = true;
-              description = "An agentic LLM for software engineering tasks";
+            models = {
+              "qwen3:30b" = {
+                tools = true;
+                reasoning = true;
+                description = "General purpose model with strong reasoning and multilingual capabilities";
+              };
+              "gpt-oss:20b" = {};
+              "qwen3-coder:latest" = {
+                tools = true;
+                reasoning = true;
+                description = "Small code generation and reasoning model";
+              };
             };
           };
-        };
-      };
+        }
+        else {};
 
       mcp = {
         fetch = {
           enabled = true;
           type = "local";
           command = ["docker" "run" "-i" "--rm" "mcp/fetch"];
-        };
-        memory = {
-          enabled = true;
-          type = "local";
-          command = ["${mcpPackages.mcp-server-memory}/bin/mcp-server-memory"];
         };
         playwright = {
           enabled = true;
@@ -78,11 +67,6 @@ in {
             ++ lib.optionals pkgs.stdenv.isDarwin [
               "${pkgs.google-chrome}/bin/google-chrome-stable"
             ];
-        };
-        sequential-thinking = {
-          enabled = true;
-          type = "local";
-          command = ["${mcpPackages.mcp-server-sequential-thinking}/bin/mcp-server-sequential-thinking"];
         };
         time = {
           enabled = true;
