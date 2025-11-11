@@ -21,7 +21,7 @@ in {
 
     settings = {
       theme = "system";
-      autoupdate = true;
+      autoupdate = false;
       provider =
         if pkgs.stdenv.isLinux
         then {
