@@ -28,5 +28,12 @@
       mimeType = ["text/html" "text/xml"];
       icon = ./icons/drizzle.svg;
     };
+    "home-manager-appendix-webapp" = {
+      name = "Home Manager Appendix (Web App)";
+      exec = "google-chrome-stable --app=https://nix-community.github.io/home-manager/options.xhtml";
+      categories = ["Network" "WebBrowser"];
+      mimeType = ["text/html" "text/xml"];
+      icon = ./icons/nixos.svg;
+    };
   };
 }
