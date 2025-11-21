@@ -13,6 +13,7 @@ in {
 
   programs.opencode = {
     enable = true;
+    package = inputs.opencode.packages.${system}.default;
 
     commands = {
       create-commit = ./command/create-commit.md;

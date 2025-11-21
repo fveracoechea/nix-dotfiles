@@ -657,6 +657,27 @@
         "type": "github"
       }
     },
+    "opencode": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763705018,
+        "narHash": "sha256-mUGFERzY7dbN2CwWWUhONvvwhlY0LrTAGZ168m8y0RE=",
+        "owner": "sst",
+        "repo": "opencode",
+        "rev": "2991547974a67a1a5383a50551fbd6c6e9b1358c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sst",
+        "ref": "refs/tags/v1.0.85",
+        "repo": "opencode",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -689,6 +710,7 @@
         "neovim-config": "neovim-config",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
+        "opencode": "opencode",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "ultrashell": "ultrashell"
