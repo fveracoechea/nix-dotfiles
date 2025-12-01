@@ -41,7 +41,7 @@
     mcp-servers-nix.url = "github:natsukium/mcp-servers-nix";
     mcp-servers-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    opencode.url = "github:sst/opencode?ref=refs/tags/v1.0.85";
+    opencode.url = "github:sst/opencode?ref=refs/tags/v1.0.126";
     opencode.inputs.nixpkgs.follows = "nixpkgs";
   };
 
