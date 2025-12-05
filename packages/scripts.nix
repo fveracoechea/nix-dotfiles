@@ -19,10 +19,7 @@
   denoScript = name:
     writeDenoBin name (lib.fileContents ./scripts/${name}.ts);
 in {
-  keycloak-proxy = denoScript "keycloak-proxy";
-  teams-proxy = denoScript "teams-proxy";
   tmux-git-status = denoScript "tmux-git-status";
   tmux-uptime = denoScript "tmux-uptime";
   tmux-os-icon = denoScript "tmux-os-icon";
-  hyprland-shortcuts = denoScript "hyprland-shortcuts";
 }

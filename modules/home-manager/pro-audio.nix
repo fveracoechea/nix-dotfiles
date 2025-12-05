@@ -7,7 +7,7 @@
     bitwig-studio
 
     # Music editor
-    tuxguitar
+    # tuxguitar
 
     # Audio plugins (LV2, VST2, VST3, LADSPA)
     # distrho-ports
