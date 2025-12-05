@@ -1,19 +1,19 @@
 {pkgs, ...}: let
   gamescopeArgs = builtins.concatStringsSep " " [
-    "-f" # Fullscreen
     "-e" # Emmbed mode for steam integration
     "--adaptive-sync" # VRR support
     "--hdr-enabled" # HDR
     "--hdr-itm-enable"
     "--rt" # Real time scheduling
-    "-W 3840"
-    "-H 2160"
+    "-W 2560"
+    "-H 1440"
     "-r 120" # Refresh rate
-    "-O DP-2" # Output display
+    "-f" # Fullscreen
+    "-O DP-1" # Output display
   ];
 in {
   # Virtual 4K 120Hz headless display
-  boot.kernelParams = ["video=DP-2:3840x2160@120"];
+  # boot.kernelParams = ["video=card1-DP-2:3840x2160R@120D"];
 
   hardware = {
     graphics.enable = true;
@@ -53,8 +53,15 @@ in {
           export DXVK_HDR=1
           export ENABLE_HDR=1
           export ENABLE_HDR_WSI=1
+          # Enable Steam Deck features
+          export STEAM_GAMESCOPE_COLOR_MANAGED=1
+          export STEAM_GAMESCOPE_HDR_SUPPORTED=1
+          # SDL/Input optimization
+          export SDL_VIDEODRIVER=wayland
+          export WLR_BACKENDS="headless,libinput"
+          export WLR_LIBINPUT_NO_DEVICES="1"
           sunshine &
-          gamescope ${gamescopeArgs} -- steam -gamepadui
+          gamescope ${gamescopeArgs} -- steam -tenfoot -steamos
         '')
     ];
   };

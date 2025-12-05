@@ -20,8 +20,12 @@ in {
       create-pr = ./command/create-pr.md;
     };
 
+    themes = {
+      transparent-catppuccin = ./themes/transparent-catppuccin.nix;
+    };
+
     settings = {
-      theme = "catppuccin";
+      theme = "system";
       autoupdate = false;
       provider =
         if pkgs.stdenv.isLinux

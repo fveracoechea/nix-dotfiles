@@ -14,7 +14,6 @@
     ../../modules/nixos/ollama.nix
     ../../modules/nixos/postgreSQL.nix
     ../../modules/nixos/networking.nix
-
   ];
 
   nix = {
