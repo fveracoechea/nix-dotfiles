@@ -13,7 +13,6 @@ in {
 
   programs.opencode = {
     enable = true;
-    package = inputs.opencode.packages.${system}.default;
 
     commands = {
       create-commit = ./command/create-commit.md;
@@ -21,11 +20,11 @@ in {
     };
 
     themes = {
-      transparent-catppuccin = ./themes/transparent-catppuccin.nix;
+      custom-catppuccin = import ./themes/transparent-catppuccin.nix;
     };
 
     settings = {
-      theme = "system";
+      theme = "custom-catppuccin";
       autoupdate = false;
       provider =
         if pkgs.stdenv.isLinux

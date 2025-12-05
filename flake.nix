@@ -40,9 +40,6 @@
     # MCP Servers
     mcp-servers-nix.url = "github:natsukium/mcp-servers-nix";
     mcp-servers-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    opencode.url = "github:sst/opencode";
-    opencode.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {

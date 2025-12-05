@@ -1,4 +1,5 @@
 {
+  "$schema" = "https://opencode.ai/theme.json";
   defs = {
     lightRosewater = "#dc8a78";
     lightFlamingo = "#dd7878";
