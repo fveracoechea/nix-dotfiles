@@ -41,6 +41,7 @@ in {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
     };
     systemPackages = with pkgs; [
+      lutris
       mesa-demos
       ethtool
       protonup-ng
@@ -57,11 +58,9 @@ in {
           export STEAM_GAMESCOPE_COLOR_MANAGED=1
           export STEAM_GAMESCOPE_HDR_SUPPORTED=1
           # SDL/Input optimization
-          export SDL_VIDEODRIVER=wayland
-          export WLR_BACKENDS="headless,libinput"
-          export WLR_LIBINPUT_NO_DEVICES="1"
+          # export SDL_VIDEODRIVER=wayland
           sunshine &
-          gamescope ${gamescopeArgs} -- steam -tenfoot -steamos
+          gamescope ${gamescopeArgs} -- steam -gamepadui -steamos
         '')
     ];
   };
