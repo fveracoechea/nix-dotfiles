@@ -97,7 +97,7 @@
         fi
 
         # startup script
-        clear && zeitfetch --no-logo
+        clear
       '';
   };
 }
