@@ -52,26 +52,21 @@ in {
         else {};
 
       mcp = {
-        fetch = {
-          enabled = true;
-          type = "local";
-          command = ["docker" "run" "-i" "--rm" "mcp/fetch"];
-        };
-        playwright = {
-          enabled = true;
-          type = "local";
-          command =
-            [
-              "${mcpPackages.playwright-mcp}/bin/mcp-server-playwright"
-              "--executable-path"
-            ]
-            ++ lib.optionals pkgs.stdenv.isLinux [
-              "${pkgs.chromium}/bin/chromium"
-            ]
-            ++ lib.optionals pkgs.stdenv.isDarwin [
-              "${pkgs.google-chrome}/bin/google-chrome-stable"
-            ];
-        };
+        # playwright = {
+        #   enabled = true;
+        #   type = "local";
+        #   command =
+        #     [
+        #       "${mcpPackages.playwright-mcp}/bin/mcp-server-playwright"
+        #       "--executable-path"
+        #     ]
+        #     ++ lib.optionals pkgs.stdenv.isLinux [
+        #       "${pkgs.chromium}/bin/chromium"
+        #     ]
+        #     ++ lib.optionals pkgs.stdenv.isDarwin [
+        #       "${pkgs.google-chrome}/bin/google-chrome-stable"
+        #     ];
+        # };
         time = {
           enabled = true;
           type = "local";

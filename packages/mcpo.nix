@@ -5,14 +5,14 @@
 }:
 python3.pkgs.buildPythonApplication rec {
   pname = "mcpo";
-  version = "0.0.17";
+  version = "0.0.19";
   format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "open-webui";
     repo = "mcpo";
     rev = "v${version}";
-    hash = "sha256-oubMRHiG6JbfMI5MYmRt4yNDI8Moi4h7iBZPgkdPGd4=";
+    hash = "sha256-ZfTVMrXXEsEKHmeG4850Hq3MEpQA/3WMpAVZS0zvp1I=";
   };
 
   build-system = with python3Packages; [

@@ -1,11 +1,11 @@
-{...}: let
+{pkgs, ...}: let
   ollamaPort = 11434;
 in {
   services = {
     ollama = {
       enable = true;
+      package = pkgs.ollama-rocm;
       port = ollamaPort;
-      acceleration = "rocm";
       loadModels = [
         "mistral:latest"
         "mistral-nemo:latest"

@@ -11,9 +11,6 @@
   xdg.configFile."mcpo/config.json".source = inputs.mcp-servers-nix.lib.mkConfig pkgs {
     programs = {
       time.enable = true;
-      playwright.enable = true;
-      memory.enable = true;
-      context7.enable = true;
     };
     settings.servers = {
       grep = {

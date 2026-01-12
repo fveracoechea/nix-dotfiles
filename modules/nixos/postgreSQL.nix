@@ -8,8 +8,9 @@
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
-    "beekeeper-studio-5.3.4"
-    "beekeeper-studio-5.2.12"
+    "beekeeper-studio-5.5.3"
+    # "beekeeper-studio-5.3.4"
+    # "beekeeper-studio-5.2.12"
   ];
 
   services.postgresql = {

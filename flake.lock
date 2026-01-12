@@ -585,11 +585,11 @@
         "tree-sitter-nginx": "tree-sitter-nginx"
       },
       "locked": {
-        "lastModified": 1764949317,
-        "narHash": "sha256-EaalQqxL+nOk8gv2N/N2OveHayAJLXrIxjDl1qErn18=",
+        "lastModified": 1767018584,
+        "narHash": "sha256-2MoeHkENKJTYCn8UqRGm41R4Lte/ALy0SjqJnZn0BkA=",
         "owner": "fveracoechea",
         "repo": "neovim-nix-config",
-        "rev": "4a92be31d3f4d37f0d4a90013b1a390403bcfcc4",
+        "rev": "b28adc261661ab24514a402f9d72c2509f539b3a",
         "type": "github"
       },
       "original": {
@@ -620,11 +620,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1764667669,
-        "narHash": "sha256-7WUCZfmqLAssbDqwg9cUDAXrSoXN79eEEq17qhTNM/Y=",
+        "lastModified": 1768127708,
+        "narHash": "sha256-1Sm77VfZh3mU0F5OqKABNLWxOuDeHIlcFjsXeeiPazs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "418468ac9527e799809c900eda37cbff999199b6",
+        "rev": "ffbc9f8cbaacfb331b6017d5a5abb21a492c9a38",
         "type": "github"
       },
       "original": {
