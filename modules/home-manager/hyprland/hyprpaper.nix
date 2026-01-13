@@ -1,6 +1,4 @@
 {...}: {
-  # stylix.targets.hyprpaper.enable = lib.mkForce false;
-
   services.hyprpaper = {
     enable = true;
     settings = {
