@@ -22,7 +22,7 @@
     neovim-config.inputs.nixpkgs.follows = "nixpkgs";
 
     # Hyprland
-    hyprland.url = "github:hyprwm/Hyprland?ref=refs/tags/v0.51.1";
+    hyprland.url = "github:hyprwm/Hyprland?ref=refs/tags/v0.53.1";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     # Spotify theme
