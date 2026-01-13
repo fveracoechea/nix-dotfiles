@@ -4,7 +4,7 @@
     nerd-fonts.fira-code
   ];
 
-  fonts.fontConfig = {
+  fonts.fontconfig = {
     enable = true;
     antialiasing = true;
     defaultFonts = {

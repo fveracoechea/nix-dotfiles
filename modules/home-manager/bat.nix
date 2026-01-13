@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  stylix.targets.bat.enable = false;
+  # stylix.targets.bat.enable = false;
 
   programs.bat = {
     enable = true;
