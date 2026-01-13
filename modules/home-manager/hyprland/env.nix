@@ -30,6 +30,7 @@ in {
       "QT_CURSOR_THEME,capitaine-cursors"
       "XCURSOR_SIZE,38"
       "HYPRCURSOR_SIZE,38"
+      "WLR_NO_HARDWARE_CURSORS,1"
     ];
 
     ecosystem = {

@@ -11,6 +11,7 @@
     inputs.ultrashell.packages.${system}.default
 
     hyprdim
+    hyprpaper
     hyprshot
     hyprpicker
     hyprcursor

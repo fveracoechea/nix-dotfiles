@@ -8,7 +8,7 @@
 in {
   wayland.windowManager.hyprland.settings = {
     general = {
-      "col.active_border" = "${theme.blue} ${theme.flamingo}";
+      "col.active_border" = "${theme.blue} ${theme.flamingo} 90deg";
       "col.inactive_border" = theme.surface2;
     };
   };
