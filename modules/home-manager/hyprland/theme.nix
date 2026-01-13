@@ -1,6 +1,5 @@
 # Catppuccin Mocha theme for Hyprland
 {...}: let
-  # Catppuccin Mocha palette (rgb format for Hyprland)
   theme = {
     rosewater = "rgb(f5e0dc)";
     flamingo = "rgb(f2cdcd)";
@@ -29,14 +28,11 @@
     mantle = "rgb(181825)";
     crust = "rgb(11111b)";
   };
-
-  # Accent color for active elements
-  accent = theme.blue;
 in {
   wayland.windowManager.hyprland.settings = {
     general = {
-      "col.active_border" = "${accent} ${theme.mauve} 45deg";
-      "col.inactive_border" = theme.surface0;
+      col.active_border = "${theme.blue} ${theme.mauve} 45deg";
+      col.inactive_border = theme.surface0;
     };
   };
 }

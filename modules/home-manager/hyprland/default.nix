@@ -9,5 +9,6 @@
     ./hyprlock.nix
     ./hyprpaper.nix
     ./hyprcursor.nix
+    ./theme.nix
   ];
 }
