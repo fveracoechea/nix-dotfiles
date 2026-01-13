@@ -17,7 +17,7 @@ in {
   ];
 
   stylix = {
-    enable = true;
+    enable = false;
     autoEnable = true;
     image = ../../wallpapers/islands-ultrawide.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";

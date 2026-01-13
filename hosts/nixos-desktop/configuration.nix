@@ -8,7 +8,7 @@
     ../../modules/nixos/nix-ld.nix
     ../../modules/nixos/timezone.nix
     ../../modules/nixos/pipewire.nix
-    ../../modules/nixos/stylix.nix
+    # ../../modules/nixos/stylix.nix
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/ollama.nix

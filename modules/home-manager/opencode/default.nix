@@ -7,7 +7,7 @@
 }: let
   mcpPackages = inputs.mcp-servers-nix.packages.${system};
 in {
-  stylix.targets.opencode.enable = false;
+  # stylix.targets.opencode.enable = false;
 
   home.packages = [pkgs.lsof];
 

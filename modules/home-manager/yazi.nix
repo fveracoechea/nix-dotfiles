@@ -8,7 +8,7 @@
   themePath =
     theme + "/themes/mocha/catppuccin-mocha-blue.toml";
 in {
-  stylix.targets.yazi.enable = false;
+  # stylix.targets.yazi.enable = false;
   home.packages = with pkgs; [mediainfo];
 
   programs.yazi = {

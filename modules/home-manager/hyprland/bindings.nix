@@ -6,8 +6,8 @@
   wayland.windowManager.hyprland.settings = {
     # Mouse bindings
     bindm = [
-      "SHIFT_ALT, mouse:272, movewindow"
-      "SHIFT_ALT, mouse:273, resizewindow"
+      "ALT, mouse:272, movewindow"
+      "ALT, mouse:273, resizewindow"
     ];
 
     # Bindings with descriptions
@@ -52,10 +52,6 @@
         # TOGGLE GROUPS
         "SUPER, G, Toggle window grouping, togglegroup"
         "SUPER ALT, G, Move active window out of group, moveoutofgroup"
-
-        # GAME STREAMING
-        "SUPER CTRL, S, Toggle game streaming resolution, exec, steam-sunshine-do"
-        "SUPER ALT, S, Toggle game streaming resolution, exec, steam-sunshine-undo"
 
         # APPLICATION SHORTCUTS
         (openapp "B" browser)

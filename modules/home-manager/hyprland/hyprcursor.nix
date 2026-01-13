@@ -1,0 +1,11 @@
+{pkgs, ...}: {
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    hyprcursor.enable = true;
+
+    size = 38;
+    name = "capitaine-cursors";
+    package = pkgs.capitaine-cursors;
+  };
+}

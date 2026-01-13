@@ -60,6 +60,7 @@ in {
       };
 
       binds = {
+        drag_threshold = 10;
         allow_workspace_cycles = true;
       };
 
