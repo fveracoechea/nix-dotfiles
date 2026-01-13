@@ -23,8 +23,8 @@
     ../../modules/home-manager/mcpo.nix
     ../../modules/home-manager/desktop-entries
     ../../modules/home-manager/fonts.nix
+    ../../modules/home-manager/spotify.nix
     inputs.neovim-config.homeManagerModules.default
-    inputs.spicetify-nix.homeManagerModules.default
   ];
 
   home.username = "fveracoechea";
@@ -33,20 +33,12 @@
   home.file.".face".source = ../../wallpapers/face.jpg;
   home.file.".face.icon".source = ../../wallpapers/face.jpg;
 
-  # stylix.enable = false;
-
-  programs.spicetify.enable = true;
-  # stylix.targets.neovim.enable = false;
-  programs.cava.enable = true;
-  # stylix.targets.cava.rainbow.enable = true;
-
   home.packages = with pkgs; [
     slack
     vesktop
     google-chrome
     kooha
     teams-for-linux
-    nerd-fonts.fira-code
     python3
     dconf2nix
     nurl

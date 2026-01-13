@@ -14,6 +14,7 @@
         line-height = 22;
         prompt = ''"❯  "'';
         placeholder = "Apps";
+        font = "Fira Sans:style=Regular:size=12";
       };
 
       border = {
@@ -28,7 +29,7 @@
       };
 
       colors = {
-        background = "1e1e2eef";
+        background = "1e1e2eff";
         text = "cdd6f4ff";
         prompt = "bac2deff";
         placeholder = "7f849cff";

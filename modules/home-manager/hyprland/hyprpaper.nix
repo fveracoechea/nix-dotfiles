@@ -4,11 +4,11 @@
   services.hyprpaper = {
     enable = true;
     settings = {
+      preload = [
+        "~/dotfiles/wallpapers/islands-ultrawide.png"
+      ];
       wallpaper = [
-        {
-          monitor = "DP-1";
-          path = "~/dotfiles/wallpapers/islands-ultrawide.png";
-        }
+        "DP-1,~/dotfiles/wallpapers/islands-ultrawide.png"
       ];
     };
   };
