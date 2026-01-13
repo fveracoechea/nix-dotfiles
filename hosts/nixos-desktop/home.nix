@@ -30,8 +30,8 @@
   home.username = "fveracoechea";
   home.homeDirectory = "/home/fveracoechea";
 
-  home.file.".face".source = ../../wallpapers/face.jpg;
-  home.file.".face.icon".source = ../../wallpapers/face.jpg;
+  home.file.".face".source = ../../assets/face.jpg;
+  home.file.".face.icon".source = ../../assets/face.jpg;
 
   home.packages = with pkgs; [
     slack
@@ -49,7 +49,6 @@
     wireguard-tools
     lutgen
     customPkgs.dev-manager-desktop
-    masterpdfeditor
     openlinkhub
     nodejs
     docker-compose

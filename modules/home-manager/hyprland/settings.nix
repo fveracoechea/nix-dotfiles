@@ -22,10 +22,6 @@ in {
         enable_hyprcursor = false;
       };
 
-      experimental = {
-        xx_color_management_v4 = true;
-      };
-
       misc = {
         vrr = 2;
         animate_manual_resizes = true;
@@ -38,7 +34,9 @@ in {
       ];
 
       general = {
-        border_size = 3;
+        layout = "dwindle";
+        border_size = 2;
+        resize_on_border = true;
         gaps_in = 10;
         gaps_out = "10,20,20,20";
       };
@@ -46,6 +44,9 @@ in {
       dwindle = {
         # Avoid overly wide single-window layouts on wide screens
         single_window_aspect_ratio = "16 9";
+        pseudotile = true;
+        preserve_split = true;
+        force_split = 2;
       };
 
       decoration = lib.mkForce {

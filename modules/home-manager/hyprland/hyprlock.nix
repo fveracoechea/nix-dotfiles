@@ -19,7 +19,7 @@
 
       background = lib.mkForce [
         {
-          path = "$HOME/dotfiles/wallpapers/catppuccin-mocha/dark-forrest-ultrawide.png";
+          path = "$HOME/dotfiles/assets/wallpapers/dark-forrest-ultrawide.png";
           blur_passes = 1;
           blur_size = 4;
         }
@@ -44,7 +44,7 @@
 
       image = [
         {
-          path = "$HOME/.face";
+          path = "$HOME/dotfiles/assets/face.jpg";
           size = 300;
           rounding = 8;
           border_color = theme.lavender;

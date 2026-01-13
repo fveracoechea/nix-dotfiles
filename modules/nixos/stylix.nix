@@ -19,7 +19,7 @@ in {
   stylix = {
     enable = false;
     autoEnable = true;
-    image = ../../wallpapers/islands-ultrawide.png;
+    image = ../../assets/wallpapers/yellow-mountains.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
 

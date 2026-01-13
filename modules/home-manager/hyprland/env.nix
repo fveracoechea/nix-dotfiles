@@ -23,14 +23,10 @@ in {
       # ALLOW BETTER SUPPORT FOR SCREEN SHARING (GOOGLE MEET, DISCORD, ETC)
       "XDG_CURRENT_DESKTOP,Hyprland"
       "XDG_SESSION_DESKTOP,Hyprland"
-      "XDG_SESSION_TYPE,wayland"
 
-      # CURSOR SIZE/THEME
-      "QT_CURSOR_SIZE,38"
-      "QT_CURSOR_THEME,capitaine-cursors"
+      # CURSOR SIZE
       "XCURSOR_SIZE,38"
       "HYPRCURSOR_SIZE,38"
-      "WLR_NO_HARDWARE_CURSORS,1"
     ];
 
     ecosystem = {
