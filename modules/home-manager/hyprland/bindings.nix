@@ -6,8 +6,8 @@
   wayland.windowManager.hyprland.settings = {
     # Mouse bindings
     bindm = [
-      "ALT, mouse:272, movewindow"
-      "ALT, mouse:273, resizewindow"
+      "SHIFT_ALT, mouse:272, movewindow"
+      # "ALT, mouse:273, resizewindow"
     ];
 
     # Bindings with descriptions

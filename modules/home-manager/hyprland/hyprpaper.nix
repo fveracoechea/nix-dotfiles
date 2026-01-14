@@ -1,16 +1,15 @@
 {...}: let
   monitor = "DP-1";
-  wallpapersDir = ../../../assets/wallpapers;
+  wallpaper = toString ../../../assets/wallpapers/yellow-mountains.png;
 in {
   services.hyprpaper = {
     enable = true;
     settings = {
-      # preload = wallpapers;
+      preload = [wallpaper];
       wallpaper = [
         {
           inherit monitor;
-          path = toString wallpapersDir;
-          timeout = 3;
+          path = wallpaper;
         }
       ];
     };

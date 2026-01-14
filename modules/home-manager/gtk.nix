@@ -21,6 +21,19 @@
         accent = "blue";
       };
     };
+    theme = {
+      name = "Catppuccin-GTK-Dark";
+      package = pkgs.magnetic-catppuccin-gtk.override {
+        accent = ["default"];
+        shade = "dark";
+        tweaks = ["float"];
+      };
+    };
+    font = {
+      size = 12;
+      package = pkgs.fira-sans;
+      name = "Fira Sans";
+    };
   };
 
   home.packages = with pkgs; [

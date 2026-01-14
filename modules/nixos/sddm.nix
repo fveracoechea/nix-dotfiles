@@ -6,7 +6,7 @@
         font = "Fira Sans";
         accent = "blue";
         fontSize = "14";
-        background = "${../../wallpapers/catppuccin-mocha/dark-forrest-ultrawide.png}";
+        background = "${../../assets/wallpapers/dark-forrest-ultrawide.png}";
         loginBackground = false;
       }
     )
