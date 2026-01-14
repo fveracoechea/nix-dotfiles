@@ -8,7 +8,7 @@
       allowedTCPPorts = [8888 11434];
     };
 
-    wireless.enable = true;
-    # networkmanager.wifi.backend = "iwd";
+    wireless.iwd.enable = true;
+    networkmanager.wifi.backend = "iwd";
   };
 }
