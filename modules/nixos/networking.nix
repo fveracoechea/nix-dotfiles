@@ -8,7 +8,10 @@
       allowedTCPPorts = [8888 11434];
     };
 
+    # wireless.enable = true;
     wireless.iwd.enable = true;
     networkmanager.wifi.backend = "iwd";
+
+    # wg-quick.interfaces.payintel-aws.configFile = "/etc/nixos/wireguard/payintel-aws.conf";
   };
 }

@@ -35,7 +35,7 @@ in {
 
       general = {
         layout = "dwindle";
-        border_size = 2;
+        border_size = 3;
         resize_on_border = true;
         gaps_in = 10;
         gaps_out = "10,20,20,20";

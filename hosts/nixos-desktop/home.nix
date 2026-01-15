@@ -52,7 +52,6 @@
     openlinkhub
     nodejs
     docker-compose
-    wireguard-ui
   ];
 
   # This value determines the home Manager release that your
