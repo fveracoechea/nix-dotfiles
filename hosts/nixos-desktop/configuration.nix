@@ -44,7 +44,11 @@
   };
 
   virtualisation.docker.enable = true;
+
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "beekeeper-studio-5.5.3"
+  ];
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [

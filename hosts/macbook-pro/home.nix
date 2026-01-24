@@ -31,10 +31,6 @@
     beekeeper-studio
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "beekeeper-studio-5.5.3"
-  ];
-
   # home.username = "franciscoveracoechea";
   # home.homeDirectory = /Users/franciscoveracoechea;
 
