@@ -19,6 +19,7 @@
       window-padding-y = 6;
       window-decoration = "auto";
 
+      font-size = 14;
       font-family-bold = "FiraCode Nerd Font Bold";
       font-family-italic = "FiraCode Nerd Font Italic";
       font-family-bold-italic = "FiraCode Nerd Font Italic Bold";
