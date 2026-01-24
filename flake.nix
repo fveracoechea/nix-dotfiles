@@ -9,10 +9,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Sylix - system wide styles
-    stylix.url = "github:danth/stylix";
-    stylix.inputs.nixpkgs.follows = "nixpkgs";
-
     # Musnix - Real-time audio
     musnix.url = "github:musnix/musnix";
     musnix.inputs.nixpkgs.follows = "nixpkgs";

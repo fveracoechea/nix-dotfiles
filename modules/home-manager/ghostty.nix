@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  # stylix.targets.ghostty.enable = false;
-
   programs.ghostty = {
     enable = true;
     enableZshIntegration = true;

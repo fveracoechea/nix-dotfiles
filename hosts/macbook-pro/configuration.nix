@@ -4,7 +4,6 @@ in {
   imports = [
     ../../modules/darwin/system-defaults.nix
     ../../modules/darwin/homebrew.nix
-    ../../modules/darwin/stylix.nix
     ../../modules/darwin/zsh-shell.nix
   ];
 
@@ -12,7 +11,6 @@ in {
 
   # Used for backwards compatibility.
   system.stateVersion = 5;
-  # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
 

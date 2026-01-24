@@ -16,7 +16,7 @@
     ../../modules/home-manager/opencode
     ../../modules/home-manager/ghostty.nix
     ../../modules/home-manager/mcpo.nix
-    ../../moduleshone-manager/fonts.nix
+    ../../modules/home-manager/fonts.nix
     inputs.neovim-config.homeManagerModules.default
   ];
 
@@ -29,8 +29,10 @@
     slack
     lazydocker
     beekeeper-studio
-    customPkgs.scripts.keycloak-proxy
-    customPkgs.scripts.teams-proxy
+  ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "beekeeper-studio-5.5.3"
   ];
 
   # home.username = "franciscoveracoechea";

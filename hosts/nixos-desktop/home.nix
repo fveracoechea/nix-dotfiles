@@ -40,7 +40,6 @@
     kooha
     teams-for-linux
     python3
-    dconf2nix
     nurl
     watchman
     ripgrep
@@ -48,10 +47,14 @@
     postman
     wireguard-tools
     lutgen
+    beekeeper-studio
     customPkgs.dev-manager-desktop
     openlinkhub
-    nodejs
     docker-compose
+  ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "beekeeper-studio-5.5.3"
   ];
 
   # This value determines the home Manager release that your
