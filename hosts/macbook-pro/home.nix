@@ -16,6 +16,7 @@
     ../../modules/home-manager/opencode
     ../../modules/home-manager/ghostty.nix
     ../../modules/home-manager/mcpo.nix
+    ../../moduleshone-manager/fonts.nix
     inputs.neovim-config.homeManagerModules.default
   ];
 
@@ -27,7 +28,7 @@
     postman
     slack
     lazydocker
-    nerd-fonts.fira-code
+    beekeeper-studio
     customPkgs.scripts.keycloak-proxy
     customPkgs.scripts.teams-proxy
   ];

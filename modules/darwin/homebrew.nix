@@ -8,17 +8,17 @@
       upgrade = true;
     };
     casks = [
-      # "ghostty"
       "docker"
-      "postgres-unofficial"
       "karabiner-elements"
+      # "beekeeper-studio"
+      # "moonlight"
       # "displaylink"
-      "moonlight"
+      # "postgres-unofficial"
     ];
     brews = [
       # "pipx"
-      "pulumi/tap/pulumi"
       # "pyenv"
+      "pulumi/tap/pulumi"
       "python@3.12"
     ];
   };
