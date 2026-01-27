@@ -19,9 +19,10 @@
       window-padding-y = 6;
       window-decoration = "auto";
 
-      font-family-bold = "FiraCode Nerd Font Bold";
-      font-family-italic = "FiraCode Nerd Font Italic";
-      font-family-bold-italic = "FiraCode Nerd Font Italic Bold";
+      font-size = 13;
+      font-family-bold = "JetBrainsMono Nerd Font Bold";
+      font-family-italic = "JetBrainsMono Nerd Font Italic";
+      font-family-bold-italic = "JetBrainsMono Nerd Font Italic Bold";
     };
   };
 }

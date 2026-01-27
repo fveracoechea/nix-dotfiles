@@ -31,8 +31,8 @@
     };
     font = {
       size = 12;
-      package = pkgs.fira-sans;
-      name = "Fira Sans";
+      name = "Inter";
+      package = pkgs.inter;
     };
   };
 
@@ -45,6 +45,7 @@
     gnome-notes
     gnome-firmware
     gnome-monitor-config
+    font-manager
     loupe
     snapshot
   ];

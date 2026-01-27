@@ -2,9 +2,9 @@
   home.packages = with pkgs; [
     # Apps
     # zrythm
-    # reaper
-    ardour
+    reaper
     bitwig-studio
+    # ardour
 
     # Music editor
     # tuxguitar

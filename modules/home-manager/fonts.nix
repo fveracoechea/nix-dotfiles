@@ -1,17 +1,25 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    inter
     fira-sans
+    open-sans
+    geist-font
+    ubuntu-sans
+
+    nerd-fonts.hack
     nerd-fonts.fira-code
+    nerd-fonts.ubuntu-sans
+    nerd-fonts.jetbrains-mono
   ];
 
   fonts.fontconfig = {
     enable = true;
     antialiasing = true;
     defaultFonts = {
-      serif = ["Fira Sans"];
-      sansSerif = ["Fira Sans"];
-      monospace = ["FiraCode Nerd Font"];
-      emoji = ["FiraCode Nerd Font"];
+      serif = ["Inter"];
+      sansSerif = ["Inter"];
+      monospace = ["JetBrainsMono Nerd Font"];
+      emoji = ["JetBrainsMono Nerd Font"];
     };
   };
 }
