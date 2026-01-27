@@ -2,6 +2,7 @@
   # Darwin System settings
   system.defaults = {
     finder.AppleShowAllExtensions = true;
+    NSGlobalDomain.AppleShowAllFiles = true;
     dock = {
       autohide = true;
       autohide-delay = 0.0;
