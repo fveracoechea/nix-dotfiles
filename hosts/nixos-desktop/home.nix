@@ -44,6 +44,7 @@
     watchman
     ripgrep
     jq
+    just
     postman
     wireguard-tools
     lutgen

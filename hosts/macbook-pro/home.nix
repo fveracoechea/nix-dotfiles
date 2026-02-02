@@ -28,6 +28,7 @@
     postman
     slack
     lazydocker
+    just
     beekeeper-studio
   ];
 
