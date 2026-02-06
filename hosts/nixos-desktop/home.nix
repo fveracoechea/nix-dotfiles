@@ -52,6 +52,7 @@
     customPkgs.dev-manager-desktop
     openlinkhub
     docker-compose
+    redisinsight
   ];
 
   # This value determines the home Manager release that your
