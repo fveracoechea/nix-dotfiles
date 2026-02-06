@@ -505,11 +505,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770413092,
-        "narHash": "sha256-xJApI69MtWzCMdiu+jSBjTlYzTU3nbLT2XuUtak6C6Y=",
+        "lastModified": 1770414039,
+        "narHash": "sha256-YhLMsyWcEQwirT107+ETd5thK45MytOveQMyMvsThgM=",
         "owner": "fveracoechea",
         "repo": "neovim-nix-config",
-        "rev": "0a3efb977fcd7e3895bbafece01b7deaeab2e870",
+        "rev": "ce1593a7e148cdd6c84ab30437e3f9f2daccc4fa",
         "type": "github"
       },
       "original": {
