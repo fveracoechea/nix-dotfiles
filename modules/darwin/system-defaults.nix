@@ -3,7 +3,7 @@
   system.defaults = {
     finder.AppleShowAllExtensions = true;
     NSGlobalDomain.AppleShowAllFiles = true;
-    universalaccess.mouseDriverCursorSize = 1.5;
+    # universalaccess.mouseDriverCursorSize = 1.5;
     dock = {
       autohide = false;
       autohide-delay = 0.0;
