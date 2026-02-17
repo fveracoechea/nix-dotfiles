@@ -47,7 +47,7 @@
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
-    "beekeeper-studio-5.5.3"
+    "beekeeper-studio-5.5.5"
   ];
 
   # List packages installed in system profile.
