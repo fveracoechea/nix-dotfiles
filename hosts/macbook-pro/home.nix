@@ -14,8 +14,9 @@
     ../../modules/home-manager/karabiner.nix
     ../../modules/home-manager/opencode
     ../../modules/home-manager/ghostty.nix
-    ../../modules/home-manager/mcpo.nix
     ../../modules/home-manager/fonts.nix
+    ../../modules/home-manager/git.nix
+    ../../modules/home-manager/ssh.nix
     inputs.neovim-config.homeManagerModules.default
   ];
 

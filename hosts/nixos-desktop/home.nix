@@ -20,7 +20,6 @@
     ../../modules/home-manager/hyprland
     ../../modules/home-manager/sunshine.nix
     ../../modules/home-manager/opencode
-    ../../modules/home-manager/mcpo.nix
     ../../modules/home-manager/desktop-entries
     ../../modules/home-manager/fonts.nix
     ../../modules/home-manager/spotify.nix
