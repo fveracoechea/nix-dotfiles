@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  customPkgs,
   ...
 }: {
   imports = [
@@ -24,12 +23,9 @@
     watchman
     ripgrep
     wget
-    google-chrome
-    postman
-    slack
     lazydocker
     just
-    beekeeper-studio
+    wireguard-tools
   ];
 
   # home.username = "franciscoveracoechea";

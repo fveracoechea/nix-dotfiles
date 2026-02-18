@@ -13,9 +13,6 @@ in {
   system.stateVersion = 5;
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "beekeeper-studio-5.5.5"
-  ];
 
   nix = {
     package = pkgs.nix;
