@@ -7,10 +7,10 @@
       ShowExternalHardDrivesOnDesktop = true;
     };
 
-    universalaccess = {
-      reduceTransparency = true;
-      mouseDriverCursorSize = 2.5;
-    };
+    # universalaccess = {
+    #   reduceTransparency = true;
+    #   mouseDriverCursorSize = 2.5;
+    # };
 
     dock = {
       autohide = false;
