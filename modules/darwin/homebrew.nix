@@ -8,7 +8,7 @@
       upgrade = true;
     };
     casks = [
-      "docker"
+      "docker-desktop"
       "karabiner-elements"
       "beekeeper-studio"
       "google-chrome"
