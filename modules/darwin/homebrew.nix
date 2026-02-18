@@ -24,8 +24,9 @@
     brews = [
       # "pipx"
       # "pyenv"
-      "pulumi/tap/pulumi"
-      "python@3.12"
+      # "python@3.12"
+      "pulumi"
+      "awscli"
     ];
   };
 }
