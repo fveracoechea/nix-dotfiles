@@ -2,8 +2,8 @@
   theme = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "yazi";
-    rev = "043ffae14e7f7fcc136636d5f2c617b5bc2f5e31";
-    hash = "sha256-zkL46h1+U9ThD4xXkv1uuddrlQviEQD3wNZFRgv7M8Y=";
+    rev = "fc69d6472d29b823c4980d23186c9c120a0ad32c";
+    hash = "sha256-Og33IGS9pTim6LEH33CO102wpGnPomiperFbqfgrJjw=";
   };
   themePath =
     theme + "/themes/mocha/catppuccin-mocha-blue.toml";
@@ -14,9 +14,9 @@ in {
     enable = true;
     package = pkgs.yazi;
     enableZshIntegration = true;
+    shellWrapperName = "y";
 
-    theme =
-      builtins.fromTOML (builtins.readFile themePath);
+    theme = fromTOML (builtins.readFile themePath);
 
     plugins = with pkgs.yaziPlugins; {
       inherit git yatline yatline-catppuccin smart-enter smart-filter mediainfo piper;
