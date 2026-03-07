@@ -24,8 +24,8 @@
     geonkick
 
     # Support for Windows VST2/VST3 plugins
-    yabridge
-    yabridgectl
-    wineWowPackages.stable
+    # yabridge
+    # yabridgectl
+    wineWow64Packages.stable
   ];
 }
