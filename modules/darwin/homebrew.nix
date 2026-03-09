@@ -17,6 +17,8 @@
       "slack"
       "figma"
       "postman"
+      "devtunnel"
+      "opencode-desktop"
       # "moonlight"
       # "displaylink"
       # "postgres-unofficial"
