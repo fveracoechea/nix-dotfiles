@@ -40,7 +40,7 @@
   users.users.fveracoechea = {
     isNormalUser = true;
     description = "fveracoechea";
-    extraGroups = ["networkmanager" "wheel" "audio" "docker"];
+    extraGroups = ["networkmanager" "wheel" "audio" "docker" "dialout" "plugdev"];
   };
 
   virtualisation.docker.enable = true;

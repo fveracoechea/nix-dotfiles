@@ -17,4 +17,9 @@
 
   # Enable GVFS for virtual file system support (e.g., Trash can).
   services.gvfs.enable = true;
+
+  # udev rule for Kinesis Advantage360 Pro serial access (idVendor 29ea)
+  services.udev.extraRules = ''
+    ATTRS{idVendor}=="29ea", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+  '';
 }
