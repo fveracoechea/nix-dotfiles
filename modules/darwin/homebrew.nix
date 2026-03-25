@@ -19,6 +19,7 @@
       "postman"
       "devtunnel"
       "opencode-desktop"
+      "redis-insight"
       # "moonlight"
       # "displaylink"
       # "postgres-unofficial"
