@@ -47,6 +47,7 @@
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
+    "beekeeper-studio-5.3.4"
     "beekeeper-studio-5.5.5"
     "beekeeper-studio-5.5.7"
   ];

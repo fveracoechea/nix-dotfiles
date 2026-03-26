@@ -16,8 +16,6 @@ in {
   # boot.kernelParams = ["video=card1-DP-2:3840x2160R@120D"];
 
   hardware = {
-    graphics.enable = true;
-    graphics.enable32Bit = true;
     graphics.extraPackages = [pkgs.gamescope-wsi];
     cpu.amd.updateMicrocode = true;
     amdgpu.initrd.enable = true;

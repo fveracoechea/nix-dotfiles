@@ -9,13 +9,14 @@
 in {
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = false;
-    package = inputs.hyprland.packages.${system}.hyprland;
+    systemd.enable = true;
+    # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
+    package = null;
+    portalPackage = null;
 
     settings = {
       monitor = [
         customUtils.monitors.samsung-odyssey
-        customUtils.monitors.dummy-4k-disabled
       ];
 
       cursor = {
@@ -41,9 +42,12 @@ in {
         gaps_out = "10,20,20,20";
       };
 
-      dwindle = {
+      layout = {
         # Avoid overly wide single-window layouts on wide screens
         single_window_aspect_ratio = "16 9";
+      };
+
+      dwindle = {
         pseudotile = true;
         preserve_split = true;
         force_split = 2;

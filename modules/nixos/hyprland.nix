@@ -13,6 +13,9 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
