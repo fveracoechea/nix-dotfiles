@@ -1,14 +1,8 @@
 {
   pkgs,
-  customPkgs,
+  inputs,
   ...
 }: {
-  home.packages = [
-    customPkgs.scripts.tmux-uptime
-    customPkgs.scripts.tmux-os-icon
-    customPkgs.scripts.tmux-git-status
-  ];
-
   programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -16,28 +10,28 @@
     mouse = true;
     baseIndex = 1;
     focusEvents = true;
-    historyLimit = 10000;
+    historyLimit = 50000;
     shell = "${pkgs.zsh}/bin/zsh";
 
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
-      tmuxPlugins.yank
       {
-        plugin = customPkgs.tmuxPlugins.catppuccin;
-        # config before loading this plugin
-        extraConfig =
-          #bash
-          ''
-            set -g @catppuccin_flavor "mocha"
-            set -g @catppuccin_window_status_style "rounded"
+        plugin = inputs.tmux-powerkit.packages.${pkgs.system}.default;
+        extraConfig = ''
+          set -g @powerkit_plugins "git,github,cpu,netspeed,uptime"
 
-            set -g @catppuccin_window_text " #W"
-            set -g @catppuccin_window_current_text " #W"
+          set -g @powerkit_theme "catppuccin"
+          set -g @powerkit_theme_variant "mocha"
 
-            set -g @catppuccin_gitmux_icon " "
-            set -g @catppuccin_session_icon " "
-            set -g @catppuccin_session_color "#{?client_prefix,#{E:@thm_peach},#{E:@thm_blue}}"
-          '';
+          set -g @powerkit_separator_style "rounded"
+          set -g @powerkit_edge_separator_style "rounded:all"
+
+          set -g @powerkit_transparent "true"
+
+          set -g @powerkit_status_order "session,plugins,windows"
+
+          set -g @powerkit_lazy_loading "true"
+        '';
       }
     ];
 
@@ -57,52 +51,6 @@
 
         # Renumber all windows when any window is closed
         set -g renumber-windows on
-
-        # Enable dynamic titles
-        set-option -g set-titles on
-        set-option -g set-titles-string "#(echo #{pane_current_path} | sed 's#$HOME#~#g') - #W"
-
-        # Split horizontally with |
-        unbind %
-        bind '\' split-window -h
-
-        # Split vertically with -
-        unbind '"'
-        bind '-' split-window -v
-
-        # Source config using R
-        unbind r
-        bind r source-file "$XDG_CONFIG_HOME/tmux/tmux.conf"
-
-        # Resize panes
-        bind -r j resize-pane -D 5
-        bind -r k resize-pane -U 5
-        bind -r l resize-pane -R 5
-        bind -r h resize-pane -L 5
-
-        # Maximize pane toggle using m
-        bind -r m resize-pane -Z
-
-        # Adds spacing to the tmux status bar
-        set -g status 2
-        set -g status-format[1] ""
-
-        # Catppuccin config after loading the plugin
-        set-option -g status-style bg=default
-        set -gF @catppuccin_status_background "none"
-
-        set -g @catppuccin_gitmux_text " #(tmux-git-status)"
-        set -g @catppuccin_uptime_text " #(tmux-uptime)"
-        set -g @catppuccin_host_icon "#(tmux-os-icon) "
-
-        set -g status-right "#{E:@catppuccin_status_session}"
-        set -ag status-right "#{E:@catppuccin_status_gitmux}"
-        set -ag status-right "#{E:@catppuccin_status_uptime}"
-        set -ag status-right "#{E:@catppuccin_status_host}"
-
-        set -g status-right-length 100
-        set -g status-left-length 100
-        set -g status-left ""
 
       '';
   };

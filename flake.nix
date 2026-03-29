@@ -36,6 +36,10 @@
     # MCP Servers
     mcp-servers-nix.url = "github:natsukium/mcp-servers-nix";
     mcp-servers-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    # tmux powerkit status bar
+    tmux-powerkit.url = "github:fabioluciano/tmux-powerkit";
+    tmux-powerkit.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
