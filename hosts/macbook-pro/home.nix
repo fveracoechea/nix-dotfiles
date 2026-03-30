@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ../../modules/home-manager/tmux.nix
+    ../../modules/home-manager/tmux
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/bat.nix
     ../../modules/home-manager/btop.nix
