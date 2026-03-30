@@ -37,7 +37,6 @@
     vesktop
     google-chrome
     kooha
-    teams-for-linux
     python3
     nurl
     watchman
@@ -51,7 +50,6 @@
     customPkgs.dev-manager-desktop
     openlinkhub
     docker-compose
-    redisinsight
   ];
 
   # This value determines the home Manager release that your
