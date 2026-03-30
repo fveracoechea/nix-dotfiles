@@ -13,7 +13,7 @@
     focusEvents = true;
     historyLimit = 50000;
     shell = "${pkgs.zsh}/bin/zsh";
-
+    extraConfig = lib.fileContents ./tmux.conf;
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
       {
@@ -21,7 +21,5 @@
         extraConfig = lib.fileContents ./tmux.powerkit.conf;
       }
     ];
-
-    extraConfig = lib.fileContents ./tmux.conf;
   };
 }
