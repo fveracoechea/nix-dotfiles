@@ -2,7 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/bootloader.nix
-    ../../modules/nixos/sddm.nix
+    ../../modules/nixos/displayManager.nix
     ../../modules/nixos/miscellaneous.nix
     ../../modules/nixos/zsh-shell.nix
     ../../modules/nixos/nix-ld.nix
@@ -52,9 +52,9 @@
   # resulting in a scrambled/corrupt display at the login screen.
   # The xml sets 2560x1440@60 (matching the kernel video= param) so the DM
   # renders cleanly; Hyprland takes over with full resolution after login.
-  systemd.tmpfiles.rules = [
-    "L+ /run/gdm/.config/monitors.xml - - - - ${./gdm-monitors.xml}"
-  ];
+  # systemd.tmpfiles.rules = [
+  #   "L+ /run/gdm/.config/monitors.xml - - - - ${./gdm-monitors.xml}"
+  # ];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [

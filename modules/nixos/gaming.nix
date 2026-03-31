@@ -1,20 +1,4 @@
-{pkgs, ...}: let
-  gamescopeArgs = builtins.concatStringsSep " " [
-    "-e" # Emmbed mode for steam integration
-    "--adaptive-sync" # VRR support
-    "--hdr-enabled" # HDR
-    "--hdr-itm-enable"
-    "--rt" # Real time scheduling
-    "-W 2560"
-    "-H 1440"
-    "-r 120" # Refresh rate
-    "-f" # Fullscreen
-    "-O DP-1" # Output display
-  ];
-in {
-  # Virtual 4K 120Hz headless display
-  # boot.kernelParams = ["video=card1-DP-2:3840x2160R@120D"];
-
+{pkgs, ...}: {
   hardware = {
     graphics.extraPackages = [pkgs.gamescope-wsi];
     cpu.amd.updateMicrocode = true;
@@ -26,10 +10,31 @@ in {
     steam.enable = true;
     steam.protontricks.enable = true;
     steam.extraCompatPackages = [pkgs.proton-ge-bin];
-    steam.gamescopeSession.enable = true;
+    steam.gamescopeSession = {
+      enable = true;
+      env = {
+        DXVK_HDR = "1";
+        ENABLE_HDR = "1";
+        ENABLE_HDR_WSI = "1";
+        PROTON_ENABLE_WAYLAND = "1";
+        SDL_VIDEODRIVER = "wayland";
+        STEAM_GAMESCOPE_HDR_SUPPORTED = "1";
+        STEAM_GAMESCOPE_COLOR_MANAGED = "1";
+      };
+      args = [
+        "--adaptive-sync" # VRR support
+        "--hdr-enabled" # HDR
+        "--hdr-itm-enable"
+        "--rt" # Real time scheduling
+        "-W 2560"
+        "-H 1440"
+        "-r 120" # Refresh rate
+        "-f" # Fullscreen
+        # "-O DP-1" # Output display
+      ];
+    };
 
     gamemode.enable = true;
-
     gamescope.enable = true;
     gamescope.capSysNice = true;
   };
@@ -46,20 +51,6 @@ in {
       amdgpu_top
       mangohud
       lact
-      (writers.writeBashBin "sunshine-gamescope-session"
-        # bash
-        ''
-          export DXVK_HDR=1
-          export ENABLE_HDR=1
-          export ENABLE_HDR_WSI=1
-          # Enable Steam Deck features
-          export STEAM_GAMESCOPE_COLOR_MANAGED=1
-          export STEAM_GAMESCOPE_HDR_SUPPORTED=1
-          # SDL/Input optimization
-          # export SDL_VIDEODRIVER=wayland
-          sunshine &
-          gamescope ${gamescopeArgs} -- steam -gamepadui -steamos
-        '')
     ];
   };
 
@@ -75,28 +66,12 @@ in {
 
   services = {
     hardware.openrgb.enable = true;
+
     sunshine = {
       enable = true;
-      autoStart = false;
+      autoStart = true;
       capSysAdmin = true;
       openFirewall = true;
-      package = pkgs.sunshine;
     };
-
-    displayManager.sessionPackages = [
-      (pkgs.writeTextFile {
-        name = "gamescope-steam.desktop";
-        destination = "/share/wayland-sessions/gamescope-steam.desktop";
-        checkPhase = ''${pkgs.buildPackages.desktop-file-utils}/bin/desktop-file-validate "$target"'';
-        derivationArgs = {passthru.providedSessions = ["gamescope-steam"];};
-        text = ''
-          [Desktop Entry]
-          Name=Gamescope Steam
-          Comment=Launch Gamescope with Steam Big Picture Mode
-          Exec=sunshine-gamescope-session
-          Type=Application
-        '';
-      })
-    ];
   };
 }

@@ -12,16 +12,20 @@
   #   )
   # ];
 
-  services.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
+  services.displayManager = {
+    ly.enable = true;
 
-  # services.displayManager.sddm = {
-  #   enable = true;
-  #   wayland.enable = true;
-  #   enableHidpi = true;
-  #   theme = "catppuccin-mocha-blue";
-  #   package = pkgs.kdePackages.sddm;
-  # };
+    # sddm = {
+    #   enable = true;
+    #   wayland.enable = true;
+    #   enableHidpi = true;
+    #   theme = "catppuccin-mocha-blue";
+    #   package = pkgs.kdePackages.sddm;
+    # };
+
+    # gdm = {
+    #   enable = true;
+    #   wayland = true;
+    # };
+  };
 }
