@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/bat.nix
@@ -15,7 +16,6 @@
     ../../modules/home-manager/opencode
     ../../modules/home-manager/ghostty.nix
     ../../modules/home-manager/fonts.nix
-    ../../modules/home-manager/git.nix
     ../../modules/home-manager/ssh.nix
     inputs.neovim-config.homeManagerModules.default
   ];
