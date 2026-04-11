@@ -21,6 +21,7 @@
         accent = "blue";
       };
     };
+    gtk4.theme = null;
     theme = {
       name = "Catppuccin-GTK-Dark";
       package = pkgs.magnetic-catppuccin-gtk.override {
