@@ -45,17 +45,6 @@
 
   virtualisation.docker.enable = true;
 
-  # Provide GDM's mutter compositor with a safe monitor config for DP-1.
-  # GDM runs as its own user and does not inherit Hyprland's monitor settings.
-  # Without this, mutter probes the Samsung Odyssey's native 5120x1440@120Hz
-  # mode over DisplayPort, which requires DSC negotiation it cannot do correctly,
-  # resulting in a scrambled/corrupt display at the login screen.
-  # The xml sets 2560x1440@60 (matching the kernel video= param) so the DM
-  # renders cleanly; Hyprland takes over with full resolution after login.
-  # systemd.tmpfiles.rules = [
-  #   "L+ /run/gdm/.config/monitors.xml - - - - ${./gdm-monitors.xml}"
-  # ];
-
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "beekeeper-studio-5.3.4"

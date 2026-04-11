@@ -15,11 +15,6 @@
       env = {
         DXVK_HDR = "1";
         ENABLE_HDR = "1";
-        ENABLE_HDR_WSI = "1";
-        PROTON_ENABLE_WAYLAND = "1";
-        SDL_VIDEODRIVER = "wayland";
-        STEAM_GAMESCOPE_HDR_SUPPORTED = "1";
-        STEAM_GAMESCOPE_COLOR_MANAGED = "1";
       };
       args = [
         "--adaptive-sync" # VRR support

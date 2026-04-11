@@ -7,8 +7,6 @@
   home.packages = with pkgs; [
     customPkgs.zeitfetch
     fastfetch
-    # microfetch does work in nix-darwin
-    cmatrix
   ];
 
   programs.fzf = {
