@@ -1,9 +1,15 @@
 {
-  programs.ssh.matchBlocks = {
-    "github.com" = {
-      useKeychain = true;
-      addKeysToAgent = true;
-      identityFile = "~/.ssh/id_github_hypr";
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    matchBlocks = {
+      "github.com" = {
+        addKeysToAgent = "yes";
+        identityFile = "~/.ssh/id_github_hypr";
+        extraOptions = {
+          UseKeychain = "yes";
+        };
+      };
     };
   };
 }

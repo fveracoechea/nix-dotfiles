@@ -3,6 +3,7 @@
     enable = true;
     signing.format = "openpgp";
     settings = {
+      credential.helper = "osxkeychain";
       user = {
         email = "veracoecheafrancisco@gmail.com";
         name = "Francisco Veracoechea";
