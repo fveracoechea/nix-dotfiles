@@ -50,6 +50,7 @@
     customPkgs.dev-manager-desktop
     openlinkhub
     docker-compose
+    zettlr
   ];
 
   # This value determines the home Manager release that your
