@@ -51,6 +51,7 @@
     openlinkhub
     docker-compose
     zettlr
+    agent-browser
   ];
 
   # This value determines the home Manager release that your
