@@ -27,6 +27,7 @@
     lazydocker
     just
     wireguard-tools
+    agent-browser
   ];
 
   # home.username = "franciscoveracoechea";

@@ -1,11 +1,9 @@
 {
   pkgs,
   config,
-  customPkgs,
   ...
 }: {
   home.packages = with pkgs; [
-    customPkgs.zeitfetch
     fastfetch
   ];
 
