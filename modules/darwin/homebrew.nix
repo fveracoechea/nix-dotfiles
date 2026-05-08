@@ -20,6 +20,7 @@
       "devtunnel"
       "opencode-desktop"
       "redis-insight"
+      "cloude-code"
       # "moonlight"
       # "displaylink"
       # "postgres-unofficial"
