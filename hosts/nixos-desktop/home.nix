@@ -52,6 +52,7 @@
     docker-compose
     zettlr
     agent-browser
+    tiny-rdm
   ];
 
   # This value determines the home Manager release that your
