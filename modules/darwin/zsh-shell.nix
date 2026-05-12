@@ -3,5 +3,5 @@
   programs.zsh.enable = true;
   environment.pathsToLink = ["/share/zsh"];
   environment.shells = [pkgs.zsh];
-  programs.bash.enable = false;
+  programs.bash.enable = true;
 }
