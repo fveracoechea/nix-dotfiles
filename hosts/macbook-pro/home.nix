@@ -28,6 +28,7 @@
     just
     wireguard-tools
     agent-browser
+    glab
   ];
 
   # home.username = "franciscoveracoechea";
