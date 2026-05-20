@@ -53,6 +53,7 @@
     zettlr
     agent-browser
     tiny-rdm
+    obs-studio
   ];
 
   # This value determines the home Manager release that your
