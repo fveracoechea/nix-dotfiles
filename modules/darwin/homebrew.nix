@@ -29,6 +29,7 @@
       # "pipx"
       # "pyenv"
       # "python@3.12"
+      "redis"
       "pulumi"
       "awscli"
     ];
