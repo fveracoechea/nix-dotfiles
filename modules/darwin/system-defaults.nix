@@ -13,15 +13,15 @@
     # };
 
     dock = {
-      autohide = true;
+      autohide = false;
       autohide-delay = 0.0;
       mru-spaces = false;
       show-recents = false;
-      largesize = 65;
-      tilesize = 50;
+      largesize = 60;
+      tilesize = 45;
       magnification = true;
       mineffect = "genie";
-      orientation = "bottom";
+      orientation = "left";
     };
   };
 }

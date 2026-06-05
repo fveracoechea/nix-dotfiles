@@ -4,18 +4,7 @@
   lib,
   system,
   ...
-}: let
-  tmux-powerkit = inputs.tmux-powerkit.packages.${system}.default.overrideAttrs (old: {
-    postInstall =
-      (old.postInstall or "")
-      + ''
-        find $out/share/tmux-plugins/tmux-powerkit -name "*.sh" -o -name "*.tmux" | while read f; do
-          substituteInPlace "$f" \
-            --replace-fail '#!/usr/bin/env bash' '#!${pkgs.bash}/bin/bash' || true
-        done
-      '';
-  });
-in {
+}: {
   programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -29,7 +18,7 @@ in {
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
       {
-        plugin = tmux-powerkit;
+        plugin = inputs.tmux-powerkit.packages.${system}.default;
         extraConfig = lib.fileContents ./tmux.powerkit.conf;
       }
     ];

@@ -4,7 +4,7 @@
     enable = true;
     onActivation = {
       autoUpdate = true;
-      cleanup = "uninstall";
+      cleanup = "zap";
       upgrade = true;
     };
     casks = [
@@ -17,7 +17,7 @@
       "slack"
       "figma"
       "postman"
-      "devtunnel"
+      # "devtunnel"
       "opencode-desktop"
       "redis-insight"
       "claude-code"
@@ -29,7 +29,6 @@
       # "pipx"
       # "pyenv"
       # "python@3.12"
-      "redis"
       "pulumi"
       "awscli"
     ];
