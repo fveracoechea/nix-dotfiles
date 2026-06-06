@@ -5,15 +5,15 @@
     enable = true;
 
     commands = {
-      create-commit = ./command/create-commit.md;
       create-pr = ./command/create-pr.md;
+    };
+
+    tui = {
+      theme = "system";
     };
 
     settings = {
       autoupdate = false;
-      tui = {
-        theme = "system";
-      };
       mcp = {
         grep = {
           enabled = true;
