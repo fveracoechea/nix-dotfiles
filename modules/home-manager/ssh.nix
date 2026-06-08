@@ -2,13 +2,11 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "github.com" = {
-        addKeysToAgent = "yes";
-        identityFile = "~/.ssh/id_github_hypr";
-        extraOptions = {
-          UseKeychain = "yes";
-        };
+        AddKeysToAgent = "yes";
+        IdentityFile = "~/.ssh/id_github_hypr";
+        UseKeychain = "yes";
       };
     };
   };
