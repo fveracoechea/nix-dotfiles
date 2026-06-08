@@ -48,6 +48,7 @@
     lutgen
     beekeeper-studio
     customPkgs.dev-manager-desktop
+    customPkgs.railway
     openlinkhub
     docker-compose
     zettlr
