@@ -26,7 +26,9 @@
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Darwin
-    nix-darwin.url = "github:LnL7/nix-darwin";
+    # nix-darwin.url = "github:LnL7/nix-darwin";
+    # INFO: waiting for fix to be merged/reviewed https://github.com/nix-darwin/nix-darwin/pull/1789
+    nix-darwin.url = "github:stepbrobd/nix-darwin/bundle";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Shell utilities
