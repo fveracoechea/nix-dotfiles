@@ -30,6 +30,7 @@
     agent-browser
     glab
     redis
+    claude-code
   ];
 
   # home.username = "franciscoveracoechea";
