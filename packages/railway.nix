@@ -14,10 +14,10 @@ rustPlatform.buildRustPackage (finalAttrs: {
     owner = "railwayapp";
     repo = "cli";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-0Zgdazs6AANKa3QtRHuYmudLpkvMHAzsaTCg3/cSN2o=";
+    hash = "sha256-sH6jlS1Ep95+863t9B1i/0lrgY8hLhH9/EAIGem0pVk=";
   };
 
-  cargoHash = "sha256-K1W8tn3Nr/PqWHHHF6mGsNqoAzekjEjqAoa6/4MZKfI=";
+  cargoHash = "sha256-QSGmq6lFPcSKm41eooXgAKZEHwJGk6DtQLOAbYjMcX8=";
 
   nativeBuildInputs = [
     pkg-config
