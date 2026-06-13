@@ -1,9 +1,14 @@
 # Catppuccin Mocha theme for Hyprland
-{...}: let
+{
+  lib,
+  customUtils,
+  ...
+}: let
+  toRgb = color: "rgb(${lib.substring 1 6 (lib.strings.toLower color)})";
   theme = {
-    flamingo = "rgb(f2cdcd)";
-    blue = "rgb(89b4fa)";
-    surface2 = "rgb(585b70)";
+    flamingo = toRgb customUtils.catppuccin.flamingo;
+    blue = toRgb customUtils.catppuccin.blue;
+    surface2 = toRgb customUtils.catppuccin.surface2;
   };
 in {
   wayland.windowManager.hyprland.settings = {

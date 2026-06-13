@@ -25,7 +25,7 @@
     in
       [
         # CONTROL TILING
-        "SUPER, J, Toggle window split, togglesplit,"
+        "SUPER, J, Toggle window split, layoutmsg, togglesplit,"
         "SUPER, T, Toggle window floating/tiling, togglefloating,"
         "SUPER, F, Full screen, fullscreen, 0"
         "SUPER CTRL, F, Tiled full screen, fullscreenstate, 0 2"

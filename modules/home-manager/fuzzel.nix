@@ -1,4 +1,10 @@
-{...}: {
+{
+  lib,
+  customUtils,
+  ...
+}: let
+  toHex = color: "${lib.substring 1 6 (lib.strings.toLower color)}ff";
+in {
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -29,17 +35,17 @@
       };
 
       colors = {
-        background = "1e1e2eff";
-        text = "cdd6f4ff";
-        prompt = "bac2deff";
-        placeholder = "7f849cff";
-        input = "cdd6f4ff";
-        match = "89b4faff";
-        selection = "585b70ff";
-        selection-text = "cdd6f4ff";
-        selection-match = "89b4faff";
-        counter = "7f849cff";
-        border = "89b4faff";
+        background = toHex customUtils.catppuccin.base;
+        text = toHex customUtils.catppuccin.text;
+        prompt = toHex customUtils.catppuccin.subtext1;
+        placeholder = toHex customUtils.catppuccin.overlay1;
+        input = toHex customUtils.catppuccin.text;
+        match = toHex customUtils.catppuccin.blue;
+        selection = toHex customUtils.catppuccin.surface2;
+        selection-text = toHex customUtils.catppuccin.text;
+        selection-match = toHex customUtils.catppuccin.blue;
+        counter = toHex customUtils.catppuccin.overlay1;
+        border = toHex customUtils.catppuccin.blue;
       };
     };
   };

@@ -1,18 +1,23 @@
-# AGENTS.md - NixOS Dotfiles Repository
+This is a NixOS/nix-darwin dotfiles repository using flakes
 
-## Build & Test Commands
-- **Build system config**: `nixos-rebuild switch --flake .#nixos-desktop` or `darwin-rebuild switch --flake .#macbook-pro`
-- **Test config**: `nixos-rebuild test --flake .#nixos-desktop` or `darwin-rebuild check --flake .#macbook-pro`
-- **Format Nix code**: `nix fmt`
-- **Check flake**: `nix flake check`
+## Guidelines
+- Never build system config, the user should do it 
+- Naming: Use descriptive function names, kebab-case for file names
+- Comments: Minimal inline comments, prefer self-documenting code
+- Test config: `nixos-rebuild test --flake .#nixos-desktop` or `darwin-rebuild check --flake .#macbook-pro`
+- Check flake: `nix flake check`
 
-## Code Style Guidelines
-- **Nix files**: Use 2-space indentation, kebab-case for attributes, follow nixpkgs conventions
-- **Naming**: Use descriptive function names, kebab-case for file names
-- **Structure**: Organize modules by platform (nixos/, darwin/, home-manager/)
-- **Comments**: Minimal inline comments, prefer self-documenting code
-- **Files**: .nix for configurations, maintain consistent directory structure
+## Agent skills
 
-## Special Notes
-- This is a NixOS/nix-darwin dotfiles repository using flakes
-- Configuration split by host (nixos-desktop, macbook-pro) and module type
+### Issue tracker
+
+Issues live in the repo's GitHub Issues (uses `gh` CLI). See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default canonical labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context repo: `CONTEXT.md` at root + `docs/adr/` for ADRs. See `docs/agents/domain.md`.
+

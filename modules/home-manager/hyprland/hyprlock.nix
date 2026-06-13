@@ -1,15 +1,20 @@
-{lib, ...}: {
-  programs.hyprlock = let
-    theme = {
-      blue = "rgb(89b4fa)";
-      lavender = "rgb(b4befe)";
-      surface0 = "rgb(313244)";
-      surface1 = "rgb(45475a)";
-      red = "rgb(f38ba8)";
-      yellow = "rgb(f9e2af)";
-      text = "rgb(cdd6f4)";
-    };
-  in {
+{
+  lib,
+  customUtils,
+  ...
+}: let
+  toRgb = color: "rgb(${lib.substring 1 6 (lib.strings.toLower color)})";
+  theme = {
+    blue = toRgb customUtils.catppuccin.blue;
+    lavender = toRgb customUtils.catppuccin.lavender;
+    surface0 = toRgb customUtils.catppuccin.surface0;
+    surface1 = toRgb customUtils.catppuccin.surface1;
+    red = toRgb customUtils.catppuccin.red;
+    yellow = toRgb customUtils.catppuccin.yellow;
+    text = toRgb customUtils.catppuccin.text;
+  };
+in {
+  programs.hyprlock = {
     enable = true;
     settings = {
       general = {

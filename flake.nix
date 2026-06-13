@@ -18,7 +18,7 @@
     neovim-config.inputs.nixpkgs.follows = "nixpkgs";
 
     # Hyprland
-    hyprland.url = "github:hyprwm/Hyprland?ref=refs/tags/v0.54.2";
+    hyprland.url = "github:hyprwm/Hyprland?ref=refs/tags/v0.55.4";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     # Spotify theme
@@ -27,7 +27,7 @@
 
     # Nix Darwin
     # nix-darwin.url = "github:LnL7/nix-darwin";
-    # INFO: waiting for fix to be merged/reviewed https://github.com/nix-darwin/nix-darwin/pull/1789
+    # INFO: waiting for fix to be merged https://github.com/nix-darwin/nix-darwin/pull/1789
     nix-darwin.url = "github:stepbrobd/nix-darwin/bundle";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
