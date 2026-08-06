@@ -13,6 +13,9 @@
       settings = {
         theme = "dark-ansi";
 
+        model = "claude-opus-5";
+        effortLevel = "medium";
+
         statusLine = {
           type = "command";
           command = "${./claude-statusline.sh}";
@@ -24,7 +27,6 @@
             "ExitPlanMode"
             "DesignSync"
             "NotebookEdit"
-            "SendMessage"
             "PushNotification"
             "RemoteTrigger"
             "ReportFindings"
@@ -45,6 +47,11 @@
 
       skills = {
         hunk-review = "${inputs.hunk}/skills/hunk-review/SKILL.md";
+        playwriter = "${inputs.playwriter}/skills/playwriter/SKILL.md";
+      };
+
+      plugins = {
+        figma = inputs.figma-plugin;
       };
 
       lspServers = {
@@ -55,24 +62,6 @@
         lua_ls = {
           command = "lua-language-server";
           extensionToLanguage = {".lua" = "lua";};
-        };
-        biome = {
-          command = "biome";
-          args = ["lsp-proxy"];
-          extensionToLanguage = {
-            ".js" = "javascript";
-            ".jsx" = "javascriptreact";
-            ".ts" = "typescript";
-            ".tsx" = "typescriptreact";
-            ".json" = "json";
-            ".jsonc" = "jsonc";
-            ".css" = "css";
-            ".html" = "html";
-            ".graphql" = "graphql";
-            ".vue" = "vue";
-            ".svelte" = "svelte";
-            ".astro" = "astro";
-          };
         };
         stylelint = {
           command = "stylelint-language-server";

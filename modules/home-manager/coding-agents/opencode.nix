@@ -8,7 +8,7 @@
   config = lib.mkIf config.dotfiles.coding-agents.enable {
     home.packages = with pkgs; [
       lsof
-      mcp-nixos
+      # mcp-nixos
     ];
 
     home.sessionVariables = {
@@ -37,6 +37,7 @@
 
         skills = {
           hunk-review = "${inputs.hunk}/skills/hunk-review/SKILL.md";
+          playwriter = "${inputs.playwriter}/skills/playwriter/SKILL.md";
         };
 
         mcp = {

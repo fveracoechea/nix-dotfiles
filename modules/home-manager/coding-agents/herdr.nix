@@ -9,7 +9,7 @@
       settings = {
         keys = {
           prefix = "ctrl+b";
-          detatch = "prefix+d";
+          # detatch = "prefix+d";
         };
 
         theme = {

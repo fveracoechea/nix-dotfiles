@@ -31,6 +31,12 @@
     hunk.url = "github:modem-dev/hunk";
     hunk.inputs.nixpkgs.follows = "nixpkgs";
 
+    playwriter.url = "github:remorses/playwriter";
+    playwriter.flake = false;
+
+    figma-plugin.url = "github:figma/mcp-server-guide";
+    figma-plugin.flake = false;
+
     handy.url = "github:cjpais/Handy";
     handy.inputs.nixpkgs.follows = "nixpkgs";
   };
