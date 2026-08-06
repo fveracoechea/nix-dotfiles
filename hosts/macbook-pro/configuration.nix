@@ -8,6 +8,7 @@ in {
   dotfiles = {
     homebrew.enable = true;
     darwin-system-config.enable = true;
+    spotify.enable = true;
     system-shell.enable = true;
   };
 

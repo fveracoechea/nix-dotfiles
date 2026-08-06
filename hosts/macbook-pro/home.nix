@@ -10,7 +10,6 @@
     fonts.enable = true;
     karabiner.enable = true;
     neovim.enable = true;
-    spotify.enable = true;
     aerospace.enable = true;
     coding-agents.enable = true;
   };
