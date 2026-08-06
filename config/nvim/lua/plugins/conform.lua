@@ -35,6 +35,7 @@ conform.setup {
     lua = { "stylua" },
     python = { "isort", "black" },
     nix = { "alejandra" },
+    ["_"] = { "oxfmt" },
   },
   format_on_save = {
     lsp_format = "fallback",

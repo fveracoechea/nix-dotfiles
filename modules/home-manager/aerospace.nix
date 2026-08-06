@@ -30,12 +30,12 @@
       settings = {
         config-version = 2;
 
-        after-startup-command = [
-          "exec-and-forget borders"
-        ];
+        # borders is started by its own launchd agent (services.jankyborders),
+        # so AeroSpace must not launch it: launchd gives AeroSpace a PATH of
+        # only /usr/bin:/bin:/usr/sbin:/sbin, where `borders` is not resolvable.
 
         gaps = let
-          gap = 18;
+          gap = 20;
         in {
           inner.horizontal = gap;
           inner.vertical = gap;

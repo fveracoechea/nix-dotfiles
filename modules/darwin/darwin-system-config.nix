@@ -24,8 +24,6 @@
         CreateDesktop = false; # clean desktop
       };
 
-      trackpad.Clicking = true;
-
       dock = {
         autohide = true;
         autohide-delay = 0.0;
