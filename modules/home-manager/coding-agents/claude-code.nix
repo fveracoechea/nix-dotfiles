@@ -22,6 +22,14 @@
         };
 
         permissions = {
+          allow = [
+            "Bash(*)"
+            "Read(*)"
+            "Edit(*)"
+            "Write(*)"
+            "Glob(*)"
+            "Grep(*)"
+          ];
           deny = [
             "EnterPlanMode"
             "ExitPlanMode"
