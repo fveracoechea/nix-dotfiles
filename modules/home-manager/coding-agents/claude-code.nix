@@ -46,6 +46,7 @@
       };
 
       skills = {
+        herdr = "${inputs.herdr}/skills/herdr/SKILL.md";
         hunk-review = "${inputs.hunk}/skills/hunk-review/SKILL.md";
         playwriter = "${inputs.playwriter}/skills/playwriter/SKILL.md";
       };

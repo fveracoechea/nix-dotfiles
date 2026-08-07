@@ -14,7 +14,10 @@
         AppleShowAllExtensions = true;
       };
 
-      universalaccess.mouseDriverCursorSize = 1.5;
+      # mouseDriverCursorSize cannot be managed here: com.apple.universalaccess
+      # is SIP-protected and only writable by processes holding Full Disk
+      # Access, so nix-darwin activation always fails on it. Set it by hand:
+      # System Settings > Accessibility > Pointer Control > Pointer size (1.5).
 
       finder = {
         AppleShowAllFiles = true;
@@ -26,7 +29,8 @@
 
       dock = {
         autohide = true;
-        autohide-delay = 0.0;
+        # No autohide-delay: on macOS 26 a 0.0 delay stops hover-to-reveal
+        # working entirely instead of revealing instantly.
         mru-spaces = false;
         show-recents = false;
         largesize = 65;
