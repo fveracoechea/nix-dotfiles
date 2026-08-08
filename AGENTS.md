@@ -5,33 +5,10 @@ This is a NixOS/nix-darwin dotfiles repository using flakes
 - Never build system config, the user should do it
 - Naming: Use descriptive function names, kebab-case for file names
 - Comments: Minimal inline comments, prefer self-documenting code
+- Only do system changes using the nix config flake
 - Test config: `nixos-rebuild test --flake .#nixos-desktop` or `darwin-rebuild check --flake .#macbook-pro`
 - Check flake: `nix flake check`
-
-## Neovim lua config checks
-
-The flake exposes two `checks` derivations per system that validate the lua
-config under `config/nvim/`:
-
-- `neovim-lua-lint` — runs `stylua --check` (format drift, config in
-  `.stylua.toml`) and `luacheck` (static analysis, config in `.luacheckrc`).
-- `neovim-smoke-test` — builds a self-contained `wrapNeovim` with the
-  home-manager plugin set, then `require`s every module from `init.lua`
-  headlessly and fails on any error.
-
-Run them with:
-
-```sh
-nix flake check                            # runs all checks, including these
-nix build .#checks.x86_64-linux.neovim-lua-lint
-nix build .#checks.x86_64-linux.neovim-smoke-test
-# or:
-scripts/check-lua.sh
-```
-
-When editing lua: run `stylua config/nvim/` to format,
-then `scripts/check-lua.sh` to validate. Add new `require` targets to the
-`modules` array in `checks/neovim.nix` when new plugin/config files are added.
+- Neovim lua config checks `nix flake check`
 
 ## Agent skills
 
