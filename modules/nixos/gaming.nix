@@ -96,7 +96,7 @@ in {
         enable = true;
         keyboards.default = {
           ids = ["*"];
-          settings."meta+alt".q = "command(${pkgs.util-linux}/bin/logger -t steam-exit combo fired, killing gamescope; ${pkgs.procps}/bin/pkill -x gamescope)";
+          settings."control+alt".q = "command(${pkgs.util-linux}/bin/logger -t steam-exit combo fired, killing gamescope; ${pkgs.procps}/bin/pkill -x gamescope)";
         };
       };
 
