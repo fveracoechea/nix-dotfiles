@@ -83,13 +83,13 @@ in {
     services = {
       hardware.openrgb.enable = true;
 
-      # Ctrl+Alt+Backspace blindly ends the Steam Session (kills gamescope,
+      # Super+Alt+Q blindly ends the Steam Session (kills gamescope,
       # session script exits, Ly greeter returns). evdev-level, works in any session
       keyd = {
         enable = true;
         keyboards.default = {
           ids = ["*"];
-          settings."control+alt".backspace = "command(${pkgs.procps}/bin/pkill -x gamescope)";
+          settings."meta+alt".q = "command(${pkgs.procps}/bin/pkill -x gamescope)";
         };
       };
 
