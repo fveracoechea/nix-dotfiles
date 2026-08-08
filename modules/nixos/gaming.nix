@@ -4,14 +4,21 @@
   config,
   ...
 }: let
-  # Sunshine probes encoders once at startup; the Dummy Plug must already have
-  # an active mode (gamescope settled) or probing permanently fails (503)
+  # Sunshine probes encoders once at startup; the Dummy Plug must have an active
+  # mode owned by gamescope. A bare modeset is not enough: the boot console also
+  # modesets HDMI-A-1, and starting Sunshine that early races gamescope's own DRM
+  # acquisition (gamescope: "Could not take device", backend failure, black stream).
   wait-for-stream-output = pkgs.writeShellApplication {
     name = "wait-for-stream-output";
-    runtimeInputs = [pkgs.gnugrep pkgs.coreutils];
+    runtimeInputs = [pkgs.gnugrep pkgs.coreutils pkgs.procps];
     text = ''
-      for _ in $(seq 1 30); do
-        grep -qs "^enabled" /sys/class/drm/card*-HDMI-A-1/enabled && exit 0
+      for _ in $(seq 1 40); do
+        if pgrep -x gamescope >/dev/null \
+          && compgen -G "''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/gamescope-*" >/dev/null \
+          && grep -qs "^enabled" /sys/class/drm/card*-HDMI-A-1/enabled; then
+          sleep 2
+          exit 0
+        fi
         sleep 0.5
       done
       exit 1
@@ -89,7 +96,7 @@ in {
         enable = true;
         keyboards.default = {
           ids = ["*"];
-          settings."meta+alt".q = "command(${pkgs.procps}/bin/pkill -x gamescope)";
+          settings."meta+alt".q = "command(${pkgs.util-linux}/bin/logger -t steam-exit combo fired, killing gamescope; ${pkgs.procps}/bin/pkill -x gamescope)";
         };
       };
 
