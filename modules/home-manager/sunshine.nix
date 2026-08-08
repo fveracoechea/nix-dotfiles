@@ -1,10 +1,16 @@
-{lib, config, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options.dotfiles.sunshine.enable = lib.mkEnableOption "Sunshine game streaming config";
 
   config = lib.mkIf config.dotfiles.sunshine.enable {
     # NOTE: managed declaratively, so the web UI can't persist changes to this file
     xdg.configFile."sunshine/sunshine.conf".text = ''
       vaapi_strict_rc_buffer = enabled
+      encoder = vaapi
       capture = kms
       output_name = HDMI-A-1
     '';
@@ -37,5 +43,15 @@
         }
       ];
     };
+
+    # Toggle the Dummy Plug output inside Hyprland (no-op elsewhere)
+    home.packages = [
+      (pkgs.writers.writeBashBin "enable-stream-output" ''
+        hyprctl keyword monitor "HDMI-A-1, 3840x2160@120, 5120x0, 1" || true
+      '')
+      (pkgs.writers.writeBashBin "disable-stream-output" ''
+        hyprctl keyword monitor "HDMI-A-1, disable" || true
+      '')
+    ];
   };
 }

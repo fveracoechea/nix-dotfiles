@@ -3,7 +3,21 @@
   lib,
   config,
   ...
-}: {
+}: let
+  # Sunshine probes encoders once at startup; the Dummy Plug must already have
+  # an active mode (gamescope settled) or probing permanently fails (503)
+  wait-for-stream-output = pkgs.writeShellApplication {
+    name = "wait-for-stream-output";
+    runtimeInputs = [pkgs.gnugrep pkgs.coreutils];
+    text = ''
+      for _ in $(seq 1 30); do
+        grep -qs "^enabled" /sys/class/drm/card*-HDMI-A-1/enabled && exit 0
+        sleep 0.5
+      done
+      exit 1
+    '';
+  };
+in {
   options.dotfiles.gaming.enable = lib.mkEnableOption "gaming suite (steam, gamescope, sunshine, openrgb, AMD tools)";
 
   config = lib.mkIf config.dotfiles.gaming.enable {
@@ -71,10 +85,18 @@
 
       sunshine = {
         enable = true;
-        autoStart = true;
+        # Started via nixos-fake-graphical-session.target (Steam Session only);
+        # Hyprland is uwsm-managed and never activates that target
+        autoStart = false;
         capSysAdmin = true;
         openFirewall = true;
       };
+    };
+
+    systemd.user.services.sunshine = {
+      wantedBy = ["nixos-fake-graphical-session.target"];
+      after = ["nixos-fake-graphical-session.target"];
+      serviceConfig.ExecStartPre = lib.getExe wait-for-stream-output;
     };
   };
 }

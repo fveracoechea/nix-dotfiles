@@ -19,7 +19,7 @@ _Avoid_: local package, in-repo package
 _Appears in legacy code only._ Previously the set of custom packages built for the target system and injected into all modules via `specialArgs`. Replaced by `dotfilesPkgs`.
 
 **Dotfiles Pkgs**:
-The set of packages this flake provides to its modules via `specialArgs`, injected under the name `dotfilesPkgs`. Contains two kinds of packages: locally-built packages defined in `packages/` (e.g. `railway`, `dev-manager-desktop`) and packages wrapped from the flake's non-nixpkgs inputs (e.g. `hyprland`, `tmux-powerkit`). Modules read `dotfilesPkgs.<name>` instead of touching `inputs` or `system` directly, so external consumers only need to pass `dotfilesPkgs` to use the flake.
+The set of packages this flake provides to its modules via `specialArgs`, injected under the name `dotfilesPkgs`. Contains two kinds of packages: locally-built packages defined in `packages/` and packages wrapped from the flake's non-nixpkgs inputs (e.g. `hyprland`, `tmux-powerkit`). Modules read `dotfilesPkgs.<name>` instead of touching `inputs` or `system` directly, so external consumers only need to pass `dotfilesPkgs` to use the flake.
 _Avoid_: customPkgs, custom packages, local packages
 
 **Theme**:
@@ -53,3 +53,11 @@ _Avoid_: bundle, profile, suite
 **Config Directory**:
 A top-level `config/` directory at the repo root that holds non-Nix application configuration files (lua, json, toml), namespaced per application (e.g. `config/nvim/`). Each Home Manager module symlinks its application's subdirectory into place via `config.lib.file.mkOutOfStoreSymlink`, so the files are edited in their native format with full editor tooling rather than embedded as Nix string literals. See ADR-0005.
 _Avoid_: config folder, dotfiles directory
+
+**Steam Session**:
+The gamescope session launched from the display manager on `nixos-desktop` that runs Steam Big Picture fullscreen on the Dummy Plug. This is the only session Sunshine serves.
+_Avoid_: gamescope session, big picture session
+
+**Dummy Plug**:
+A headless HDMI display emulator plugged into the GPU on `nixos-desktop` (connector `HDMI-A-1`). It presents a 4K120 HDR-capable EDID so the GPU renders a streamable output with no physical display attached.
+_Avoid_: virtual display, fake monitor, headless dongle

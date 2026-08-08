@@ -50,7 +50,7 @@
       programs.lazygit = {
         enable = true;
         enableZshIntegration = true;
-        settings.git.pagers = [{pager = "hunk pager";}];
+        settings.git.diffRenderers = [{command = "hunk pager";}];
       };
     };
 }

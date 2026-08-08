@@ -46,27 +46,11 @@
     lutgen
     beekeeper-studio
     dotfilesPkgs.dev-manager-desktop
-    dotfilesPkgs.railway
+    railway
     openlinkhub
     zettlr
     tiny-rdm
     obs-studio
-
-    (writers.writeBashBin "set-screen-share-resolution" ''
-      hyprctl keyword monitor "DP-1, 2560x1440@120.00Hz, auto, auto, vrr, 3, bitdepth, 8, cm, auto"
-    '')
-
-    (writers.writeBashBin "unset-screen-share-resolution" ''
-      hyprctl keyword monitor "DP-1, 5120x1440@119.98Hz, auto, auto, bitdepth, 8, cm, auto"
-    '')
-
-    (writers.writeBashBin "enable-stream-output" ''
-      hyprctl keyword monitor "HDMI-A-1, 3840x2160@120, 5120x0, 1" || true
-    '')
-
-    (writers.writeBashBin "disable-stream-output" ''
-      hyprctl keyword monitor "HDMI-A-1, disable" || true
-    '')
   ];
 
   programs.ssh = {

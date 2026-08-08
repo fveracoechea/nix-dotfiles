@@ -1,6 +1,8 @@
 This is a NixOS/nix-darwin dotfiles repository using flakes
+
 ## Guidelines
-- Never build system config, the user should do it 
+
+- Never build system config, the user should do it
 - Naming: Use descriptive function names, kebab-case for file names
 - Comments: Minimal inline comments, prefer self-documenting code
 - Test config: `nixos-rebuild test --flake .#nixos-desktop` or `darwin-rebuild check --flake .#macbook-pro`
@@ -44,4 +46,3 @@ Default canonical labels: `needs-triage`, `needs-info`, `ready-for-agent`, `read
 ### Domain docs
 
 Single-context repo: `CONTEXT.md` at root + `docs/adr/` for ADRs. See `docs/agents/domain.md`.
-

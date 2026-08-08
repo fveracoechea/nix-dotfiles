@@ -8,7 +8,7 @@
   config = lib.mkIf config.dotfiles.coding-agents.enable {
     home.packages = with pkgs; [
       lsof
-      # mcp-nixos
+      mcp-nixos
     ];
 
     home.sessionVariables = {
