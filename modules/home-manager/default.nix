@@ -14,6 +14,7 @@
     ./gtk.nix
     ./hyprland
     ./karabiner.nix
+    ./mangohud.nix
     ./coding-agents
     ./pro-audio.nix
     ./shell.nix

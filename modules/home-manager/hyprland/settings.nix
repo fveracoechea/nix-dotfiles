@@ -35,7 +35,7 @@ in {
           border_size = 3;
           resize_on_border = true;
           gaps_in = 10;
-          gaps_out = "10,20,20,20";
+          gaps_out = "10,18,18,18";
         };
 
         layout = {

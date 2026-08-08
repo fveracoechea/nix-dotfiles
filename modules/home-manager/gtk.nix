@@ -27,10 +27,9 @@
       };
       gtk4.theme = null;
       theme = {
-        name = "Catppuccin-GTK-Dark";
-        package = pkgs.magnetic-catppuccin-gtk.override {
-          accent = ["default"];
-          shade = "dark";
+        name = "catppuccin-mocha-blue-standard+float";
+        package = pkgs.catppuccin-gtk.override {
+          variant = "mocha";
           tweaks = ["float"];
         };
       };

@@ -39,6 +39,12 @@
 
     handy.url = "github:cjpais/Handy";
     handy.inputs.nixpkgs.follows = "nixpkgs";
+    # bun2nix (handy's dep) evaluates its flake-parts outputs for every system
+    # in its `systems` input; nix-systems/default includes x86_64-darwin, which
+    # nixpkgs 26.11 dropped, so narrow it to linux-only (handy is linux-only).
+    handy.inputs.bun2nix.inputs.systems.follows = "systems";
+
+    systems.url = "github:nix-systems/default-linux";
 
     herdr.url = "github:herdrdev/herdr";
     herdr.inputs.nixpkgs.follows = "nixpkgs";

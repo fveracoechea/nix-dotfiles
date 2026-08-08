@@ -29,11 +29,11 @@
           "--hdr-enabled" # HDR
           "--hdr-itm-enable"
           "--rt" # Real time scheduling
-          "-W 2560"
-          "-H 1440"
+          "-W 3840"
+          "-H 2160"
           "-r 120" # Refresh rate
           "-f" # Fullscreen
-          # "-O DP-1" # Output display
+          "-O HDMI-A-1" # Output display (dummy plug, sunshine capture target)
         ];
       };
 
@@ -52,7 +52,6 @@
         ethtool
         protonup-ng
         amdgpu_top
-        mangohud
         lact
       ];
     };
