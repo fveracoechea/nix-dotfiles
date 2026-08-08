@@ -3,28 +3,7 @@
   lib,
   config,
   ...
-}: let
-  # Sunshine probes encoders once at startup; the Dummy Plug must have an active
-  # mode owned by gamescope. A bare modeset is not enough: the boot console also
-  # modesets HDMI-A-1, and starting Sunshine that early races gamescope's own DRM
-  # acquisition (gamescope: "Could not take device", backend failure, black stream).
-  wait-for-stream-output = pkgs.writeShellApplication {
-    name = "wait-for-stream-output";
-    runtimeInputs = [pkgs.gnugrep pkgs.coreutils pkgs.procps];
-    text = ''
-      for _ in $(seq 1 40); do
-        if pgrep -x gamescope >/dev/null \
-          && compgen -G "''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/gamescope-*" >/dev/null \
-          && grep -qs "^enabled" /sys/class/drm/card*-HDMI-A-1/enabled; then
-          sleep 2
-          exit 0
-        fi
-        sleep 0.5
-      done
-      exit 1
-    '';
-  };
-in {
+}: {
   options.dotfiles.gaming.enable = lib.mkEnableOption "gaming suite (steam, gamescope, sunshine, openrgb, AMD tools)";
 
   config = lib.mkIf config.dotfiles.gaming.enable {
@@ -96,7 +75,7 @@ in {
         enable = true;
         keyboards.default = {
           ids = ["*"];
-          settings."control+alt".q = "command(${pkgs.util-linux}/bin/logger -t steam-exit combo fired, killing gamescope; ${pkgs.procps}/bin/pkill -x gamescope)";
+          settings."control+alt".q = "command(${pkgs.util-linux}/bin/logger -t steam-exit combo fired, killing gamescope; ${pkgs.procps}/bin/pkill -x gamescope || ${pkgs.procps}/bin/pkill -x .gamescope-wrap)";
         };
       };
 
@@ -110,10 +89,12 @@ in {
       };
     };
 
+    # Sunshine probes encoders once at startup; give gamescope time to take DRM
+    # and modeset the Dummy Plug first, or probing fails until Sunshine restarts
     systemd.user.services.sunshine = {
       wantedBy = ["nixos-fake-graphical-session.target"];
       after = ["nixos-fake-graphical-session.target"];
-      serviceConfig.ExecStartPre = lib.getExe wait-for-stream-output;
+      serviceConfig.ExecStartPre = "${pkgs.coreutils}/bin/sleep 10";
     };
   };
 }
