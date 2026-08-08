@@ -19,14 +19,14 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "dev-manager-desktop";
-  version = "1.99.16";
-  cargoHash = "sha256-a6H7MEHNkOOfw1VdvYQ/ZN8myVcBIk8fdm6LUHUYOAg=";
+  version = "1.99.18";
+  cargoHash = "sha256-FE2XXDuK89wYEDOzdYkUEybtz34qjQbTshjoN9ovy4s=";
 
   src = fetchFromGitHub {
     repo = pname;
     rev = "v${version}";
     owner = "webosbrew";
-    hash = "sha256-mWqPEAQW59HRDoV3JEosAxe3IrFgSihWB0Joz1rpdh8=";
+    hash = "sha256-5N/sW8GIu5HrDYNXt8Kb3vmgBubC1bN0qQRKHW5fPjM=";
   };
 
   doCheck = false;
@@ -34,7 +34,7 @@ rustPlatform.buildRustPackage rec {
   npmDeps = fetchNpmDeps {
     name = "${pname}-npm-deps-${version}";
     inherit src;
-    hash = "sha256-YYm8nZ5eKoy1kx28oA2buocQB3bZ6IGWV48pYDJZR4g=";
+    hash = "sha256-HLpJpOiiwJVEzqW8mvvlWQczaS0V+phhAJo7HM+GxtA=";
   };
 
   nativeBuildInputs = [
