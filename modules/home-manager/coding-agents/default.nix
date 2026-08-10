@@ -14,7 +14,7 @@
       nixd
       lua-language-server
       biome
-      oxlint
+      # oxlint
       oxfmt
       dotfilesPkgs.stylelint-language-server
     ];
