@@ -29,6 +29,8 @@
             "Write(*)"
             "Glob(*)"
             "Grep(*)"
+            "WebFetch"
+            "WebSearch"
           ];
           deny = [
             "EnterPlanMode"
