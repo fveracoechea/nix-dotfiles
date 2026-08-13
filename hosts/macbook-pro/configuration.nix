@@ -1,10 +1,6 @@
 {pkgs, ...}: let
   username = "fveracoechea";
 in {
-  imports = [
-    ../../modules/darwin/default.nix
-  ];
-
   dotfiles = {
     homebrew.enable = true;
     darwin-system-config.enable = true;

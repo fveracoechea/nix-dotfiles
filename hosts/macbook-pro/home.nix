@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ../../modules/home-manager/default.nix
-  ];
-
   dotfiles = {
     shell.enable = true;
     volta.enable = true;

@@ -64,9 +64,34 @@
       pkgs = nixpkgs.legacyPackages.${system};
     });
 
-    homeManagerModules.default = ./modules/home-manager/default.nix;
-    nixosModules.default = ./modules/nixos/default.nix;
-    darwinModules.default = ./modules/darwin/default.nix;
+    codingAgentSources = {
+      inherit (inputs) figma-plugin herdr hunk playwriter;
+    };
+
+    # Aggregates close over this flake's own inputs, so consumer flakes do
+    # not re-declare them. Third-party modules are imported here because
+    # `imports` cannot read module arguments.
+    homeManagerModules.default = {
+      _module.args = {inherit codingAgentSources;};
+      imports = [
+        ./modules/home-manager/default.nix
+        inputs.spicetify-nix.homeManagerModules.default
+      ];
+    };
+    nixosModules.default = {
+      imports = [
+        ./modules/nixos/default.nix
+        inputs.musnix.nixosModules.musnix
+      ];
+    };
+    darwinModules.default = {
+      imports = [
+        ./modules/darwin/default.nix
+        # Installs into environment.systemPackages so nix-darwin links
+        # Spotify.app into /Applications/Nix Apps for Spotlight/Launchpad.
+        inputs.spicetify-nix.darwinModules.default
+      ];
+    };
 
     neovimChecks = system:
       import ./checks/neovim.nix {
@@ -91,7 +116,6 @@
     darwinConfigurations.macbook-pro = let
       system = "aarch64-darwin";
       specialArgs = {
-        inherit inputs;
         dotfilesPkgs = dotfilesPkgsFor system;
       };
     in
@@ -107,7 +131,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm-backup";
-            home-manager.users.fveracoechea = import ./hosts/macbook-pro/home.nix;
+            home-manager.users.fveracoechea = {
+              imports = [homeManagerModules.default ./hosts/macbook-pro/home.nix];
+            };
             home-manager.extraSpecialArgs = specialArgs;
           }
         ];
@@ -116,7 +142,6 @@
     nixosConfigurations.nixos-desktop = let
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs;
         dotfilesPkgs = dotfilesPkgsFor system;
       };
     in
@@ -134,7 +159,9 @@
             home-manager.useUserPackages = true;
             nixpkgs.config.allowUnfree = true;
             home-manager.backupFileExtension = "hm-backup";
-            home-manager.users.fveracoechea = import ./hosts/nixos-desktop/home.nix;
+            home-manager.users.fveracoechea = {
+              imports = [homeManagerModules.default ./hosts/nixos-desktop/home.nix];
+            };
             home-manager.extraSpecialArgs = specialArgs;
           }
         ];

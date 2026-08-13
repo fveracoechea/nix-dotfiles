@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/nixos/default.nix
   ];
 
   dotfiles = {

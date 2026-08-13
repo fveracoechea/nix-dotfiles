@@ -3,10 +3,6 @@
   dotfilesPkgs,
   ...
 }: {
-  imports = [
-    ../../modules/home-manager/default.nix
-  ];
-
   dotfiles = {
     shell.enable = true;
     neovim.enable = true;

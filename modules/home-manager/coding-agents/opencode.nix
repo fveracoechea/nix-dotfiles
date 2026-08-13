@@ -1,5 +1,5 @@
 {
-  inputs,
+  codingAgentSources,
   lib,
   config,
   pkgs,
@@ -36,9 +36,9 @@
         permission."*" = "allow";
 
         skills = {
-          herdr = "${inputs.herdr}/skills/herdr/SKILL.md";
-          hunk-review = "${inputs.hunk}/skills/hunk-review/SKILL.md";
-          playwriter = "${inputs.playwriter}/skills/playwriter/SKILL.md";
+          herdr = "${codingAgentSources.herdr}/skills/herdr/SKILL.md";
+          hunk-review = "${codingAgentSources.hunk}/skills/hunk-review/SKILL.md";
+          playwriter = "${codingAgentSources.playwriter}/skills/playwriter/SKILL.md";
         };
 
         mcp = {
