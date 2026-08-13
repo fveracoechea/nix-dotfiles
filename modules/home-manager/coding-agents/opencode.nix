@@ -29,17 +29,20 @@
         theme = "system";
       };
 
+      # `opencode.json` has no `skills` key; OpenCode auto-discovers skills from
+      # `~/.config/opencode/skills/<name>/SKILL.md`, which this option writes.
+      skills = {
+        herdr = "${codingAgentSources.herdr}/skills/herdr";
+        hunk-review = "${codingAgentSources.hunk}/skills/hunk-review";
+        # Pulled into `.agents/skills` by `bunx skills`; see `skills-lock.json`.
+        babysit-pr = ../../../.agents/skills/babysit-pr;
+      };
+
       settings = {
         autoupdate = false;
 
         # permission.external_directory."~/OPINIONS.md" = "allow";
         permission."*" = "allow";
-
-        skills = {
-          herdr = "${codingAgentSources.herdr}/skills/herdr/SKILL.md";
-          hunk-review = "${codingAgentSources.hunk}/skills/hunk-review/SKILL.md";
-          playwriter = "${codingAgentSources.playwriter}/skills/playwriter/SKILL.md";
-        };
 
         mcp = {
           grep = {

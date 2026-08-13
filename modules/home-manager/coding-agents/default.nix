@@ -11,6 +11,8 @@
     home.file."OPINIONS.md".source = ./OPINIONS.md;
 
     home.packages = with pkgs; [
+      # Runs the babysit-pr watcher script (standard library only).
+      python3
       nixd
       lua-language-server
       biome

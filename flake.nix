@@ -31,9 +31,6 @@
     hunk.url = "github:modem-dev/hunk";
     hunk.inputs.nixpkgs.follows = "nixpkgs";
 
-    playwriter.url = "github:remorses/playwriter";
-    playwriter.flake = false;
-
     figma-plugin.url = "github:figma/mcp-server-guide";
     figma-plugin.flake = false;
 
@@ -65,7 +62,7 @@
     });
 
     codingAgentSources = {
-      inherit (inputs) figma-plugin herdr hunk playwriter;
+      inherit (inputs) figma-plugin herdr hunk;
     };
 
     # Aggregates close over this flake's own inputs, so consumer flakes do

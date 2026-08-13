@@ -7,6 +7,12 @@
       "skillPath": "skills/engineering/ask-matt/SKILL.md",
       "computedHash": "b2e8ef5ffc2f142022c1e1e1bba68073f0821356a8e1cf1b23670f61d13fe50b"
     },
+    "babysit-pr": {
+      "source": "openai/codex",
+      "sourceType": "github",
+      "skillPath": ".codex/skills/babysit-pr/SKILL.md",
+      "computedHash": "1546d0cc65625a492ca011de3b15f82d68175460f63f329d31d1b77d3b4d227b"
+    },
     "caveman": {
       "source": "mattpocock/skills",
       "sourceType": "github",

@@ -766,22 +766,6 @@
         "type": "github"
       }
     },
-    "playwriter": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1785170851,
-        "narHash": "sha256-qJCov6gwRZD1NSGICqaQO8H2WKEVXIwZnKYjSbaqL2k=",
-        "owner": "remorses",
-        "repo": "playwriter",
-        "rev": "a5d59900a6d7dc97570d34f478dc9d19fbb7f396",
-        "type": "github"
-      },
-      "original": {
-        "owner": "remorses",
-        "repo": "playwriter",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -817,7 +801,6 @@
         "neovim-config": "neovim-config",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
-        "playwriter": "playwriter",
         "spicetify-nix": "spicetify-nix",
         "systems": "systems_4",
         "tmux-powerkit": "tmux-powerkit",
