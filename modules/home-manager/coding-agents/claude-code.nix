@@ -31,6 +31,9 @@
             "Grep(*)"
             "WebFetch"
             "WebSearch"
+            # Figma plugin: all MCP tools and all bundled skills
+            "mcp__plugin_figma_figma"
+            "Skill(figma:*)"
           ];
           deny = [
             "EnterPlanMode"
