@@ -33,6 +33,7 @@
         herdr = "${codingAgentSources.herdr}/skills/herdr";
         hunk-review = "${codingAgentSources.hunk}/skills/hunk-review";
         babysit-pr = ../../../.agents/skills/babysit-pr;
+        frontend-design = ../../../.agents/skills/frontend-design;
       };
 
       settings = {
