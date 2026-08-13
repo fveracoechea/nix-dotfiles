@@ -1,6 +1,6 @@
 ---
 name: babysit-pr
-description: Babysit a GitHub pull request after creation by continuously polling review comments, CI checks/workflow runs, and mergeability state until the PR is merged/closed or user help is required. Diagnose failures, retry likely flaky failures up to 3 times, auto-fix/push branch-related issues when appropriate, and keep watching open PRs so fresh review feedback is surfaced promptly. Use when the user asks you to monitor a PR, watch CI, handle review comments, or keep an eye on failures and feedback on an open PR.
+description: Babysit a GitHub pull request after creation by continuously polling review comments, CI checks/workflow runs, and mergeability state until the PR is merged/closed or user help is required. Diagnose failures, retry likely flaky failures up to 3 times, auto-fix/push branch-related issues when appropriate, and keep watching open PRs so fresh review feedback is surfaced promptly. Use when the user asks Codex to monitor a PR, watch CI, handle review comments, or keep an eye on failures and feedback on an open PR.
 ---
 
 # PR Babysitter
@@ -41,38 +41,28 @@ Accept any of the following:
 
 ## Commands
 
-`SKILL_DIR` is the directory that holds this `SKILL.md` file. Set it once per session before you run
-the watcher, because the skill is usually installed outside the repository you work in:
-
-- Claude Code: `SKILL_DIR=~/.claude/skills/babysit-pr`
-- OpenCode: `SKILL_DIR=~/.config/opencode/skills/babysit-pr`
-- Checked into a repository: `SKILL_DIR=.agents/skills/babysit-pr`
-
-The watcher needs `gh` (authenticated) and `python3` on `PATH`. It uses only the Python standard
-library and writes its state file to a temporary directory, not into the skill directory.
-
 ### One-shot snapshot
 
 ```bash
-python3 $SKILL_DIR/scripts/gh_pr_watch.py --pr auto --once
+python3 .codex/skills/babysit-pr/scripts/gh_pr_watch.py --pr auto --once
 ```
 
 ### Continuous watch (JSONL)
 
 ```bash
-python3 $SKILL_DIR/scripts/gh_pr_watch.py --pr auto --watch
+python3 .codex/skills/babysit-pr/scripts/gh_pr_watch.py --pr auto --watch
 ```
 
 ### Trigger flaky retry cycle (only when watcher indicates)
 
 ```bash
-python3 $SKILL_DIR/scripts/gh_pr_watch.py --pr auto --retry-failed-now
+python3 .codex/skills/babysit-pr/scripts/gh_pr_watch.py --pr auto --retry-failed-now
 ```
 
 ### Explicit PR target
 
 ```bash
-python3 $SKILL_DIR/scripts/gh_pr_watch.py --pr <number-or-url> --once
+python3 .codex/skills/babysit-pr/scripts/gh_pr_watch.py --pr <number-or-url> --once
 ```
 
 ## CI Failure Classification
@@ -93,7 +83,7 @@ Do not attempt to fix flaky/unrelated failures by changing tests, build scripts,
 
 If classification is ambiguous, perform one manual diagnosis attempt before choosing rerun.
 
-Read `$SKILL_DIR/references/heuristics.md` for a concise checklist.
+Read `.codex/skills/babysit-pr/references/heuristics.md` for a concise checklist.
 
 ## Review Comment Handling
 The watcher surfaces review items from:
@@ -113,13 +103,13 @@ On a fresh watcher state file, existing unaddressed published review feedback ma
 When you agree with a comment and it is actionable:
 
 1. Patch code locally.
-2. Commit with `chore: address PR review feedback (#<n>)`.
+2. Commit with `codex: address PR review feedback (#<n>)`.
 3. Push to the PR head branch.
 4. After the push succeeds, resolve the associated GitHub review thread only when allowed by the GitHub state mutation policy below.
 5. Resume watching on the new SHA immediately (do not stop after reporting the push).
 6. If monitoring was running in `--watch` mode, restart `--watch` immediately after the push in the same turn; do not wait for the user to ask again.
 
-Do not post replies to human-authored GitHub review comments/threads automatically. If you disagree with a human comment, believe it is non-actionable/already addressed, or need to answer a question, report the item to the user with a suggested response and wait for explicit confirmation before posting anything on GitHub. If the user approves a response, prefix it with `[automated]` so it is clear the response is automated and not from the human user.
+Do not post replies to human-authored GitHub review comments/threads automatically. If you disagree with a human comment, believe it is non-actionable/already addressed, or need to answer a question, report the item to the user with a suggested response and wait for explicit confirmation before posting anything on GitHub. If the user approves a response, prefix it with `[codex]` so it is clear the response is automated and not from the human user.
 If the watcher later surfaces your own approved reply because the authenticated operator is treated as a trusted review author, treat that self-authored item as already handled and do not reply again.
 If a code review comment/thread is already marked as resolved in GitHub, treat it as non-actionable and safely ignore it unless new unresolved follow-up feedback appears.
 
@@ -130,7 +120,7 @@ You can read any PR state you need for monitoring. Writes must comply with this 
 You can push PRs to update the code under review or to force CI re-runs as described above.
 
 You can resolve review comment threads from the human who requested babysitting or from the Codex
-review bot. When resolving, leave a comment prefixed with `[automated]: ` and explain what changes
+review bot. When resolving, leave a comment prefixed with `[from Codex]: ` and explain what changes
 you made and which commit includes them. Don't touch review threads if other humans other than the
 user who requested babysitting have participated.
 
@@ -161,11 +151,11 @@ something visible to other humans. When in doubt, ask the user for clarification
 
 Commit message defaults:
 
-- `chore: fix CI failure on PR #<n>`
-- `chore: address PR review feedback (#<n>)`
+- `codex: fix CI failure on PR #<n>`
+- `codex: address PR review feedback (#<n>)`
 
 ## Monitoring Loop Pattern
-Use this loop in a live agent session:
+Use this loop in a live Codex session:
 
 1. Run `--once`.
 2. Read `actions`.
@@ -199,7 +189,7 @@ Keep review polling aggressive and continue monitoring even after CI turns green
 Stop only when one of the following is true:
 
 - PR merged or closed (stop as soon as a poll/snapshot confirms this).
-- User intervention is required and you cannot safely proceed alone.
+- User intervention is required and Codex cannot safely proceed alone.
 
 Keep polling when:
 
@@ -229,5 +219,5 @@ Provide concise progress updates while monitoring and a final summary that inclu
 
 ## References
 
-- Heuristics and decision tree: `$SKILL_DIR/references/heuristics.md`
-- GitHub CLI/API details used by the watcher: `$SKILL_DIR/references/github-api-notes.md`
+- Heuristics and decision tree: `.codex/skills/babysit-pr/references/heuristics.md`
+- GitHub CLI/API details used by the watcher: `.codex/skills/babysit-pr/references/github-api-notes.md`
