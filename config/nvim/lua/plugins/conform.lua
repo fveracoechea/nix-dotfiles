@@ -35,6 +35,7 @@ conform.setup {
     lua = { "stylua" },
     python = { "isort", "black" },
     nix = { "alejandra" },
+    qml = { "qmlformat" },
     ["_"] = { "oxfmt" },
   },
   format_on_save = {

@@ -51,6 +51,7 @@ vim.lsp.enable {
   "nixd",
   "oxfmt",
   "oxlint",
+  "qmlls",
   "relay_lsp",
   "stylelint_lsp",
   "tailwindcss",
