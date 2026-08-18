@@ -20,6 +20,7 @@
         line_numbers = true;
         warp_lines = false;
         transparent_background = true;
+        hunk_headers = false;
       };
 
       programs.git = {

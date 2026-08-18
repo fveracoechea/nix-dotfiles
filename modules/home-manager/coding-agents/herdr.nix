@@ -22,7 +22,7 @@
 
         theme = {
           auto_switch = false;
-          name = "terminal";
+          name = "catppuccin";
         };
 
         ui = {

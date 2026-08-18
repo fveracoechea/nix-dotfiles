@@ -32,6 +32,10 @@ require("mini.comment").setup {
       return require("ts_context_commentstring").calculate_commentstring() or vim.bo.commentstring
     end,
   },
+  mappings = {
+    comment_line = "<leader>/",
+    comment_visual = "<leader>/",
+  },
 }
 
 require("mini.diff").setup {}
