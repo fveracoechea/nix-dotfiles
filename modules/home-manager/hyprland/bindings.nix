@@ -60,6 +60,10 @@
           (openapp "S" terminal)
           (openapp "A" search)
           (openapp "O" handy)
+
+          # UNIVERSAL CLIPBOARD
+          "SUPER, C, Copy, sendshortcut, CTRL, INSERT, activewindow"
+          "SUPER, V, Paste, sendshortcut, SHIFT, INSERT, activewindow"
         ]
         # Switch workspaces with SUPER + [1-9]
         ++ (map (i: "SUPER, ${toString i}, Switch to workspace ${toString i}, workspace, ${toString i}") workspaces)
