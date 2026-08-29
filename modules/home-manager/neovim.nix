@@ -53,7 +53,6 @@
             tailwindcss-language-server
             nginx-language-server
             bash-language-server
-            qt6Packages.qtdeclarative
             stylua
             shfmt
             eslint_d

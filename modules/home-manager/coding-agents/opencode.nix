@@ -59,6 +59,10 @@
             command = ["lua-language-server"];
             extensions = [".lua"];
           };
+          qmlls = {
+            command = ["qmlls"];
+            extensions = [".qml"];
+          };
           biome = {
             command = ["biome" "lsp-proxy"];
             extensions = [
