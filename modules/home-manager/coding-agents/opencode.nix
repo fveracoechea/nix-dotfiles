@@ -38,12 +38,15 @@
 
       settings = {
         autoupdate = false;
+        model = "openrouter/z-ai/glm-5.3-flash";
 
         # permission.external_directory."~/OPINIONS.md" = "allow";
         permission."*" = "allow";
 
         provider = {
           openrouter = {
+            models."z-ai/glm-5.3-flash".options.reasoning.effort = "high";
+
             options = {
               extraBody = {
                 provider = {
