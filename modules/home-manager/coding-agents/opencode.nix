@@ -42,6 +42,26 @@
         # permission.external_directory."~/OPINIONS.md" = "allow";
         permission."*" = "allow";
 
+        provider = {
+          openrouter = {
+            options = {
+              extraBody = {
+                provider = {
+                  sort = "throughput";
+                  only = [
+                    "baseten"
+                    "novita"
+                    "fireworks"
+                  ];
+                  allow_fallbacks = true;
+                  data_collection = "deny";
+                  zdr = true;
+                };
+              };
+            };
+          };
+        };
+
         mcp = {
           grep = {
             enabled = true;
