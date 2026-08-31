@@ -5,6 +5,7 @@
 
   dotfiles = {
     bootloader.enable = true;
+    crash-capture.enable = true;
     display-manager.enable = true;
     docker.enable = true;
     tailscale-client.enable = true;

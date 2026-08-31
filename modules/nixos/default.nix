@@ -3,6 +3,7 @@
     ../core/palette.nix
 
     ./bootloader.nix
+    ./crash-capture.nix
     ./display-manager.nix
     ./tailscale-client.nix
     ./docker.nix

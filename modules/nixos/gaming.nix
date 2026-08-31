@@ -29,8 +29,8 @@
           "--hdr-enabled" # HDR
           "--hdr-itm-enable"
           "--rt" # Real time scheduling
-          "-W 3840"
-          "-H 2160"
+          "-W 2560"
+          "-H 1440"
           "-r 120" # Refresh rate
           "-f" # Fullscreen
           "-O HDMI-A-1" # Output display (dummy plug, sunshine capture target)
