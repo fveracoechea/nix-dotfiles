@@ -15,7 +15,7 @@
       # Audio plugins (LV2, VST2, VST3, LADSPA)
       # distrho-ports
       calf
-      eq10q
+      # eq10q (removed from nixpkgs, depended on gtk2)
       lsp-plugins
       tap-plugins
       x42-plugins
