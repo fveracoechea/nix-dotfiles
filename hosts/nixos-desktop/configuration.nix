@@ -5,7 +5,6 @@
 
   dotfiles = {
     bootloader.enable = true;
-    crash-capture.enable = true;
     display-manager.enable = true;
     docker.enable = true;
     tailscale-client.enable = true;
@@ -46,7 +45,16 @@
   users.users.fveracoechea = {
     isNormalUser = true;
     description = "fveracoechea";
-    extraGroups = ["networkmanager" "wheel" "audio" "docker" "dialout" "plugdev" "input"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+      "docker"
+      "dialout"
+      "plugdev"
+      "input"
+      "video"
+    ];
   };
 
   # Firmware updates
