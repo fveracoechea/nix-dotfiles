@@ -24,7 +24,10 @@
         "openvpn-connect"
         "handy"
       ];
-      brews = [];
+      brews = [
+        "maven"
+        "node@22"
+      ];
     };
   };
 }
