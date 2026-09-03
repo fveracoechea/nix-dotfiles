@@ -22,6 +22,18 @@ _Appears in legacy code only._ Previously the set of custom packages built for t
 The set of packages this flake provides to its modules via `specialArgs`, injected under the name `dotfilesPkgs`. Contains two kinds of packages: locally-built packages defined in `packages/` and packages wrapped from the flake's non-nixpkgs inputs (e.g. `hyprland`, `tmux-powerkit`). Modules read `dotfilesPkgs.<name>` instead of touching `inputs` or `system` directly, so external consumers only need to pass `dotfilesPkgs` to use the flake.
 _Avoid_: customPkgs, custom packages, local packages
 
+**Release Channel**:
+The nixpkgs release branch this flake pulls the System layer from: kernel, services, display manager, and compositor. It moves on a schedule, not on demand. See ADR-0007.
+_Avoid_: stable, stable channel, stable nixpkgs
+
+**Latest Channel**:
+The `nixos-unstable` nixpkgs branch this flake pulls the Home layer from: apps, CLI, and tooling. It moves on demand, without disturbing the Release Channel.
+_Avoid_: unstable, unstable channel, bleeding edge
+
+**Version-Coupled Package**:
+A package whose working version is tied to a package on the other side of the channel seam, so it takes its partner's channel instead of its own layer's. The Hyprland satellites are the only case today. See ADR-0007.
+_Avoid_: pinned package, exception, override
+
 **Theme**:
 A visual style applied consistently across applications. Themes are configured per-application in each module rather than via a unified theming framework like Stylix.
 _Avoid_: color scheme, palette, style

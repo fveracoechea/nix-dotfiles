@@ -26,6 +26,28 @@ development environment across macOS and Linux using Nix flakes.
 - **[Nix Flakes](https://nixos.org/)**: Reproducible package management and system configuration
 - **[Home Manager](https://github.com/nix-community/home-manager)**: User environment management
 
+### Package Channels
+
+Two nixpkgs channels feed this flake, so tooling can move without disturbing the desktop. See [ADR-0007](docs/adr/0007-split-nixpkgs-channels-by-layer.md).
+
+| Channel             | Input            | Branch           | Builds                                                       |
+| ------------------- | ---------------- | ---------------- | ------------------------------------------------------------ |
+| **Latest Channel**  | `nixpkgs`        | `nixos-unstable` | Home layer: apps, CLI, tooling (all of `macbook-pro`)        |
+| **Release Channel** | `nixpkgs-stable` | `nixos-26.05`    | System layer on `nixos-desktop`, and the Hyprland satellites |
+
+```bash
+# Newer coding agents, CLI, and apps. Leaves the kernel and compositor alone.
+nix flake update nixpkgs
+
+# Move the system layer. Do this deliberately.
+nix flake update nixpkgs-stable
+
+# One tool only, when it has its own input.
+nix flake update herdr
+```
+
+Bump `nixpkgs-stable` to the next `nixos-YY.MM` branch when a NixOS release lands.
+
 ### Window Management & Desktop
 
 - **[Hyprland](https://hyprland.org/)**: Dynamic tiling Wayland compositor
@@ -169,7 +191,7 @@ External consumer example:
 
 ## Documentation
 
-- **[Architecture Decision Records](docs/adr/)** — decisions on module structure, theming, macOS package split, and the `dotfiles.*` enable namespace.
+- **[Architecture Decision Records](docs/adr/)** — decisions on module structure, theming, macOS package split, the `dotfiles.*` enable namespace, and the nixpkgs channel split.
 - **[CONTEXT.md](CONTEXT.md)** — domain glossary for the repository.
 
 ## License

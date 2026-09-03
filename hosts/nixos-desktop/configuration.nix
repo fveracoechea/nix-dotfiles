@@ -77,13 +77,6 @@
     ATTRS{idVendor}=="29ea", MODE="0660", GROUP="plugdev", TAG+="uaccess"
   '';
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "beekeeper-studio-5.3.4"
-    "beekeeper-studio-5.5.5"
-    "beekeeper-studio-5.5.7"
-  ];
-
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     vim
