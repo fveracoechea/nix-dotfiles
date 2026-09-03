@@ -2,10 +2,17 @@
   description = "My fist NixOS Flake";
 
   inputs = {
-    # Latest channel: apps, CLI, and tooling.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Release channel: system packages, services, and the compositor.
+    # Latest channel: apps, CLI, and tooling. `nixpkgs-unstable`, not
+    # `nixos-unstable`: this input no longer builds a NixOS system, so the
+    # NixOS VM integration tests that gate `nixos-unstable` validate nothing
+    # it provides, and upstream recommends this branch for darwin and home
+    # use. See ADR-0007.
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
+    # Release channel: system packages and services. The release has a separate
+    # branch per platform, and nix-darwin requires the darwin one.
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-stable-darwin.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -24,8 +31,10 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    # Pinned to the release branch to match `nixpkgs-stable-darwin`:
+    # nix-darwin asserts that the two branches correspond.
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-stable-darwin";
 
     ultrashell.url = "github:fveracoechea/ultrashell";
     ultrashell.inputs.nixpkgs.follows = "nixpkgs";
@@ -55,6 +64,7 @@
   outputs = {
     nixpkgs,
     nixpkgs-stable,
+    nixpkgs-stable-darwin,
     home-manager,
     nix-darwin,
     ...
@@ -80,8 +90,15 @@
         config = nixpkgsConfig;
       };
 
+    # One release, two QA branches: `nixos-*` for Linux, `nixpkgs-*-darwin`
+    # for macOS. The system picks the branch so every call site stays one line.
+    stableSourceFor = system:
+      if lib.hasSuffix "darwin" system
+      then nixpkgs-stable-darwin
+      else nixpkgs-stable;
+
     stablePkgsFor = system:
-      import nixpkgs-stable {
+      import (stableSourceFor system) {
         inherit system;
         config = nixpkgsConfig;
       };
@@ -141,16 +158,12 @@
       })
       supportedSystems);
 
-    # This host does not split channels: nix-darwin asserts that its own branch
-    # matches the Nixpkgs branch, so a release-channel system layer here would
-    # also need a second nix-darwin input and the `nixpkgs-YY.MM-darwin` branch.
-    # Its apps come from Homebrew (ADR-0003), so the split would buy little.
-    # `pkgs-stable` is still passed, unforced, to keep one signature for the
-    # shared home modules. See ADR-0007.
     darwinConfigurations.macbook-pro = let
       system = "aarch64-darwin";
+      pkgs-stable = stablePkgsFor system;
       pkgs-latest = latestPkgsFor system;
       specialArgs = {
+        inherit pkgs-latest;
         dotfilesPkgs = dotfilesPkgsFor system;
       };
     in
@@ -162,20 +175,27 @@
           ./hosts/macbook-pro/configuration.nix
           home-manager.darwinModules.home-manager
           {
+            # System layer runs on the release channel.
             nixpkgs.hostPlatform = system;
-            nixpkgs.pkgs = pkgs-latest;
+            nixpkgs.pkgs = pkgs-stable;
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm-backup";
             home-manager.users.fveracoechea = {
               imports = [homeManagerModules.default ./hosts/macbook-pro/home.nix];
+              # Home layer runs on the latest channel. `useGlobalPkgs` hands
+              # Home Manager the system `pkgs` at default priority, so this
+              # plain definition replaces it.
+              _module.args.pkgs = pkgs-latest;
+
+              # Home Manager and `pkgs` are both on the latest channel, but the
+              # nix-darwin module tree evaluates Home Manager with the release
+              # channel's `lib`. That third-party mismatch is deliberate and
+              # unavoidable here. See ADR-0007.
+              home.enableNixpkgsReleaseCheck = false;
             };
-            home-manager.extraSpecialArgs =
-              specialArgs
-              // {
-                pkgs-stable = stablePkgsFor system;
-              };
+            home-manager.extraSpecialArgs = specialArgs // {inherit pkgs-stable;};
           }
         ];
       };

@@ -30,23 +30,33 @@ development environment across macOS and Linux using Nix flakes.
 
 Two nixpkgs channels feed this flake, so tooling can move without disturbing the desktop. See [ADR-0007](docs/adr/0007-split-nixpkgs-channels-by-layer.md).
 
-| Channel             | Input            | Branch           | Builds                                                       |
-| ------------------- | ---------------- | ---------------- | ------------------------------------------------------------ |
-| **Latest Channel**  | `nixpkgs`        | `nixos-unstable` | Home layer: apps, CLI, tooling (all of `macbook-pro`)        |
-| **Release Channel** | `nixpkgs-stable` | `nixos-26.05`    | System layer on `nixos-desktop`, and the Hyprland satellites |
+| Channel             | Input                   | Branch                  | Builds                                              |
+| ------------------- | ----------------------- | ----------------------- | --------------------------------------------------- |
+| **Latest Channel**  | `nixpkgs`               | `nixpkgs-unstable`      | Home layer on both hosts: apps, CLI, tooling        |
+| **Release Channel** | `nixpkgs-stable`        | `nixos-26.05`           | System layer on `nixos-desktop`, Hyprland satellites |
+| **Release Channel** | `nixpkgs-stable-darwin` | `nixpkgs-26.05-darwin`  | System layer on `macbook-pro`                       |
+
+The layer decides the channel, except where the layer is not the real concern:
+the Hyprland satellites are version-coupled to the compositor, and Spotify sits
+in the darwin system layer only so Spotlight can find `Spotify.app`.
+
+`nix-darwin` is pinned to `nix-darwin-26.05` because it asserts that its own
+branch corresponds to the Nixpkgs branch it evaluates against.
 
 ```bash
 # Newer coding agents, CLI, and apps. Leaves the kernel and compositor alone.
 nix flake update nixpkgs
 
 # Move the system layer. Do this deliberately.
-nix flake update nixpkgs-stable
+nix flake update nixpkgs-stable nixpkgs-stable-darwin
 
 # One tool only, when it has its own input.
 nix flake update herdr
 ```
 
-Bump `nixpkgs-stable` to the next `nixos-YY.MM` branch when a NixOS release lands.
+When a release lands, move all three release refs together: `nixpkgs-stable` to
+`nixos-YY.MM`, `nixpkgs-stable-darwin` to `nixpkgs-YY.MM-darwin`, and
+`nix-darwin` to `nix-darwin-YY.MM`.
 
 ### Window Management & Desktop
 
