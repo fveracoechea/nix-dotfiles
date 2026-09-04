@@ -42,7 +42,7 @@
           rebase = {
             autosquash = true;
           };
-          credential = lib.mkIf pkgs.stdenv.isDarwin {
+          credential = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
             helper = "osxkeychain";
           };
         };
