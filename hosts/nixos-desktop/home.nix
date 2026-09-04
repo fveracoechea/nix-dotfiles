@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   dotfilesPkgs,
   ...
 }: {
@@ -44,7 +45,7 @@
     dotfilesPkgs.dev-manager-desktop
     railway
     openlinkhub
-    zettlr
+    pkgs-stable.zettlr
     tiny-rdm
     obs-studio
   ];
