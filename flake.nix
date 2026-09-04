@@ -23,11 +23,6 @@
     neovim-config.url = "github:fveracoechea/neovim-nix-config";
     neovim-config.inputs.nixpkgs.follows = "nixpkgs";
 
-    # main required: v0.55-v0.56 tags fail to link hyprland-guiutils against
-    # current nixpkgs gcc (hyprwm/Hyprland#discussion-15848)
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs-stable";
-
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 

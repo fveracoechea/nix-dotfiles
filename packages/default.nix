@@ -16,8 +16,11 @@
   ultrashell = inputs.ultrashell.packages.${pkgs.stdenv.hostPlatform.system}.default;
   hunk = inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
-  # The compositor and its portal are system packages, and `inputs.hyprland`
-  # follows `nixpkgs-stable` to match.
-  hyprland = inputs.hyprland.packages.${pkgs-stable.stdenv.hostPlatform.system}.hyprland;
-  hyprland-portal = inputs.hyprland.packages.${pkgs-stable.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  # The compositor and its portal are system packages, so they come from the
+  # release channel. Not from `hyprwm/Hyprland`: that flake tracks main, which
+  # is 0.56, and 0.56 dropped hyprlang and reads only `hyprland.lua`. The
+  # release holds 0.55.4, the last hyprlang version, and ships it prebuilt in
+  # cache.nixos.org. Porting the config to lua is what unblocks 26.11.
+  hyprland = pkgs-stable.hyprland;
+  hyprland-portal = pkgs-stable.xdg-desktop-portal-hyprland;
 }
