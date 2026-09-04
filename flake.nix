@@ -13,10 +13,13 @@
     neovim-config.url = "github:fveracoechea/neovim-nix-config";
     neovim-config.inputs.nixpkgs.follows = "nixpkgs";
 
-    # main required: v0.55-v0.56 tags fail to link hyprland-guiutils against
-    # current nixpkgs gcc (hyprwm/Hyprland#discussion-15848)
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    # Hyprland 0.56 dropped hyprlang and reads only hyprland.lua. The 26.05
+    # release channel holds 0.55.4, the last hyprlang release, and keeps it
+    # for the life of the release. This pin must not follow nixpkgs: holding
+    # it back is the point, and the release closure is prebuilt in
+    # cache.nixos.org, so it needs no source build (which is what the
+    # v0.55/v0.56 upstream tags fail at, hyprwm/Hyprland#15848).
+    nixpkgs-hyprland.url = "github:nixos/nixpkgs/nixos-26.05";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
