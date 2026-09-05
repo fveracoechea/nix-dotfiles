@@ -60,11 +60,7 @@
     # so hosts cannot declare `allowUnfree` or insecure packages themselves.
     nixpkgsConfig = {
       allowUnfree = true;
-      permittedInsecurePackages = [
-        "beekeeper-studio-5.3.4"
-        "beekeeper-studio-5.5.5"
-        "beekeeper-studio-5.5.7"
-      ];
+      permittedInsecurePackages = [];
     };
 
     latestPkgsFor = system:

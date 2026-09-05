@@ -42,7 +42,6 @@
     nurl
     postman
     lutgen
-    beekeeper-studio
     dotfilesPkgs.dev-manager-desktop
     railway
     openlinkhub
