@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  dotfilesPkgs,
+  pkgs,
   ...
 }: {
   options.dotfiles.hyprland.enable = lib.mkEnableOption "Hyprland compositor";
@@ -17,8 +17,8 @@
       enable = true;
       withUWSM = true;
       xwayland.enable = true;
-      package = dotfilesPkgs.hyprland;
-      portalPackage = dotfilesPkgs.hyprland-portal;
+      package = pkgs.hyprland;
+      portalPackage = pkgs.xdg-desktop-portal-hyprland;
     };
 
     environment.sessionVariables = {

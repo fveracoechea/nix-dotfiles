@@ -19,7 +19,7 @@ _Avoid_: local package, in-repo package
 _Appears in legacy code only._ Previously the set of custom packages built for the target system and injected into all modules via `specialArgs`. Replaced by `dotfilesPkgs`.
 
 **Dotfiles Pkgs**:
-The set of packages this flake provides to its modules via `specialArgs`, injected under the name `dotfilesPkgs`. Contains two kinds of packages: locally-built packages defined in `packages/` and packages wrapped from the flake's non-nixpkgs inputs (e.g. `hyprland`, `tmux-powerkit`). Modules read `dotfilesPkgs.<name>` instead of touching `inputs` or `system` directly, so external consumers only need to pass `dotfilesPkgs` to use the flake.
+The set of packages this flake provides to its modules via `specialArgs`, injected under the name `dotfilesPkgs`. Contains two kinds of packages: locally-built packages defined in `packages/` and packages wrapped from the flake's non-nixpkgs inputs (e.g. `tmux-powerkit`). All are built on the Latest Channel. Modules read `dotfilesPkgs.<name>` instead of touching `inputs` or `system` directly, so external consumers only need to pass `dotfilesPkgs` to use the flake.
 _Avoid_: customPkgs, custom packages, local packages
 
 **Release Channel**:

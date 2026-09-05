@@ -89,7 +89,6 @@
     dotfilesPkgsFor = system: (import ./packages {
       inherit inputs;
       pkgs = latestPkgsFor system;
-      pkgs-stable = stablePkgsFor system;
     });
 
     codingAgentSources = {
