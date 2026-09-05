@@ -33,8 +33,8 @@ Two nixpkgs channels feed this flake, so Home packages can move without disturbi
 | Channel             | Input                       | Branch                   | Builds                        |
 | ------------------- | --------------------------- | ------------------------ | ----------------------------- |
 | **Latest Channel**  | `nixpkgs-latest`            | `nixpkgs-unstable`       | Home-owned packages           |
-| **Release Channel** | `nixpkgs-release-linux`     | `nixos-26.05`            | Linux System-owned packages   |
-| **Release Channel** | `nixpkgs-release-darwin`    | `nixpkgs-26.05-darwin`   | macOS System-owned packages   |
+| **Release Channel** | `nixpkgs-stable`     | `nixos-26.05`            | Linux System-owned packages   |
+| **Release Channel** | `nixpkgs-stable-darwin`    | `nixpkgs-26.05-darwin`   | macOS System-owned packages   |
 
 Package ownership decides the channel. Version-Coupled Packages follow their
 partner, Spotify uses the Latest Channel despite its darwin System location,
@@ -48,18 +48,15 @@ branch corresponds to the Nixpkgs branch it evaluates against.
 nix flake update nixpkgs-latest
 
 # Move the System. Do this deliberately and test both hosts.
-nix flake update nixpkgs-release-linux nixpkgs-release-darwin nix-darwin
+nix flake update nixpkgs-stable nixpkgs-stable-darwin nix-darwin
 
 # One tool only, when it has its own input.
 nix flake update herdr
 ```
 
 When a release lands, move all three release refs together:
-`nixpkgs-release-linux` to `nixos-YY.MM`, `nixpkgs-release-darwin` to
+`nixpkgs-stable` to `nixos-YY.MM`, `nixpkgs-stable-darwin` to
 `nixpkgs-YY.MM-darwin`, and `nix-darwin` to `nix-darwin-YY.MM`.
-
-Homebrew does not update during nix-darwin activation. Update its applications
-separately with `brew update && brew upgrade`.
 
 ### Window Management & Desktop
 

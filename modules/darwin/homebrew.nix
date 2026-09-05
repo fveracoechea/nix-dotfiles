@@ -12,9 +12,9 @@
     homebrew = {
       enable = true;
       onActivation = {
-        autoUpdate = false;
+        autoUpdate = true;
         cleanup = "zap";
-        upgrade = false;
+        upgrade = true;
       };
       casks = [
         "docker-desktop"

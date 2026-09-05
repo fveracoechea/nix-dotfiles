@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  pkgs-release,
+  pkgs-stable,
   ...
 }: {
   options.dotfiles.zsh.enable = lib.mkEnableOption "zsh shell";
@@ -37,7 +37,7 @@
       # NixOS owns the login shell; macOS continues to use its native shell.
       package =
         if pkgs.stdenv.hostPlatform.isLinux
-        then pkgs-release.zsh
+        then pkgs-stable.zsh
         else pkgs.zsh;
       dotDir = "${config.xdg.configHome}/zsh";
       enableCompletion = true;

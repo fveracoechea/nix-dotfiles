@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  pkgs-release,
+  pkgs-stable,
   dotfilesPkgs,
   ...
 }: {
@@ -19,7 +19,7 @@
       historyLimit = 50000;
       shell = "${
         if pkgs.stdenv.hostPlatform.isLinux
-        then pkgs-release.zsh
+        then pkgs-stable.zsh
         else pkgs.zsh
       }/bin/zsh";
       extraConfig = lib.fileContents ./tmux.conf;

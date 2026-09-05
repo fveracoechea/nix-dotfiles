@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  pkgs-release,
+  pkgs-stable,
   ...
 }: let
   monitor = "DP-1";
@@ -11,7 +11,7 @@ in {
     services.hyprpaper = {
       enable = true;
       # Release Channel: tracks the compositor. See ADR-0007.
-      package = pkgs-release.hyprpaper;
+      package = pkgs-stable.hyprpaper;
       settings = {
         preload = [wallpaper];
         wallpaper = [

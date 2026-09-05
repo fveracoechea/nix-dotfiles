@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  pkgs-release,
+  pkgs-stable,
   ...
 }: let
   toRgb = color: "rgb(${lib.substring 1 6 (lib.strings.toLower color)})";
@@ -20,7 +20,7 @@ in {
     programs.hyprlock = {
       enable = true;
       # Release Channel: tracks the compositor. See ADR-0007.
-      package = pkgs-release.hyprlock;
+      package = pkgs-stable.hyprlock;
       settings = {
         general = {
           disable_loading_bar = true;

@@ -188,7 +188,7 @@
     "musnix": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-release-linux"
+          "nixpkgs-stable"
         ]
       },
       "locked": {
@@ -208,7 +208,7 @@
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-release-darwin"
+          "nixpkgs-stable-darwin"
         ]
       },
       "locked": {
@@ -257,7 +257,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-release-darwin": {
+    "nixpkgs-stable-darwin": {
       "locked": {
         "lastModified": 1788334797,
         "narHash": "sha256-nskSa8kDimM7F0VFSP8IdoSNo4G0vKzOtxwvOFpoGDI=",
@@ -273,7 +273,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-release-linux": {
+    "nixpkgs-stable": {
       "locked": {
         "lastModified": 1788297115,
         "narHash": "sha256-Z+vUNbfd2FIKkWOTkcT7RYlh3oFCnig/d2eXD1SWf2E=",
@@ -298,8 +298,8 @@
         "musnix": "musnix",
         "nix-darwin": "nix-darwin",
         "nixpkgs-latest": "nixpkgs-latest",
-        "nixpkgs-release-darwin": "nixpkgs-release-darwin",
-        "nixpkgs-release-linux": "nixpkgs-release-linux",
+        "nixpkgs-stable-darwin": "nixpkgs-stable-darwin",
+        "nixpkgs-stable": "nixpkgs-stable",
         "spicetify-nix": "spicetify-nix",
         "tmux-powerkit": "tmux-powerkit",
         "ultrashell": "ultrashell"
@@ -423,7 +423,7 @@
       "inputs": {
         "ags": "ags",
         "nixpkgs": [
-          "nixpkgs-release-linux"
+          "nixpkgs-stable"
         ]
       },
       "locked": {

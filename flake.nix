@@ -11,25 +11,25 @@
 
     # Release channel: system packages and services. The release has a separate
     # branch per platform, and nix-darwin requires the darwin one.
-    nixpkgs-release-linux.url = "github:nixos/nixpkgs/nixos-26.05";
-    nixpkgs-release-darwin.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-stable-darwin.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-latest";
 
     musnix.url = "github:musnix/musnix";
-    musnix.inputs.nixpkgs.follows = "nixpkgs-release-linux";
+    musnix.inputs.nixpkgs.follows = "nixpkgs-stable";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-latest";
 
-    # Pinned to the release branch to match `nixpkgs-release-darwin`:
+    # Pinned to the release branch to match `nixpkgs-stable-darwin`:
     # nix-darwin asserts that the two branches correspond.
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-release-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-stable-darwin";
 
     ultrashell.url = "github:fveracoechea/ultrashell";
-    ultrashell.inputs.nixpkgs.follows = "nixpkgs-release-linux";
+    ultrashell.inputs.nixpkgs.follows = "nixpkgs-stable";
 
     tmux-powerkit.url = "github:fabioluciano/tmux-powerkit";
     tmux-powerkit.inputs.nixpkgs.follows = "nixpkgs-latest";
@@ -46,8 +46,8 @@
 
   outputs = {
     nixpkgs-latest,
-    nixpkgs-release-linux,
-    nixpkgs-release-darwin,
+    nixpkgs-stable,
+    nixpkgs-stable-darwin,
     home-manager,
     nix-darwin,
     ...
@@ -75,13 +75,13 @@
 
     # One release, two QA branches: `nixos-*` for Linux, `nixpkgs-*-darwin`
     # for macOS. The system picks the branch so every call site stays one line.
-    releaseSourceFor = system:
+    stableSourceFor = system:
       if lib.hasSuffix "darwin" system
-      then nixpkgs-release-darwin
-      else nixpkgs-release-linux;
+      then nixpkgs-stable-darwin
+      else nixpkgs-stable;
 
-    releasePkgsFor = system:
-      import (releaseSourceFor system) {
+    stablePkgsFor = system:
+      import (stableSourceFor system) {
         inherit system;
         config = nixpkgsConfig;
       };
@@ -89,7 +89,7 @@
     dotfilesPkgsFor = system: (import ./packages {
       inherit inputs;
       pkgs = latestPkgsFor system;
-      pkgs-release = releasePkgsFor system;
+      pkgs-stable = stablePkgsFor system;
     });
 
     codingAgentSources = {
@@ -143,7 +143,7 @@
 
     darwinConfigurations.macbook-pro = let
       system = "aarch64-darwin";
-      pkgs-release = releasePkgsFor system;
+      pkgs-stable = stablePkgsFor system;
       pkgs-latest = latestPkgsFor system;
       specialArgs = {
         inherit pkgs-latest;
@@ -160,7 +160,7 @@
           {
             # System layer runs on the release channel.
             nixpkgs.hostPlatform = system;
-            nixpkgs.pkgs = pkgs-release;
+            nixpkgs.pkgs = pkgs-stable;
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -178,20 +178,21 @@
               # unavoidable here. See ADR-0007.
               home.enableNixpkgsReleaseCheck = false;
             };
-            home-manager.extraSpecialArgs = specialArgs // {inherit pkgs-release;};
+            home-manager.extraSpecialArgs = specialArgs // {inherit pkgs-stable;};
           }
         ];
       };
 
     nixosConfigurations.nixos-desktop = let
       system = "x86_64-linux";
-      pkgs-release = releasePkgsFor system;
+      pkgs-stable = stablePkgsFor system;
       pkgs-latest = latestPkgsFor system;
       specialArgs = {
+        inherit pkgs-latest;
         dotfilesPkgs = dotfilesPkgsFor system;
       };
     in
-      nixpkgs-release-linux.lib.nixosSystem {
+      nixpkgs-stable.lib.nixosSystem {
         inherit specialArgs;
 
         modules = [
@@ -201,7 +202,7 @@
           {
             # System layer runs on the release channel.
             nixpkgs.hostPlatform = system;
-            nixpkgs.pkgs = pkgs-release;
+            nixpkgs.pkgs = pkgs-stable;
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -219,7 +220,7 @@
               # unavoidable here. See ADR-0007.
               home.enableNixpkgsReleaseCheck = false;
             };
-            home-manager.extraSpecialArgs = specialArgs // {inherit pkgs-release;};
+            home-manager.extraSpecialArgs = specialArgs // {inherit pkgs-stable;};
           }
         ];
       };
