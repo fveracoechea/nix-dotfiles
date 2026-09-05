@@ -2,17 +2,15 @@
   lib,
   config,
   pkgs,
-  dotfilesPkgs,
   ...
 }: {
   options.dotfiles.git.enable = lib.mkEnableOption "git (with hunk pager)";
 
   config = let
     tomlFormat = pkgs.formats.toml {};
-    hunkPacakge = dotfilesPkgs.hunk;
   in
     lib.mkIf config.dotfiles.git.enable {
-      home.packages = [hunkPacakge pkgs.gh];
+      home.packages = with pkgs; [hunk gh];
 
       xdg.configFile."hunk/config.toml".source = tomlFormat.generate "hunk-config" {
         theme = "auto";
