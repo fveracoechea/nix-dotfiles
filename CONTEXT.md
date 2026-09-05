@@ -23,16 +23,28 @@ The set of packages this flake provides to its modules via `specialArgs`, inject
 _Avoid_: customPkgs, custom packages, local packages
 
 **Release Channel**:
-The nixpkgs release branch this flake pulls the System layer from: kernel, services, display manager, and compositor. It moves on a schedule, not on demand. See ADR-0007.
+A platform-specific nixpkgs release branch that builds System-owned packages. It moves through deliberate Release updates, not routine app and tool updates. See ADR-0007.
 _Avoid_: stable, stable channel, stable nixpkgs
 
 **Latest Channel**:
-The `nixos-unstable` nixpkgs branch this flake pulls the Home layer from: apps, CLI, and tooling. It moves on demand, without disturbing the Release Channel.
+The `nixpkgs-unstable` branch that builds Home-owned packages. It moves on demand without disturbing the Release Channel.
 _Avoid_: unstable, unstable channel, bleeding edge
 
 **Version-Coupled Package**:
-A package whose working version is tied to a package on the other side of the channel seam, so it takes its partner's channel instead of its own layer's. The Hyprland satellites are the only case today. See ADR-0007.
+A package whose working version is tied to a package on the other side of the channel seam, so it takes its partner's channel instead of its owner's channel. See ADR-0007.
 _Avoid_: pinned package, exception, override
+
+**Packaging Exception**:
+A package that takes the channel for its purpose instead of its System location because only a packaging constraint prevents Home Manager from owning it. Use only when separating the package from its System integration is not practical. See ADR-0007.
+_Avoid_: app override, layer exception
+
+**Channel Hold**:
+A temporary assignment to the other channel because a package does not build or work from its default channel. A Channel Hold needs a reason and an exit condition. See ADR-0007.
+_Avoid_: pin, workaround, exception
+
+**System Toolset**:
+The small set of Release Channel packages needed for boot, administration, recovery, or by a System Module. Personal development tools and desktop utilities belong to the Home layer instead.
+_Avoid_: system packages, global tools
 
 **Theme**:
 A visual style applied consistently across applications. Themes are configured per-application in each module rather than via a unified theming framework like Stylix.

@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  pkgs-release,
   dotfilesPkgs,
   ...
 }: {
@@ -16,7 +17,11 @@
       baseIndex = 1;
       focusEvents = true;
       historyLimit = 50000;
-      shell = "${pkgs.zsh}/bin/zsh";
+      shell = "${
+        if pkgs.stdenv.hostPlatform.isLinux
+        then pkgs-release.zsh
+        else pkgs.zsh
+      }/bin/zsh";
       extraConfig = lib.fileContents ./tmux.conf;
       plugins = with pkgs; [
         tmuxPlugins.vim-tmux-navigator

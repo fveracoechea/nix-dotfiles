@@ -7,64 +7,52 @@
     # NixOS VM integration tests that gate `nixos-unstable` validate nothing
     # it provides, and upstream recommends this branch for darwin and home
     # use. See ADR-0007.
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-latest.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Release channel: system packages and services. The release has a separate
     # branch per platform, and nix-darwin requires the darwin one.
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
-    nixpkgs-stable-darwin.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
+    nixpkgs-release-linux.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-release-darwin.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
 
     home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs-latest";
 
     musnix.url = "github:musnix/musnix";
-    musnix.inputs.nixpkgs.follows = "nixpkgs-stable";
-
-    neovim-config.url = "github:fveracoechea/neovim-nix-config";
-    neovim-config.inputs.nixpkgs.follows = "nixpkgs";
+    musnix.inputs.nixpkgs.follows = "nixpkgs-release-linux";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-latest";
 
-    # Pinned to the release branch to match `nixpkgs-stable-darwin`:
+    # Pinned to the release branch to match `nixpkgs-release-darwin`:
     # nix-darwin asserts that the two branches correspond.
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-stable-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-release-darwin";
 
     ultrashell.url = "github:fveracoechea/ultrashell";
-    ultrashell.inputs.nixpkgs.follows = "nixpkgs";
+    ultrashell.inputs.nixpkgs.follows = "nixpkgs-release-linux";
 
     tmux-powerkit.url = "github:fabioluciano/tmux-powerkit";
-    tmux-powerkit.inputs.nixpkgs.follows = "nixpkgs";
+    tmux-powerkit.inputs.nixpkgs.follows = "nixpkgs-latest";
 
     hunk.url = "github:modem-dev/hunk";
-    hunk.inputs.nixpkgs.follows = "nixpkgs";
+    hunk.inputs.nixpkgs.follows = "nixpkgs-latest";
 
     figma-plugin.url = "github:figma/mcp-server-guide";
     figma-plugin.flake = false;
 
-    handy.url = "github:cjpais/Handy";
-    handy.inputs.nixpkgs.follows = "nixpkgs";
-    # bun2nix (handy's dep) evaluates its flake-parts outputs for every system
-    # in its `systems` input; nix-systems/default includes x86_64-darwin, which
-    # nixpkgs 26.11 dropped, so narrow it to linux-only (handy is linux-only).
-    handy.inputs.bun2nix.inputs.systems.follows = "systems";
-
-    systems.url = "github:nix-systems/default-linux";
-
     herdr.url = "github:herdrdev/herdr";
-    herdr.inputs.nixpkgs.follows = "nixpkgs";
+    herdr.inputs.nixpkgs.follows = "nixpkgs-latest";
   };
 
   outputs = {
-    nixpkgs,
-    nixpkgs-stable,
-    nixpkgs-stable-darwin,
+    nixpkgs-latest,
+    nixpkgs-release-linux,
+    nixpkgs-release-darwin,
     home-manager,
     nix-darwin,
     ...
   } @ inputs: let
-    lib = nixpkgs.lib;
+    lib = nixpkgs-latest.lib;
     supportedSystems = ["x86_64-linux" "aarch64-darwin"];
 
     # Both channels share one config. `nixpkgs.pkgs` takes an already-built
@@ -80,20 +68,20 @@
     };
 
     latestPkgsFor = system:
-      import nixpkgs {
+      import nixpkgs-latest {
         inherit system;
         config = nixpkgsConfig;
       };
 
     # One release, two QA branches: `nixos-*` for Linux, `nixpkgs-*-darwin`
     # for macOS. The system picks the branch so every call site stays one line.
-    stableSourceFor = system:
+    releaseSourceFor = system:
       if lib.hasSuffix "darwin" system
-      then nixpkgs-stable-darwin
-      else nixpkgs-stable;
+      then nixpkgs-release-darwin
+      else nixpkgs-release-linux;
 
-    stablePkgsFor = system:
-      import (stableSourceFor system) {
+    releasePkgsFor = system:
+      import (releaseSourceFor system) {
         inherit system;
         config = nixpkgsConfig;
       };
@@ -101,7 +89,7 @@
     dotfilesPkgsFor = system: (import ./packages {
       inherit inputs;
       pkgs = latestPkgsFor system;
-      pkgs-stable = stablePkgsFor system;
+      pkgs-release = releasePkgsFor system;
     });
 
     codingAgentSources = {
@@ -155,7 +143,7 @@
 
     darwinConfigurations.macbook-pro = let
       system = "aarch64-darwin";
-      pkgs-stable = stablePkgsFor system;
+      pkgs-release = releasePkgsFor system;
       pkgs-latest = latestPkgsFor system;
       specialArgs = {
         inherit pkgs-latest;
@@ -172,7 +160,7 @@
           {
             # System layer runs on the release channel.
             nixpkgs.hostPlatform = system;
-            nixpkgs.pkgs = pkgs-stable;
+            nixpkgs.pkgs = pkgs-release;
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -190,31 +178,30 @@
               # unavoidable here. See ADR-0007.
               home.enableNixpkgsReleaseCheck = false;
             };
-            home-manager.extraSpecialArgs = specialArgs // {inherit pkgs-stable;};
+            home-manager.extraSpecialArgs = specialArgs // {inherit pkgs-release;};
           }
         ];
       };
 
     nixosConfigurations.nixos-desktop = let
       system = "x86_64-linux";
-      pkgs-stable = stablePkgsFor system;
+      pkgs-release = releasePkgsFor system;
       pkgs-latest = latestPkgsFor system;
       specialArgs = {
         dotfilesPkgs = dotfilesPkgsFor system;
       };
     in
-      nixpkgs-stable.lib.nixosSystem {
+      nixpkgs-release-linux.lib.nixosSystem {
         inherit specialArgs;
 
         modules = [
           nixosModules.default
-          inputs.handy.nixosModules.default
           ./hosts/nixos-desktop/configuration.nix
           home-manager.nixosModules.home-manager
           {
             # System layer runs on the release channel.
             nixpkgs.hostPlatform = system;
-            nixpkgs.pkgs = pkgs-stable;
+            nixpkgs.pkgs = pkgs-release;
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -232,7 +219,7 @@
               # unavoidable here. See ADR-0007.
               home.enableNixpkgsReleaseCheck = false;
             };
-            home-manager.extraSpecialArgs = specialArgs // {inherit pkgs-stable;};
+            home-manager.extraSpecialArgs = specialArgs // {inherit pkgs-release;};
           }
         ];
       };

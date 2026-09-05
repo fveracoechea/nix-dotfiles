@@ -47,11 +47,7 @@
         STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
       };
       systemPackages = with pkgs; [
-        # lutris
-        mesa-demos
         ethtool
-        protonup-ng
-        amdgpu_top
         lact
       ];
     };

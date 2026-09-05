@@ -2,7 +2,6 @@
   lib,
   config,
   dotfilesPkgs,
-  pkgs,
   ...
 }: {
   options.dotfiles.hyprland.enable = lib.mkEnableOption "Hyprland compositor";
@@ -21,13 +20,6 @@
       package = dotfilesPkgs.hyprland;
       portalPackage = dotfilesPkgs.hyprland-portal;
     };
-
-    environment.systemPackages = with pkgs; [
-      wl-clipboard
-      libnotify
-      pavucontrol
-      nautilus
-    ];
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";

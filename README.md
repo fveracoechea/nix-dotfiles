@@ -26,37 +26,40 @@ development environment across macOS and Linux using Nix flakes.
 - **[Nix Flakes](https://nixos.org/)**: Reproducible package management and system configuration
 - **[Home Manager](https://github.com/nix-community/home-manager)**: User environment management
 
-### Package Channels
+### Package channels
 
-Two nixpkgs channels feed this flake, so tooling can move without disturbing the desktop. See [ADR-0007](docs/adr/0007-split-nixpkgs-channels-by-layer.md).
+Two nixpkgs channels feed this flake, so Home packages can move without disturbing the System. See [ADR-0007](docs/adr/0007-split-nixpkgs-channels-by-package-owner.md).
 
-| Channel             | Input                   | Branch                  | Builds                                              |
-| ------------------- | ----------------------- | ----------------------- | --------------------------------------------------- |
-| **Latest Channel**  | `nixpkgs`               | `nixpkgs-unstable`      | Home layer on both hosts: apps, CLI, tooling        |
-| **Release Channel** | `nixpkgs-stable`        | `nixos-26.05`           | System layer on `nixos-desktop`, Hyprland satellites |
-| **Release Channel** | `nixpkgs-stable-darwin` | `nixpkgs-26.05-darwin`  | System layer on `macbook-pro`                       |
+| Channel             | Input                       | Branch                   | Builds                        |
+| ------------------- | --------------------------- | ------------------------ | ----------------------------- |
+| **Latest Channel**  | `nixpkgs-latest`            | `nixpkgs-unstable`       | Home-owned packages           |
+| **Release Channel** | `nixpkgs-release-linux`     | `nixos-26.05`            | Linux System-owned packages   |
+| **Release Channel** | `nixpkgs-release-darwin`    | `nixpkgs-26.05-darwin`   | macOS System-owned packages   |
 
-The layer decides the channel, except where the layer is not the real concern:
-the Hyprland satellites are version-coupled to the compositor, and Spotify sits
-in the darwin system layer only so Spotlight can find `Spotify.app`.
+Package ownership decides the channel. Version-Coupled Packages follow their
+partner, Spotify uses the Latest Channel despite its darwin System location,
+and a broken Latest package can use a documented Channel Hold.
 
 `nix-darwin` is pinned to `nix-darwin-26.05` because it asserts that its own
 branch corresponds to the Nixpkgs branch it evaluates against.
 
 ```bash
 # Newer coding agents, CLI, and apps. Leaves the kernel and compositor alone.
-nix flake update nixpkgs
+nix flake update nixpkgs-latest
 
-# Move the system layer. Do this deliberately.
-nix flake update nixpkgs-stable nixpkgs-stable-darwin
+# Move the System. Do this deliberately and test both hosts.
+nix flake update nixpkgs-release-linux nixpkgs-release-darwin nix-darwin
 
 # One tool only, when it has its own input.
 nix flake update herdr
 ```
 
-When a release lands, move all three release refs together: `nixpkgs-stable` to
-`nixos-YY.MM`, `nixpkgs-stable-darwin` to `nixpkgs-YY.MM-darwin`, and
-`nix-darwin` to `nix-darwin-YY.MM`.
+When a release lands, move all three release refs together:
+`nixpkgs-release-linux` to `nixos-YY.MM`, `nixpkgs-release-darwin` to
+`nixpkgs-YY.MM-darwin`, and `nix-darwin` to `nix-darwin-YY.MM`.
+
+Homebrew does not update during nix-darwin activation. Update its applications
+separately with `brew update && brew upgrade`.
 
 ### Window Management & Desktop
 

@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-stable,
+  pkgs-release,
   dotfilesPkgs,
   ...
 }: {
@@ -12,7 +12,8 @@
     ghostty.enable = true;
     sunshine.enable = true;
     fonts.enable = true;
-    mangohud.enable = true;
+    gaming.enable = true;
+    handy.enable = true;
     spotify.enable = true;
     coding-agents.enable = true;
     desktop-entries.enable = true;
@@ -45,7 +46,9 @@
     dotfilesPkgs.dev-manager-desktop
     railway
     openlinkhub
-    pkgs-stable.zettlr
+    # Zettlr 4.7.0 currently fails through python3.14-pyqt5's unsupported SIP
+    # ABI v12. Return to Latest when the package builds and launches there.
+    pkgs-release.zettlr
     tiny-rdm
     obs-studio
   ];

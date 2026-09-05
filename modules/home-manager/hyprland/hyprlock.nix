@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  pkgs-stable,
+  pkgs-release,
   ...
 }: let
   toRgb = color: "rgb(${lib.substring 1 6 (lib.strings.toLower color)})";
@@ -19,8 +19,8 @@ in {
   config = lib.mkIf config.dotfiles.hyprland.enable {
     programs.hyprlock = {
       enable = true;
-      # Release channel: tracks the compositor. See ADR-0007.
-      package = pkgs-stable.hyprlock;
+      # Release Channel: tracks the compositor. See ADR-0007.
+      package = pkgs-release.hyprlock;
       settings = {
         general = {
           disable_loading_bar = true;

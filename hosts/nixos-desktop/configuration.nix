@@ -13,11 +13,10 @@
     timezone.enable = true;
     pipewire.enable = true;
     gaming.enable = true;
+    handy.enable = true;
     hyprland.enable = true;
     networking.enable = true;
   };
-
-  programs.handy.enable = true;
 
   nix = {
     optimise.automatic = true;
@@ -53,6 +52,7 @@
       "dialout"
       "plugdev"
       "input"
+      "uinput"
       "video"
     ];
   };
@@ -72,7 +72,7 @@
   # Virtual file system support (e.g., Trash can)
   services.gvfs.enable = true;
 
-  # udev rule for Kinesis Advantage360 Pro serial access (idVendor 29ea)
+  # Device access for Kinesis Advantage360 Pro.
   services.udev.extraRules = ''
     ATTRS{idVendor}=="29ea", MODE="0660", GROUP="plugdev", TAG+="uaccess"
   '';
@@ -80,17 +80,8 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     vim
-    wget
     git
     curl
-    zip
-    unzip
-    cmake
-    gnumake
-    cargo
-    openssl
-    wtype
-    wl-clipboard
   ];
 
   # DO NOT CHANGE
