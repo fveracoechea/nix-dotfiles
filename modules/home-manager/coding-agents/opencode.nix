@@ -40,12 +40,22 @@
         autoupdate = false;
         model = "openrouter/z-ai/glm-5.3-flash";
 
+        agent = {
+          build = {
+            model = "openrouter/z-ai/glm-5.3-flash";
+            variant = "high";
+          };
+        };
+
         # permission.external_directory."~/OPINIONS.md" = "allow";
         permission."*" = "allow";
 
         provider = {
           openrouter = {
-            models."z-ai/glm-5.3-flash".options.reasoning.effort = "high";
+            models."z-ai/glm-5.3-flash" = {
+              options.reasoning.effort = "high";
+              variants.high.reasoning.effort = "high";
+            };
 
             options = {
               extraBody = {
