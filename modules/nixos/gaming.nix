@@ -14,6 +14,10 @@
     # See ADR-0007.
     hardware.graphics.extraPackages = [pkgs-latest.gamescope-wsi];
 
+    # Uncomment if HDR removal does not stop the RDNA3 illegal-opcode hangs.
+    # Disables GFX11 user-mode queues; most reported workaround for this bug class.
+    # boot.kernelParams = ["amdgpu.user_queue=0"];
+
     programs = {
       steam = {
         enable = true;
@@ -26,17 +30,17 @@
         gamescopeSession = {
           enable = true;
           env = {
-            DXVK_HDR = "1";
-            ENABLE_HDR = "1";
+            # DXVK_HDR = "1"; # Disabled during RDNA3 illegal-opcode hangs
+            # ENABLE_HDR = "1";
           };
           args = [
             "--adaptive-sync" # VRR support
-            "--hdr-enabled" # HDR
-            "--hdr-itm-enable"
+            # "--hdr-enabled" # HDR, disabled during RDNA3 illegal-opcode hangs
+            # "--hdr-itm-enable"
             "--rt" # Real time scheduling
             "-W 2560"
             "-H 1440"
-            "-r 120" # Refresh rate
+            "-r 90" # Refresh rate
             "-f" # Fullscreen
             "-O HDMI-A-1" # Output display (dummy plug, sunshine capture target)
           ];
