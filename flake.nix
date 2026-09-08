@@ -52,7 +52,11 @@
     nix-darwin,
     ...
   } @ inputs: let
+    # Home Manager imports interfaces from the Latest Channel, so its module
+    # tree needs that channel's library plus the Home Manager extensions. The
+    # outer System module trees keep their Release Channel libraries.
     lib = nixpkgs-latest.lib;
+    homeManagerLib = import (home-manager + "/modules/lib/stdlib-extended.nix") lib;
     supportedSystems = ["x86_64-linux" "aarch64-darwin"];
 
     # Both channels share one config. `nixpkgs.pkgs` takes an already-built
@@ -167,13 +171,15 @@
               # plain definition replaces it.
               _module.args.pkgs = pkgs-latest;
 
-              # Home Manager and `pkgs` are both on the latest channel, but the
-              # nix-darwin module tree evaluates Home Manager with the release
-              # channel's `lib`. That third-party mismatch is deliberate and
-              # unavoidable here. See ADR-0007.
+              # Home Manager and `pkgs` are both on the Latest Channel. The
+              # release check reads the System package set, so it still sees
+              # the intentional channel split. See ADR-0007.
               home.enableNixpkgsReleaseCheck = false;
             };
-            home-manager.extraSpecialArgs = specialArgs // {inherit pkgs-stable;};
+            home-manager.extraSpecialArgs = specialArgs // {
+              inherit pkgs-stable;
+              lib = homeManagerLib;
+            };
           }
         ];
       };
@@ -209,13 +215,15 @@
               # plain definition replaces it.
               _module.args.pkgs = pkgs-latest;
 
-              # Home Manager and `pkgs` are both on the latest channel, but the
-              # NixOS module tree evaluates Home Manager with the release
-              # channel's `lib`. That third-party mismatch is deliberate and
-              # unavoidable here. See ADR-0007.
+              # Home Manager and `pkgs` are both on the Latest Channel. The
+              # release check reads the System package set, so it still sees
+              # the intentional channel split. See ADR-0007.
               home.enableNixpkgsReleaseCheck = false;
             };
-            home-manager.extraSpecialArgs = specialArgs // {inherit pkgs-stable;};
+            home-manager.extraSpecialArgs = specialArgs // {
+              inherit pkgs-stable;
+              lib = homeManagerLib;
+            };
           }
         ];
       };
